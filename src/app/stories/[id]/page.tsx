@@ -1,9 +1,20 @@
+async function getData(postId: string) {
+    const res = await fetch(`http://localhost:3000/api/stories/${postId}`)
+    const data = await res.json()
+    if (!res.ok) {
+        throw new Error('Failed to fetch data')
+    }
+    return data.data
+}
 
-export default function Story() {
+export default async function Story({ params }: any) {
+    const info = await getData(params.id)
+
+    console.log(info);
 
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
-            <h1>Story</h1>
+            <p>{params.id}</p>
         </main>
     );
 }

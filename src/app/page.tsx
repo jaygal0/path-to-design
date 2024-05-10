@@ -2,22 +2,22 @@ import Link from "next/link";
 
 async function getData() {
   const res = await fetch('http://localhost:3000/api/stories')
+  const data = await res.json()
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
-  return res.json()
+  return data.data
 }
 
 export default async function Home() {
-  const stories = await getData()
-  const { data } = stories
+  const data = await getData()
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <section>Figure out how successful designers got their start.</section>
       {data.map((designer: any, index: any) => {
         return (
-          <Link href={`/stories/${designer.lastName.toLowerCase()}-${designer.firstName.toLowerCase()}`}>
+          <Link href={`/stories/${designer.id}`}>
             <div>
               <p>{index + 1}</p>
               <h1>{designer.firstName} {designer.lastName}</h1>
@@ -35,7 +35,6 @@ export default async function Home() {
           </Link>
         )
       })}
-
     </main>
   );
 }

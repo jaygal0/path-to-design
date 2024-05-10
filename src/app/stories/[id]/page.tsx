@@ -1,4 +1,5 @@
 async function getData(postId: string) {
+    // TODO: Figure out why this is not working
     const res = await fetch(`http://localhost:3000/api/stories/${postId}`)
     const data = await res.json()
     if (!res.ok) {

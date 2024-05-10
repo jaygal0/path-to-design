@@ -13,8 +13,12 @@ export default async function Home() {
   const data = await getData()
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <section>Figure out how successful designers got their start.</section>
+    <div className="flex flex-col items-center justify-between">
+      <section className="w-100 h-80 grid place-items-center">
+        <h1 className="text-4xl font-bold" >
+          Figure out how successful designers got their start.
+        </h1>
+      </section>
       {data.map((designer: any, index: any) => {
         return (
           <Link href={`/stories/${designer.id}`}>
@@ -35,6 +39,6 @@ export default async function Home() {
           </Link>
         )
       })}
-    </main>
+    </div>
   );
 }

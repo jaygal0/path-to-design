@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1,
+    "firstName": "Joshua",
+    "lastName": "Galinato",
+    "datePosted": "2024-07-11",
+    "contact": {
+      "email": "joshua@galina.to",
+      "twitter": "",
+      "instagram": "",
+      "dribble": ""
+    },
+    "info": {
+      "coverImage": "name",
+      "oneLiner": "This is an awesome one liner",
+      "position": "UX Lead Designer",
+      "yearlySalary": 4000,
+      "salaryCurrency": "Dollars",
+      "company": "Orbi",
+      "companySite": "https://orbiapp.io",
+      "personalSite": "https://galina.to",
+      "getStarted": "I got started simply by doing",
+      "stayInspired": "newsletters, they help a lot!",
+      "tools": ["Figma", "Adobe", "Internet"],
+      "books": ["book 1", "book 2", "book 3"],
+      "advice": "it's going to be hard, but keep going"
+    }
+  },
+  {
+    "id": 2,
+    "firstName": "Sahar",
+    "lastName": "Asgari",
+    "datePosted": "2024-07-12",
+    "contact": {
+      "email": "sahar@galina.to",
+      "twitter": "",
+      "instagram": "",
+      "dribble": ""
+    },
+    "info": {
+      "coverImage": "name",
+      "oneLiner": "This is an awesome one liner",
+      "position": "UX Lead Designer",
+      "yearlySalary": 5000,
+      "salaryCurrency": "Dollars",
+      "company": "Orbi",
+      "companySite": "https://orbiapp.io",
+      "personalSite": "https://galina.to",
+      "getStarted": "I got started simply by doing",
+      "stayInspired": "newsletters, they help a lot!",
+      "tools": ["Figma", "Adobe", "Internet"],
+      "books": ["book 1", "book 2", "book 3"],
+      "advice": "it's going to be hard, but keep going"
+    }
+  },
+  {
+    "id": 3,
+    "firstName": "Jon",
+    "lastName": "Doe",
+    "datePosted": "2024-07-13",
+    "contact": {
+      "email": "sahar@galina.to",
+      "twitter": "",
+      "instagram": "",
+      "dribble": ""
+    },
+    "info": {
+      "coverImage": "name",
+      "oneLiner": "This is an awesome one liner",
+      "position": "UX/UI Designer",
+      "yearlySalary": 8000,
+      "salaryCurrency": "Dollars",
+      "company": "Orbi",
+      "companySite": "https://orbiapp.io",
+      "personalSite": "https://galina.to",
+      "getStarted": "I got started simply by doing",
+      "stayInspired": "newsletters, they help a lot!",
+      "tools": ["Figma", "Adobe", "Internet"],
+      "books": ["book 1", "book 2", "book 3"],
+      "advice": "it's going to be hard, but keep going"
+    }
+  }
+]

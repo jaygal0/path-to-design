@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { Suspense } from "react";
+import { CardDesigner } from "./components/CardDesigner"
 
 async function getData() {
   const res = await fetch('http://localhost:3000/api/stories', { cache: 'no-store' })
@@ -12,7 +11,6 @@ async function getData() {
 
 export default async function Home() {
   const data = await getData()
-  console.log(data);
 
   return (
     <>
@@ -23,28 +21,10 @@ export default async function Home() {
       </section>
       {
         data.map((designer: any, index: any) => {
-          return (
-            <Suspense fallback={"Loading..."}>
-              <div key={designer.id}>
-                <Link href={`/stories/${designer.id}`}>
-                  <div>
-                    <p>{index + 1}</p>
-                    <h1>{designer.firstName} {designer.lastName}</h1>
-                    {designer.info.company ?
-                      <p>{designer.info.position} at {designer.info.company}</p> :
-                      <p>Self-employed</p>
-                    }
-                    <p>{designer.datePosted}</p>
-                    {designer.info.yearlySalary ?
-                      <p>{designer.info.yearlySalary}</p> :
-                      <p>Non-disclosed</p>
-                    }
+          const { id, firstName, lastName, datePosted, contact, info } = designer
+          return <CardDesigner key={index} index={index} id={id} firstName={firstName} lastName={lastName} datePosted={datePosted} contact={contact} info={info} />
 
-                  </div>
-                </Link>
-              </div>
-            </Suspense>
-          )
+
         })
       }
     </>

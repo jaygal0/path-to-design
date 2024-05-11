@@ -13,32 +13,34 @@ export default async function Home() {
   const data = await getData()
 
   return (
-    <div className="flex flex-col items-center justify-between">
+    <>
       <section className="w-100 h-80 grid place-items-center">
         <h1 className="text-4xl font-bold" >
           Figure out how successful designers got their start.
         </h1>
       </section>
-      {data.map((designer: any, index: any) => {
-        return (
-          <Link href={`/stories/${designer.id}`}>
-            <div>
-              <p>{index + 1}</p>
-              <h1>{designer.firstName} {designer.lastName}</h1>
-              {designer.info.company ?
-                <p>{designer.info.position} at {designer.info.company}</p> :
-                <p>Self-employed</p>
-              }
-              <p>{designer.datePosted}</p>
-              {designer.info.yearlySalary ?
-                <p>{designer.info.yearlySalary}</p> :
-                <p>Non-disclosed</p>
-              }
+      {
+        data.map((designer: any, index: any) => {
+          return (
+            <Link href={`/stories/${designer.id}`}>
+              <div>
+                <p>{index + 1}</p>
+                <h1>{designer.firstName} {designer.lastName}</h1>
+                {designer.info.company ?
+                  <p>{designer.info.position} at {designer.info.company}</p> :
+                  <p>Self-employed</p>
+                }
+                <p>{designer.datePosted}</p>
+                {designer.info.yearlySalary ?
+                  <p>{designer.info.yearlySalary}</p> :
+                  <p>Non-disclosed</p>
+                }
 
-            </div>
-          </Link>
-        )
-      })}
-    </div>
+              </div>
+            </Link>
+          )
+        })
+      }
+    </>
   );
 }

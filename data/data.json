@@ -79,5 +79,32 @@
       "books": ["book 1", "book 2", "book 3"],
       "advice": "it's going to be hard, but keep going"
     }
+  },
+  {
+    "id": 4,
+    "firstName": "Luna",
+    "lastName": "Freya",
+    "datePosted": "2024-07-13",
+    "contact": {
+      "email": "sahar@galina.to",
+      "twitter": "",
+      "instagram": "",
+      "dribble": ""
+    },
+    "info": {
+      "coverImage": "name",
+      "oneLiner": "This is an awesome one liner",
+      "position": "UX/UI Designer",
+      "yearlySalary": 8000,
+      "salaryCurrency": "Dollars",
+      "company": "Orbi",
+      "companySite": "https://orbiapp.io",
+      "personalSite": "https://galina.to",
+      "getStarted": "I got started simply by doing",
+      "stayInspired": "newsletters, they help a lot!",
+      "tools": ["Figma", "Adobe", "Internet"],
+      "books": ["book 1", "book 2", "book 3"],
+      "advice": "it's going to be hard, but keep going"
+    }
   }
 ]

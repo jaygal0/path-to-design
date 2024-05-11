@@ -1,5 +1,5 @@
 async function getData(id: string) {
-    const res = await fetch(`http://localhost:3000/api/stories/${id}`)
+    const res = await fetch(`http://localhost:3000/api/stories/${id}`, { cache: "no-store" })
     const data = await res.json()
     if (!res.ok) {
         throw new Error('Failed to fetch data')

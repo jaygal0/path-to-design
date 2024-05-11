@@ -33,15 +33,22 @@ type CardDesignerProps = {
 export function CardDesigner({ index, id, firstName, lastName, datePosted, contact, info }: CardDesignerProps) {
     return (
         <Suspense fallback={"Loading..."}>
-            <div >
-                <Link href={`/stories/${id}`}>
-                    <div>{firstName} {lastName}</div>
-                    <div>{firstName} {lastName}</div>
-                    <div>{info.position}</div>
-                    <div>{datePosted}</div>
-                    <div>{info.yearlySalary ? info.yearlySalary : "Non disclosed"}</div>
-                </Link>
-            </div>
+            <Link href={`/stories/${id}`}>
+                <div className="flex w-full mb-5">
+                    <div className="flex flex-col justify-between items-center w-8 bg-slate-700 mr-5 p-1">
+                        <div>#</div>
+                        <div className="text-sm">{index + 1} </div>
+                    </div>
+                    <div className="flex flex-col w-full">
+                        <div className="text-7xl">{firstName} {lastName}</div>
+                        <div className="flex justify-between text-lg">
+                            <div>{info.position}</div>
+                            <div>{datePosted}</div>
+                            <div>{info.yearlySalary ? info.yearlySalary : "Non disclosed"}</div>
+                        </div>
+                    </div>
+                </div>
+            </Link>
         </Suspense>
     )
 }

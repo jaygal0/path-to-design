@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Navbar />
-        <main className="grid grid-cols-12">
+        <main className="grid grid-cols-12 pt-20">
           <div></div>
           <div className="col-start-3 col-span-8">{children}</div>
           <div></div>

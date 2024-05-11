@@ -40,11 +40,11 @@ export function CardDesigner({ index, id, firstName, lastName, datePosted, conta
                         <div className="text-sm">{index + 1} </div>
                     </div>
                     <div className="flex flex-col w-full">
-                        <div className="text-7xl">{firstName} {lastName}</div>
+                        <h2 className="text-6xl">{firstName} {lastName}</h2>
                         <div className="flex justify-between text-lg">
-                            <div>{info.position}</div>
-                            <div>{datePosted}</div>
-                            <div>{info.yearlySalary ? info.yearlySalary : "Non disclosed"}</div>
+                            <p>{info.position}</p>
+                            <p>{datePosted}</p>
+                            <p>{info.yearlySalary ? info.yearlySalary : "Non disclosed"}</p>
                         </div>
                     </div>
                 </div>

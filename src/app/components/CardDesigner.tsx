@@ -40,7 +40,7 @@ export function CardDesigner({ index, id, firstName, lastName, datePosted, conta
                         <div className="text-sm">{index + 1} </div>
                     </div>
                     <div className="flex flex-col w-full">
-                        <h2 className="text-6xl">{firstName} {lastName}</h2>
+                        <h2 className="text-5xl">{firstName} {lastName}</h2>
                         <div className="flex justify-between text-lg">
                             <p>{info.position}</p>
                             <p>{datePosted}</p>

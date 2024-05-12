@@ -18,9 +18,9 @@ export default async function Story({ params }: any) {
 
     return (
         <>
-            <h1 className="text-6xl font-bold leading-tight pt-60 pb-20">{info.oneLiner}</h1>
+            <h1 className="text-6xl font-bold leading-tight pt-60 pb-20">"{info.oneLiner}"</h1>
             <DesignerDetailBox firstName={firstName} lastName={lastName} contact={contact} info={info} />
-            <div className="relative w-full h-5/6 mt-10 mb-10 rounded-lg overflow-hidden">
+            <div className="relative w-full h-96 mt-10 mb-10 rounded-lg overflow-hidden">
                 <Image
                     fill
                     src="https://dummyimage.com/600x400/000/fff.jpg"
@@ -34,6 +34,7 @@ export default async function Story({ params }: any) {
                 <DetailQuestions question="What advice would you give to your younger self?" answer={info.advice} />
                 <DetailQuestions question="Do you have any regrets?" answer={info.regret} />
                 <DetailQuestions question="What apps do you use?" apps={info.apps} />
+                <DetailQuestions question="What apps do you use?" books={info.books} />
             </div>
         </>
     );

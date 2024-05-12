@@ -24,7 +24,7 @@ export default function RootLayout({
         <Navbar />
         <main className="grid grid-cols-12 gap-4">
           <LeftSidebar />
-          <div className="col-start-3 col-span-8">{children}</div>
+          <div className="col-start-3 col-span-8 pb-20">{children}</div>
           <div></div>
         </main>
       </body>

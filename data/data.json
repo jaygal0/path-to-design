@@ -3,36 +3,36 @@
     "id": 1,
     "firstName": "Joshua",
     "lastName": "Galinato",
-    "datePosted": "2024-07-11",
+    "datePosted": "2024-05-12",
     "contact": {
       "email": "joshua@galina.to",
-      "twitter": "jaygal1",
-      "instagram": "jaygal1",
-      "dribble": "jaygal1"
+      "twitter": "",
+      "instagram": "",
+      "dribble": ""
     },
     "info": {
-      "coverImage": "name",
-      "oneLiner": "This is an awesome one liner",
+      "coverImage": "",
+      "oneLiner": "Keep working on your craft. It'll pay off in the end.",
       "position": "UX Lead Designer",
+      "company": "Orbi",
       "yearlySalaryRange": "$48k- $56k",
       "yearlySalary": "",
-      "company": "Orbi",
       "companySite": "https://orbiapp.io",
       "personalSite": "https://galina.to",
-      "getStarted": "I got started simply by doing",
-      "stayInspired": "newsletters, they help a lot!",
-      "advice": "it's going to be hard, but keep \n\n going",
-      "regret": "I have none. Don't be ashamed of your mistakes, they help you grow.",
+      "getStarted": "Landing the Lead UX Designer position at Orbi was the culmination of a unique and richly varied career path that honed my skills and broadened my perspective. Over the past six years, I founded and led my own company, which not only became a platform for creative expression but also a successful business venture. Through our YouTube channel, we amassed nearly 85,000 followers, providing regular content that attracted a diverse audience and multiple brand partnerships. This experience was instrumental in deepening my understanding of user engagement and digital content strategies. Similarly, I leveraged social media platforms like Instagram, where I successfully grew an account to 100,000 followers. Here, I further honed my skills in visual storytelling and brand collaboration, which are crucial in UX design. These experiences equipped me with a robust toolkit of design, leadership, and strategic skills, making me an ideal fit for the innovative environment at Orbi.",
+      "stayInspired": "Staying inspired as a designer is a continuous journey that requires both personal passion and external stimulation. I actively seek out new ideas and trends by attending industry conferences, engaging in workshops, and collaborating with other creatives. Reading extensively about design and technology also plays a pivotal role in my creative process, helping me stay ahead of the curve and incorporate fresh, innovative elements into my work. Additionally, I draw significant inspiration from the world around me—whether through travel, art, or the everyday interactions that reveal the subtle needs and behaviors of people. This holistic approach not only fuels my creativity but also ensures that my designs remain relevant, user-centric, and reflective of the diverse world we design for.",
+      "advice": "If I were to offer advice to my younger self just starting out in design, I would emphasize the importance of patience and the value of learning from every experience. Early in your career, it’s crucial to understand that growth is a process and each project, whether a success or a setback, offers invaluable lessons. I would encourage my younger self to experiment boldly and step outside of comfort zones, because that’s where the most transformative learning happens. Networking with other designers and mentors can also provide support and perspective that are critical as you navigate your path. Above all, maintain your curiosity and passion for design—these qualities are your greatest assets. They will drive you to constantly improve and innovate, shaping you into a thoughtful and impactful designer.",
+      "regret": "Reflecting on my journey as a designer, one regret that stands out is not embracing the power of feedback earlier in my career. Initially, I viewed criticism as a negative rather than an opportunity for growth and improvement. Over time, I realized that constructive feedback is a valuable tool that sharpens skills, refines ideas, and prevents one from becoming complacent. Had I learned to seek out and genuinely appreciate feedback sooner, I believe my design solutions would have matured more quickly and been more innovative. Another regret is not documenting my creative processes and project outcomes meticulously. This documentation would have served as a powerful learning tool for both myself and others, providing insights into what worked, what didn’t, and how similar challenges could be approached differently in the future.",
       "apps": [
         {
-          "app": "Adobe",
-          "desc": "I hardly use this since Figma came around",
+          "name": "Figma",
+          "desc": "I use this all the time",
           "link": "https://figma.com"
         },
         {
-          "app": "Figma",
-          "desc": "I use this for everything!",
-          "link": "https://figma.com"
+          "name": "Adobe",
+          "desc": "I hardly use this since Figma came around",
+          "link": "https://adobe.com"
         }
       ],
       "books": [

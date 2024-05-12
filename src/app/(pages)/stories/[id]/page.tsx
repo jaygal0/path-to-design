@@ -1,4 +1,6 @@
 import { DesignerDetailBox } from "@/app/components/DesignerDetailBox"
+import { DetailQuestions } from "@/app/components/DetailQuestions"
+import Image from "next/image"
 
 async function getData(id: string) {
     const res = await fetch(`http://localhost:3000/api/stories/${id}`, { cache: "no-store" })
@@ -17,19 +19,21 @@ export default async function Story({ params }: any) {
     return (
         <>
             <h1 className="text-6xl font-bold leading-tight pt-60 pb-20">{info.oneLiner}</h1>
-            <div className="flex justify-between p-5 bg-slate-400 rounded-md">
-                <div className="flex gap-4">
-                    <div className="h-20 w-20 bg-slate-50 rounded-full"></div>
-                    <div className="flex flex-col justify-center">
-                        <div className="text-xl font-semibold">{firstName} {lastName}</div>
-                        <div>{info.position} at {info.company}</div>
-                        <a className="underline" href={info.personalSite} target="_blank">
-                            {info.personalSite}
-                        </a>
-                    </div>
-                </div>
-                <DesignerDetailBox info={info} contact={contact} />
-
+            <DesignerDetailBox firstName={firstName} lastName={lastName} contact={contact} info={info} />
+            <div className="relative w-full h-5/6 mt-10 mb-10 rounded-lg overflow-hidden">
+                <Image
+                    fill
+                    src="https://dummyimage.com/600x400/000/fff.jpg"
+                    alt={`An image of ${firstName} ${lastName}'s portfolio`}
+                    objectFit="cover"
+                />
+            </div>
+            <div>
+                <DetailQuestions question="How did you get started?" answer={info.getStarted} />
+                <DetailQuestions question="How did you stay inspired?" answer={info.stayInspired} />
+                <DetailQuestions question="What advice would you give to your younger self?" answer={info.advice} />
+                <DetailQuestions question="Do you have any regrets?" answer={info.regret} />
+                <DetailQuestions question="What apps do you use?" books={info.books} />
             </div>
         </>
     );

@@ -21,10 +21,32 @@
       "personalSite": "https://galina.to",
       "getStarted": "I got started simply by doing",
       "stayInspired": "newsletters, they help a lot!",
-      "tools": ["Figma", "Adobe", "Internet"],
-      "books": ["book 1", "book 2", "book 3"],
       "advice": "it's going to be hard, but keep \n\n going",
-      "regret": "it's going to be hard, but keep \n\n going"
+      "regret": "I have none. Don't be ashamed of your mistakes, they help you grow.",
+      "apps": [
+        {
+          "app": "Adobe",
+          "desc": "I hardly use this since Figma came around",
+          "link": "https://figma.com"
+        },
+        {
+          "app": "Figma",
+          "desc": "I use this for everything!",
+          "link": "https://figma.com"
+        }
+      ],
+      "books": [
+        {
+          "book": "Book name 1",
+          "desc": "Best book ever",
+          "link": "https://amazon.com"
+        },
+        {
+          "book": "Book name 2",
+          "desc": "Second best book ever",
+          "link": "https://amazon.com"
+        }
+      ]
     }
   },
   {

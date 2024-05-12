@@ -1,4 +1,5 @@
 import Link from "next/link";
+// TODO: On scroll the navbar background changes color
 
 export function Navbar() {
     return (

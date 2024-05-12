@@ -4,6 +4,8 @@ import "./globals.css";
 import { Navbar } from "./components/Navbar";
 import { LeftSidebar } from "./components/LeftSidebar";
 
+//TODO: Create sidebar for the newsletter
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

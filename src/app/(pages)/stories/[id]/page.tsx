@@ -33,7 +33,7 @@ export default async function Story({ params }: any) {
                 <DetailQuestions question="How did you stay inspired?" answer={info.stayInspired} />
                 <DetailQuestions question="What advice would you give to your younger self?" answer={info.advice} />
                 <DetailQuestions question="Do you have any regrets?" answer={info.regret} />
-                <DetailQuestions question="What apps do you use?" books={info.books} />
+                <DetailQuestions question="What apps do you use?" apps={info.apps} />
             </div>
         </>
     );

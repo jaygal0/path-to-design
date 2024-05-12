@@ -20,6 +20,10 @@ body {
   color: rgb(var(--foreground-rgb));
 }
 
+a {
+  text-decoration-line: underline;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

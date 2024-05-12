@@ -6,16 +6,16 @@
     "datePosted": "2024-07-11",
     "contact": {
       "email": "joshua@galina.to",
-      "twitter": "",
-      "instagram": "",
-      "dribble": ""
+      "twitter": "jaygal1",
+      "instagram": "jaygal1",
+      "dribble": "jaygal1"
     },
     "info": {
       "coverImage": "name",
       "oneLiner": "This is an awesome one liner",
       "position": "UX Lead Designer",
-      "yearlySalary": 4000,
-      "salaryCurrency": "Dollars",
+      "yearlySalaryRange": "$48k- $56k",
+      "yearlySalary": "",
       "company": "Orbi",
       "companySite": "https://orbiapp.io",
       "personalSite": "https://galina.to",

@@ -33,7 +33,7 @@ type CardDesignerProps = {
 export function CardDesigner({ index, id, firstName, lastName, datePosted, contact, info }: CardDesignerProps) {
     return (
         <Suspense fallback={"Loading..."}>
-            <Link href={`/stories/${id}`}>
+            <Link href={`/${id}`}>
                 <div className="flex w-full mb-5">
                     <div className="flex flex-col justify-between items-center w-8 bg-slate-700 mr-5 p-1">
                         <div>#</div>

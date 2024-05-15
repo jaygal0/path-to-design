@@ -3,7 +3,7 @@ import { DetailQuestions } from "@/app/components/DetailQuestions"
 import Image from "next/image"
 
 async function getData(id: string) {
-    const res = await fetch(`http://localhost:3000/api/stories/${id}`, { cache: "no-store" })
+    const res = await fetch(`http://localhost:3000/api/${id}`, { cache: "no-store" })
     const data = await res.json()
     if (!res.ok) {
         throw new Error('Failed to fetch data')

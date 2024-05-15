@@ -7,7 +7,6 @@ export function Navbar() {
             <Link href="/">Designer Stories</Link>
             <div className="flex gap-7">
                 <Link href="/about">About</Link>
-                <Link href="/stories">Stories</Link>
                 <Link href="blog">Blog</Link>
             </div>
         </div>

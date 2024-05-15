@@ -3,9 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "./components/Navbar";
 import { LeftSidebar } from "./components/LeftSidebar";
-
-//TODO: Create sidebar for the newsletter
-
+import { RightSidebar } from "./components/RightSidebar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -22,10 +20,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Navbar />
-        <main className="grid grid-cols-12 gap-4">
+        <main className="grid grid-cols-12 grid-rows-1 gap-4">
           <LeftSidebar />
-          <div className="col-start-3 col-span-8 pb-20">{children}</div>
-          <div></div>
+          <RightSidebar />
+          <div className="col-start-3 col-span-8 row-start-1 pb-20">{children}</div>
         </main>
       </body>
     </html>

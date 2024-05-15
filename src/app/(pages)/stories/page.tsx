@@ -4,12 +4,10 @@ async function getData() {
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
-  return data.data
+  return data
 }
 export default async function About() {
   const data = await getData()
-
-
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-between p-24">

@@ -1,0 +1,16 @@
+TODO:
+
+[ ] Connect form to a newsletter provider (mailchimp?)
+[ ] Sort out "Share Your Story" page
+[ ] Sort out "Contact" page (Do I just merge "Share Your Story"?)
+[ ] Sort out Privacy page
+[ ] Sort out About page
+[ ] Sort out Blog page with Markdown connection
+
+[ ] Sort out responsive design
+[ ] Sort out css
+
+[ ] Reach out to Faj
+[ ] Reach out to Jim
+[ ] Reach out to Gabriel
+[ ] Reach out to Joel

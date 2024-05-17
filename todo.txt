@@ -1,6 +1,7 @@
 TODO:
 
-[ ] Sort out Blog page with Markdown connection
+[ ] Figure out if there's a more efficient way to solve MDX on YouTube
+[ ] Figure out Frontmatter
 [ ] Sort out About page
 [ ] Sort out Privacy page
 [ ] Sort out "Share Your Story" page

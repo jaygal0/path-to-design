@@ -1,7 +1,7 @@
 TODO:
 
-[ ] Sort out About page
 [ ] Sort out Blog page with Markdown connection
+[ ] Sort out About page
 [ ] Sort out Privacy page
 [ ] Sort out "Share Your Story" page
 [ ] Sort out "Contact" page (Do I just merge "Share Your Story"?)

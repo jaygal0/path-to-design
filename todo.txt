@@ -2,7 +2,9 @@ TODO:
 
 
 [ ] Sort out responsive design
+
 [ ] Sort out css
+[ ] Sort out navbar change background on scroll
 
 [ ] Figure out brand name
 [ ] Connect form to a newsletter provider (mailchimp?)

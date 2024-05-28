@@ -1,4 +1,4 @@
-export default function About() {
+export default function Page() {
   return (
     <div className="flex min-h-screen flex-col p-24">
       <h1 className="text-2xl font-bold">About</h1>

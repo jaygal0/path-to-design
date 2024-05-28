@@ -1,13 +1,17 @@
 TODO:
 
-[ ] Sort out "Share Your Story" page
-[ ] Sort out "Contact" page (Do I just merge "Share Your Story"?)
-[ ] Connect form to a newsletter provider (mailchimp?)
 
 [ ] Sort out responsive design
 [ ] Sort out css
+
+[ ] Figure out brand name
+[ ] Connect form to a newsletter provider (mailchimp?)
 
 [ ] Reach out to Faj
 [ ] Reach out to Jim
 [ ] Reach out to Gabriel
 [ ] Reach out to Joel
+
+[ ] Create a "Stories" list page (When the list gets long)
+[ ] Create a filter
+

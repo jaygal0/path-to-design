@@ -20,10 +20,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Navbar />
-        <main className="grid grid-cols-12 grid-rows-1 gap-4">
+        <main className="grid grid-cols-1 grid-rows-3 gap-4 lg:grid-cols-12">
           <LeftSidebar />
           <RightSidebar />
-          <div className="col-start-3 col-span-8 row-start-1 pb-20">{children}</div>
+          <div className="col-span-8 col-start-3 row-start-1 pb-20">
+            {children}
+          </div>
         </main>
       </body>
     </html>

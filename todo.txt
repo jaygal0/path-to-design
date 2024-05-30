@@ -2,8 +2,6 @@ TODO:
 
 
 [ ] mobile responsive design 
-    [ ] blog detail
-    [ ] blog listing
     [ ] about
     [ ] share your story
     [ ] privacy

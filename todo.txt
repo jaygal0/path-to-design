@@ -2,7 +2,6 @@ TODO:
 
 
 [ ] mobile responsive design 
-    [ ] about
     [ ] share your story
     [ ] privacy
 

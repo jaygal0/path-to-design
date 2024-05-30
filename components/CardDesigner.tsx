@@ -47,11 +47,11 @@ export function CardDesigner({
             <div>#</div>
             <div className="text-sm">{index + 1} </div>
           </div>
-          <div className="flex flex-col py-2">
-            <h2 className="text-2xl font-semibold">
+          <div className="flex w-full flex-col gap-2 py-2">
+            <h2 className="text-2xl font-semibold lg:text-6xl">
               {firstName} {lastName}
             </h2>
-            <div className="flex flex-col justify-between text-base">
+            <div className="flex flex-col justify-between font-light lg:flex-row">
               <p>{info.position}</p>
               <p>{datePosted}</p>
               <p>{info.yearlySalary ? info.yearlySalary : "Non disclosed"}</p>

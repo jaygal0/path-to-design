@@ -1,10 +1,17 @@
 TODO:
 
 
-[ ] Sort out responsive design
+[ ] mobile responsive design 
+    [ ] story detail page
+    [ ] blog detail
+    [ ] blog listing
+    [ ] about
+    [ ] share your story
+    [ ] privacy
+
+[ ] desktop responsive design
 
 [ ] Sort out css
-[ ] Sort out navbar change background on scroll
 
 [ ] Figure out brand name
 [ ] Connect form to a newsletter provider (mailchimp?)

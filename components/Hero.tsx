@@ -17,7 +17,7 @@ export function Hero() {
             fill="black"
           />
         </svg>
-        <h1 className="text-2xl font-bold leading-tight lg:text-6xl">
+        <h1 className="text-3xl font-bold leading-tight lg:text-6xl">
           Figure out how successful designers got their start.
         </h1>
         <svg

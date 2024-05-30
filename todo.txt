@@ -10,6 +10,8 @@ TODO:
 
 [ ] desktop responsive design
 
+[ ] figure out how to sort blogs in listing page
+
 [ ] Sort out css
 
 [ ] Figure out brand name

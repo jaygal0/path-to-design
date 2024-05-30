@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "./components/Navbar";
-import { LeftSidebar } from "./components/LeftSidebar";
-import { RightSidebar } from "./components/RightSidebar";
+import { Navbar } from "../../components/Navbar";
+import { AdditionalLinks } from "../../components/AdditionalLinks";
+import { NewsletterForm } from "../../components/NewsletterForm";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -20,12 +20,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Navbar />
-        <main className="grid grid-cols-1 grid-rows-3 gap-4 lg:grid-cols-12">
-          <LeftSidebar />
-          <RightSidebar />
-          <div className="col-span-8 col-start-3 row-start-1 pb-20">
-            {children}
-          </div>
+        <main className="px-2 pb-20">
+          <div className="">{children}</div>
+          <NewsletterForm />
+          <AdditionalLinks />
         </main>
       </body>
     </html>

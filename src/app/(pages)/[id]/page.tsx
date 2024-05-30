@@ -19,8 +19,8 @@ export default async function Story({ params }: any) {
   const { id, firstName, lastName, datePosted, contact, info } = story;
 
   return (
-    <>
-      <h1 className="pb-20 pt-60 text-6xl font-bold leading-tight">
+    <div className="flex flex-col gap-10">
+      <h1 className="pb-14 pt-40 text-3xl font-bold leading-tight">
         "{info.oneLiner}"
       </h1>
       <DesignerDetailBox
@@ -29,7 +29,7 @@ export default async function Story({ params }: any) {
         contact={contact}
         info={info}
       />
-      <div className="relative mb-10 mt-10 h-96 w-full overflow-hidden rounded-lg">
+      <div className="relative aspect-video w-full overflow-hidden rounded-lg">
         <Image
           fill
           src="https://dummyimage.com/600x400/000/fff.jpg"
@@ -37,26 +37,24 @@ export default async function Story({ params }: any) {
           objectFit="cover"
         />
       </div>
-      <div>
-        <DetailQuestions
-          question="How did you get started?"
-          answer={info.getStarted}
-        />
-        <DetailQuestions
-          question="How did you stay inspired?"
-          answer={info.stayInspired}
-        />
-        <DetailQuestions
-          question="What advice would you give to your younger self?"
-          answer={info.advice}
-        />
-        <DetailQuestions
-          question="Do you have any regrets?"
-          answer={info.regret}
-        />
-        <DetailQuestions question="What apps do you use?" apps={info.apps} />
-        <DetailQuestions question="What apps do you use?" books={info.books} />
-      </div>
-    </>
+      <DetailQuestions
+        question="How did you get started?"
+        answer={info.getStarted}
+      />
+      <DetailQuestions
+        question="How did you stay inspired?"
+        answer={info.stayInspired}
+      />
+      <DetailQuestions
+        question="What advice would you give to your younger self?"
+        answer={info.advice}
+      />
+      <DetailQuestions
+        question="Do you have any regrets?"
+        answer={info.regret}
+      />
+      <DetailQuestions question="What apps do you use?" apps={info.apps} />
+      <DetailQuestions question="What apps do you use?" books={info.books} />
+    </div>
   );
 }

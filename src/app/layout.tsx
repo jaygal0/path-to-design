@@ -21,7 +21,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Navbar />
         <main className="px-2 pb-20">
-          <div className="">{children}</div>
+          <div>{children}</div>
           <NewsletterForm />
           <AdditionalLinks />
         </main>

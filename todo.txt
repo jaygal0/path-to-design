@@ -2,7 +2,6 @@ TODO:
 
 
 [ ] mobile responsive design 
-    [ ] story detail page
     [ ] blog detail
     [ ] blog listing
     [ ] about

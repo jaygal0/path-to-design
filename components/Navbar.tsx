@@ -46,6 +46,7 @@ export function Navbar() {
             </g>
           </svg>
           <div className="flex flex-col gap-5 p-7 text-2xl">
+            <Link href="/">Home</Link>
             <Link href="/about">About</Link>
             <Link href="/blog">Blog</Link>
             <Link href="/share">Share Your Story</Link>

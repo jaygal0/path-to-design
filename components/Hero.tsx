@@ -1,6 +1,6 @@
 export function Hero() {
   return (
-    <section className="my-20">
+    <section className="my-20 md:my-40">
       <div className="relative px-10 py-16">
         <svg
           className="absolute left-0 top-0"

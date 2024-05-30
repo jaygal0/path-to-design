@@ -1,6 +1,6 @@
 export function NewsletterForm() {
   return (
-    <div className="hidden">
+    <div className="fixed bottom-4 right-4 hidden max-w-64 md:block">
       <h4 className="text-lg font-semibold">
         Join over 500+ designers sharing their stories.
       </h4>

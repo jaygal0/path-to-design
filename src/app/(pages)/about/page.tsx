@@ -3,7 +3,7 @@ export default function Page() {
     <div className="flex flex-col">
       <h1 className="my-20 text-3xl font-bold">About</h1>
       <div className="flex flex-col gap-4">
-        <div className="aspect-video h-72 bg-black"></div>
+        <div className="aspect-video bg-black" />
         <p className="">
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
           Necessitatibus, quas consequatur harum, distinctio exercitationem

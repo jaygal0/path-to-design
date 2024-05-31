@@ -1,10 +1,21 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Cormorant, Cabin } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "../../components/Navbar";
 import { AdditionalLinks } from "../../components/AdditionalLinks";
 import { NewsletterForm } from "../../components/NewsletterForm";
-const inter = Inter({ subsets: ["latin"] });
+
+const cormorant = Cormorant({
+  subsets: ["latin"],
+  weight: ["300"],
+  variable: "--font-Cormorant",
+});
+
+const cabin = Cabin({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-Cabin",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${cormorant.className} ${cabin.className} font-serif`}>
         <Navbar />
         <main className="px-2 pb-20">
           <div className="mx-auto max-w-screen-md">{children}</div>

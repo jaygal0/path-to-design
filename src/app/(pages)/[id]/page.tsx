@@ -20,7 +20,7 @@ export default async function Story({ params }: any) {
 
   return (
     <div className="flex flex-col gap-10">
-      <h1 className="my-20 text-3xl font-bold leading-tight">
+      <h1 className="mb-20 mt-40 text-6xl font-bold leading-tight">
         "{info.oneLiner}"
       </h1>
       <DesignerDetailBox

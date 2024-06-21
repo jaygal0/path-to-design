@@ -31,7 +31,7 @@ export function DesignerDetailBox({
   contact,
 }: DesignerProps) {
   return (
-    <div className="flex flex-col justify-between gap-2 rounded-md bg-slate-400 p-3">
+    <div className="designer-box-gradient flex flex-col justify-between gap-2 rounded-md p-4 font-sans text-stone-950 md:flex-row">
       <div className="flex gap-4">
         <div className="h-20 w-20 rounded-full bg-slate-50"></div>
         <div className="flex flex-col justify-center">
@@ -39,7 +39,19 @@ export function DesignerDetailBox({
             {firstName} {lastName}
           </div>
           <div>
-            {info.position} at {info.company}
+            {info.position} at{" "}
+            {info.companySite ? (
+              <a
+                className={info.companySite && "underline"}
+                href={info.companySite}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {info.company}
+              </a>
+            ) : (
+              <span>{info.company}</span>
+            )}
           </div>
           <a className="underline" href={info.personalSite} target="_blank">
             {info.personalSite}

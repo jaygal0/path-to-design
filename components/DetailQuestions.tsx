@@ -14,10 +14,10 @@ export function DetailQuestions({
   return (
     <div>
       <div className="mb-4 font-sans text-2xl font-bold">{question}</div>
-      {answer ? <div>{answer}</div> : ""}
+      {answer ? <div className="text-xl">{answer}</div> : ""}
       {apps?.map((app: any) => {
         return (
-          <div className="mb-4" key={app.name}>
+          <div className="mb-4 text-xl" key={app.name}>
             <a
               className="font-semibold underline"
               href={app.link}
@@ -31,7 +31,7 @@ export function DetailQuestions({
       })}
       {books?.map((book: any) => {
         return (
-          <div className="mb-4" key={book.book}>
+          <div className="mb-4 text-xl" key={book.book}>
             <a
               className="font-semibold underline"
               href={book.link}

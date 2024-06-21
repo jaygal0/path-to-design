@@ -4,7 +4,7 @@ export default function Page() {
       <h1 className="my-20 text-3xl font-bold">About</h1>
       <div className="flex flex-col gap-4">
         <div className="aspect-video bg-black" />
-        <p className="">
+        <p className="font-sans">
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
           Necessitatibus, quas consequatur harum, distinctio exercitationem
           mollitia eos, at sunt eveniet sit eius praesentium impedit sapiente ut

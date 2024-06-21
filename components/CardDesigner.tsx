@@ -51,7 +51,7 @@ export function CardDesigner({
             <h2 className="text-2xl font-semibold lg:text-6xl">
               {firstName} {lastName}
             </h2>
-            <div className="flex flex-col justify-between font-light lg:flex-row">
+            <div className="flex flex-col justify-between font-sans font-light lg:flex-row">
               <p>{info.position}</p>
               <p>{datePosted}</p>
               <p>{info.yearlySalary ? info.yearlySalary : "Non disclosed"}</p>

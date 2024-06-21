@@ -1,12 +1,9 @@
 export function NewsletterForm() {
   return (
-    <div className="fixed bottom-4 right-4 hidden max-w-64 md:block">
-      <h4 className="text-lg font-semibold">
+    <div className="fixed bottom-4 right-4 hidden max-w-64 font-sans md:block">
+      <h4 className="text-lg font-normal">
         Join over 500+ designers sharing their stories.
       </h4>
-      <p className="font-light">
-        Receive regular tips on how to start your design career.
-      </p>
       <form className="flex flex-col" action="">
         <input
           className="mb-2 border-b-2 border-black p-2"

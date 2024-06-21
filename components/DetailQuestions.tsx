@@ -13,7 +13,7 @@ export function DetailQuestions({
 }: DesignerProps) {
   return (
     <div>
-      <div className="mb-4 text-2xl font-bold">{question}</div>
+      <div className="mb-4 font-sans text-2xl font-bold">{question}</div>
       {answer ? <div>{answer}</div> : ""}
       {apps?.map((app: any) => {
         return (

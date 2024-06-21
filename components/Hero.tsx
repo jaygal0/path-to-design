@@ -18,7 +18,7 @@ export function Hero() {
           />
         </svg>
         <h1 className="text-3xl font-bold leading-tight lg:text-6xl">
-          Figure out how successful designers got their start.
+          Find out how successful designers got their start.
         </h1>
         <svg
           className="absolute bottom-0 right-0"

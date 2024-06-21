@@ -7,14 +7,12 @@ import { NewsletterForm } from "../../components/NewsletterForm";
 
 const cormorant = Cormorant({
   subsets: ["latin"],
-  weight: ["300"],
-  variable: "--font-Cormorant",
+  variable: "--font-cormorant",
 });
 
 const cabin = Cabin({
   subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-Cabin",
+  variable: "--font-cabin",
 });
 
 export const metadata: Metadata = {
@@ -29,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${cormorant.className} ${cabin.className} font-serif`}>
+      <body className={`${cormorant.variable} ${cabin.variable} font-sans`}>
         <Navbar />
         <main className="px-2 pb-20">
           <div className="mx-auto max-w-screen-md">{children}</div>

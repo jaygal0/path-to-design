@@ -27,7 +27,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${cormorant.variable} ${cabin.variable} font-serif`}>
+      <body
+        className={`${cormorant.variable} ${cabin.variable} bg-stone-950 font-serif`}
+      >
         <Navbar />
         <main className="px-2 pb-20">
           <div className="mx-auto max-w-screen-md">{children}</div>

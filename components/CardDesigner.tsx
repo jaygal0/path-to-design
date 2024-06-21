@@ -43,11 +43,11 @@ export function CardDesigner({
     <Suspense fallback={"Loading..."}>
       <Link href={`/${id}`}>
         <div className="flex">
-          <div className="mr-4 flex flex-col items-center justify-between bg-slate-200 p-2">
+          <div className="rectangle-gradient mr-4 flex flex-col items-center justify-between rounded-sm p-2 font-sans text-stone-950">
             <div>#</div>
             <div className="text-sm">{index + 1} </div>
           </div>
-          <div className="flex w-full flex-col gap-2 py-2">
+          <div className="flex w-full flex-col gap-3 py-2">
             <h2 className="text-2xl font-semibold lg:text-6xl">
               {firstName} {lastName}
             </h2>

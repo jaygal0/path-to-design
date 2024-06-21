@@ -18,7 +18,7 @@ export default async function Home() {
   return (
     <>
       <Hero />
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-6">
         {data.map((designer: any, index: any) => {
           const { id, firstName, lastName, datePosted, contact, info } =
             designer;

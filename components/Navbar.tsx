@@ -25,7 +25,7 @@ export function Navbar() {
   }, [showMobileMenu]);
 
   return (
-    <div className="fixed left-0 top-0 z-40 flex w-screen justify-between border bg-white p-4">
+    <div className="fixed left-0 top-0 z-40 flex w-screen justify-between border bg-stone-950 p-4">
       <Link href="/">Designer Stories</Link>
       {showMobileMenu && (
         <div className="absolute left-0 top-0 h-screen w-5/6 bg-slate-600">

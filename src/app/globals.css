@@ -18,7 +18,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  color: black;
+  color: white;
 }
 
 a .underline {
@@ -29,4 +29,33 @@ a .underline {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.text-gradient {
+  background: -webkit-linear-gradient(
+    303deg,
+    rgba(255, 237, 70, 1) 0%,
+    rgba(255, 126, 199, 1) 100%
+  );
+  background-clip: inherit;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 6px;
+}
+.rectangle-gradient {
+  background: rgb(183, 220, 255);
+  background: linear-gradient(
+    0deg,
+    rgba(183, 220, 255, 1) 0%,
+    rgba(255, 164, 246, 1) 100%
+  );
+}
+
+.sub-gradient {
+  background: rgb(183, 220, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(183, 220, 255, 1) 0%,
+    rgba(255, 164, 246, 1) 100%
+  );
 }

@@ -1,10 +1,10 @@
 export default function Page() {
   return (
     <div className="flex flex-col">
-      <h1 className="my-20 text-3xl font-bold">About</h1>
+      <h1 className="mb-20 mt-40 text-5xl font-bold">About</h1>
       <div className="flex flex-col gap-4">
         <div className="aspect-video bg-black" />
-        <p className="font-sans">
+        <p className="font-serif text-xl">
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
           Necessitatibus, quas consequatur harum, distinctio exercitationem
           mollitia eos, at sunt eveniet sit eius praesentium impedit sapiente ut

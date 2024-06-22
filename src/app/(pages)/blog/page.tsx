@@ -19,7 +19,7 @@ export default function Home() {
   });
   return (
     <>
-      <h2 className="font-blod my-20 text-3xl font-semibold">Blog</h2>
+      <h2 className="mb-20 mt-40 text-5xl font-bold">Blog</h2>
       <div className="py-2">
         {blogs.map((blog) => (
           <Link href={"/blog/" + blog.slug} passHref key={blog.slug}>

@@ -33,9 +33,9 @@ export default function Page({ params }: any) {
   const props = getPost(params);
 
   return (
-    <article className="prose my-20 lg:prose-xl">
-      <h1>{props.fontMatter.title}</h1>
-      <MDXRemote source={props.content}></MDXRemote>
+    <article className="prose mb-20 mt-40 text-white lg:prose-xl">
+      <h1 className="text-white">{props.fontMatter.title}</h1>
+      <MDXRemote source={props.content} />
     </article>
   );
 }

@@ -1,8 +1,8 @@
 export default function Page() {
   return (
     <div className="flex flex-col">
-      <h1 className="my-20 text-3xl font-bold">Privacy</h1>
-      <div className="flex flex-col gap-7">
+      <h1 className="mb-20 mt-40 text-4xl font-bold">Privacy</h1>
+      <div className="flex flex-col gap-7 text-lg">
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
           Necessitatibus, quas consequatur harum, distinctio exercitationem

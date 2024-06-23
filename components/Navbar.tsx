@@ -73,9 +73,9 @@ export function Navbar() {
           />
         </svg>
       )}
-      <div className="hidden gap-7 font-sans md:flex">
+      <div className="hidden gap-7 pr-4 font-sans md:flex">
         <Link href="/about">About</Link>
-        <Link href="blog">Blog</Link>
+        <Link href="/blog">Blog</Link>
       </div>
     </div>
   );

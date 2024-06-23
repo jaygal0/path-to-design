@@ -1,7 +1,5 @@
 TODO:
 
-[ ] Sort out css
-
 [ ] Figure out brand name
 [ ] Connect form to a newsletter provider (mailchimp?)
 
@@ -12,4 +10,5 @@ TODO:
 
 [ ] Create a "Stories" list page (When the list gets long)
 [ ] Create a filter
+[ ] Create a chapter anchor link component on designer detail page
 

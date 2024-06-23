@@ -17,8 +17,9 @@ export function Hero() {
             fill="white"
           />
         </svg>
-        <h1 className="text-gradient text-3xl font-bold leading-tight lg:text-6xl">
-          Find out how successful designers got their start.
+        <h1 className="text-gradient text-3xl font-bold leading-3 lg:text-6xl">
+          Explore how designers began their journeys, navigate their careers,
+          and stay inspired.
         </h1>
         <svg
           className="absolute bottom-0 right-0"

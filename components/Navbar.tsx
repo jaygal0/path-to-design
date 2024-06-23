@@ -28,7 +28,7 @@ export function Navbar() {
     <div className="fixed left-0 top-0 z-40 flex w-screen justify-between border-b-2 bg-stone-950 p-4">
       <Link href="/">Designer Stories</Link>
       {showMobileMenu && (
-        <div className="absolute left-0 top-0 h-screen w-5/6 bg-slate-600">
+        <div className="absolute left-0 top-0 h-screen w-5/6 border-r-2 border-white bg-stone-950">
           <svg
             className="absolute right-4 top-4"
             onClick={toggleMobileMenu}

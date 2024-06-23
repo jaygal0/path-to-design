@@ -1,6 +1,7 @@
 TODO:
 
 [ ] Figure out brand name
+[ ] Figure out the leading issue
 [ ] Connect form to a newsletter provider (mailchimp?)
 
 [ ] Reach out to Faj

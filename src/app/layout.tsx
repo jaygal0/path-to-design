@@ -31,7 +31,7 @@ export default function RootLayout({
         className={`${cormorant.variable} ${cabin.variable} bg-stone-950 font-serif`}
       >
         <Navbar />
-        <main className="px-2 pb-20">
+        <main className="px-4 pb-20 md:px-2">
           <div className="mx-auto max-w-screen-md">{children}</div>
           <NewsletterForm />
           <AdditionalLinks />

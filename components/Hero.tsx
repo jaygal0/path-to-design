@@ -1,7 +1,7 @@
 export function Hero() {
   return (
     <section className="my-20 md:my-40">
-      <div className="relative p-16">
+      <div className="relative p-12 md:p-16">
         <svg
           className="absolute left-0 top-0"
           width="24"

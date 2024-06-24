@@ -9,8 +9,6 @@ async function getData() {
 export default async function About() {
   const data = await getData();
 
-  console.log(data);
-
   return (
     <div className="flex min-h-screen flex-col items-center justify-between p-24">
       <h1>Stories</h1>

@@ -25,8 +25,10 @@ export function Navbar() {
   }, [showMobileMenu]);
 
   return (
-    <div className="fixed left-0 top-0 z-40 flex w-screen justify-between border-b-2 bg-stone-950 p-4">
-      <Link href="/">Designer Stories</Link>
+    <div className="fixed left-0 top-0 z-40 flex w-screen justify-between border-b-2 bg-stone-950 p-4 ">
+      <Link className="text-xl font-bold" href="/">
+        Path To Design
+      </Link>
       {showMobileMenu && (
         <div className="absolute left-0 top-0 h-screen w-5/6 border-r-2 border-white bg-stone-950">
           <svg

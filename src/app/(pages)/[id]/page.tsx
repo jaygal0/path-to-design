@@ -38,23 +38,28 @@ export default async function Story({ params }: any) {
         />
       </div>
       <DetailQuestions
-        question="How did you get started?"
-        answer={info.getStarted}
+        question="What are the responsibilities of your role as a designer?"
+        answer={info.responsibilites}
       />
       <DetailQuestions
-        question="How did you stay inspired?"
-        answer={info.stayInspired}
+        question="How did you get started in your role?"
+        answer={info.getStarted}
       />
+      <DetailQuestions question="What apps do you use?" apps={info.apps} />
+      <DetailQuestions question="What apps do you use?" books={info.books} />
       <DetailQuestions
         question="What advice would you give to your younger self?"
         answer={info.advice}
       />
       <DetailQuestions
-        question="Do you have any regrets?"
+        question="Do you have any regrets in your journey in becoming a designer?"
         answer={info.regret}
       />
-      <DetailQuestions question="What apps do you use?" apps={info.apps} />
-      <DetailQuestions question="What apps do you use?" books={info.books} />
+
+      <DetailQuestions
+        question="How do you stay inspired?"
+        answer={info.stayInspired}
+      />
     </div>
   );
 }

@@ -1,6 +1,5 @@
 TODO:
 
-[ ] Move Share Your Story to top right
 [ ] Figure out SQL database
 [ ] Connect form to a newsletter provider (mailchimp?)
 

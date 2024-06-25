@@ -59,7 +59,7 @@ a .underline {
   );
 }
 
-.sub-gradient {
+.btn-gradient {
   background: rgb(183, 220, 255);
   background: linear-gradient(
     90deg,

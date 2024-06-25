@@ -12,7 +12,7 @@ export function NewsletterForm() {
           placeholder="name@email.com"
         />
         <input
-          className="sub-gradient mt-2 cursor-pointer rounded-sm p-2 text-stone-950 hover:bg-slate-300"
+          className="btn-gradient mt-2 cursor-pointer rounded-sm p-2 text-stone-950 hover:bg-slate-300"
           type="submit"
         />
       </form>

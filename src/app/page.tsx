@@ -2,7 +2,7 @@ import { CardDesigner } from "../../components/CardDesigner";
 import { Hero } from "../../components/Hero";
 
 async function getData() {
-  const res = await fetch("http://localhost:3000/api/stories", {
+  const res = await fetch(`${process.env.WEB_SITE}/api/stories`, {
     cache: "no-store",
   });
   const data = await res.json();

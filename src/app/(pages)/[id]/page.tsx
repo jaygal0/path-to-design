@@ -3,7 +3,7 @@ import { DetailQuestions } from "../../../../components/DetailQuestions";
 import Image from "next/image";
 
 async function getData(id: string) {
-  const res = await fetch(`http://localhost:3000/api/${id}`, {
+  const res = await fetch(`${process.env.WEB_SITE}/api/${id}`, {
     cache: "no-store",
   });
   const data = await res.json();

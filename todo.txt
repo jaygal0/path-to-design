@@ -1,5 +1,6 @@
 TODO:
 
+[ ] Figure out why I can't upload to Vercel. Could be fetch from "http://localhost". Figure out what I did with galina.to
 [ ] Move Share Your Story to top right
 [ ] Figure out SQL database
 [ ] Connect form to a newsletter provider (mailchimp?)
@@ -13,5 +14,3 @@ TODO:
 [ ] Create a filter
 [ ] Create a chapter anchor link component on designer detail page
 [ ] Write a few blogs once something pops up
-
-

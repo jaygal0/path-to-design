@@ -11,8 +11,8 @@ export function Hero() {
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipRule="evenodd"
             d="M13.3504 0H10.6504V10.6516H0V13.3516H10.6504V24H13.3504V13.3516H24V10.6516H13.3504V0Z"
             fill="white"
           />
@@ -29,8 +29,8 @@ export function Hero() {
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipRule="evenodd"
             d="M13.3504 0H10.6504V10.6516H0V13.3516H10.6504V24H13.3504V13.3516H24V10.6516H13.3504V0Z"
             fill="white"
           />

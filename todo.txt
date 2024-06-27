@@ -1,5 +1,6 @@
 TODO:
 
+[ ] Research many-to-many databases
 [ ] Figure out SQL database
 [ ] Set up Prisma?
 [ ] Connect form to a newsletter provider (mailchimp?)

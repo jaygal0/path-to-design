@@ -1,0 +1,1 @@
+- Great resource on Prisma and one to many relations [link](https://www.youtube.com/watch?v=QXxy8Uv1LnQ&t)

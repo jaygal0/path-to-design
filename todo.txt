@@ -1,6 +1,7 @@
 TODO:
 
 [ ] Figure out SQL database
+[ ] Set up Prisma?
 [ ] Connect form to a newsletter provider (mailchimp?)
 
 [ ] Reach out to Faj

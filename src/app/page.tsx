@@ -27,7 +27,7 @@ export default async function Home() {
       <Hero />
       <div className="flex flex-col gap-6">
         {designers.map((designer: any, index: any) => {
-          const { id, firstName, lastName, role, company, updatedAt } =
+          const { id, firstName, lastName, slug, role, company, updatedAt } =
             designer;
           return (
             <CardDesigner
@@ -37,6 +37,7 @@ export default async function Home() {
               firstName={firstName}
               lastName={lastName}
               role={role}
+              slug={slug}
               company={company.name}
               updatedAt={updatedAt}
             />

@@ -1,8 +1,8 @@
 type DesignerProps = {
   question: string;
   answer?: string;
-  books?: string[];
-  apps?: string[];
+  books?: any;
+  apps?: any;
 };
 
 export function DetailQuestions({
@@ -15,34 +15,42 @@ export function DetailQuestions({
     <div>
       <div className="mb-4 font-sans text-2xl font-bold">{question}</div>
       {answer ? <div className="text-xl">{answer}</div> : ""}
-      {apps?.map((app: any) => {
-        return (
-          <div className="mb-4 text-xl" key={app.name}>
-            <a
-              className="font-semibold underline"
-              href={app.link}
-              target="_blank"
-            >
-              {app.name}
-            </a>
-            <div>{app.desc}</div>
-          </div>
-        );
-      })}
-      {books?.map((book: any) => {
-        return (
-          <div className="mb-4 text-xl" key={book.book}>
-            <a
-              className="font-semibold underline"
-              href={book.link}
-              target="_blank"
-            >
-              {book.book}
-            </a>
-            <div>{book.desc}</div>
-          </div>
-        );
-      })}
+      {apps ? (
+        <div className="flex gap-3 text-xl">
+          {apps?.map((app: any) => {
+            return (
+              <a
+                key={app.name}
+                className="font-semibold underline"
+                href={app.url}
+                target="_blank"
+              >
+                {app.name}
+              </a>
+            );
+          })}
+        </div>
+      ) : (
+        ""
+      )}
+      {books ? (
+        <div className="flex gap-2 text-xl">
+          {books?.map((book: any) => {
+            return (
+              <a
+                key={book.name}
+                className="font-semibold underline"
+                href={book.url}
+                target="_blank"
+              >
+                {book.name}
+              </a>
+            );
+          })}
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

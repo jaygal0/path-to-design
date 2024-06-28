@@ -1,5 +1,3 @@
-import { Prisma } from "@prisma/client";
-
 type DesignerProps = {
   firstName: string;
   lastName: string;
@@ -30,13 +28,14 @@ export function DesignerDetailBox({
   firstName,
   lastName,
   email,
-  twitter,
+  x,
   instagram,
   dribble,
   url,
   role,
   company,
-}: Prisma.DesignersCreateInput) {
+}: any) {
+  // TODO: Need to create types/interfaces(?) for designer that covers everything
   return (
     <div className="designer-box-gradient flex flex-col justify-between gap-2 rounded-md p-4 font-sans text-stone-950 md:flex-row">
       <div className="flex gap-4">
@@ -87,8 +86,8 @@ export function DesignerDetailBox({
             ""
           )}
           {/* X Icon */}
-          {twitter ? (
-            <a href={`http://x.com/${twitter}`}>
+          {x ? (
+            <a href={`http://x.com/${x}`}>
               <svg
                 width="24"
                 height="24"

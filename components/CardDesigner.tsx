@@ -9,6 +9,7 @@ type CardDesignerProps = {
   role: string;
   company: string;
   updatedAt: Date;
+  slug: string;
 };
 
 export function CardDesigner({
@@ -19,12 +20,13 @@ export function CardDesigner({
   role,
   company,
   updatedAt,
+  slug,
 }: CardDesignerProps) {
   const dayjs = require("dayjs");
 
   return (
     <Suspense fallback={"Loading..."}>
-      <Link href={`/${id}`}>
+      <Link href={`/${slug}`}>
         <div className="flex">
           <div className="rectangle-gradient mr-4 flex flex-col items-center justify-between rounded-sm p-2 font-sans text-stone-950">
             <div>#</div>

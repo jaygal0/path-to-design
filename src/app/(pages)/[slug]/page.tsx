@@ -4,38 +4,25 @@ import { DetailQuestions } from "../../../../components/DetailQuestions";
 import Image from "next/image";
 import { Prisma } from "@prisma/client";
 
-// async function getData(id: string) {
-//   const res = await fetch(`${process.env.WEB_SITE}/api/${id}`, {
-//     cache: "no-store",
-//   });
-//   const data = await res.json();
-//   if (!res.ok) {
-//     throw new Error("Failed to fetch data");
-//   }
-//   return data;
-// }
-
 export default async function Story({ params }: any) {
-  // const story = await getData(params.id);
-
-  const designer: Prisma.DesignersCreateInput =
-    await prisma.designers.findUnique({
-      where: {
-        id: params.id,
-      },
-      include: {
-        company: true,
-        books: true,
-        apps: true,
-      },
-    });
+  // TODO: Need to create types/interfaces(?) for designer that covers everything
+  const designer: any = await prisma.designers.findUnique({
+    where: {
+      slug: params.slug,
+    },
+    include: {
+      company: true,
+      books: true,
+      apps: true,
+    },
+  });
 
   const {
     id,
     firstName,
     lastName,
     email,
-    twitter,
+    x,
     instagram,
     dribble,
     url,
@@ -52,11 +39,6 @@ export default async function Story({ params }: any) {
     updatedAt,
   } = designer;
 
-  // TODO: Figure out how to join tables together
-  // TODO: Connect information from PostGres instead
-
-  // const { id, firstName, lastName, datePosted, contact, info } = story;
-
   return (
     <div className="flex flex-col gap-10">
       <h1 className="mb-20 mt-40 text-4xl font-bold leading-normal md:text-6xl md:leading-tight">
@@ -66,14 +48,14 @@ export default async function Story({ params }: any) {
         firstName={firstName}
         lastName={lastName}
         email={email}
-        twitter={twitter}
+        x={x}
         instagram={instagram}
         dribble={dribble}
         url={url}
         role={role}
         company={company}
       />
-      {/* <div className="relative aspect-video w-full overflow-hidden rounded-lg">
+      <div className="relative aspect-video w-full overflow-hidden rounded-lg">
         <Image
           fill
           src="https://dummyimage.com/600x400/000/fff.jpg"
@@ -83,27 +65,27 @@ export default async function Story({ params }: any) {
       </div>
       <DetailQuestions
         question="What are the responsibilities of your role as a designer?"
-        answer={info.responsibilites}
+        answer={responsibilites}
       />
       <DetailQuestions
         question="How did you get started in your role?"
-        answer={info.getStarted}
+        answer={gotStarted}
       />
-      <DetailQuestions question="What apps do you use?" apps={info.apps} />
-      <DetailQuestions question="What apps do you use?" books={info.books} />
+      <DetailQuestions question="What apps do you use?" apps={apps} />
+      <DetailQuestions question="What books do you use?" books={books} />
       <DetailQuestions
         question="What advice would you give to your younger self?"
-        answer={info.advice}
+        answer={advice}
       />
       <DetailQuestions
         question="Do you have any regrets in your journey in becoming a designer?"
-        answer={info.regret}
+        answer={regrets}
       />
 
       <DetailQuestions
         question="How do you stay inspired?"
-        answer={info.stayInspired}
-      /> */}
+        answer={stayInspired}
+      />
     </div>
   );
 }

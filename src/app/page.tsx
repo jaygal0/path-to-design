@@ -1,3 +1,4 @@
+import prisma from "@/lib/db";
 import { CardDesigner } from "../../components/CardDesigner";
 import { Hero } from "../../components/Hero";
 
@@ -15,23 +16,24 @@ async function getData() {
 export default async function Home() {
   const data = await getData();
 
+  const designers = await prisma.designers.findMany();
+
   return (
     <>
       <Hero />
       <div className="flex flex-col gap-6">
-        {data.map((designer: any, index: any) => {
-          const { id, firstName, lastName, datePosted, contact, info } =
+        {designers.map((designer: any, index: any) => {
+          const { id, firstName, lastName, role, company, updatedAt } =
             designer;
           return (
             <CardDesigner
-              key={index}
+              key={id}
               index={index}
-              id={id}
               firstName={firstName}
               lastName={lastName}
-              datePosted={datePosted}
-              contact={contact}
-              info={info}
+              role={role}
+              company={company}
+              updatedAt={updatedAt}
             />
           );
         })}

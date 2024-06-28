@@ -14,36 +14,56 @@ datasource db {
 }
 
 model Designers {
-  id        String   @id @default(cuid())
-  firstName String
-  lastName  String
-  email     String
-  twitter   String
-  instagram String
-  dribble   String
-  apps      Apps[]
-  books     Books[]
-  published Boolean? @default(false)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id              String   @id @default(cuid())
+  firstName       String
+  lastName        String
+  email           String?
+  twitter         String?
+  instagram       String?
+  dribble         String?
+  url             String?
+  oneLiner        String
+  role            String
+  company         Company  @relation(fields: [companyId], references: [id])
+  companyId       String
+  responsibilites String
+  gotStarted      String
+  advice          String
+  regrets         String
+  stayInspired    String
+  apps            Apps[]
+  books           Books[]
+  published       Boolean? @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model Company {
+  id                 String      @id @default(cuid())
+  companyName        String
+  companyDescription String
+  url                String
+  Designers          Designers[]
+  createdAt          DateTime    @default(now())
+  updatedAt          DateTime    @updatedAt
 }
 
 model Books {
   id          String     @id @default(cuid())
   bookName    String
   url         String
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
   Designers   Designers? @relation(fields: [designersId], references: [id])
   designersId String?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
 }
 
 model Apps {
   id          String     @id @default(cuid())
   appName     String
   url         String
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
   Designers   Designers? @relation(fields: [designersId], references: [id])
   designersId String?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
 }

@@ -3,45 +3,24 @@ import { Suspense } from "react";
 
 type CardDesignerProps = {
   index: any;
-  id: string;
   firstName: string;
   lastName: string;
-  datePosted: string;
-  contact: {
-    email?: string;
-    twitter?: string;
-    instagram?: string;
-    dribble?: string;
-  };
-  info: {
-    coverImage?: string;
-    oneLiner?: string;
-    position?: string;
-    yearlySalary?: string;
-    salaryCurrency?: string;
-    company?: string;
-    companySite?: string;
-    personalSite?: string;
-    getStarted?: string;
-    stayInspired?: string;
-    tools?: string[];
-    books?: string[];
-    advice?: string;
-  };
+  role: string;
+  company: string;
+  updatedAt: Date;
 };
 
 export function CardDesigner({
   index,
-  id,
   firstName,
   lastName,
-  datePosted,
-  contact,
-  info,
+  role,
+  company,
+  updatedAt,
 }: CardDesignerProps) {
   return (
     <Suspense fallback={"Loading..."}>
-      <Link href={`/${id}`}>
+      <Link href={`/${firstName}-${lastName}`}>
         <div className="flex">
           <div className="rectangle-gradient mr-4 flex flex-col items-center justify-between rounded-sm p-2 font-sans text-stone-950">
             <div>#</div>
@@ -52,9 +31,8 @@ export function CardDesigner({
               {firstName} {lastName}
             </h2>
             <div className="flex flex-col justify-between font-sans font-light lg:flex-row">
-              <p>{info.position}</p>
-              <p>{datePosted}</p>
-              <p>{info.yearlySalary ? info.yearlySalary : "Non disclosed"}</p>
+              <p>{role}</p>
+              <p>{updatedAt.toString()}</p>
             </div>
           </div>
         </div>

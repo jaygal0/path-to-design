@@ -16,6 +16,9 @@ async function getData(id: string) {
 export default async function Story({ params }: any) {
   const story = await getData(params.id);
 
+  // TODO: Figure out how to join tables together
+  // TODO: Connect information from PostGres instead
+
   const { id, firstName, lastName, datePosted, contact, info } = story;
 
   return (

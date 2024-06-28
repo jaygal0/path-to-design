@@ -1,8 +1,8 @@
 TODO:
 
-[ ] Research many-to-many databases
-[ ] Figure out SQL database
-[ ] Set up Prisma?
+[ ] Go through TODO's across files
+
+[ ] Research Prisma Studio alternatives
 [ ] Connect form to a newsletter provider (mailchimp?)
 
 [ ] Reach out to Faj

@@ -18,9 +18,11 @@ export function CardDesigner({
   company,
   updatedAt,
 }: CardDesignerProps) {
+  const dayjs = require("dayjs");
+
   return (
     <Suspense fallback={"Loading..."}>
-      <Link href={`/${firstName}-${lastName}`}>
+      <Link href={`/${firstName.toLowerCase()}-${lastName.toLowerCase()}`}>
         <div className="flex">
           <div className="rectangle-gradient mr-4 flex flex-col items-center justify-between rounded-sm p-2 font-sans text-stone-950">
             <div>#</div>
@@ -31,8 +33,11 @@ export function CardDesigner({
               {firstName} {lastName}
             </h2>
             <div className="flex flex-col justify-between font-sans font-light lg:flex-row">
-              <p>{role}</p>
-              <p>{updatedAt.toString()}</p>
+              <p>
+                {/* TODO: Figure out how to join company information from another model */}
+                {role} at {company}
+              </p>
+              <p>{dayjs(updatedAt).format("D MMM, YYYY")}</p>
             </div>
           </div>
         </div>

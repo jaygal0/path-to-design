@@ -16,7 +16,11 @@ async function getData() {
 export default async function Home() {
   const data = await getData();
 
-  const designers = await prisma.designers.findMany();
+  const designers = await prisma.designers.findMany({
+    include: {
+      company: true,
+    },
+  });
 
   return (
     <>
@@ -28,11 +32,12 @@ export default async function Home() {
           return (
             <CardDesigner
               key={id}
+              id={id}
               index={index}
               firstName={firstName}
               lastName={lastName}
               role={role}
-              company={company}
+              company={company.name}
               updatedAt={updatedAt}
             />
           );

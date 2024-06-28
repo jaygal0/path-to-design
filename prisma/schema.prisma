@@ -39,18 +39,19 @@ model Designers {
 }
 
 model Company {
-  id                 String      @id @default(cuid())
-  companyName        String
-  companyDescription String
-  url                String
-  Designers          Designers[]
-  createdAt          DateTime    @default(now())
-  updatedAt          DateTime    @updatedAt
+  id        String      @id @default(cuid())
+  name      String
+  desc      String
+  url       String
+  Designers Designers[]
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
 }
 
 model Books {
   id          String     @id @default(cuid())
-  bookName    String
+  name        String
+  author      String
   url         String
   Designers   Designers? @relation(fields: [designersId], references: [id])
   designersId String?

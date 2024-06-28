@@ -1,3 +1,5 @@
+import { Prisma } from "@prisma/client";
+
 type DesignerProps = {
   firstName: string;
   lastName: string;
@@ -27,9 +29,14 @@ type DesignerProps = {
 export function DesignerDetailBox({
   firstName,
   lastName,
-  info,
-  contact,
-}: DesignerProps) {
+  email,
+  twitter,
+  instagram,
+  dribble,
+  url,
+  role,
+  company,
+}: Prisma.DesignersCreateInput) {
   return (
     <div className="designer-box-gradient flex flex-col justify-between gap-2 rounded-md p-4 font-sans text-stone-950 md:flex-row">
       <div className="flex gap-4">
@@ -39,37 +46,30 @@ export function DesignerDetailBox({
             {firstName} {lastName}
           </div>
           <div>
-            {info.position} at{" "}
-            {info.companySite ? (
+            {role} at{" "}
+            {company.name ? (
               <a
-                className={info.companySite && "underline"}
-                href={info.companySite}
+                className={company.url && "underline"}
+                href={company.url}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {info.company}
+                {company.name}
               </a>
             ) : (
-              <span>{info.company}</span>
+              <span>{company.name}</span>
             )}
           </div>
-          <a className="underline" href={info.personalSite} target="_blank">
-            {info.personalSite}
+          <a className="underline" href={url} target="_blank">
+            {url}
           </a>
         </div>
       </div>
       <div className="flex flex-col justify-between gap-2">
-        {info.yearlySalaryRange ? (
-          <div className="text-lg font-semibold">
-            Income: {info.yearlySalaryRange} /yr
-          </div>
-        ) : (
-          <div className="text-lg font-normal">Income: Non disclosed</div>
-        )}
         <div className="flex justify-start gap-5">
           {/* Email Icon */}
-          {contact.email ? (
-            <a href={`mailto:${contact.email}`}>
+          {email ? (
+            <a href={`mailto:${email}`}>
               <svg
                 width="24"
                 height="24"
@@ -87,8 +87,8 @@ export function DesignerDetailBox({
             ""
           )}
           {/* X Icon */}
-          {contact.twitter ? (
-            <a href={`http://x.com/${contact.twitter}`}>
+          {twitter ? (
+            <a href={`http://x.com/${twitter}`}>
               <svg
                 width="24"
                 height="24"
@@ -106,8 +106,8 @@ export function DesignerDetailBox({
             ""
           )}
           {/* Instagram Icon */}
-          {contact.instagram ? (
-            <a href={`http://instagram.com/${contact.instagram}`}>
+          {instagram ? (
+            <a href={`http://instagram.com/${instagram}`}>
               <svg
                 width="24"
                 height="24"
@@ -125,8 +125,8 @@ export function DesignerDetailBox({
             ""
           )}
           {/* Dribble Icon */}
-          {contact.dribble ? (
-            <a href={`http://dribble.com/${contact.instagram}`}>
+          {dribble ? (
+            <a href={`http://dribble.com/${instagram}`}>
               <svg
                 width="24"
                 height="24"

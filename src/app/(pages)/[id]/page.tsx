@@ -1,38 +1,79 @@
+import prisma from "@/lib/db";
 import { DesignerDetailBox } from "../../../../components/DesignerDetailBox";
 import { DetailQuestions } from "../../../../components/DetailQuestions";
 import Image from "next/image";
+import { Prisma } from "@prisma/client";
 
-async function getData(id: string) {
-  const res = await fetch(`${process.env.WEB_SITE}/api/${id}`, {
-    cache: "no-store",
-  });
-  const data = await res.json();
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  return data;
-}
+// async function getData(id: string) {
+//   const res = await fetch(`${process.env.WEB_SITE}/api/${id}`, {
+//     cache: "no-store",
+//   });
+//   const data = await res.json();
+//   if (!res.ok) {
+//     throw new Error("Failed to fetch data");
+//   }
+//   return data;
+// }
 
 export default async function Story({ params }: any) {
-  const story = await getData(params.id);
+  // const story = await getData(params.id);
+
+  const designer: Prisma.DesignersCreateInput =
+    await prisma.designers.findUnique({
+      where: {
+        id: params.id,
+      },
+      include: {
+        company: true,
+        books: true,
+        apps: true,
+      },
+    });
+
+  const {
+    id,
+    firstName,
+    lastName,
+    email,
+    twitter,
+    instagram,
+    dribble,
+    url,
+    oneLiner,
+    role,
+    company,
+    responsibilites,
+    gotStarted,
+    advice,
+    regrets,
+    stayInspired,
+    apps,
+    books,
+    updatedAt,
+  } = designer;
 
   // TODO: Figure out how to join tables together
   // TODO: Connect information from PostGres instead
 
-  const { id, firstName, lastName, datePosted, contact, info } = story;
+  // const { id, firstName, lastName, datePosted, contact, info } = story;
 
   return (
     <div className="flex flex-col gap-10">
       <h1 className="mb-20 mt-40 text-4xl font-bold leading-normal md:text-6xl md:leading-tight">
-        &quot;{info.oneLiner}&quot;
+        &quot;{oneLiner}&quot;
       </h1>
       <DesignerDetailBox
         firstName={firstName}
         lastName={lastName}
-        contact={contact}
-        info={info}
+        email={email}
+        twitter={twitter}
+        instagram={instagram}
+        dribble={dribble}
+        url={url}
+        role={role}
+        company={company}
       />
-      <div className="relative aspect-video w-full overflow-hidden rounded-lg">
+      {/* <div className="relative aspect-video w-full overflow-hidden rounded-lg">
         <Image
           fill
           src="https://dummyimage.com/600x400/000/fff.jpg"
@@ -62,7 +103,7 @@ export default async function Story({ params }: any) {
       <DetailQuestions
         question="How do you stay inspired?"
         answer={info.stayInspired}
-      />
+      /> */}
     </div>
   );
 }

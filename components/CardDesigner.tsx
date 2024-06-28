@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 
 type CardDesignerProps = {
+  id: any;
   index: any;
   firstName: string;
   lastName: string;
@@ -11,6 +12,7 @@ type CardDesignerProps = {
 };
 
 export function CardDesigner({
+  id,
   index,
   firstName,
   lastName,
@@ -22,7 +24,7 @@ export function CardDesigner({
 
   return (
     <Suspense fallback={"Loading..."}>
-      <Link href={`/${firstName.toLowerCase()}-${lastName.toLowerCase()}`}>
+      <Link href={`/${id}`}>
         <div className="flex">
           <div className="rectangle-gradient mr-4 flex flex-col items-center justify-between rounded-sm p-2 font-sans text-stone-950">
             <div>#</div>

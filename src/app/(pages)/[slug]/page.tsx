@@ -35,7 +35,9 @@ export default async function Story({ params }: any) {
     regrets,
     stayInspired,
     apps,
+    appExplained,
     books,
+    booksExplained,
     updatedAt,
   } = designer;
 
@@ -71,8 +73,19 @@ export default async function Story({ params }: any) {
         question="How did you get started in your role?"
         answer={gotStarted}
       />
-      <DetailQuestions question="What apps do you use?" apps={apps} />
-      <DetailQuestions question="What books do you use?" books={books} />
+      <DetailQuestions
+        question="What apps do you use to help you design?"
+        apps={apps}
+      />
+      <DetailQuestions
+        question="How do you incorporate these apps to you designs?"
+        answer={appExplained}
+      />
+      <DetailQuestions question="What books do you recommend?" books={books} />
+      <DetailQuestions
+        question="Why do you recommend these books?"
+        answer={booksExplained}
+      />
       <DetailQuestions
         question="What advice would you give to your younger self?"
         answer={advice}

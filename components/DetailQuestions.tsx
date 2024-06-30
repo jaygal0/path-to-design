@@ -1,16 +1,11 @@
-type DesignerProps = {
-  question: string;
-  answer?: string;
-  books?: any;
-  apps?: any;
-};
+import { DetailQuestionsProps } from "./type";
 
 export function DetailQuestions({
   question,
   answer,
   books,
   apps,
-}: DesignerProps) {
+}: DetailQuestionsProps) {
   return (
     <div>
       <div className="mb-4 font-sans text-2xl font-bold">{question}</div>

@@ -1,9 +1,9 @@
 TODO:
 
-[ ] Go through TODO's across files
-
-[ ] Research Prisma Studio alternatives
 [ ] Connect form to a newsletter provider (mailchimp?)
+[ ] Host Postgres database
+[ ] Connect pathtodesign.com
+[ ] Research Prisma Studio alternatives
 
 [ ] Reach out to Faj
 [ ] Reach out to Jim

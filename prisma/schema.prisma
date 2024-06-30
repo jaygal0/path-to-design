@@ -23,7 +23,7 @@ model Designers {
   instagram       String?
   dribble         String?
   url             String?
-  oneLiner        String
+  oneLiner        String?
   role            String?
   company         Company? @relation(fields: [companyId], references: [id])
   companyId       String?
@@ -35,7 +35,7 @@ model Designers {
   apps            Apps[]
   appExplained    String?
   books           Books[]
-  booksExplained  String
+  booksExplained  String?
   published       Boolean? @default(false)
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt

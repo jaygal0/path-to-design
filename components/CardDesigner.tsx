@@ -38,7 +38,6 @@ export function CardDesigner({
             </h2>
             <div className="flex flex-col justify-between font-sans font-light lg:flex-row">
               <p>
-                {/* TODO: Figure out how to join company information from another model */}
                 {role} at {company}
               </p>
               <p>{dayjs(updatedAt).format("D MMM, YYYY")}</p>

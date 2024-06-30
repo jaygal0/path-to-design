@@ -2,10 +2,8 @@ import prisma from "@/lib/db";
 import { DesignerDetailBox } from "../../../../components/DesignerDetailBox";
 import { DetailQuestions } from "../../../../components/DetailQuestions";
 import Image from "next/image";
-import { Prisma } from "@prisma/client";
 
 export default async function Story({ params }: any) {
-  // TODO: Need to create types/interfaces(?) for designer that covers everything
   const designer: any = await prisma.designers.findUnique({
     where: {
       slug: params.slug,

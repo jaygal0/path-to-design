@@ -1,28 +1,4 @@
-type DesignerProps = {
-  firstName: string;
-  lastName: string;
-  contact: {
-    email?: string;
-    twitter?: string;
-    instagram?: string;
-    dribble?: string;
-  };
-  info: {
-    coverImage?: string;
-    oneLiner?: string;
-    position?: string;
-    yearlySalaryRange?: string;
-    salaryCurrency?: string;
-    company?: string;
-    companySite?: string;
-    personalSite?: string;
-    getStarted?: string;
-    stayInspired?: string;
-    tools?: string[];
-    books?: string[];
-    advice?: string;
-  };
-};
+import { DesignerProp } from "./type";
 
 export function DesignerDetailBox({
   firstName,
@@ -34,8 +10,7 @@ export function DesignerDetailBox({
   url,
   role,
   company,
-}: any) {
-  // TODO: Need to create types/interfaces(?) for designer that covers everything
+}: DesignerProp) {
   return (
     <div className="designer-box-gradient flex flex-col justify-between gap-2 rounded-md p-4 font-sans text-stone-950 md:flex-row">
       <div className="flex gap-4">
@@ -59,7 +34,7 @@ export function DesignerDetailBox({
               <span>{company.name}</span>
             )}
           </div>
-          <a className="underline" href={url} target="_blank">
+          <a className="underline" href={url ? url : ""} target="_blank">
             {url}
           </a>
         </div>

@@ -4,11 +4,18 @@ export function NewsletterForm() {
       <h4 className="mb-2 text-lg font-normal">
         Join over 500+ designers sharing their stories.
       </h4>
-      <form className="flex flex-col" action="">
+      <form
+        className="flex flex-col"
+        action="https://pathtodesign.us17.list-manage.com/subscribe/post"
+        method="POST"
+      >
+        <input type="hidden" name="u" value="e41d9cf2ed34317e99e5891b9" />
+        <input type="hidden" name="id" value="9437e60fa0" />
         <input
-          className="mb-2 border-b-2 border-black p-2"
+          className="mb-2 border-b-2 border-black p-2 text-stone-950"
           type="text"
-          id="email"
+          id="MERGE0"
+          name="MERGE0"
           placeholder="name@email.com"
         />
         <input

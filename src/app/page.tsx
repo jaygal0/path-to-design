@@ -20,6 +20,7 @@ export default async function Home() {
     include: {
       company: true,
     },
+    orderBy: { createdAt: "asc" },
   });
 
   return (

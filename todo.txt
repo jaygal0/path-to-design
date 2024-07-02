@@ -1,6 +1,5 @@
 TODO:
 
-[ ] Figure out ordering is done via updated at
 [ ] Connect pathtodesign.com
 [ ] Research Prisma Studio alternatives
 

@@ -34,9 +34,13 @@ export function DesignerDetailBox({
               <span>{company.name}</span>
             )}
           </div>
-          <a className="underline" href={url ? url : ""} target="_blank">
-            {url}
-          </a>
+          {url ? (
+            <a className="underline" href={url} target="_blank">
+              View Website &gt;
+            </a>
+          ) : (
+            ""
+          )}
         </div>
       </div>
       <div className="flex flex-col justify-between gap-2">
@@ -62,7 +66,7 @@ export function DesignerDetailBox({
           )}
           {/* X Icon */}
           {x ? (
-            <a href={`http://x.com/${x}`}>
+            <a href={`http://x.com/${x}`} target="_blank">
               <svg
                 width="24"
                 height="24"
@@ -81,7 +85,7 @@ export function DesignerDetailBox({
           )}
           {/* Instagram Icon */}
           {instagram ? (
-            <a href={`http://instagram.com/${instagram}`}>
+            <a href={`http://instagram.com/${instagram}`} target="_blank">
               <svg
                 width="24"
                 height="24"
@@ -100,7 +104,7 @@ export function DesignerDetailBox({
           )}
           {/* Dribble Icon */}
           {dribble ? (
-            <a href={`http://dribble.com/${instagram}`}>
+            <a href={`http://dribble.com/${dribble}`} target="_blank">
               <svg
                 width="24"
                 height="24"

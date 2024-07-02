@@ -8,8 +8,8 @@ export function DetailQuestions({
 }: DetailQuestionsProps) {
   return (
     <div>
-      <div className="mb-4 font-sans text-2xl font-bold">{question}</div>
-      {answer ? <div className="text-xl">{answer}</div> : ""}
+      <div className="mb-4 font-sans text-xl font-bold">{question}</div>
+      {answer ? <div className="text-2xl">{answer}</div> : ""}
       {apps ? (
         <div className="flex gap-3 text-xl">
           {apps?.map((app: any) => {

@@ -1,6 +1,5 @@
 TODO:
 
-[ ] Connect form to a newsletter provider (mailchimp?)
 [ ] Host Postgres database
 [ ] Connect pathtodesign.com
 [ ] Research Prisma Studio alternatives

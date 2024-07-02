@@ -13,7 +13,7 @@ export function NewsletterForm() {
         <input type="hidden" name="id" value="9437e60fa0" />
         <input
           className="mb-2 border-b-2 border-black p-2 text-stone-950"
-          type="text"
+          type="email"
           id="MERGE0"
           name="MERGE0"
           placeholder="name@email.com"

@@ -54,10 +54,12 @@ export function MobileSidebar({ state }: any) {
             name="MERGE0"
             placeholder="name@email.com"
           />
-          <input
+          <button
             className="btn-gradient mt-2 cursor-pointer rounded-sm p-2 text-stone-950 hover:bg-slate-300"
             type="submit"
-          />
+          >
+            Subscribe
+          </button>
         </form>
       </div>
     </div>

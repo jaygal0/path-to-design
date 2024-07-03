@@ -1,6 +1,8 @@
 TODO:
 
-[ ] Connect pathtodesign.com
+[ ] Finalise copy across all pages
+[ ] Add logic to cover and profile image
+[ ] Add hover state to the Designer with cover image
 [ ] Research Prisma Studio alternatives
 
 [ ] Reach out to Faj

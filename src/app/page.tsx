@@ -1,14 +1,19 @@
-import prisma from "@/lib/db";
 import { CardDesigner } from "../../components/CardDesigner";
 import { Hero } from "../../components/Hero";
 
-export default async function Home() {
-  const designers = await prisma.designers.findMany({
-    include: {
-      company: true,
-    },
-    orderBy: { createdAt: "asc" },
+async function getData() {
+  const res = await fetch(`${process.env.WEB_SITE}/api/designers`, {
+    cache: "no-store",
   });
+  const data = await res.json();
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+  return data;
+}
+
+export default async function Home() {
+  const designers = await getData();
 
   return (
     <>

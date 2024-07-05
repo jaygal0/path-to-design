@@ -5,15 +5,15 @@ export default function Page() {
       <div className="flex flex-col gap-4 font-serif text-xl">
         <p>Hi 👋</p>
         <p>
-          My name is Joshua Galinato, and I'm a designer too. You can view my
-          profile{" "}
+          My name is Joshua Galinato, and I&apos;m a designer too. You can view
+          my profile{" "}
           <a
             className="underline hover:cursor-pointer"
             href={`${process.env.WEB_SITE}/joshua-galinato`}
           >
             here
           </a>{" "}
-          if you're interested in my journey to becoming a designer.
+          if you&apos;re interested in my journey to becoming a designer.
         </p>
         <p>
           As a designer, I wanted to further my skills by learning to not only
@@ -31,7 +31,7 @@ export default function Page() {
             info@pathtodesign.com.
           </a>
         </p>
-        <p>I'd love to hear from you!</p>
+        <p>I&apos;d love to hear from you!</p>
       </div>
     </div>
   );

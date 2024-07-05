@@ -4,7 +4,7 @@ export async function GET(
   _request: Request,
   { params }: { params: { slug: string } },
 ) {
-  const designer = prisma.designers.findUnique({
+  const data = await prisma.designers.findUnique({
     where: {
       slug: params.slug,
     },
@@ -12,5 +12,5 @@ export async function GET(
       company: true,
     },
   });
-  return Response.json(designer);
+  return Response.json(data);
 }

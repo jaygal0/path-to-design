@@ -15,7 +15,7 @@ async function getData(slug: string) {
 
 export default async function Story({ params }: any) {
   const designer = await getData(params.slug);
-
+  
   const {
     id,
     firstName,
@@ -42,7 +42,7 @@ export default async function Story({ params }: any) {
 
   return (
     <div className="flex flex-col gap-10">
-      {/*       <h1 className="mb-20 mt-40 text-4xl font-bold leading-normal md:text-6xl md:leading-tight">
+            <h1 className="mb-20 mt-40 text-4xl font-bold leading-normal md:text-6xl md:leading-tight">
         &quot;{oneLiner}&quot;
       </h1>
       <DesignerDetailBox
@@ -97,7 +97,7 @@ export default async function Story({ params }: any) {
       <DetailQuestions
         question="How do you stay inspired?"
         answer={stayInspired}
-      /> */}
+      />
     </div>
   );
 }

@@ -21,6 +21,8 @@ export type DesignerProp = {
   books?: [];
   booksExplained?: string;
   published?: boolean | null;
+  companyURL?: string;
+  salary?: number;
   createdAt?: Date | string;
   updatedAt?: Date | string;
 };

@@ -2,7 +2,7 @@ export default function Page() {
   return (
     <div className="flex flex-col">
       <h1 className="mb-20 mt-40 text-5xl font-bold">About</h1>
-      <div className="flex flex-col gap-4 font-serif text-xl">
+      <div className="flex flex-col gap-4 font-sans text-xl font-thin leading-relaxed">
         <p>Hi 👋</p>
         <p>
           My name is Joshua Galinato, and I&apos;m a designer too. You can view

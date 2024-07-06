@@ -9,7 +9,9 @@ export async function GET(
       slug: params.slug,
     },
     include: {
-      Company: true,
+      companies: true,
+      roles: true,
+      salaries: true,
     },
   });
   return Response.json(data);

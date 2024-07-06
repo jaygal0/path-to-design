@@ -7,9 +7,15 @@ export function DetailQuestions({
   apps,
 }: DetailQuestionsProps) {
   return (
-    <div>
-      <div className="mb-4 font-sans text-xl font-bold">{question}</div>
-      {answer ? <div className="text-2xl">{answer}</div> : ""}
+    <div className="flex flex-col gap-2">
+      <div className=" font-serif text-xl text-stone-200">{question}</div>
+      {answer ? (
+        <div className="font-sans text-lg font-thin leading-relaxed">
+          {answer}
+        </div>
+      ) : (
+        ""
+      )}
       {apps ? (
         <div className="flex gap-3 text-xl">
           {apps?.map((app: any) => {

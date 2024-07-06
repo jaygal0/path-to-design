@@ -14,7 +14,6 @@ async function getData() {
 
 export default async function Home() {
   const designers = await getData();
-  console.log(designers);
 
   return (
     <>

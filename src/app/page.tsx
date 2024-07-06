@@ -14,26 +14,43 @@ async function getData() {
 
 export default async function Home() {
   const designers = await getData();
+  console.log(designers);
 
   return (
     <>
       <Hero />
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-8">
         {designers.map((designer: any, index: any) => {
-          const { id, firstName, lastName, slug, role, company, updatedAt } =
-            designer;
+          const {
+            companies,
+            createdAt,
+            firstName,
+            id,
+            isPublished,
+            lastName,
+            roles,
+            salaries,
+            slug,
+            updatedAt,
+          } = designer;
           return (
-            <CardDesigner
-              key={id}
-              id={id}
-              index={index}
-              firstName={firstName}
-              lastName={lastName}
-              role={role}
-              slug={slug}
-              company={company.name}
-              updatedAt={updatedAt}
-            />
+            <>
+              {isPublished && (
+                <CardDesigner
+                  company={companies.company}
+                  firstName={firstName}
+                  id={id}
+                  index={index}
+                  key={index}
+                  lastName={lastName}
+                  role={roles.role}
+                  salary={salaries.salary}
+                  slug={slug}
+                  createdAt={createdAt}
+                  updatedAt={updatedAt}
+                />
+              )}
+            </>
           );
         })}
       </div>

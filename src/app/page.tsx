@@ -22,6 +22,7 @@ export default async function Home() {
         {designers.map((designer: any, index: any) => {
           const {
             companies,
+            countries,
             createdAt,
             firstName,
             id,
@@ -37,15 +38,15 @@ export default async function Home() {
               {isPublished && (
                 <CardDesigner
                   company={companies.company}
+                  country={countries.country}
+                  createdAt={createdAt}
                   firstName={firstName}
                   id={id}
-                  index={index}
                   key={index}
                   lastName={lastName}
                   role={roles.role}
                   salary={salaries.salary}
                   slug={slug}
-                  createdAt={createdAt}
                   updatedAt={updatedAt}
                 />
               )}

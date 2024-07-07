@@ -1,41 +1,31 @@
 import Link from "next/link";
 import { Suspense } from "react";
-
-type CardDesignerProps = {
-  company: string;
-  createdAt: Date;
-  firstName: string;
-  id: any;
-  index: any;
-  lastName: string;
-  role: string;
-  salary: number;
-  slug: string;
-  updatedAt: Date;
-};
+import { CardDesignerGradient } from "./CardDesignerGradient";
+import { DesignerProps } from "./type";
 
 export function CardDesigner({
   company,
   createdAt,
   firstName,
   id,
-  index,
   lastName,
   role,
   salary,
   slug,
   updatedAt,
-}: CardDesignerProps) {
+  country,
+}: DesignerProps) {
   const dayjs = require("dayjs");
 
   return (
     <Suspense fallback={"Loading..."}>
       <Link href={`/${slug}`}>
         <article className="flex">
-          <div className="rectangle-gradient mr-4 flex flex-col items-center justify-between rounded-sm p-2 font-sans text-stone-950">
-            <div>#</div>
-            <div className="text-sm">{index + 1}</div>
-          </div>
+          <CardDesignerGradient
+            firstName={firstName}
+            lastName={lastName}
+            country={country}
+          />
           <div className="flex w-full flex-col gap-3 py-2">
             <h2 className="text-4xl font-semibold lg:text-6xl">
               {firstName} {lastName}

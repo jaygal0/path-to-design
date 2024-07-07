@@ -4,6 +4,7 @@ export async function GET(req: Request) {
   const data = await prisma.designers.findMany({
     include: {
       companies: true,
+      countries: true,
       salaries: true,
       roles: true,
     },

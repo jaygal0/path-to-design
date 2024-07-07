@@ -1,4 +1,5 @@
-import { DesignerProp } from "./type";
+import { DesignerProps } from "./type";
+import { Avatar } from "./Avatar";
 
 export function DesignerDetailBox({
   firstName,
@@ -14,13 +15,13 @@ export function DesignerDetailBox({
   updatedAt,
   createdAt,
   salary,
-}: DesignerProp) {
+}: DesignerProps) {
   const dayjs = require("dayjs");
   return (
     <div className="flex flex-col gap-3">
       <div className="designer-box-gradient flex flex-col justify-between gap-2 rounded-md p-4 font-sans text-stone-950 md:flex-row">
-        <div className="flex gap-4">
-          <div className="h-20 w-20 rounded-full bg-slate-50"></div>
+        <div className="flex items-center gap-4">
+          <Avatar firstName={firstName} lastName={lastName} size="md" />
           <div className="flex flex-col justify-center">
             <div className="text-xl font-semibold">
               {firstName} {lastName}

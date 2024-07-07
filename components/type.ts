@@ -1,30 +1,31 @@
-export type DesignerProp = {
-  id?: string;
-  firstName: string;
-  lastName: string;
-  slug?: string;
-  email?: string | null;
-  x?: string | null;
-  instagram?: string | null;
-  dribble?: string | null;
-  url?: string | null;
-  oneLiner?: string;
-  role?: string | null;
-  company?: any;
-  responsibilites?: string | null;
-  gotStarted?: string | null;
+export type DesignerProps = {
   advice?: string | null;
-  regrets?: string | null;
-  stayInspired?: string | null;
-  apps?: [];
   appExplained?: string | null;
+  apps?: [];
   books?: [];
   booksExplained?: string;
-  published?: boolean | null;
+  company?: any;
   companyURL?: string;
-  salary?: number;
+  country?: string;
   createdAt?: Date | string;
+  dribble?: string | null;
+  email?: string | null;
+  firstName: string;
+  gotStarted?: string | null;
+  id?: string;
+  instagram?: string | null;
+  lastName: string;
+  oneLiner?: string;
+  published?: boolean | null;
+  regrets?: string | null;
+  responsibilites?: string | null;
+  role?: string | null;
+  salary?: number;
+  slug?: string;
+  stayInspired?: string | null;
   updatedAt?: Date | string;
+  url?: string | null;
+  x?: string | null;
 };
 
 export type DetailQuestionsProps = {
@@ -32,4 +33,11 @@ export type DetailQuestionsProps = {
   answer?: string;
   books?: any;
   apps?: any;
+};
+
+export type AvatarProps = {
+  firstName?: string;
+  lastName?: string;
+  size?: string;
+  country?: string;
 };

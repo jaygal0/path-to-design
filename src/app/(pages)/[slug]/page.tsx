@@ -17,30 +17,32 @@ export default async function Story({ params }: any) {
   const designer = await getData(params.slug);
 
   const {
-    id,
-    firstName,
-    lastName,
-    email,
-    x,
-    instagram,
-    dribble,
-    url,
-    oneLiner,
-    roles,
-    companies,
-    responsibilites,
-    gotStarted,
     advice,
-    regrets,
-    stayInspired,
-    apps,
     appExplained,
+    apps,
     books,
     booksExplained,
-    updatedAt,
+    companies,
     createdAt,
+    dribble,
+    email,
+    firstName,
+    gotStarted,
+    id,
+    instagram,
+    lastName,
+    oneLiner,
+    regrets,
+    responsibilites,
+    roles,
     salaries,
+    stayInspired,
+    updatedAt,
+    url,
+    x,
   } = designer;
+
+  console.log(designer);
 
   return (
     <div className="flex flex-col gap-10">

@@ -44,31 +44,32 @@ model Designers {
   countriesId        String?
   companies          Companies?        @relation(fields: [companiesId], references: [id])
   companiesId        String?
-  // TODO: Make this field have logic
   createdAt          DateTime          @default(now())
   updatedAt          DateTime          @updatedAt
+
+  @@index(slug)
 }
 
 model Apps {
-  id          String     @id @default(cuid())
+  id          String      @id @default(cuid())
   app         String?
   desc        String?
   url         String?
-  designers   Designers? @relation(fields: [designersId], references: [id])
+  designers   Designers[]
   designersId String?
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
 }
 
 model Books {
-  id          String     @id @default(cuid())
+  id          String      @id @default(cuid())
   book        String?
   author      String?
   url         String?
-  designers   Designers? @relation(fields: [designersId], references: [id])
+  designers   Designers[]
   designersId String?
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
 }
 
 model DesignExperience {

@@ -21,12 +21,12 @@ export function DetailQuestions({
           {apps?.map((app: any) => {
             return (
               <a
-                key={app.name}
+                key={app.app}
                 className="font-semibold underline"
                 href={app.url}
                 target="_blank"
               >
-                {app.name}
+                {app.app}
               </a>
             );
           })}
@@ -39,12 +39,12 @@ export function DetailQuestions({
           {books?.map((book: any) => {
             return (
               <a
-                key={book.name}
+                key={book.book}
                 className="font-semibold underline"
                 href={book.url}
                 target="_blank"
               >
-                {book.name}
+                {book.book}
               </a>
             );
           })}

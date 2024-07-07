@@ -9,6 +9,8 @@ export async function GET(
       slug: params.slug,
     },
     include: {
+      apps: true,
+      books: true,
       companies: true,
       roles: true,
       salaries: true,

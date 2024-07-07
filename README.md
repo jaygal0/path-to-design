@@ -1,5 +1,6 @@
 # TODO:
 
+[ ] Add location emoji to the detail page
 [ ] Add hover state to the Designer with cover image
 [ ] Figure out cookie consent banner. [Link](https://www.youtube.com/watch?v=DJMTWuz2ksk)
 [ ] Finalise Privacy Policy copy

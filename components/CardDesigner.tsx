@@ -1,7 +1,10 @@
+"use client";
+
 import Link from "next/link";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { CardDesignerGradient } from "./CardDesignerGradient";
 import { DesignerProps } from "./type";
+import Image from "next/image";
 
 export function CardDesigner({
   company,
@@ -15,16 +18,40 @@ export function CardDesigner({
   updatedAt,
   country,
 }: DesignerProps) {
+  const [coverImage, setCoverImage] = useState<boolean>(false);
   const dayjs = require("dayjs");
 
   return (
     <Suspense fallback={"Loading..."}>
-      <Link href={`/${slug}`}>
-        <article className="flex">
+      <Link
+        href={`/${slug}`}
+        className="transition ease-in-out hover:translate-x-4"
+      >
+        <article
+          className="relative flex"
+          onMouseEnter={() => {
+            setCoverImage(true);
+          }}
+          onMouseLeave={() => {
+            setCoverImage(false);
+          }}
+        >
+          <div
+            className={`cover-image absolute -z-10 overflow-hidden rounded-lg ${!coverImage && "opacity-0"} ${coverImage && "opacity-60"} transition-opacity`}
+          >
+            <Image
+              width={300}
+              height={168.75}
+              src={`/cover-image-${firstName}-${lastName}.jpg`}
+              alt={`An image of ${firstName} ${lastName}'s portfolio`}
+              objectFit="cover"
+            />
+          </div>
           <CardDesignerGradient
             firstName={firstName}
             lastName={lastName}
             country={country}
+            state={coverImage}
           />
           <div className="flex w-full flex-col gap-3 py-2">
             <h2 className="text-4xl font-semibold lg:text-6xl">

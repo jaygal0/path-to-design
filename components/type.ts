@@ -40,4 +40,5 @@ export type AvatarProps = {
   lastName?: string;
   size?: string;
   country?: string;
+  state?: boolean;
 };

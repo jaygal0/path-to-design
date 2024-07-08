@@ -12,6 +12,7 @@ export async function GET(
       apps: true,
       books: true,
       companies: true,
+      countries: true,
       roles: true,
       salaries: true,
     },

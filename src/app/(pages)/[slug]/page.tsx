@@ -23,6 +23,7 @@ export default async function Story({ params }: any) {
     books,
     booksExplained,
     companies,
+    countries,
     createdAt,
     dribble,
     email,
@@ -48,19 +49,20 @@ export default async function Story({ params }: any) {
         &quot;{oneLiner}&quot;
       </h1>
       <DesignerDetailBox
-        firstName={firstName}
-        lastName={lastName}
-        email={email}
-        x={x}
-        instagram={instagram}
-        dribble={dribble}
-        url={url}
-        role={roles.role}
         company={companies.company}
         companyURL={companies.url}
-        updatedAt={updatedAt}
+        country={countries.country}
         createdAt={createdAt}
+        dribble={dribble}
+        email={email}
+        firstName={firstName}
+        instagram={instagram}
+        lastName={lastName}
+        role={roles.role}
         salary={salaries.salary}
+        updatedAt={updatedAt}
+        url={url}
+        x={x}
       />
 
       <div className="relative aspect-video w-full overflow-hidden rounded-lg">

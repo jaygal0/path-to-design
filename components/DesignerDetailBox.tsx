@@ -2,19 +2,20 @@ import { DesignerProps } from "./type";
 import { Avatar } from "./Avatar";
 
 export function DesignerDetailBox({
-  firstName,
-  lastName,
-  email,
-  x,
-  instagram,
-  dribble,
-  url,
-  role,
   company,
+  country,
   companyURL,
-  updatedAt,
   createdAt,
+  dribble,
+  email,
+  firstName,
+  instagram,
+  lastName,
+  role,
   salary,
+  updatedAt,
+  url,
+  x,
 }: DesignerProps) {
   const dayjs = require("dayjs");
   return (
@@ -25,6 +26,9 @@ export function DesignerDetailBox({
           <div className="flex flex-col justify-center">
             <div className="text-xl font-semibold">
               {firstName} {lastName}
+              {country == "England" && " 🏴󠁧󠁢󠁥󠁮󠁧󠁿"}
+              {country == "Mexico" && " 🇲🇽"}
+              {country == "Sweden" && " 🇸🇪"}
             </div>
             <div>
               {role == "Self-employed" ? (

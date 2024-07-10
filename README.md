@@ -1,8 +1,9 @@
 # TODO:
 
-[ ] Add hover state to the Designer with cover image
-[ ] Figure out cookie consent banner. [Link](https://www.youtube.com/watch?v=DJMTWuz2ksk)
+[ ] Figure out \n
 [ ] Finalise Privacy Policy copy
+[ ] Figure out cookie consent banner. [Link](https://www.youtube.com/watch?v=DJMTWuz2ksk)
+[ ] Update Privacy Policy based on banner
 [ ] Research Prisma Studio alternatives
 
 [ ] Reach out to Faj

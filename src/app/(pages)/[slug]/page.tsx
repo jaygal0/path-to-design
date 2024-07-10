@@ -68,7 +68,7 @@ export default async function Story({ params }: any) {
       <div className="relative aspect-video w-full overflow-hidden rounded-lg">
         <Image
           fill
-          src={`/${firstName}-${lastName}-cover-image.jpg`}
+          src={`/cover-image-${firstName.toLowerCase()}-${lastName.toLowerCase()}.jpg`}
           alt={`An image of ${firstName} ${lastName}'s portfolio`}
           objectFit="cover"
         />

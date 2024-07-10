@@ -7,7 +7,7 @@ export function Avatar({ firstName, lastName, size }: AvatarProps) {
       className={`relative ${size == "md" && "h-16 w-16"} ${size == "sm" && "h-6 w-6"} overflow-hidden rounded-full bg-slate-50`}
     >
       <Image
-        src={`/profile-${firstName}-${lastName}.png`}
+        src={`/profile-${firstName?.toLocaleLowerCase()}-${lastName?.toLocaleLowerCase()}.png`}
         alt={`Profile image of ${firstName} ${lastName}`}
         objectFit="cover"
         fill

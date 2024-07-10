@@ -42,7 +42,7 @@ export function CardDesigner({
             <Image
               width={300}
               height={168.75}
-              src={`/cover-image-${firstName}-${lastName}.jpg`}
+              src={`/cover-image-${firstName.toLocaleLowerCase()}-${lastName.toLocaleLowerCase()}.jpg`}
               alt={`An image of ${firstName} ${lastName}'s portfolio`}
               objectFit="cover"
             />

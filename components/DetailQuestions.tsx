@@ -1,3 +1,4 @@
+import { Key } from "react";
 import { DetailQuestionsProps } from "./type";
 
 export function DetailQuestions({
@@ -6,12 +7,19 @@ export function DetailQuestions({
   books,
   apps,
 }: DetailQuestionsProps) {
+  const text: any = answer?.split("\\n");
   return (
     <div className="flex flex-col gap-2">
-      <div className=" font-serif text-xl text-stone-200">{question}</div>
+      <div className=" font-serif text-2xl text-stone-200">{question}</div>
       {answer ? (
         <div className="font-sans text-lg font-thin leading-relaxed">
-          {answer}
+          {text.map((line: string, index: Key | null | undefined) => {
+            return (
+              <p key={index} className="mb-4">
+                {line}
+              </p>
+            );
+          })}
         </div>
       ) : (
         ""

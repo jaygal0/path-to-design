@@ -64,7 +64,6 @@ export default async function Story({ params }: any) {
         url={url}
         x={x}
       />
-
       <div className="relative aspect-video w-full overflow-hidden rounded-lg">
         <Image
           fill
@@ -73,7 +72,7 @@ export default async function Story({ params }: any) {
           objectFit="cover"
         />
       </div>
-      <div className="flex flex-col gap-16">
+      <div className="flex flex-col gap-12">
         <DetailQuestions
           question="What are the responsibilities of your role as a designer?"
           answer={responsibilites}

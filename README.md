@@ -1,6 +1,5 @@
 # TODO:
 
-[ ] Finalise Privacy Policy copy
 [ ] Fill out my own information
 [ ] Create dummy information
 

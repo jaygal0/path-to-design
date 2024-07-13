@@ -27,7 +27,7 @@ export function Navbar() {
 
   return (
     <div className="fixed left-0 top-0 z-40 flex w-screen justify-between border-b-2 bg-stone-950 p-4 ">
-      <Link className="text-xl font-bold" href="/">
+      <Link className="text-gradient text-xl font-bold" href="/">
         Path To Design
       </Link>
       {showMobileMenu && <MobileSidebar state={toggleMobileMenu} />}

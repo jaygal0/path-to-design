@@ -73,43 +73,64 @@ export default async function Story({ params }: any) {
         />
       </div>
       <div className="flex flex-col gap-12">
-        <DetailQuestions
-          question="What are the responsibilities of your role as a designer?"
-          answer={responsibilites}
-        />
-        <DetailQuestions
-          question="How did you get started in your role?"
-          answer={gotStarted}
-        />
-        <DetailQuestions
-          question="What apps do you use to help you design?"
-          apps={apps}
-        />
-        <DetailQuestions
-          question="How do you incorporate these apps to you designs?"
-          answer={appExplained}
-        />
-        <DetailQuestions
-          question="What books do you recommend?"
-          books={books}
-        />
-        <DetailQuestions
-          question="Why do you recommend these books?"
-          answer={booksExplained}
-        />
-        <DetailQuestions
-          question="What advice would you give to your younger self?"
-          answer={advice}
-        />
-        <DetailQuestions
-          question="Do you have any regrets in your journey in becoming a designer?"
-          answer={regrets}
-        />
-
-        <DetailQuestions
-          question="How do you stay inspired?"
-          answer={stayInspired}
-        />
+        {responsibilites && (
+          <DetailQuestions
+            question="What are the responsibilities of your role as a designer?"
+            answer={responsibilites}
+          />
+        )}
+        {gotStarted && (
+          <DetailQuestions
+            question="How did you get started in your role as a designer?"
+            answer={gotStarted}
+          />
+        )}
+        {apps.length == 0 ? (
+          ""
+        ) : (
+          <DetailQuestions
+            question="What apps do you use to help you design?"
+            apps={apps}
+          />
+        )}
+        {appExplained && (
+          <DetailQuestions
+            question="How do you use these apps in your design process?"
+            answer={appExplained}
+          />
+        )}
+        {books.length == 0 ? (
+          ""
+        ) : (
+          <DetailQuestions
+            question="What books have you read that helped you get to where you are now?"
+            books={books}
+          />
+        )}
+        {booksExplained && (
+          <DetailQuestions
+            question="Why do you recommend these books?"
+            answer={booksExplained}
+          />
+        )}
+        {advice && (
+          <DetailQuestions
+            question="What advice would you give to your younger self?"
+            answer={advice}
+          />
+        )}
+        {regrets && (
+          <DetailQuestions
+            question="Do you have any regrets in your journey in becoming a designer?"
+            answer={regrets}
+          />
+        )}
+        {stayInspired && (
+          <DetailQuestions
+            question="How do you stay inspired?"
+            answer={stayInspired}
+          />
+        )}
       </div>
     </div>
   );

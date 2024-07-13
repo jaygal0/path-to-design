@@ -13,6 +13,7 @@ export function CardDesignerGradient({
     >
       <Avatar firstName={firstName} lastName={lastName} size="sm" />
       <div className="text-md">
+        {country == "" && ""}
         {country == "England" && "🏴󠁧󠁢󠁥󠁮󠁧󠁿"}
         {country == "Mexico" && "🇲🇽"}
         {country == "Sweden" && "🇸🇪"}

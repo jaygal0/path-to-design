@@ -25,12 +25,12 @@ export function DetailQuestions({
         ""
       )}
       {apps ? (
-        <div className="flex gap-3 text-xl">
+        <div className="flex gap-3 text-lg">
           {apps?.map((app: any) => {
             return (
               <a
                 key={app.app}
-                className="font-semibold underline"
+                className="font-sans font-thin leading-relaxed underline"
                 href={app.url}
                 target="_blank"
               >
@@ -43,12 +43,12 @@ export function DetailQuestions({
         ""
       )}
       {books ? (
-        <div className="flex gap-2 text-xl">
+        <div className="flex gap-3 text-lg">
           {books?.map((book: any) => {
             return (
               <a
                 key={book.book}
-                className="font-semibold underline"
+                className="font-sans font-thin leading-relaxed underline"
                 href={book.url}
                 target="_blank"
               >

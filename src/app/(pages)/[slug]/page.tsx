@@ -73,18 +73,19 @@ export default async function Story({ params }: any) {
         />
       </div>
       <div className="flex flex-col gap-12">
-        {responsibilites && (
-          <DetailQuestions
-            question="What are the responsibilities of your role as a designer?"
-            answer={responsibilites}
-          />
-        )}
         {gotStarted && (
           <DetailQuestions
             question="How did you get started in your role as a designer?"
             answer={gotStarted}
           />
         )}
+        {responsibilites && (
+          <DetailQuestions
+            question="What are the responsibilities of your role as a designer?"
+            answer={responsibilites}
+          />
+        )}
+
         {apps.length == 0 ? (
           ""
         ) : (
@@ -109,13 +110,13 @@ export default async function Story({ params }: any) {
         )}
         {booksExplained && (
           <DetailQuestions
-            question="Why do you recommend these books?"
+            question="How have these books helped you in your path to design?"
             answer={booksExplained}
           />
         )}
         {advice && (
           <DetailQuestions
-            question="What advice would you give to your younger self?"
+            question="What advice would you give to your younger self trying to get into the field of design?"
             answer={advice}
           />
         )}
@@ -127,7 +128,7 @@ export default async function Story({ params }: any) {
         )}
         {stayInspired && (
           <DetailQuestions
-            question="How do you stay inspired?"
+            question="As a designer, how do you stay inspired?"
             answer={stayInspired}
           />
         )}

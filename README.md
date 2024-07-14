@@ -1,12 +1,13 @@
 # TODO:
 
-- [ ] Reach out to Robert
 - [ ] Reach out to Faj
+- [ ] Reach out to Robert
 - [ ] Reach out to Jim
 - [ ] Reach out to Gabriel
 - [ ] Reach out to Joel
 - [ ] Reach out to Joanna?
 
+- [ ] 404 page
 - [ ] Figure out PO Box and update the newsletter
 - [ ] Figure out cookie consent banner. [Link](https://www.youtube.com/watch?v=DJMTWuz2ksk)
 - [ ] Update Privacy Policy based on banner

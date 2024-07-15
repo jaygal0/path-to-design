@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Suspense, useState } from "react";
 import { CardDesignerGradient } from "./CardDesignerGradient";
 import { DesignerProps } from "./type";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 export function CardDesigner({
   company,

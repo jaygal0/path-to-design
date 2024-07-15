@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { AvatarProps } from "./type";
 
 export function Avatar({ firstName, lastName, size }: AvatarProps) {
@@ -10,7 +10,7 @@ export function Avatar({ firstName, lastName, size }: AvatarProps) {
         src={`/profile-${firstName?.toLocaleLowerCase()}-${lastName?.toLocaleLowerCase()}.png`}
         alt={`Profile image of ${firstName} ${lastName}`}
         objectFit="cover"
-        fill
+        layout="fill"
       />
     </div>
   );

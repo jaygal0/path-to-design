@@ -1,6 +1,6 @@
 import { DesignerDetailBox } from "../../../../../components/DesignerDetailBox";
 import { DetailQuestions } from "../../../../../components/DetailQuestions";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 async function getData(slug: string) {
   const res = await fetch(`${process.env.WEB_SITE}/api/designers/${slug}`, {
@@ -66,10 +66,10 @@ export default async function Story({ params }: any) {
       />
       <div className="relative aspect-video w-full overflow-hidden rounded-lg">
         <Image
-          fill
           src={`/cover-image-${firstName.toLowerCase()}-${lastName.toLowerCase()}.jpg`}
           alt={`An image of ${firstName} ${lastName}'s portfolio`}
           objectFit="cover"
+          layout="fill"
         />
       </div>
       <div className="flex flex-col gap-12">

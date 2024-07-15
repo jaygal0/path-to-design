@@ -1,9 +1,9 @@
-import { DesignerDetailBox } from "../../../../components/DesignerDetailBox";
-import { DetailQuestions } from "../../../../components/DetailQuestions";
+import { DesignerDetailBox } from "../../../../../components/DesignerDetailBox";
+import { DetailQuestions } from "../../../../../components/DetailQuestions";
 import Image from "next/image";
 
 async function getData(slug: string) {
-  const res = await fetch(`${process.env.WEB_SITE}/api/${slug}`, {
+  const res = await fetch(`${process.env.WEB_SITE}/api/designers/${slug}`, {
     cache: "no-store",
   });
   const designer = await res.json();

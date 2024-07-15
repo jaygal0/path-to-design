@@ -24,7 +24,7 @@ export function CardDesigner({
   return (
     <Suspense fallback={"Loading..."}>
       <Link
-        href={`/${slug}`}
+        href={`/designers/${slug}`}
         className="transition ease-in-out hover:translate-x-4"
       >
         <article

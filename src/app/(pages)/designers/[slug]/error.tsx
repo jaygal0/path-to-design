@@ -1,13 +1,16 @@
+"use client";
 import Link from "next/link";
 
-export default function Page() {
+export default function Error() {
   return (
     <div className="flex flex-col">
-      <h1 className="mb-20 mt-40 text-5xl font-bold">Subscription confirmed</h1>
+      <h1 className="mb-20 mt-40 text-5xl font-bold">
+        There seems to be an error!
+      </h1>
       <div className="flex flex-col gap-4 font-sans text-xl font-thin leading-relaxed">
         <p>
-          Your subscription to our list has been confirmed. Thank you for
-          subscribing!
+          We&apos;re not sure what&apos;s going on, but we&apos;ll try and get
+          on it!
         </p>
       </div>
       <Link

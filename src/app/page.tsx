@@ -34,7 +34,7 @@ export default async function Home() {
             updatedAt,
           } = designer;
           return (
-            <>
+            <div key={id}>
               {isPublished && (
                 <CardDesigner
                   company={companies.company}
@@ -42,7 +42,6 @@ export default async function Home() {
                   createdAt={createdAt}
                   firstName={firstName}
                   id={id}
-                  key={index}
                   lastName={lastName}
                   role={roles.role}
                   salary={salaries.salary}
@@ -50,7 +49,7 @@ export default async function Home() {
                   updatedAt={updatedAt}
                 />
               )}
-            </>
+            </div>
           );
         })}
       </div>

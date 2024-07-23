@@ -1,6 +1,5 @@
 # TODO:
 
-- [ ] Reach out to Faj
 - [ ] Reach out to Robert
 - [ ] Reach out to Jim
 - [ ] Reach out to Gabriel
@@ -8,7 +7,7 @@
 - [ ] Reach out to Joanna?
 
 - [ ] Figure out PO Box and update the newsletter
-- [ ] Figure out cookie consent banner. [Link](https://www.youtube.com/watch?v=DJMTWuz2ksk)
+- [ ] Figure out cookie consent banner. [First link](https://www.youtube.com/watch?v=DJMTWuz2ksk) [Second link](https://www.youtube.com/watch?v=vsEKmufzT6M)
 - [ ] Update Privacy Policy based on banner
 - [ ] Create a "Stories" list page (When the list gets long)
 - [ ] Create a Home page

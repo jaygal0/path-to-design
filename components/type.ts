@@ -4,7 +4,7 @@ export type DesignerProps = {
   apps?: [];
   books?: [];
   booksExplained?: string;
-  company?: any;
+  company?: any | null;
   companyURL?: string;
   country?: string;
   createdAt?: Date | string;

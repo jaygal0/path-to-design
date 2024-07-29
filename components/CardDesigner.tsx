@@ -59,7 +59,9 @@ export function CardDesigner({
             </h2>
             <div className="flex flex-col justify-between gap-2 font-sans font-light text-stone-400 lg:flex-row">
               <p className="md:w-2/3">
-                {role == "Self-employed" ? role : `${role} at ${company}`}
+                {company == "Self-employed"
+                  ? `${role}, ${company}`
+                  : `${role} at ${company}`}
               </p>
               <p className="flex md:w-1/3">
                 {salary

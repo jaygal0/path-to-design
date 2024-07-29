@@ -31,8 +31,8 @@ export function DesignerDetailBox({
               {country == "Sweden" && " 🇸🇪"}
             </div>
             <div>
-              {role == "Self-employed" ? (
-                role
+              {company == "Self-employed" ? (
+                `${role}, ${company}`
               ) : (
                 <>
                   {role} at{" "}

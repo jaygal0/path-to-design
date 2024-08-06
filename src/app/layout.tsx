@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "../../components/Navbar";
 import { AdditionalLinks } from "../../components/AdditionalLinks";
 import { NewsletterForm } from "../../components/NewsletterForm";
+import PlausibleProvider from "next-plausible";
 
 const cormorant = Cormorant({
   subsets: ["latin"],
@@ -28,6 +29,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+       <head>
+        <PlausibleProvider domain="pathtodesign.com" />
+      </head>
       <body
         className={`${cormorant.variable} ${cabin.variable} bg-stone-950 font-serif`}
       >

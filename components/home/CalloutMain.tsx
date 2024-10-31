@@ -4,8 +4,10 @@ export function CalloutMain() {
   return (
     <Section>
       <h2 className="col-start-2 col-end-10 row-start-1 text-4xl font-bold lg:text-7xl lg:leading-tight">
-        We understand that it can be hard to find work, be creative, or stay
-        inspired as a designer.
+        We understand that it can be hard to{" "}
+        <span className="text-gradient">find work</span>,{" "}
+        <span className="text-gradient">be creative</span>, or{" "}
+        <span className="text-gradient">stay inspired</span> as a designer.
       </h2>
       <p className="col-start-4 col-end-10 row-start-2 text-2xl">
         That’s why we built this site – to give you insight into what successful

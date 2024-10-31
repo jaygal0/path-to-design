@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import { Cormorant, Cabin } from "next/font/google";
-import "./globals.css";
-import { Navbar } from "../../components/Navbar";
-import { AdditionalLinks } from "../../components/AdditionalLinks";
-import { NewsletterForm } from "../../components/NewsletterForm";
 import PlausibleProvider from "next-plausible";
+import { Cabin, Cormorant } from "next/font/google";
+import { Navbar } from "../../components/Navbar";
+import "./globals.css";
 
 const cormorant = Cormorant({
   subsets: ["latin"],
@@ -38,6 +36,8 @@ export default function RootLayout({
         <Navbar />
         <main className="grid min-h-screen place-items-center">
           <div className="grid max-w-screen-2xl grid-cols-12 gap-4 px-4">
+            {/* TODO:Figure out the grid line issues */}
+            <div className="-z-10 col-span-1 col-start-1 bg-gray-500 opacity-5" />
             {children}
           </div>
         </main>

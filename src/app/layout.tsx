@@ -29,17 +29,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-       <head>
+      <head>
         <PlausibleProvider domain="pathtodesign.com" />
       </head>
       <body
         className={`${cormorant.variable} ${cabin.variable} bg-stone-950 font-serif`}
       >
         <Navbar />
-        <main className="px-4 pb-20 md:px-2">
-          <div className="mx-auto max-w-screen-md">{children}</div>
-          <NewsletterForm />
-          <AdditionalLinks />
+        <main className="grid min-h-screen place-items-center">
+          <div className="grid max-w-screen-2xl grid-cols-12 gap-4 px-4">
+            {children}
+          </div>
         </main>
       </body>
     </html>

@@ -26,7 +26,7 @@ export function Navbar() {
   }, [showMobileMenu]);
 
   return (
-    <div className="fixed left-0 top-0 z-40 flex w-screen justify-between border-b-2 bg-stone-950 p-4 ">
+    <nav className="fixed left-0 top-0 z-40 flex w-screen justify-between border-b-2 bg-stone-950 p-4 ">
       <Link className="text-gradient text-xl font-bold" href="/">
         Path to Design
       </Link>
@@ -60,6 +60,6 @@ export function Navbar() {
           Share Your Story
         </Link>
       </div>
-    </div>
+    </nav>
   );
 }

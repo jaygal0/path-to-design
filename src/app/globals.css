@@ -40,7 +40,6 @@ a .underline {
   background-clip: inherit;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  padding: 6px;
 }
 .rectangle-gradient {
   background: rgb(183, 220, 255);

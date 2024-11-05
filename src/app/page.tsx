@@ -31,12 +31,17 @@ export default async function Home() {
           successful designers.
         </h1>
       </div>
-      <h2 className="col-start-4 col-end-11 row-span-1 row-start-2 my-20 text-4xl font-bold lg:text-7xl lg:leading-tight">
-        We understand that it can be hard to{" "}
-        <span className="text-gradient">find work</span>,{" "}
-        <span className="text-gradient">be creative</span>, or{" "}
-        <span className="text-gradient">stay inspired</span> as a designer.
-      </h2>
+      <div className="col-start-4 col-end-11 row-span-1 row-start-2 my-20 text-4xl font-bold lg:text-7xl lg:leading-tight">
+        <div className="flex gap-3">
+          <div className="h-full border-l-8"></div>
+          <h2>
+            We understand that it can be hard to{" "}
+            <span className="text-gradient">find work</span>,{" "}
+            <span className="text-gradient">be creative</span>, or{" "}
+            <span className="text-gradient">stay inspired</span> as a designer.
+          </h2>
+        </div>
+      </div>
       <p className="col-start-6 col-end-11 row-span-1 row-start-3 my-10 text-2xl">
         That’s why we built this site – to give you insight into what successful
         designers are doing to thrive in the industry, so you no longer have to

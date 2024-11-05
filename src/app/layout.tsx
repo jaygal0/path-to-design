@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import PlausibleProvider from "next-plausible";
 import { Cabin, Cormorant } from "next/font/google";
-import { Navbar } from "../../components/Navbar";
+import { Navbar } from "../../components/global/Navbar";
 import "./globals.css";
+import Footer from "../../components/global/Footer";
 
 const cormorant = Cormorant({
   subsets: ["latin"],
@@ -51,6 +52,7 @@ export default function RootLayout({
             {children}
           </div>
         </main>
+        <Footer />
       </body>
     </html>
   );

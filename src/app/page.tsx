@@ -21,7 +21,7 @@ export default async function Home() {
 
   return (
     <>
-      <h1 className="text-gradient col-span-7 col-start-2 row-span-1 row-start-1 mb-8 h-[100vh] max-h-[1080px] content-end pb-12 text-xl font-bold leading-tight lg:text-5xl lg:leading-tight">
+      <h1 className="text-gradient col-span-7 col-start-2 row-span-1 row-start-1 mb-8 h-[100vh] max-h-[1080px] content-end pb-36 text-xl font-bold leading-tight lg:text-5xl lg:leading-tight">
         Helping designers navigate the industry by following the paths of
         successful designers.
       </h1>
@@ -69,7 +69,7 @@ export default async function Home() {
         understanding the paths designers took to be{" "}
         <span className="text-gradient">successful</span>.
       </h2>
-      <div className="col-start-4 col-end-9 row-span-1 row-start-6 mb-40 flex flex-col gap-8">
+      <div className="col-start-3 col-end-10 row-span-1 row-start-6 mb-40 flex flex-col gap-8">
         {designers.map((designer: any, index: any) => {
           const {
             companies,

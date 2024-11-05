@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { MobileSidebar } from "./MobileSidebar";
+import { MobileSidebar } from "../MobileSidebar";
 
 export function Navbar() {
   const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false);
@@ -51,7 +51,7 @@ export function Navbar() {
         </svg>
       )}
       <div className="hidden items-center gap-7 pr-4 font-sans md:flex">
-        <Link href="/about">About</Link>
+        {/* <Link href="/about">About</Link> */}
         {/* <Link href="/blog">Blog</Link> */}
         <Link
           href="/share"

@@ -1,9 +1,5 @@
 import { CardDesigner } from "../../components/CardDesigner";
-import { Hero } from "../../components/home/Hero";
-import { CalloutMain } from "../../components/home/CalloutMain";
-import { CalloutAlt } from "../../components/home/CalloutAlt";
-import { NewsletterFormBox } from "../../components/global/NewsletterFormBox";
-import Section from "../../components/global/Section";
+import Image from "next/image";
 
 async function getData() {
   const res = await fetch(`${process.env.WEB_SITE}/api/designers`, {
@@ -21,10 +17,20 @@ export default async function Home() {
 
   return (
     <>
-      <h1 className="text-gradient col-span-7 col-start-2 row-span-1 row-start-1 mb-8 h-[100vh] max-h-[1080px] content-end pb-36 text-xl font-bold leading-tight lg:text-5xl lg:leading-tight">
-        Helping designers navigate the industry by following the paths of
-        successful designers.
-      </h1>
+      <div className="text-gradient col-span-7 col-start-2 row-span-1 row-start-1 mb-8 h-[100vh] max-h-[1080px] content-end pb-36 text-xl font-bold leading-tight lg:text-5xl lg:leading-tight">
+        <div className="mb-2 flex items-center gap-4">
+          <div className="flex -space-x-2">
+            <div className="h-12 w-12 rounded-full bg-slate-50"></div>
+            <div className="h-12 w-12 rounded-full bg-slate-400"></div>
+            <div className="h-12 w-12 rounded-full bg-slate-600"></div>
+          </div>
+          <div className="w-4/5 border-b-2"></div>
+        </div>
+        <h1>
+          Helping designers navigate the industry by following the paths of
+          successful designers.
+        </h1>
+      </div>
       <h2 className="col-start-4 col-end-11 row-span-1 row-start-2 my-20 text-4xl font-bold lg:text-7xl lg:leading-tight">
         We understand that it can be hard to{" "}
         <span className="text-gradient">find work</span>,{" "}

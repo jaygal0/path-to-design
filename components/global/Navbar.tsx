@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { MobileSidebar } from "../MobileSidebar";
+import { MobileSidebar } from "@/../components/global/MobileSidebar";
 
 export function Navbar() {
   const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false);

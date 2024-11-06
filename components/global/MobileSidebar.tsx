@@ -38,7 +38,7 @@ export function MobileSidebar({ state }: any) {
       </div>
       <div className="w-full px-6 font-sans">
         <h4 className="mb-2 text-lg font-normal">
-          Join over 500+ designers sharing their stories.
+          Stay inspired and discover the paths of more designers.
         </h4>
         <form
           className="flex flex-col"

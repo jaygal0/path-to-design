@@ -1,6 +1,6 @@
 export default function Page() {
   return (
-    <div className="justify-top col-span-6 col-start-4 row-span-full row-start-1 flex h-screen min-h-min flex-col pb-72">
+    <div className="justify-top col-span-full col-start-1 row-span-full row-start-1 flex h-screen min-h-min flex-col pb-72 md:col-span-6 md:col-start-2 lg:col-span-6 lg:col-start-4">
       <h1 className="mb-20 mt-40 text-5xl font-bold">Privacy</h1>
       <div className="flex flex-col gap-4 font-sans text-xl font-thin leading-relaxed">
         <p>

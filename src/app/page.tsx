@@ -17,7 +17,7 @@ export default async function Home() {
 
   return (
     <>
-      <div className="text-gradient col-span-7 col-start-2 row-span-1 row-start-1 mb-8 h-[100vh] max-h-[1080px] content-end pb-36 text-xl font-bold leading-tight lg:text-5xl lg:leading-tight">
+      <div className="text-gradient col-span-full col-start-1 row-span-1 row-start-1 mb-8 h-[100vh] max-h-[1080px] content-end pb-36 text-4xl font-bold leading-tight md:col-span-6 md:col-start-2 lg:col-span-7 lg:col-start-2 lg:text-5xl lg:leading-tight">
         <div className="mb-2 flex items-center gap-4">
           <div className="flex -space-x-2">
             <div className="relative h-12 w-12 overflow-hidden rounded-full bg-slate-50">
@@ -37,7 +37,7 @@ export default async function Home() {
           successful designers.
         </h1>
       </div>
-      <div className="col-start-4 col-end-11 row-span-1 row-start-2 my-20 text-4xl font-bold lg:text-7xl lg:leading-tight">
+      <div className="col-span-full col-start-1 row-span-1 row-start-2 my-20 text-5xl font-bold md:col-span-6 md:col-start-2 md:text-6xl lg:col-start-4 lg:col-end-11 lg:text-7xl lg:leading-tight">
         <div className="flex h-min gap-6">
           <div className="line-gradient min-h-full w-12 rounded-sm"></div>
           <h2>
@@ -48,12 +48,12 @@ export default async function Home() {
           </h2>
         </div>
       </div>
-      <p className="col-start-6 col-end-11 row-span-1 row-start-3 my-10 text-2xl">
+      <p className="col-span-full col-start-1 row-span-1 row-start-3 my-10 text-2xl md:col-span-5 md:col-start-3 lg:col-start-6 lg:col-end-11">
         That’s why we built this site – to give you insight into what successful
         designers are doing to thrive in the industry, so you no longer have to
         worry about where to find this information.
       </p>
-      <div className="col-start-4 col-end-10 row-span-1 row-start-4 my-20 h-min rounded-2xl border p-8">
+      <div className="col-span-full col-start-1 row-span-1 row-start-4 my-20 h-min rounded-2xl border p-8 md:col-span-6 md:col-start-2 lg:col-start-4 lg:col-end-10">
         <h4 className="mb-2 w-full pb-6 text-3xl font-normal">
           Stay inspired and discover the paths of more designers.
         </h4>
@@ -81,12 +81,12 @@ export default async function Home() {
           </div>
         </form>
       </div>
-      <h2 className="col-span-6 col-start-2 row-span-1 row-start-5 my-20 text-xl font-bold leading-tight lg:text-5xl lg:leading-tight">
+      <h2 className="col-span-full col-start-1 row-span-1 row-start-5 my-20 text-4xl font-bold leading-tight md:col-span-5 md:col-start-2 lg:col-span-6 lg:col-start-2 lg:text-5xl lg:leading-tight">
         <span className="text-gradient">Take charge of your career</span> by
         understanding the paths designers took to be{" "}
         <span className="text-gradient">successful</span>.
       </h2>
-      <div className="col-start-3 col-end-10 row-span-1 row-start-6 mb-40 flex flex-col gap-8">
+      <div className="col-span-full col-start-1 row-span-1 row-start-6 mb-40 flex flex-col gap-8 md:col-span-4 md:col-start-3 lg:col-start-3 lg:col-end-10">
         {designers.map((designer: any, index: any) => {
           const {
             companies,

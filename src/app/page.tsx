@@ -20,9 +20,15 @@ export default async function Home() {
       <div className="text-gradient col-span-7 col-start-2 row-span-1 row-start-1 mb-8 h-[100vh] max-h-[1080px] content-end pb-36 text-xl font-bold leading-tight lg:text-5xl lg:leading-tight">
         <div className="mb-2 flex items-center gap-4">
           <div className="flex -space-x-2">
-            <div className="h-12 w-12 rounded-full bg-slate-50"></div>
-            <div className="h-12 w-12 rounded-full bg-slate-400"></div>
-            <div className="h-12 w-12 rounded-full bg-slate-600"></div>
+            <div className="relative h-12 w-12 overflow-hidden rounded-full bg-slate-50">
+              <Image src="/profile-joshua-galinato.png" fill alt="" />
+            </div>
+            <div className="relative h-12 w-12 overflow-hidden rounded-full bg-slate-50">
+              <Image src="/profile-joacim-bohlander.png" fill alt="" />
+            </div>
+            <div className="relative h-12 w-12 overflow-hidden rounded-full bg-slate-50">
+              <Image src="/profile-faj-mac.png" fill alt="" />
+            </div>
           </div>
           <div className="w-4/5 border-b-2"></div>
         </div>
@@ -32,8 +38,8 @@ export default async function Home() {
         </h1>
       </div>
       <div className="col-start-4 col-end-11 row-span-1 row-start-2 my-20 text-4xl font-bold lg:text-7xl lg:leading-tight">
-        <div className="flex gap-3">
-          <div className="h-full border-l-8"></div>
+        <div className="flex h-min gap-6">
+          <div className="line-gradient min-h-full w-12 rounded-sm"></div>
           <h2>
             We understand that it can be hard to{" "}
             <span className="text-gradient">find work</span>,{" "}

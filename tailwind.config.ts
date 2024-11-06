@@ -18,6 +18,9 @@ const config: Config = {
         sans: ["var(--font-cabin)"],
         serif: ["var(--font-cormorant)"],
       },
+      opacity: {
+        "3": "0.03",
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],

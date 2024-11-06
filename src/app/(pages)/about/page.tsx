@@ -1,7 +1,7 @@
 export default function Page() {
   return (
-    <div className="flex flex-col">
-      <h1 className="mb-20 mt-40 text-5xl font-bold">About</h1>
+    <div className="col-span-6 col-start-4 row-span-full row-start-1 flex h-screen flex-col justify-center">
+      <h1 className="mb-8 text-5xl font-bold">About</h1>
       <div className="flex flex-col gap-4 font-sans text-xl font-thin leading-relaxed">
         <p>Hi 👋</p>
         <p>

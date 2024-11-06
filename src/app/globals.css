@@ -74,6 +74,14 @@ a .underline {
     rgba(255, 164, 246, 1) 100%
   );
 }
+.line-gradient {
+  background: rgb(183, 220, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(183, 220, 255, 1) 0%,
+    rgba(255, 164, 246, 1) 100%
+  );
+}
 
 .cover-image {
   right: -7rem;

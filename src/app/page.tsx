@@ -3,7 +3,9 @@ import Image from "next/image";
 
 async function getData() {
   const res = await fetch(`${process.env.WEB_SITE}/api/designers`, {
-    cache: "no-store",
+    next: {
+      revalidate: 60,
+    },
   });
   const data = await res.json();
   if (!res.ok) {

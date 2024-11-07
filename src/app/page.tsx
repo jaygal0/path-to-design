@@ -1,4 +1,4 @@
-import { CardDesigner } from "../../components/CardDesigner";
+import { CardDesigner } from "../components/CardDesigner";
 import Image from "next/image";
 
 async function getData() {

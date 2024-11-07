@@ -1,5 +1,5 @@
-import { DesignerDetailBox } from "../../../../../components/DesignerDetailBox";
-import { DetailQuestions } from "../../../../../components/DetailQuestions";
+import { DesignerDetailBox } from "../../../../components/DesignerDetailBox";
+import { DetailQuestions } from "../../../../components/DetailQuestions";
 import Image from "next/legacy/image";
 
 async function getData(slug: string) {
@@ -44,7 +44,7 @@ export default async function Story({ params }: any) {
   } = designer;
 
   return (
-    <div className="col-start-3 col-end-10 row-span-full row-start-1 flex min-h-min flex-col gap-10 pb-72 md:col-span-6 md:col-start-2">
+    <div className="col-span-full col-start-1 row-span-full row-start-1 flex min-h-min flex-col gap-10 pb-72 md:col-span-6 md:col-start-2 lg:col-start-3 lg:col-end-10">
       <h1 className="mb-20 mt-40 text-4xl font-bold leading-normal md:text-6xl md:leading-tight">
         &quot;{oneLiner}&quot;
       </h1>

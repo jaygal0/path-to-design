@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import PlausibleProvider from "next-plausible";
 import { Cabin, Cormorant } from "next/font/google";
-import { Navbar } from "../components/global/Navbar";
+import { Navbar } from "../../components/global/Navbar";
 import "./globals.css";
-import Footer from "../components/global/Footer";
-import { BreakpointIndicator } from "../components/global/BreakpointIndicator";
+import Footer from "../../components/global/Footer";
+import { BreakpointIndicator } from "../../components/global/BreakpointIndicator";
 
 const cormorant = Cormorant({
   subsets: ["latin"],

@@ -7,6 +7,7 @@ async function getData() {
       revalidate: 60,
     },
   });
+
   const data = await res.json();
   if (!res.ok) {
     throw new Error("Failed to fetch data");

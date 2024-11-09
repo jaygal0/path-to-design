@@ -1,5 +1,5 @@
-import { DesignerDetailBox } from "../../../../../components/DesignerDetailBox";
-import { DetailQuestions } from "../../../../../components/DetailQuestions";
+import { DesignerDetailBox } from "../../../../components/DesignerDetailBox";
+import { DetailQuestions } from "../../../../components/DetailQuestions";
 import Image from "next/legacy/image";
 
 async function getData(slug: string) {

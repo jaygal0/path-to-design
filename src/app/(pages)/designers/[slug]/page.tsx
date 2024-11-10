@@ -1,6 +1,7 @@
 import Image from "next/legacy/image";
 import { DesignerDetailBox } from "../../../../components/DesignerDetailBox";
 import { AppsUsed } from "../../../../components/designer/AppsUsed";
+import { BooksUsed } from "../../../../components/designer/BooksUsed";
 
 async function getData(slug: string) {
   const res = await fetch(`${process.env.WEB_SITE}/api/designers/${slug}`, {
@@ -80,6 +81,7 @@ export default async function Story({ params }: any) {
       </div>
       <div className="flex flex-col gap-12">
         {apps.length == 0 ? "" : <AppsUsed apps={apps} />}
+        {books.length == 0 ? "" : <BooksUsed books={books} />}
         {answers
           .sort((a: any, b: any) => {
             const dateA = new Date(a.questions[0]?.createdAt || 0);

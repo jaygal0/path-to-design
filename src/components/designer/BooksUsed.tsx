@@ -1,32 +1,36 @@
 import Image from "next/image";
 
-export function AppsUsed({ apps }: any) {
+export function BooksUsed({ books }: any) {
+  console.log(books);
+
   return (
     <div>
       <h3 className="mb-4 font-serif text-2xl text-stone-200">
-        What apps do you use to help you design?
+        What books do you recommend?
       </h3>
       <div className="flex flex-wrap gap-10 gap-y-4">
-        {apps?.map((app: any) => {
+        {books?.map((book: any) => {
           return (
             <a
-              key={app.app}
+              key={book.book}
               className="font-sans font-thin leading-relaxed"
-              href={app.url}
+              href={book.url}
               target="_blank"
             >
               <div
-                key={app.app}
+                key={book.book}
                 className="flex flex-col items-center gap-2 overflow-hidden rounded-xl"
               >
                 <Image
-                  src={`/app-${app.app.toLowerCase()}.jpg`}
-                  alt={app.app}
-                  width={80}
-                  height={80}
+                  src={`/book-${book.book.toLowerCase()}.jpg`}
+                  alt={book.book}
+                  width={100}
+                  height={160}
                   quality={100}
                 />
-                <p className="my-0 text-center text-sm capitalize">{app.app}</p>
+                <p className="my-0 text-center text-sm capitalize">
+                  {book.book}
+                </p>
               </div>
             </a>
           );

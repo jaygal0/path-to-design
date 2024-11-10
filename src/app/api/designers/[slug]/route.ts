@@ -15,6 +15,11 @@ export async function GET(
       countries: true,
       roles: true,
       salaries: true,
+      answers: {
+        include: {
+          questions: true,
+        },
+      },
     },
   });
   return Response.json(data);

@@ -10,20 +10,6 @@ export function DetailQuestions({
   const text: any = answer?.split("\\n");
   return (
     <div className="flex flex-col gap-2">
-      <div className=" font-serif text-2xl text-stone-200">{question}</div>
-      {answer ? (
-        <div className="font-sans text-lg font-thin leading-relaxed">
-          {text.map((line: string, index: Key | null | undefined) => {
-            return (
-              <p key={index} className="mb-4">
-                {line}
-              </p>
-            );
-          })}
-        </div>
-      ) : (
-        ""
-      )}
       {apps ? (
         <div className="flex gap-3 text-lg">
           {apps?.map((app: any) => {

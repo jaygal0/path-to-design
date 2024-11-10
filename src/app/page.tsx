@@ -104,6 +104,7 @@ export default async function Home() {
             slug,
             updatedAt,
           } = designer;
+
           return (
             <div key={id}>
               {isPublished && (

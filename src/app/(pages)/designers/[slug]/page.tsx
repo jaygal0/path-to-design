@@ -1,6 +1,6 @@
+import Image from "next/legacy/image";
 import { DesignerDetailBox } from "../../../../components/DesignerDetailBox";
 import { DetailQuestions } from "../../../../components/DetailQuestions";
-import Image from "next/legacy/image";
 
 async function getData(slug: string) {
   const res = await fetch(`${process.env.WEB_SITE}/api/designers/${slug}`, {
@@ -29,27 +29,20 @@ export default async function Story({ params }: any) {
   const designer = await getData(params.slug);
 
   const {
-    advice,
-    appExplained,
     apps,
+    answers,
     books,
-    booksExplained,
     companies,
     countries,
     createdAt,
     dribble,
     email,
     firstName,
-    gotStarted,
-    id,
     instagram,
     lastName,
     oneLiner,
-    regrets,
-    responsibilites,
     roles,
     salaries,
-    stayInspired,
     updatedAt,
     url,
     x,
@@ -82,34 +75,16 @@ export default async function Story({ params }: any) {
           alt={`An image of ${firstName} ${lastName}'s portfolio`}
           objectFit="cover"
           layout="fill"
+          priority
         />
       </div>
       <div className="flex flex-col gap-12">
-        {gotStarted && (
-          <DetailQuestions
-            question="How did you get started in your role as a designer?"
-            answer={gotStarted}
-          />
-        )}
-        {responsibilites && (
-          <DetailQuestions
-            question="What are the responsibilities of your role as a designer?"
-            answer={responsibilites}
-          />
-        )}
-
         {apps.length == 0 ? (
           ""
         ) : (
           <DetailQuestions
             question="What apps do you use to help you design?"
             apps={apps}
-          />
-        )}
-        {appExplained && (
-          <DetailQuestions
-            question="How do you use these apps in your design process?"
-            answer={appExplained}
           />
         )}
         {books.length == 0 ? (
@@ -120,30 +95,27 @@ export default async function Story({ params }: any) {
             books={books}
           />
         )}
-        {booksExplained && (
-          <DetailQuestions
-            question="How have these books helped you in your path to design?"
-            answer={booksExplained}
-          />
-        )}
-        {advice && (
-          <DetailQuestions
-            question="What advice would you give to your younger self trying to get into the field of design?"
-            answer={advice}
-          />
-        )}
-        {regrets && (
-          <DetailQuestions
-            question="Do you have any regrets in your journey in becoming a designer?"
-            answer={regrets}
-          />
-        )}
-        {stayInspired && (
-          <DetailQuestions
-            question="As a designer, how do you stay inspired?"
-            answer={stayInspired}
-          />
-        )}
+        {answers
+          .sort((a: any, b: any) => {
+            const dateA = new Date(a.questions[0]?.createdAt || 0);
+            const dateB = new Date(b.questions[0]?.createdAt || 0);
+            return dateA.getTime() - dateB.getTime();
+          })
+          .map((answerData: any) => (
+            <div key={answerData.id} className="w-full">
+              <h3 className="mb-4 font-serif text-2xl text-stone-200">
+                {answerData.questions[0]?.question}
+              </h3>
+              {answerData.answer.map((text: string, index: number) => (
+                <p
+                  key={index}
+                  className="mb-3 font-sans text-lg font-thin leading-relaxed"
+                >
+                  {text}
+                </p>
+              ))}
+            </div>
+          ))}
       </div>
     </div>
   );

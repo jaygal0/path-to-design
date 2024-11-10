@@ -9,6 +9,9 @@ export function AppsUsed({ apps }: any) {
       <div className="flex flex-wrap gap-10 gap-y-4">
         {apps?.map((app: any) => {
           return (
+            //TODO 1: Organise apps and books alphabetically
+            //TODO 2: Figure out why it's not rounded
+            //TODO 3: Add all the other information for everyone else
             <a
               key={app.app}
               className="font-sans font-thin leading-relaxed"
@@ -20,7 +23,7 @@ export function AppsUsed({ apps }: any) {
                 className="flex flex-col items-center gap-2 overflow-hidden rounded-xl"
               >
                 <Image
-                  src={`/app-${app.app.toLowerCase()}.jpg`}
+                  src={`/app-${app.app.toLowerCase().replace(/ /g, "-")}.jpg`}
                   alt={app.app}
                   width={80}
                   height={80}

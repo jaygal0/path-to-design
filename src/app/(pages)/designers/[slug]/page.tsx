@@ -83,6 +83,7 @@ export default async function Story({ params }: any) {
         {apps.length == 0 ? "" : <AppsUsed apps={apps} />}
         {books.length == 0 ? "" : <BooksUsed books={books} />}
         {answers
+          // TODO 2: Figure out why the sorting of the questions are off
           .sort((a: any, b: any) => {
             const dateA = new Date(a.questions[0]?.createdAt || 0);
             const dateB = new Date(b.questions[0]?.createdAt || 0);

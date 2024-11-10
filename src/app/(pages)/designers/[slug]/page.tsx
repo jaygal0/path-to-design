@@ -1,6 +1,6 @@
 import Image from "next/legacy/image";
 import { DesignerDetailBox } from "../../../../components/DesignerDetailBox";
-import { DetailQuestions } from "../../../../components/DetailQuestions";
+import { AppsUsed } from "../../../../components/designer/AppsUsed";
 
 async function getData(slug: string) {
   const res = await fetch(`${process.env.WEB_SITE}/api/designers/${slug}`, {
@@ -79,22 +79,7 @@ export default async function Story({ params }: any) {
         />
       </div>
       <div className="flex flex-col gap-12">
-        {apps.length == 0 ? (
-          ""
-        ) : (
-          <DetailQuestions
-            question="What apps do you use to help you design?"
-            apps={apps}
-          />
-        )}
-        {books.length == 0 ? (
-          ""
-        ) : (
-          <DetailQuestions
-            question="What books have you read that helped you get to where you are now?"
-            books={books}
-          />
-        )}
+        {apps.length == 0 ? "" : <AppsUsed apps={apps} />}
         {answers
           .sort((a: any, b: any) => {
             const dateA = new Date(a.questions[0]?.createdAt || 0);

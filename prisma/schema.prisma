@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -14,51 +8,53 @@ datasource db {
 }
 
 model Designers {
-  id          String      @id @default(cuid())
-  isPublished Boolean?    @default(false)
-  firstName   String
-  lastName    String
-  slug        String      @unique
-  email       String?
-  url         String?
-  x           String?
-  instagram   String?
-  dribble     String?
-  oneLiner    String?
-  apps        Apps[]
-  books       Books[]
-  answers     Answers[] // One-to-many relationship with Answers
-  roles       Roles?      @relation(fields: [rolesId], references: [id])
-  rolesId     String?
-  salaries    Salaries?   @relation(fields: [salariesId], references: [id])
-  salariesId  String?
-  countries   Countries?  @relation(fields: [countriesId], references: [id])
-  countriesId String?
-  companies   Companies?  @relation(fields: [companiesId], references: [id])
-  companiesId String?
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime    @updatedAt
+  id              String      @id @default(cuid())
+  isPublished     Boolean?    @default(false)
+  firstName       String
+  lastName        String
+  slug            String      @unique
+  email           String?
+  url             String?
+  instagram       String?
+  dribble         String?
+  oneLiner        String?
+  apps            Apps[]
+  books           Books[]
+  questions       Questions[]
+  answers         Answers[]   // One-to-many with Answers
+  roles           Roles?      @relation(fields: [rolesId], references: [id])
+  rolesId         String?
+  salaries        Salaries?   @relation(fields: [salariesId], references: [id])
+  salariesId      String?
+  countries       Countries?  @relation(fields: [countriesId], references: [id])
+  countriesId     String?
+  companies       Companies?  @relation(fields: [companiesId], references: [id])
+  companiesId     String?
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
 
   @@index([slug])
 }
 
 model Questions {
-  id         String     @id @default(cuid())
-  question   String
-  answer     Answers?   @relation(fields: [answerId], references: [id]) // Reference a single answer
-  answerId   String?
-  createdAt  DateTime   @default(now())
-  updatedAt  DateTime   @updatedAt
+  id          String       @id @default(cuid())
+  question    String
+  designer    Designers?   @relation(fields: [designerId], references: [id])  
+  designerId  String?
+  answer      Answers?     @relation(fields: [answerId], references: [id])    
+  answerId    String?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
 }
 
 model Answers {
-  id         String      @id @default(cuid())
-  answer     String[] // Array of paragraphs
-  questions  Questions[] // One-to-many with Questions
-  designer   Designers?  @relation(fields: [designerId], references: [id]) // Each answer can belong to a designer
-  designerId String? // No @unique, allowing multiple answers per designer
-  createdAt  DateTime    @default(now())
-  updatedAt  DateTime    @updatedAt
+  id          String       @id @default(cuid())
+  answer      String[]     // Array of paragraphs
+  questions   Questions[]  // One-to-many with Questions
+  designer    Designers?   @relation(fields: [designerId], references: [id])
+  designerId  String?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
 }
 
 model Apps {
@@ -67,7 +63,6 @@ model Apps {
   desc        String?
   url         String?
   designers   Designers[]
-  designersId String?
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
 }
@@ -78,7 +73,6 @@ model Books {
   author      String?
   url         String?
   designers   Designers[]
-  designersId String?
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
 }

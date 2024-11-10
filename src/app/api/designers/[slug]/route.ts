@@ -10,16 +10,16 @@ export async function GET(
     },
     include: {
       apps: true,
-      books: true,
-      companies: true,
-      countries: true,
-      roles: true,
-      salaries: true,
       answers: {
         include: {
           questions: true,
         },
       },
+      books: true,
+      companies: true,
+      countries: true,
+      roles: true,
+      salaries: true,
     },
   });
   return Response.json(data);

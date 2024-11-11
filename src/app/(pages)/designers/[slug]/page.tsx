@@ -1,7 +1,7 @@
 import Image from "next/legacy/image";
-import { DesignerDetailBox } from "../../../../components/DesignerDetailBox";
-import { AppsUsed } from "../../../../components/designer/AppsUsed";
-import { BooksUsed } from "../../../../components/designer/BooksUsed";
+import { DesignerDetailBox } from "../../../../../components/DesignerDetailBox";
+import { AppsUsed } from "../../../../../components/designer/AppsUsed";
+import { BooksUsed } from "../../../../../components/designer/BooksUsed";
 
 async function getData(slug: string) {
   const res = await fetch(`${process.env.WEB_SITE}/api/designers/${slug}`, {

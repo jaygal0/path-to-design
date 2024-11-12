@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Error() {
   return (
-    <div className="flex flex-col">
+    <div className="col-start-3 col-end-10 row-span-full row-start-1 flex flex-col">
       <h1 className="mb-20 mt-40 text-5xl font-bold">
         There seems to be an error!
       </h1>

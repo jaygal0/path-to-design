@@ -12,7 +12,7 @@ export async function GET(
       apps: true,
       answers: {
         include: {
-          questions: true,
+          questions: true, // Include the related question for each answer
         },
       },
       books: true,

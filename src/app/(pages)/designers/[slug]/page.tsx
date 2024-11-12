@@ -92,7 +92,7 @@ export default async function Story({ params }: any) {
           .map((answerData: any) => (
             <div key={answerData.id} className="w-full">
               <h3 className="mb-4 font-serif text-2xl text-stone-200">
-                {answerData.questions[0]?.question}
+                {answerData.questions.question}
               </h3>
               {answerData.answer.map((text: string, index: number) => (
                 <p

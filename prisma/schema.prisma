@@ -18,9 +18,6 @@ model Designers {
   instagram       String?
   dribble         String?
   oneLiner        String?
-  apps            Apps[] 
-  books           Books[]
-  answers         Answers[]   // One-to-many with Answers
   roles           Roles?      @relation(fields: [rolesId], references: [id])
   rolesId         String?
   salaries        Salaries?   @relation(fields: [salariesId], references: [id])
@@ -29,6 +26,9 @@ model Designers {
   countriesId     String?
   companies       Companies?  @relation(fields: [companiesId], references: [id])
   companiesId     String?
+  apps            Apps[] 
+  books           Books[]
+  answers         Answers[]   // One-to-many with Answers
   createdAt       DateTime    @default(now())
   updatedAt       DateTime    @updatedAt
 
@@ -38,8 +38,8 @@ model Designers {
 model Questions {
   id          String       @id @default(cuid())
   question    String
+  Answers     Answers[]
   answerId    String?
-  Answers Answers[]
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
 
@@ -47,11 +47,11 @@ model Questions {
 
 model Answers {
   id          String       @id @default(cuid())
-  answer      String[]     // Array of paragraphs
-  questions   Questions? @relation(fields: [questionsid], references: [id])
-  questionsid String?
   designer    Designers?   @relation(fields: [designerId], references: [id])
   designerId  String?
+  questions   Questions? @relation(fields: [questionsid], references: [id])
+  questionsid String?
+  answer      String[]     // Array of paragraphs
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
 }

@@ -5,6 +5,7 @@ import { Suspense, useState } from "react";
 import { CardDesignerGradient } from "./CardDesignerGradient";
 import { DesignerProps } from "./type";
 import Image from "next/legacy/image";
+import dayjs from "dayjs"; // Import dayjs at the top
 
 export function CardDesigner({
   company,
@@ -19,7 +20,6 @@ export function CardDesigner({
   country,
 }: DesignerProps) {
   const [coverImage, setCoverImage] = useState<boolean>(false);
-  const dayjs = require("dayjs");
 
   return (
     <Suspense fallback={"Loading..."}>
@@ -37,7 +37,9 @@ export function CardDesigner({
           }}
         >
           <div
-            className={`cover-image absolute -z-10 overflow-hidden rounded-lg ${!coverImage && "opacity-0"} ${coverImage && "opacity-60"} transition-opacity`}
+            className={`cover-image absolute -z-10 overflow-hidden rounded-lg ${
+              !coverImage && "opacity-0"
+            } ${coverImage && "opacity-60"} transition-opacity`}
           >
             <Image
               width={300}
@@ -59,7 +61,7 @@ export function CardDesigner({
             </h2>
             <div className="flex flex-col justify-between gap-2 font-sans font-light text-stone-400 lg:flex-row">
               <p className="md:w-2/3">
-                {company == "Self-employed"
+                {company === "Self-employed"
                   ? `${role}, ${company}`
                   : `${role} at ${company}`}
               </p>
@@ -69,7 +71,7 @@ export function CardDesigner({
                   : "Salary: Non-disclosed"}
               </p>
               <p className="flex justify-start md:w-1/3">
-                {updatedAt == createdAt ? "Posted at " : "Updated at "}
+                {updatedAt === createdAt ? "Posted at " : "Updated at "}
                 {dayjs(updatedAt).format("D MMM, YYYY")}
               </p>
             </div>

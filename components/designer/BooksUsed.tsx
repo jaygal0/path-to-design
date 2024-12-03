@@ -1,10 +1,23 @@
 "use client";
 
-import { log } from "console";
 import Image from "next/image";
 import { useState } from "react";
 
 export function BooksUsed({ books }: any) {
+  // Initialize state for all image sources
+  const [imageSources, setImageSources] = useState(
+    books.map((book: any) => book.bookCover),
+  );
+
+  // Handle image error for a specific index
+  const handleImageError = (index: number) => {
+    setImageSources((prevSources: any) => {
+      const newSources = [...prevSources];
+      newSources[index] = "/book-fallback.jpg";
+      return newSources;
+    });
+  };
+
   return (
     <div>
       <h3 className="mb-4 font-serif text-2xl text-stone-200">
@@ -14,15 +27,7 @@ export function BooksUsed({ books }: any) {
         {books
           ?.slice() // Create a shallow copy to avoid mutating the original array
           .sort((a: any, b: any) => a.book.localeCompare(b.book)) // Sort alphabetically
-          .map((book: any) => {
-            console.log(book);
-
-            const [imageSrc, setImageSrc] = useState(book.bookCover);
-
-            const handleImageError = () => {
-              setImageSrc("/book-fallback.jpg");
-            };
-
+          .map((book: any, index: number) => {
             return (
               <a
                 key={book.book}
@@ -36,13 +41,13 @@ export function BooksUsed({ books }: any) {
                   className="flex w-[100px] flex-col items-center gap-2 overflow-hidden"
                 >
                   <Image
-                    src={imageSrc}
+                    src={imageSources[index]} // Use the state for the image source
                     alt={book.book}
                     width={100}
                     height={160}
                     quality={100}
                     className="rounded-lg object-cover"
-                    onError={handleImageError}
+                    onError={() => handleImageError(index)} // Pass the index to handle errors
                   />
                   <p className="my-0 w-[100px] text-center text-sm capitalize">
                     {book.book}

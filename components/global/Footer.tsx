@@ -2,7 +2,7 @@ export default function Footer() {
   const dayjs = require("dayjs");
 
   return (
-    <footer className="fixed bottom-0 left-0 z-20 w-full border-t-2 border-gray-200 bg-stone-950 p-4 font-sans shadow md:flex md:items-center md:justify-between md:p-6">
+    <footer className="w-full border-t-2 border-gray-200 bg-stone-950 p-4 font-sans shadow md:flex md:items-center md:justify-between md:p-6">
       <div className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
         © {dayjs().year()}{" "}
         <span className="text-md font-serif">Path to Design</span>. All Rights

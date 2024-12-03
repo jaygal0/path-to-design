@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 export function AppsUsed({ apps }: any) {
-  //TODO 1: Add all the other information for everyone else and figure out if the database is correct
   return (
     <div>
       <h3 className="mb-4 font-serif text-2xl text-stone-200">

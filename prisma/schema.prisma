@@ -71,6 +71,7 @@ model Books {
   book        String?
   author      String?
   url         String?
+  bookCover   String?
   designers   Designers[]
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt

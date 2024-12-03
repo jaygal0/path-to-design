@@ -110,13 +110,13 @@ export default async function Home() {
               {isPublished && (
                 <CardDesigner
                   company={companies.company}
-                  country={countries.country}
+                  country={countries?.country}
                   createdAt={createdAt}
                   firstName={firstName}
                   id={id}
                   lastName={lastName}
-                  role={roles.role}
-                  salary={salaries.salary}
+                  role={roles?.role}
+                  salary={salaries?.salary}
                   slug={slug}
                   updatedAt={updatedAt}
                 />

@@ -5,6 +5,7 @@ import { Navbar } from "../../components/global/Navbar";
 import "./globals.css";
 import Footer from "../../components/global/Footer";
 import { BreakpointIndicator } from "../../components/global/BreakpointIndicator";
+import ScrollToTop from "../../components/global/ScrollToTop";
 
 const cormorant = Cormorant({
   subsets: ["latin"],
@@ -35,6 +36,7 @@ export default function RootLayout({
       <body
         className={`${cormorant.variable} ${cabin.variable} bg-stone-950 font-serif`}
       >
+        <ScrollToTop />
         <BreakpointIndicator />
         <Navbar />
         <main className="grid min-h-screen place-items-center">

@@ -1,34 +1,45 @@
-import Image from "next/legacy/image";
-import { DesignerDetailBox } from "../../../../../components/DesignerDetailBox";
-import { AppsUsed } from "../../../../../components/designer/AppsUsed";
-import { BooksUsed } from "../../../../../components/designer/BooksUsed";
-import ScrollToTop from "../../../../../components/global/ScrollToTop";
+import Image from "next/image";
+import { DesignerDetailBox } from "@/../components/DesignerDetailBox";
+import { AppsUsed } from "@/../components/designer/AppsUsed";
+import { BooksUsed } from "@/../components/designer/BooksUsed";
+import ScrollToTop from "@/../components/global/ScrollToTop";
+import prisma from "@/lib/db";
 
-async function getData(slug: string) {
+async function fetchDesignerData(slug: string) {
   const res = await fetch(`${process.env.WEB_SITE}/api/designers/${slug}`, {
-    next: {
-      revalidate: 60,
-    },
+    next: { revalidate: 60 },
   });
-  const designer = await res.json();
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  return designer;
+
+  if (!res.ok) throw new Error("Failed to fetch data");
+
+  return res.json();
 }
 
-// Static generation for each designer page
+// Pre-generate static paths for designers
 export async function generateStaticParams() {
-  const res = await fetch(`${process.env.WEB_SITE}/api/designers`);
-  const designers = await res.json();
+  try {
+    const designers = await prisma.designers.findMany({
+      select: { slug: true },
+    });
 
-  return designers.map((designer: { slug: string }) => ({
-    slug: designer.slug,
-  }));
+    if (!designers || designers.length === 0) {
+      throw new Error("No designers found.");
+    }
+
+    return designers.map((designer) => ({
+      slug: designer.slug,
+    }));
+  } catch (error) {
+    console.error("Error generating static params:", error);
+    throw error;
+  }
 }
 
-export default async function Story({ params }: any) {
-  const designer = await getData(params.slug);
+export default async function DesignerPage(props: {
+  params: Promise<{ slug: string }>;
+}) {
+  const params = await props.params;
+  const designer = await fetchDesignerData(params.slug);
 
   const {
     apps,
@@ -76,15 +87,15 @@ export default async function Story({ params }: any) {
         <div className="relative aspect-video w-full overflow-hidden rounded-lg">
           <Image
             src={`/cover-image-${firstName.toLowerCase()}-${lastName.toLowerCase()}.jpg`}
-            alt={`An image of ${firstName} ${lastName}'s portfolio`}
-            objectFit="cover"
-            layout="fill"
+            alt={`Portfolio cover image of ${firstName} ${lastName}`}
+            fill
             priority
+            style={{ objectFit: "cover" }}
           />
         </div>
         <div className="flex flex-col gap-12">
-          {apps.length == 0 ? "" : <AppsUsed apps={apps} />}
-          {books.length == 0 ? "" : <BooksUsed books={books} />}
+          {apps.length > 0 && <AppsUsed apps={apps} />}
+          {books.length > 0 && <BooksUsed books={books} />}
           {answers
             .sort((a: any, b: any) => {
               const dateA = new Date(a.questions[0]?.createdAt || 0);

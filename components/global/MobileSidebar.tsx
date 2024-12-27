@@ -26,9 +26,9 @@ export function MobileSidebar({ state }: any) {
         <Link href="/about" onClick={state}>
           About
         </Link>
-        {/* <Link href="/blog" onClick={state}>
+        <Link href="/blog" onClick={state}>
           Blog
-        </Link> */}
+        </Link>
         <Link href="/privacy" onClick={state}>
           Privacy
         </Link>

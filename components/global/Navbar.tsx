@@ -50,7 +50,8 @@ export function Navbar() {
           />
         </svg>
       )}
-      <div className="hidden items-center gap-7 pr-4 font-sans md:flex">
+      <div className="hidden items-center gap-12 pr-4 font-sans md:flex">
+        <Link href="/blog">Blog</Link>
         <Link
           href="/share"
           className="btn-gradient rounded-md p-1 px-4 text-stone-950"

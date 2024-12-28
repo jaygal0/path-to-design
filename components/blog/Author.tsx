@@ -9,13 +9,13 @@ export function Author({ createdAt, firstName, lastName, updatedAt }: any) {
   return (
     <Suspense fallback={"Loading..."}>
       <div className="relative flex">
-        <div className="flex w-full flex-col gap-2 py-8">
+        <div className="flex w-full flex-col gap-2 py-3">
           <div className="flex items-center gap-3">
             <Avatar firstName={firstName} lastName={lastName} size="sm" />
             <Link
               href={`/designers/${firstName.toLowerCase()}-${lastName.toLowerCase()}`}
             >
-              <div className="text-2xl font-semibold lg:text-2xl">
+              <div className="text-lg font-semibold">
                 {firstName} {lastName}
               </div>
             </Link>

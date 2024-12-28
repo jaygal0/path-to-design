@@ -37,7 +37,7 @@ export function CardDesigner({
           }}
         >
           <div
-            className={`cover-image absolute -z-10 overflow-hidden rounded-lg ${
+            className={`cover-image absolute -z-10 hidden overflow-hidden rounded-lg md:block ${
               !coverImage && "opacity-0"
             } ${coverImage && "opacity-60"} transition-opacity`}
           >

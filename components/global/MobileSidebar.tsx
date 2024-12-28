@@ -36,7 +36,10 @@ export function MobileSidebar({ state }: any) {
           Share Your Story
         </Link>
       </div>
-      <div className="w-full px-6 font-sans">
+
+      {/* FORM */}
+
+      {/* <div className="w-full px-6 font-sans">
         <h4 className="mb-2 text-lg font-normal">
           Stay inspired and discover the paths of more designers.
         </h4>
@@ -61,7 +64,7 @@ export function MobileSidebar({ state }: any) {
             Subscribe
           </button>
         </form>
-      </div>
+      </div> */}
     </div>
   );
 }

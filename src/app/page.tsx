@@ -56,7 +56,10 @@ export default async function Home() {
         designers are doing to thrive in the industry, so you no longer have to
         worry about where to find this information.
       </p>
-      <div className="col-span-full col-start-1 row-span-1 row-start-4 my-20 h-min rounded-2xl border p-8 md:col-span-6 md:col-start-2 lg:col-start-4 lg:col-end-10">
+
+      {/* FORM */}
+
+      {/* <div className="col-span-full col-start-1 row-span-1 row-start-4 my-20 h-min rounded-2xl border p-8 md:col-span-6 md:col-start-2 lg:col-start-4 lg:col-end-10">
         <h4 className="mb-2 w-full pb-6 text-3xl font-normal">
           Stay inspired and discover the paths of more designers.
         </h4>
@@ -83,7 +86,7 @@ export default async function Home() {
             </button>
           </div>
         </form>
-      </div>
+      </div> */}
       <h2 className="col-span-full col-start-1 row-span-1 row-start-5 my-20 text-4xl font-bold leading-tight md:col-span-5 md:col-start-2 lg:col-span-6 lg:col-start-2 lg:text-5xl lg:leading-tight">
         <span className="text-gradient">Take charge of your career</span> by
         understanding the paths designers took to be{" "}

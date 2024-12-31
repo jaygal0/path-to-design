@@ -24,13 +24,25 @@ export default async function Home() {
         <div className="mb-2 flex items-center gap-4">
           <div className="flex -space-x-2">
             <div className="relative h-12 w-12 overflow-hidden rounded-full bg-slate-50">
-              <Image src="/profile-joshua-galinato.png" fill alt="" />
+              <Image
+                src="/profile-joshua-galinato.png"
+                fill
+                alt="Profile image of Joshua Galinato"
+              />
             </div>
             <div className="relative h-12 w-12 overflow-hidden rounded-full bg-slate-50">
-              <Image src="/profile-joacim-bohlander.png" fill alt="" />
+              <Image
+                src="/profile-joacim-bohlander.png"
+                fill
+                alt="Profile image of Joacim Bolhander"
+              />
             </div>
             <div className="relative h-12 w-12 overflow-hidden rounded-full bg-slate-50">
-              <Image src="/profile-faj-mac.png" fill alt="" />
+              <Image
+                src="/profile-faj-mac.png"
+                fill
+                alt="Profile image of Faj Mac"
+              />
             </div>
           </div>
           <div className="w-4/5 border-b-2"></div>

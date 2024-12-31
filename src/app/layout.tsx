@@ -18,9 +18,9 @@ const cabin = Cabin({
 });
 
 export const metadata: Metadata = {
-  title: "Path to Design",
+  title: "Path to Design | Unlock Your Creative Potential in Design",
   description:
-    "Explore the paths designers take to begin, excel, and stay inspired.",
+    "Discover how designers start their journey, excel in their careers, and find inspiration to create impactful designs. Explore resources, stories, and strategies at Path to Design.",
 };
 
 export default function RootLayout({

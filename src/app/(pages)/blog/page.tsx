@@ -24,7 +24,7 @@ export default async function Page({ posts }: any) {
   });
 
   return (
-    <div className="col-span-full col-start-1 row-span-full row-start-1 flex min-h-screen flex-col justify-start py-64 md:col-span-6 md:col-start-2 lg:col-span-6 lg:col-start-4 lg:pt-72">
+    <div className="col-span-full col-start-1 row-span-full row-start-1 flex min-h-screen flex-col justify-start py-64 md:col-span-6 md:col-start-2 xl:col-span-6 xl:col-start-4 xl:pt-72">
       <h1 className="mb-8 text-5xl font-bold">Blog</h1>
       <p className="mb-8 font-sans text-xl font-thin leading-relaxed">
         A hub of inspiration, guidance, and resources for aspiring designers.

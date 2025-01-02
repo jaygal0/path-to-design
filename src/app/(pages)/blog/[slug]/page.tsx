@@ -38,7 +38,7 @@ export default async function Page({ params }: any) {
   const props = getPost(params);
 
   return (
-    <article className="prose-lg col-span-full col-start-1 row-span-1 row-start-1 mb-8 content-end py-64 pb-36 prose-h3:text-stone-400 prose-p:font-sans md:col-span-6 md:col-start-2 lg:col-span-6 lg:col-start-4 lg:pt-56	">
+    <article className="prose-lg col-span-full col-start-1 row-span-1 row-start-1 mb-8 content-end py-64 pb-36 prose-h3:text-stone-400 prose-p:font-sans md:col-span-6 md:col-start-2 xl:col-span-6 xl:col-start-4 xl:pt-56	">
       <Link
         href="/blog"
         className="text-md font-sans font-thin no-underline hover:underline"

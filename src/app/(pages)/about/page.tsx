@@ -1,6 +1,6 @@
 export default function Page() {
   return (
-    <div className="col-span-full col-start-1 row-span-full row-start-1 flex h-screen flex-col justify-center md:col-span-6 md:col-start-2 xl:col-span-6 xl:col-start-4">
+    <div className="col-span-full col-start-1 row-span-full row-start-1 flex h-screen flex-col justify-center py-72 md:col-span-6 md:col-start-2 md:py-0 xl:col-span-6 xl:col-start-4">
       <h1 className="mb-8 text-5xl font-bold">About</h1>
       <div className="flex flex-col gap-4 font-sans text-xl font-thin leading-relaxed">
         <p>Hi 👋</p>

@@ -17,6 +17,7 @@ export function CardDesignerGradient({
         {country == "England" && "🏴󠁧󠁢󠁥󠁮󠁧󠁿"}
         {country == "Mexico" && "🇲🇽"}
         {country == "Sweden" && "🇸🇪"}
+        {country == "India" && "🇮🇳"}
       </div>
     </div>
   );

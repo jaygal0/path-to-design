@@ -25,23 +25,23 @@ export default async function Home() {
           <div className="flex -space-x-2">
             <div className="relative h-12 w-12 overflow-hidden rounded-full bg-slate-50">
               <Image
-                src="/profile-joshua-galinato.png"
+                src="/profiles/joshua-galinato.jpg"
                 fill
                 alt="Profile image of Joshua Galinato"
               />
             </div>
             <div className="relative h-12 w-12 overflow-hidden rounded-full bg-slate-50">
               <Image
-                src="/profile-joacim-bohlander.png"
+                src="/profiles/joacim-bohlander.jpg"
                 fill
                 alt="Profile image of Joacim Bolhander"
               />
             </div>
             <div className="relative h-12 w-12 overflow-hidden rounded-full bg-slate-50">
               <Image
-                src="/profile-faj-mac.png"
+                src="/profiles/amalie-mørch.jpg"
                 fill
-                alt="Profile image of Faj Mac"
+                alt="Profile image of Amalie Mørch"
               />
             </div>
           </div>

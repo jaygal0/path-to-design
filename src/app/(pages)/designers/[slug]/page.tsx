@@ -86,7 +86,7 @@ export default async function DesignerPage(props: {
         />
         <div className="relative aspect-video w-full overflow-hidden rounded-lg">
           <Image
-            src={`/cover-image-${firstName.toLowerCase()}-${lastName.toLowerCase()}.jpg`}
+            src={`/covers/${firstName.toLowerCase()}-${lastName.toLowerCase()}.jpg`}
             alt={`Portfolio cover image of ${firstName} ${lastName}`}
             fill
             priority

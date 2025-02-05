@@ -20,15 +20,15 @@ export function AppsUsed({ apps }: any) {
               >
                 <div
                   key={app.app}
-                  className="flex flex-col items-center gap-2 overflow-hidden rounded-xl"
+                  className="flex flex-col items-center gap-2 rounded-xl"
                 >
                   <Image
-                    src={`/app-${app.app.toLowerCase().replace(/ /g, "-")}.jpg`}
+                    src={`/apps/${app.app.toLowerCase().replace(/ /g, "-")}.jpg`}
                     alt={app.app}
                     width={80}
                     height={80}
                     quality={100}
-                    className="rounded-xl" // Add this here
+                    className="rounded-xl transition-all hover:scale-105" // Add this here
                   />
                   <p className="my-0 w-[80px] text-center text-sm capitalize">
                     {app.app}

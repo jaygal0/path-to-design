@@ -38,7 +38,7 @@ export function BooksUsed({ books }: any) {
               >
                 <div
                   key={book.book}
-                  className="flex w-[100px] flex-col items-center gap-2 overflow-hidden"
+                  className="flex w-[100px] flex-col items-center gap-2"
                 >
                   <Image
                     src={imageSources[index]} // Use the state for the image source
@@ -46,7 +46,7 @@ export function BooksUsed({ books }: any) {
                     width={100}
                     height={160}
                     quality={100}
-                    className="rounded-lg object-cover"
+                    className="rounded-lg object-cover transition-all hover:scale-105"
                     onError={() => handleImageError(index)} // Pass the index to handle errors
                   />
                   <p className="my-0 w-[100px] text-center text-sm capitalize">

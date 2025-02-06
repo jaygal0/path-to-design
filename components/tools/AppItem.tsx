@@ -25,15 +25,17 @@ export default function AppItem({ tool }: { tool: any }) {
               width={80}
               height={80}
               quality={100}
-              className={`rounded-xl transition-all ${isHovered ? "scale-105" : ""}`}
+              className={`rounded-xl transition-all ${isHovered ? "scale-105" : ""} h-10 w-10 sm:h-20 sm:w-20`}
+              sizes="(max-width: 640px) 40px, 80px"
             />
+
             <h3
-              className={`mb-0 text-4xl transition-all ${isHovered ? "underline" : ""}`}
+              className={`mb-0 text-xl transition-all md:text-2xl lg:text-4xl ${isHovered ? "underline" : ""}`}
             >
               {app}
             </h3>
           </div>
-          <div className="font-sans">
+          <div className="font-sans text-sm lg:text-base">
             Used by {designers.length}{" "}
             {designers.length === 1 ? "designer" : "designers"}
           </div>

@@ -6,11 +6,11 @@ interface T {
 export function Heading({ heading, desc }: T) {
   return (
     <>
-      <h1 className="text-gradient mb-8 text-7xl font-bold leading-tight">
+      <h1 className="text-gradient mb-8 text-5xl font-bold leading-tight md:text-6xl lg:text-7xl">
         {heading}
       </h1>
       {desc && (
-        <p className="mb-12 font-sans text-xl font-thin leading-relaxed">
+        <p className="mb-12 font-sans text-base font-thin leading-relaxed md:text-xl">
           {desc}
         </p>
       )}

@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
+import { useState } from "react";
+import { Avatar } from "../Avatar";
 
 export default function AppItem({ tool }: { tool: any }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -35,9 +36,30 @@ export default function AppItem({ tool }: { tool: any }) {
               {app}
             </h3>
           </div>
-          <div className="font-sans text-sm lg:text-base">
-            Used by {designers.length}{" "}
-            {designers.length === 1 ? "designer" : "designers"}
+          <div className="flex flex-col gap-2">
+            <div className="flex -space-x-1">
+              {designers
+                // Create a copy before shuffling to avoid mutating original array
+                .slice()
+                // Proper Fisher-Yates shuffle implementation
+                .sort(() => Math.random() - 0.5)
+                // Take first 3 designers after shuffling
+                .slice(0, 3)
+                // Map with proper unique keys
+                .map((designer: any) => (
+                  <Avatar
+                    key={`${designer.firstName}-${designer.lastName}`}
+                    firstName={designer.firstName}
+                    lastName={designer.lastName}
+                    size="sm"
+                  />
+                ))}
+            </div>
+
+            <div className="font-sans text-sm lg:text-base">
+              Used by {designers.length}{" "}
+              {designers.length === 1 ? "designer" : "designers"}
+            </div>
           </div>
         </div>
         <div className="font-sans text-stone-400">{desc}</div>

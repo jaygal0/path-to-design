@@ -4,6 +4,7 @@ import matter from "gray-matter";
 import Link from "next/link";
 import { Avatar } from "../../../../components/Avatar";
 import dayjs from "dayjs";
+import { Heading } from "../../../../components/global/Heading";
 
 export default async function Page({ posts }: any) {
   const blogDir = path.join("blogs");
@@ -25,12 +26,12 @@ export default async function Page({ posts }: any) {
 
   return (
     <div className="col-span-full col-start-1 row-span-full row-start-1 flex min-h-screen flex-col justify-start py-64 md:col-span-6 md:col-start-2 xl:col-span-6 xl:col-start-4 xl:pt-72">
-      <h1 className="mb-8 text-5xl font-bold">Blog</h1>
-      <p className="mb-8 font-sans text-xl font-thin leading-relaxed">
-        A hub of inspiration, guidance, and resources for aspiring designers.
-        Whether you&apos;re just starting or looking to refine your craft,
-        you&apos;ll find articles here tailored to your journey.
-      </p>
+      <Heading
+        heading="Blog"
+        desc="A hub of inspiration, guidance, and resources for aspiring designers.
+        Whether you're just starting or looking to refine your craft,
+        you'll find articles here tailored to your journey."
+      />
       {blogs
         .map((blog: any, index: any) => {
           return (

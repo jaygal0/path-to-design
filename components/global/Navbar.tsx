@@ -51,6 +51,7 @@ export function Navbar() {
         </svg>
       )}
       <div className="hidden items-center gap-12 pr-4 font-sans md:flex">
+        <Link href="/tools">Tools</Link>
         <Link href="/blog">Blog</Link>
         <Link
           href="/share"

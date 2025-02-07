@@ -2,22 +2,14 @@
 CREATE TABLE "Designers" (
     "id" TEXT NOT NULL,
     "isPublished" BOOLEAN DEFAULT false,
-    "firstName" TEXT NOT NULL,
-    "lastName" TEXT NOT NULL,
-    "slug" TEXT NOT NULL,
+    "firstName" TEXT,
+    "lastName" TEXT,
+    "slug" TEXT,
     "email" TEXT,
     "url" TEXT,
-    "x" TEXT,
     "instagram" TEXT,
     "dribble" TEXT,
     "oneLiner" TEXT,
-    "responsibilites" TEXT,
-    "gotStarted" TEXT,
-    "advice" TEXT,
-    "regrets" TEXT,
-    "stayInspired" TEXT,
-    "appExplained" TEXT,
-    "booksExplained" TEXT,
     "rolesId" TEXT,
     "salariesId" TEXT,
     "countriesId" TEXT,
@@ -32,9 +24,9 @@ CREATE TABLE "Designers" (
 CREATE TABLE "Questions" (
     "id" TEXT NOT NULL,
     "question" TEXT NOT NULL,
-    "answerid" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
+    "answerId" TEXT,
 
     CONSTRAINT "Questions_pkey" PRIMARY KEY ("id")
 );
@@ -42,10 +34,11 @@ CREATE TABLE "Questions" (
 -- CreateTable
 CREATE TABLE "Answers" (
     "id" TEXT NOT NULL,
-    "designersId" TEXT,
     "answer" TEXT[],
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
+    "designerId" TEXT,
+    "questionsid" TEXT,
 
     CONSTRAINT "Answers_pkey" PRIMARY KEY ("id")
 );
@@ -56,7 +49,6 @@ CREATE TABLE "Apps" (
     "app" TEXT,
     "desc" TEXT,
     "url" TEXT,
-    "designersId" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -69,9 +61,9 @@ CREATE TABLE "Books" (
     "book" TEXT,
     "author" TEXT,
     "url" TEXT,
-    "designersId" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
+    "bookCover" TEXT,
 
     CONSTRAINT "Books_pkey" PRIMARY KEY ("id")
 );
@@ -130,12 +122,6 @@ CREATE TABLE "CompanySize" (
 );
 
 -- CreateTable
-CREATE TABLE "_AnswersToDesigners" (
-    "A" TEXT NOT NULL,
-    "B" TEXT NOT NULL
-);
-
--- CreateTable
 CREATE TABLE "_AppsToDesigners" (
     "A" TEXT NOT NULL,
     "B" TEXT NOT NULL
@@ -154,12 +140,6 @@ CREATE UNIQUE INDEX "Designers_slug_key" ON "Designers"("slug");
 CREATE INDEX "Designers_slug_idx" ON "Designers"("slug");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "_AnswersToDesigners_AB_unique" ON "_AnswersToDesigners"("A", "B");
-
--- CreateIndex
-CREATE INDEX "_AnswersToDesigners_B_index" ON "_AnswersToDesigners"("B");
-
--- CreateIndex
 CREATE UNIQUE INDEX "_AppsToDesigners_AB_unique" ON "_AppsToDesigners"("A", "B");
 
 -- CreateIndex
@@ -172,28 +152,25 @@ CREATE UNIQUE INDEX "_BooksToDesigners_AB_unique" ON "_BooksToDesigners"("A", "B
 CREATE INDEX "_BooksToDesigners_B_index" ON "_BooksToDesigners"("B");
 
 -- AddForeignKey
+ALTER TABLE "Designers" ADD CONSTRAINT "Designers_companiesId_fkey" FOREIGN KEY ("companiesId") REFERENCES "Companies"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Designers" ADD CONSTRAINT "Designers_countriesId_fkey" FOREIGN KEY ("countriesId") REFERENCES "Countries"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
 ALTER TABLE "Designers" ADD CONSTRAINT "Designers_rolesId_fkey" FOREIGN KEY ("rolesId") REFERENCES "Roles"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Designers" ADD CONSTRAINT "Designers_salariesId_fkey" FOREIGN KEY ("salariesId") REFERENCES "Salaries"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Designers" ADD CONSTRAINT "Designers_countriesId_fkey" FOREIGN KEY ("countriesId") REFERENCES "Countries"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "Answers" ADD CONSTRAINT "Answers_designerId_fkey" FOREIGN KEY ("designerId") REFERENCES "Designers"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Designers" ADD CONSTRAINT "Designers_companiesId_fkey" FOREIGN KEY ("companiesId") REFERENCES "Companies"("id") ON DELETE SET NULL ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "Questions" ADD CONSTRAINT "Questions_answerid_fkey" FOREIGN KEY ("answerid") REFERENCES "Answers"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "Answers" ADD CONSTRAINT "Answers_questionsid_fkey" FOREIGN KEY ("questionsid") REFERENCES "Questions"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Companies" ADD CONSTRAINT "Companies_companySizeId_fkey" FOREIGN KEY ("companySizeId") REFERENCES "CompanySize"("id") ON DELETE SET NULL ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "_AnswersToDesigners" ADD CONSTRAINT "_AnswersToDesigners_A_fkey" FOREIGN KEY ("A") REFERENCES "Answers"("id") ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "_AnswersToDesigners" ADD CONSTRAINT "_AnswersToDesigners_B_fkey" FOREIGN KEY ("B") REFERENCES "Designers"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "_AppsToDesigners" ADD CONSTRAINT "_AppsToDesigners_A_fkey" FOREIGN KEY ("A") REFERENCES "Apps"("id") ON DELETE CASCADE ON UPDATE CASCADE;

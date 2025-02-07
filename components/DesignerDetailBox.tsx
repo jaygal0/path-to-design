@@ -86,6 +86,18 @@ export function DesignerDetailBox({
             {x ? (
               <a href={`http://x.com/${x}`} target="_blank">
                 {/* X Icon SVG */}
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 22 22"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M13.0923 9.31543L21.2818 0H19.3408L12.2317 8.08814L6.55099 0H0L8.58908 12.232L0 22H1.94103L9.4496 13.4577L15.449 22H22L13.0923 9.31543ZM10.4347 12.3389L9.56444 11.121L2.63981 1.43H5.62091L11.2079 9.251L12.0781 10.4689L19.3424 20.636H16.3613L10.4347 12.3389Z"
+                    fill="black"
+                  />
+                </svg>
               </a>
             ) : (
               ""

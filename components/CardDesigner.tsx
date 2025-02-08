@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Suspense, useState } from "react";
 import { CardDesignerGradient } from "./CardDesignerGradient";
-import { DesignerProps } from "./type";
+import { DesignerProps } from "@/types";
 import Image from "next/legacy/image";
 import dayjs from "dayjs"; // Import dayjs at the top
 

@@ -5,25 +5,14 @@ export const pathToDesign: menuItem = {
   href: "/",
 };
 
-export const desktopMenu: menuItem[] = [
+export const menu: menuItem[] = [
   {
     title: "About",
     href: "/about",
   },
   {
-    title: "Tools",
-    href: "/tools",
-  },
-  {
-    title: "Blog",
-    href: "/blog",
-  },
-];
-
-export const mobileMenu: menuItem[] = [
-  {
-    title: "About",
-    href: "/about",
+    title: "Designers",
+    href: "/designers",
   },
   {
     title: "Tools",

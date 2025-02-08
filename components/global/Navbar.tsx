@@ -1,6 +1,6 @@
 "use client";
 
-import { mainCTA, mobileMenu, pathToDesign } from "@/config/navigation";
+import { mainCTA, menu, pathToDesign } from "@/config/navigation";
 import Link from "next/link";
 import * as React from "react";
 
@@ -47,7 +47,7 @@ export function Navbar() {
           </Link>
 
           <div className="flex h-min flex-col justify-end gap-10 text-4xl">
-            {mobileMenu.map((menu, index) => (
+            {menu.map((menu, index) => (
               <Link key={index} href={menu.href} onClick={toggleMobileMenu}>
                 {menu.title}
               </Link>
@@ -122,7 +122,7 @@ export function Navbar() {
         </svg>
       )}
       <div className="hidden items-center gap-12 pr-4 font-sans md:flex">
-        {mobileMenu.map((menu, index) => (
+        {menu.map((menu, index) => (
           <Link key={index} href={menu.href}>
             {menu.title}
           </Link>

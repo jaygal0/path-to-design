@@ -1,5 +1,5 @@
 import dayjs from "dayjs"; // Import dayjs at the top
-import { DesignerProps } from "./type";
+import { DesignerProps } from "@/types";
 import { Avatar } from "./Avatar";
 
 export function DesignerDetailBox({

@@ -58,12 +58,11 @@ export default function Page() {
 
         <h2>Cookies</h2>
         <p>
-          Our website uses cookies to enhance your experience. Cookies are small
-          files that a site or its service provider transfers to your computer’s
-          hard drive through your web browser (if you allow) that enables the
-          site’s systems to recognize your browser and capture and remember
-          certain information. You can choose to disable cookies through your
-          browser settings.
+          Our website uses Plausible Analytics to help us understand visitor
+          trends and the effectiveness of our marketing outreach. We chose
+          Plausible Analytics because it is a privacy-focused company and
+          platform that eschews personally identifiable information in favor of
+          anonymous aggregate data. See the Plausible Analytics Data Policy.
         </p>
 
         <h2>Security</h2>

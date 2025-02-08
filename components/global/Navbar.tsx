@@ -3,6 +3,7 @@
 import { mainCTA, menu, pathToDesign } from "@/config/navigation";
 import Link from "next/link";
 import * as React from "react";
+import { Button } from "./Button";
 
 export function Navbar() {
   const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false);
@@ -127,12 +128,7 @@ export function Navbar() {
             {menu.title}
           </Link>
         ))}
-        <Link
-          href={mainCTA.href}
-          className="btn-gradient rounded-md p-1 px-4 text-stone-950"
-        >
-          {mainCTA.title}
-        </Link>
+        <Button label={mainCTA.title} url={mainCTA.href} />
       </div>
     </nav>
   );

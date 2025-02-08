@@ -56,7 +56,7 @@ export default function RootLayout({
         <BreakpointIndicator />
         <Navbar />
         <main className="grid min-h-screen place-items-center">
-          <div className="grid min-w-full max-w-screen-2xl grid-cols-4 grid-rows-[min-content_min-content_min-content_min-content_min-content_min-content] gap-4 px-4 md:grid-cols-8 xl:grid-cols-12 2xl:min-w-[1536px]">
+          <div className="grid min-w-full max-w-screen-2xl grid-cols-4 grid-rows-[repeat(10,min-content)] gap-4 px-4 md:grid-cols-8 xl:grid-cols-12 2xl:min-w-[1536px]">
             <div className="-z-10 col-span-1 col-start-1 row-span-full row-start-1 bg-gray-500 opacity-3" />
             <div className="-z-10 col-span-1 col-start-2 row-span-full row-start-1 bg-gray-500 opacity-3" />
             <div className="-z-10 col-span-1 col-start-3 row-span-full row-start-1 bg-gray-500 opacity-3" />

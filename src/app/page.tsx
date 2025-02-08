@@ -67,11 +67,30 @@ export default async function Home() {
           </h2>
         </div>
       </div>
-      <p className="col-span-full col-start-1 row-span-1 row-start-3 my-10 text-2xl md:col-span-5 md:col-start-3 xl:col-start-6 xl:col-end-11">
+      <p className="col-span-full col-start-1 row-span-1 row-start-3 mb-96 mt-10 text-2xl md:col-span-5 md:col-start-3 xl:col-start-6 xl:col-end-11">
         That&apos;s why we built this site – to give you insight into what
         successful designers are doing to thrive in the industry, so you no
         longer have to worry about where to find this information.
       </p>
+      <div className="col-span-full col-start-1 row-span-1 row-start-4 my-20 md:col-span-6 md:col-start-2 xl:col-start-8 xl:col-end-12 xl:translate-y-[-300px] xl:leading-tight">
+        <Image
+          src="/home-page/apps.png"
+          alt="An image of apps designers use"
+          width={461}
+          height={477}
+        />
+      </div>
+      <div className="col-span-full col-start-1 row-span-1 row-start-4 my-20 md:col-span-6 md:col-start-2 xl:col-start-2 xl:col-end-8 xl:leading-tight">
+        <h2 className="mb-4 text-5xl font-bold md:text-6xl xl:text-7xl">
+          Explore <span className="text-gradient">Top Tools</span> Designers Use
+          in the Industry
+        </h2>
+        <p className="mb-20 text-2xl">
+          Discover the must-have tools and software that professional designers
+          rely on to stay creative, efficient, and ahead in the design world.
+        </p>
+        <Button label="Explore Tools" url="/tools" isSecondary />
+      </div>
 
       {/* FORM */}
 
@@ -103,14 +122,14 @@ export default async function Home() {
           </div>
         </form>
       </div> */}
-      <h2 className="col-span-full col-start-1 row-span-1 row-start-5 mb-10 mt-20 text-4xl font-bold leading-tight md:col-span-5 md:col-start-2 xl:col-span-6 xl:col-start-2 xl:text-5xl xl:leading-tight">
+      <h2 className="col-span-full col-start-1 row-span-1 row-start-6 mb-10 mt-20 text-4xl font-bold leading-tight md:col-span-5 md:col-start-2 xl:col-span-6 xl:col-start-2 xl:text-5xl xl:leading-tight">
         <span className="text-gradient">Take charge of your career</span> by
         understanding the paths designers took to be{" "}
         <span className="text-gradient">successful</span>.
       </h2>
 
-      <div className="col-span-full col-start-1 row-span-1 row-start-6 mb-40 flex flex-col gap-8 md:col-span-4 md:col-start-3 xl:col-start-3 xl:col-end-10">
-        <p className="col-span-full col-start-1 row-span-1 row-start-3 mb-20 text-2xl md:col-span-5 md:col-start-3 xl:col-start-6 xl:col-end-11">
+      <div className="col-span-full col-start-1 row-span-1 row-start-7 mb-40 flex flex-col gap-8 md:col-span-4 md:col-start-3 xl:col-start-3 xl:col-end-10">
+        <p className="mb-20 text-2xl">
           Start exploring the inspiring journeys of successful designers and
           uncover the strategies they used to thrive in the competitive design
           industry.

@@ -10,7 +10,7 @@ export function Button({ label, url, isSecondary }: T) {
   return (
     <Link
       href={url}
-      className={`text-1xl flex items-center gap-4 rounded-md px-6 py-2 font-sans transition-all hover:scale-105 ${isSecondary ? "bg-none" : "btn-gradient"}  ${isSecondary ? "border" : ""} ${isSecondary ? "text-white" : "text-stone-950"}`}
+      className={`text-1xl flex w-fit items-center gap-4 rounded-md px-6 py-2 font-sans transition-all hover:scale-105 ${isSecondary ? "bg-none" : "btn-gradient"}  ${isSecondary ? "border" : ""} ${isSecondary ? "text-white" : "text-stone-950"}`}
     >
       {label}
       {isSecondary && (

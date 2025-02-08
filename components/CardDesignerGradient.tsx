@@ -1,5 +1,5 @@
 import { Avatar } from "./Avatar";
-import { AvatarProps } from "./type";
+import { AvatarProps } from "@/types";
 
 export function CardDesignerGradient({
   firstName,

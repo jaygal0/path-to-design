@@ -1,5 +1,5 @@
 import Image from "next/legacy/image";
-import { AvatarProps } from "./type";
+import { AvatarProps } from "@/types";
 
 export function Avatar({ firstName, lastName, size }: AvatarProps) {
   return (

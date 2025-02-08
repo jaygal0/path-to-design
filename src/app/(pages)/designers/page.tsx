@@ -16,7 +16,7 @@ async function getData() {
   return data;
 }
 
-export default async function Page({ posts }: any) {
+export default async function Page() {
   const designers = await getData();
 
   return (

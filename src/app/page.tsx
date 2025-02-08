@@ -18,6 +18,8 @@ async function getData() {
 export default async function Home() {
   const designers = await getData();
 
+  const filterNames = ["Joshua", "Faj", "Amalie", "Joacim", "Elpida"]; // Select which designers to present on the first page
+
   return (
     <>
       <div className="text-gradient col-span-full col-start-1 row-span-1 row-start-1 mb-8 h-[100vh] max-h-[1080px] content-end pb-36 text-4xl font-bold leading-tight md:col-span-6 md:col-start-2 xl:col-span-7 xl:col-start-2 xl:text-5xl xl:leading-tight">
@@ -105,40 +107,43 @@ export default async function Home() {
         <span className="text-gradient">successful</span>.
       </h2>
       <div className="col-span-full col-start-1 row-span-1 row-start-6 mb-40 flex flex-col gap-8 md:col-span-4 md:col-start-3 xl:col-start-3 xl:col-end-10">
-        {designers.map((designer: any, index: any) => {
-          const {
-            companies,
-            countries,
-            createdAt,
-            firstName,
-            id,
-            isPublished,
-            lastName,
-            roles,
-            salaries,
-            slug,
-            updatedAt,
-          } = designer;
+        {designers
+          .filter((designer: any) => filterNames.includes(designer.firstName))
+          .slice(0, 5)
+          .map((designer: any, index: any) => {
+            const {
+              companies,
+              countries,
+              createdAt,
+              firstName,
+              id,
+              isPublished,
+              lastName,
+              roles,
+              salaries,
+              slug,
+              updatedAt,
+            } = designer;
 
-          return (
-            <div key={id}>
-              {isPublished && (
-                <CardDesigner
-                  company={companies.company}
-                  country={countries?.country}
-                  createdAt={createdAt}
-                  firstName={firstName}
-                  id={id}
-                  lastName={lastName}
-                  role={roles?.role}
-                  salary={salaries?.salary}
-                  slug={slug}
-                  updatedAt={updatedAt}
-                />
-              )}
-            </div>
-          );
-        })}
+            return (
+              <div key={id}>
+                {isPublished && (
+                  <CardDesigner
+                    company={companies.company}
+                    country={countries?.country}
+                    createdAt={createdAt}
+                    firstName={firstName}
+                    id={id}
+                    lastName={lastName}
+                    role={roles?.role}
+                    salary={salaries?.salary}
+                    slug={slug}
+                    updatedAt={updatedAt}
+                  />
+                )}
+              </div>
+            );
+          })}
       </div>
     </>
   );

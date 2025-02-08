@@ -1,5 +1,7 @@
 import { CardDesigner } from "../../components/CardDesigner";
 import Image from "next/image";
+import { Button } from "../../components/global/Button";
+import { menu } from "@/config/navigation";
 
 async function getData() {
   const res = await fetch(`${process.env.WEB_SITE}/api/designers`, {
@@ -66,9 +68,9 @@ export default async function Home() {
         </div>
       </div>
       <p className="col-span-full col-start-1 row-span-1 row-start-3 my-10 text-2xl md:col-span-5 md:col-start-3 xl:col-start-6 xl:col-end-11">
-        That’s why we built this site – to give you insight into what successful
-        designers are doing to thrive in the industry, so you no longer have to
-        worry about where to find this information.
+        That&apos;s why we built this site – to give you insight into what
+        successful designers are doing to thrive in the industry, so you no
+        longer have to worry about where to find this information.
       </p>
 
       {/* FORM */}
@@ -101,12 +103,18 @@ export default async function Home() {
           </div>
         </form>
       </div> */}
-      <h2 className="col-span-full col-start-1 row-span-1 row-start-5 my-20 text-4xl font-bold leading-tight md:col-span-5 md:col-start-2 xl:col-span-6 xl:col-start-2 xl:text-5xl xl:leading-tight">
+      <h2 className="col-span-full col-start-1 row-span-1 row-start-5 mb-10 mt-20 text-4xl font-bold leading-tight md:col-span-5 md:col-start-2 xl:col-span-6 xl:col-start-2 xl:text-5xl xl:leading-tight">
         <span className="text-gradient">Take charge of your career</span> by
         understanding the paths designers took to be{" "}
         <span className="text-gradient">successful</span>.
       </h2>
+
       <div className="col-span-full col-start-1 row-span-1 row-start-6 mb-40 flex flex-col gap-8 md:col-span-4 md:col-start-3 xl:col-start-3 xl:col-end-10">
+        <p className="col-span-full col-start-1 row-span-1 row-start-3 mb-20 text-2xl md:col-span-5 md:col-start-3 xl:col-start-6 xl:col-end-11">
+          Start exploring the inspiring journeys of successful designers and
+          uncover the strategies they used to thrive in the competitive design
+          industry.
+        </p>
         {designers
           .filter((designer: any) => filterNames.includes(designer.firstName))
           .slice(0, 5)
@@ -144,6 +152,9 @@ export default async function Home() {
               </div>
             );
           })}
+        <div className="flex w-full justify-center py-4">
+          <Button label="View more" url="/designers" isSecondary />
+        </div>
       </div>
     </>
   );

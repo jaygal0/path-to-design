@@ -136,9 +136,9 @@ export default async function Home() {
       </h3>
       <div className="col-span-full col-start-1 row-span-1 row-start-6 mb-24 md:col-span-5 md:col-start-3 xl:col-span-5 xl:col-start-5">
         <p className="mb-20 text-2xl">
-          That&apos;s why we built this site – to give you insight into what
-          successful designers are doing to thrive in the industry, so you no
-          longer have to worry about where to find this information.
+          Gain insider tips and proven strategies from top designers who&apos;ve
+          made their mark. Discover how to build a standout portfolio, network
+          effectively, and launch your design career with confidence.
         </p>
         <Button label="Start Learning" url="/blog" isSecondary />
       </div>

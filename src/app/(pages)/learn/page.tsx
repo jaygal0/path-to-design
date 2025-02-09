@@ -27,7 +27,7 @@ export default async function Page({ posts }: any) {
   return (
     <div className="col-span-full col-start-1 row-span-full row-start-1 flex min-h-screen flex-col justify-start py-64 md:col-span-6 md:col-start-2 xl:col-span-6 xl:col-start-4 xl:pt-72">
       <Heading
-        heading="Blog"
+        heading="Learn"
         desc="A hub of inspiration, guidance, and resources for aspiring designers.
         Whether you're just starting or looking to refine your craft,
         you'll find articles here tailored to your journey."
@@ -36,7 +36,7 @@ export default async function Page({ posts }: any) {
         .map((blog: any, index: any) => {
           return (
             <Link
-              href={`/blog/${blog.slug}`}
+              href={`/learn/${blog.slug}`}
               key={index}
               className="flex flex-col gap-2 rounded-2xl border p-4 py-2"
             >

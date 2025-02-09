@@ -40,7 +40,7 @@ export default async function Page({ params }: any) {
   return (
     <article className="prose-lg col-span-full col-start-1 row-span-1 row-start-1 mb-8 content-end py-64 pb-36 prose-h3:text-stone-400 prose-p:font-sans md:col-span-6 md:col-start-2 xl:col-span-6 xl:col-start-4 xl:pt-56	">
       <Link
-        href="/blog"
+        href="/learn"
         className="text-md font-sans font-thin no-underline hover:underline"
       >
         &#60; Back

@@ -19,8 +19,8 @@ export const menu: menuItem[] = [
     href: "/tools",
   },
   {
-    title: "Blog",
-    href: "/blog",
+    title: "Learn",
+    href: "/learn",
   },
 ];
 

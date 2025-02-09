@@ -140,7 +140,7 @@ export default async function Home() {
           made their mark. Discover how to build a standout portfolio, network
           effectively, and launch your design career with confidence.
         </p>
-        <Button label="Start Learning" url="/blog" isSecondary />
+        <Button label="Start Learning" url="/learn" isSecondary />
       </div>
 
       <h3 className="col-span-full col-start-1 row-span-1 row-start-7 mb-10 mt-20 text-4xl font-bold leading-tight md:col-span-5 md:col-start-2 xl:col-span-6 xl:col-start-2 xl:text-5xl xl:leading-tight">

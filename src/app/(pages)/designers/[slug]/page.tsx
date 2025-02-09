@@ -4,6 +4,23 @@ import { AppsUsed } from "@/../components/designer/AppsUsed";
 import { BooksUsed } from "@/../components/designer/BooksUsed";
 import ScrollToTop from "@/../components/global/ScrollToTop";
 import prisma from "@/lib/db";
+import { CardDesigner } from "../../../../../components/CardDesigner";
+import { Button } from "../../../../../components/global/Button";
+import { shuffle } from "lodash";
+
+async function getData() {
+  const res = await fetch(`${process.env.WEB_SITE}/api/designers`, {
+    next: {
+      revalidate: 60,
+    },
+  });
+
+  const data = await res.json();
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+  return data;
+}
 
 async function fetchDesignerData(slug: string) {
   const res = await fetch(`${process.env.WEB_SITE}/api/designers/${slug}`, {
@@ -39,7 +56,12 @@ export default async function DesignerPage(props: {
   params: Promise<{ slug: string }>;
 }) {
   const params = await props.params;
+  const designers = await getData();
   const designer = await fetchDesignerData(params.slug);
+  const filteredDesigners = designers.filter(
+    (designer: any) => designer.slug !== params.slug,
+  );
+  const randomDesigners = shuffle(filteredDesigners).slice(0, 5);
 
   const {
     apps,
@@ -93,7 +115,7 @@ export default async function DesignerPage(props: {
             style={{ objectFit: "cover" }}
           />
         </div>
-        <div className="flex flex-col gap-12">
+        <div className="mb-12 flex flex-col gap-12">
           {apps.length > 0 && <AppsUsed apps={apps} />}
           {books.length > 0 && <BooksUsed books={books} />}
           {answers
@@ -117,6 +139,46 @@ export default async function DesignerPage(props: {
                 ))}
               </div>
             ))}
+        </div>
+        <h3 className="flex w-full justify-center text-4xl">
+          Continue Reading
+        </h3>
+        {randomDesigners.map((designer: any) => {
+          const {
+            companies,
+            countries,
+            createdAt,
+            firstName,
+            id,
+            isPublished,
+            lastName,
+            roles,
+            salaries,
+            slug,
+            updatedAt,
+          } = designer;
+
+          return (
+            <div key={id}>
+              {isPublished && (
+                <CardDesigner
+                  company={companies.company}
+                  country={countries?.country}
+                  createdAt={createdAt}
+                  firstName={firstName}
+                  id={id}
+                  lastName={lastName}
+                  role={roles?.role}
+                  salary={salaries?.salary}
+                  slug={slug}
+                  updatedAt={updatedAt}
+                />
+              )}
+            </div>
+          );
+        })}
+        <div className="flex w-full py-4 lg:justify-center">
+          <Button label="View more" url="/designers" isSecondary />
         </div>
       </article>
     </>

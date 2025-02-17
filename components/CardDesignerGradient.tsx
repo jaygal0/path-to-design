@@ -1,5 +1,6 @@
 import { Avatar } from "./Avatar";
 import { AvatarProps } from "@/types";
+import { Country } from "./global/Country";
 
 export function CardDesignerGradient({
   firstName,
@@ -13,11 +14,7 @@ export function CardDesignerGradient({
     >
       <Avatar firstName={firstName} lastName={lastName} size="sm" />
       <div className="text-md">
-        {country == "" && ""}
-        {country == "England" && "🏴󠁧󠁢󠁥󠁮󠁧󠁿"}
-        {country == "Mexico" && "🇲🇽"}
-        {country == "Sweden" && "🇸🇪"}
-        {country == "India" && "🇮🇳"}
+        <Country country={country} />
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import dayjs from "dayjs"; // Import dayjs at the top
 import { DesignerProps } from "@/types";
 import { Avatar } from "./Avatar";
+import { Country } from "./global/Country";
 
 export function DesignerDetailBox({
   company,
@@ -25,11 +26,7 @@ export function DesignerDetailBox({
           <Avatar firstName={firstName} lastName={lastName} size="md" />
           <div className="flex flex-col justify-center">
             <div className="text-xl font-semibold">
-              {firstName} {lastName}
-              {country == "England" && " 🏴"}
-              {country == "Mexico" && " 🇲🇽"}
-              {country == "Sweden" && " 🇸🇪"}
-              {country == "India" && " 🇮🇳"}
+              {firstName} {lastName} <Country country={country} />
             </div>
             <div>
               {company == "Self-employed" ? (

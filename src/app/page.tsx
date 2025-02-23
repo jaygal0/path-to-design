@@ -31,6 +31,8 @@ export default async function Home() {
                 src="/profiles/joshua-galinato.jpg"
                 fill
                 alt="Profile image of Joshua Galinato"
+                sizes="(max-width: 768px) 100vw, 50vw" // Sizes for different breakpoints
+                priority
               />
             </div>
             <div className="relative h-12 w-12 overflow-hidden rounded-full bg-slate-50">
@@ -38,6 +40,8 @@ export default async function Home() {
                 src="/profiles/joacim-bohlander.jpg"
                 fill
                 alt="Profile image of Joacim Bolhander"
+                sizes="(max-width: 768px) 100vw, 50vw" // Sizes for different breakpoints
+                priority
               />
             </div>
             <div className="relative h-12 w-12 overflow-hidden rounded-full bg-slate-50">
@@ -45,6 +49,8 @@ export default async function Home() {
                 src="/profiles/amalie-mørch.jpg"
                 fill
                 alt="Profile image of Amalie Mørch"
+                sizes="(max-width: 768px) 100vw, 50vw" // Sizes for different breakpoints
+                priority
               />
             </div>
           </div>

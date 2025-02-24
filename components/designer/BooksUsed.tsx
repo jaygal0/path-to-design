@@ -1,23 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
 
 export function BooksUsed({ books }: any) {
-  // Initialize state for all image sources
-  const [imageSources, setImageSources] = useState(
-    books.map((book: any) => book.bookCover),
-  );
-
-  // Handle image error for a specific index
-  const handleImageError = (index: number) => {
-    setImageSources((prevSources: any) => {
-      const newSources = [...prevSources];
-      newSources[index] = "/book-fallback.jpg";
-      return newSources;
-    });
-  };
-
   return (
     <div>
       <h3 className="mb-4 font-serif text-2xl text-stone-200">
@@ -41,13 +26,18 @@ export function BooksUsed({ books }: any) {
                   className="flex w-[100px] flex-col items-center gap-2"
                 >
                   <Image
-                    src={imageSources[index]} // Use the state for the image source
+                    src={book.bookCover} // Directly use bookCover from the sorted books
                     alt={book.book}
                     width={100}
                     height={160}
                     quality={100}
                     className="rounded-lg object-cover transition-all hover:scale-105"
-                    onError={() => handleImageError(index)} // Pass the index to handle errors
+                    onError={() => {
+                      // Handle image error
+                      const fallbackImage = "/book-fallback.jpg";
+                      // Update bookCover to fallback image
+                      book.bookCover = fallbackImage;
+                    }}
                   />
                   <p className="my-0 w-[100px] text-center text-sm capitalize">
                     {book.book}

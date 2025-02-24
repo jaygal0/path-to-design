@@ -19,7 +19,7 @@ async function getData() {
 export default async function Home() {
   const designers = await getData();
 
-  const filterNames = ["Joshua", "Faj", "Amalie", "Joacim", "Elpida"]; // Select which designers to present on the first page
+  const filterNames = ["Joshua", "Shannel", "Amalie", "Joacim", "Kavé"]; // Select which designers to present on the first page
 
   return (
     <>

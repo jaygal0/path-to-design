@@ -6,6 +6,7 @@ export function Country({ country }: any) {
       {country == "Sweden" && "🇸🇪"}
       {country == "India" && "🇮🇳"}
       {country == "Iran" && "🇮🇷"}
+      {country == "United States" && "🇺🇸"}
     </div>
   );
 }

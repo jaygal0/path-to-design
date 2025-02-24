@@ -140,11 +140,11 @@ export function DesignerDetailBox({
               ""
             )}
           </div>
-          <p>
+          {/* <p>
             {salary
               ? `Salary: $${salary.toLocaleString("en-US")}+`
               : "Salary: Non-disclosed"}
-          </p>
+          </p> */}
         </div>
       </div>
       <p className="font-sans text-base text-stone-400">

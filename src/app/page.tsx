@@ -37,18 +37,18 @@ export default async function Home() {
             </div>
             <div className="relative h-12 w-12 overflow-hidden rounded-full bg-slate-50">
               <Image
-                src="/profiles/joacim-bohlander.jpg"
+                src="/profiles/shannel-wheeler.jpg"
                 fill
-                alt="Profile image of Joacim Bolhander"
+                alt="Profile image of designer"
                 sizes="(max-width: 768px) 100vw, 50vw" // Sizes for different breakpoints
                 priority
               />
             </div>
             <div className="relative h-12 w-12 overflow-hidden rounded-full bg-slate-50">
               <Image
-                src="/profiles/amalie-mørch.jpg"
+                src="/profiles/joacim-bohlander.jpg"
                 fill
-                alt="Profile image of Amalie Mørch"
+                alt="Profile image of designer"
                 sizes="(max-width: 768px) 100vw, 50vw" // Sizes for different breakpoints
                 priority
               />

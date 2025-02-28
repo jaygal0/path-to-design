@@ -25,6 +25,6 @@ export const menu: menuItem[] = [
 ];
 
 export const mainCTA: menuItem = {
-  title: "Share Your Story",
-  href: "/share",
+  title: "Get Featured",
+  href: "/get-featured",
 };

@@ -87,3 +87,9 @@ a .underline {
   right: -7rem;
   top: -4rem;
 }
+
+input {
+  padding: 8px;
+  border-radius: 4px;
+  background: #1e1e1e;
+}

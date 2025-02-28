@@ -8,52 +8,36 @@ datasource db {
 }
 
 model Designers {
-  id          String     @id @default(cuid())
-  isPublished Boolean?   @default(false)
-  firstName   String?
-  lastName    String?
-  slug        String?    @unique
-  email       String?
-  url         String?
-  x           String?
-  instagram   String?
-  dribble     String?
-  oneLiner    String?
-  rolesId     String?
-  salariesId  String?
-  countriesId String?
-  companiesId String?
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
-  answers     Answers[]
-  companies   Companies? @relation(fields: [companiesId], references: [id])
-  countries   Countries? @relation(fields: [countriesId], references: [id])
-  roles       Roles?     @relation(fields: [rolesId], references: [id])
-  salaries    Salaries?  @relation(fields: [salariesId], references: [id])
-  apps        Apps[]     @relation("AppsToDesigners")
-  books       Books[]    @relation("BooksToDesigners")
+  id              String     @id @default(cuid())
+  isPublished     Boolean?   @default(false)
+  firstName       String?
+  lastName        String?
+  slug            String?    @unique
+  email           String?
+  website         String?
+  linkedin        String?
+  instagram       String?
+  x               String?
+  dribbble        String?
+  country         String?
+  getStarted      String[]
+  responsibilites String[]
+  difficulties    String[]
+  incorporateApps String[]
+  advice          String[]
+  regrets         String[]
+  stayInspired    String[]
+  oneLiner        String?
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+  companiesId     String?
+  companies       Companies? @relation(fields: [companiesId], references: [id])
+  rolesId         String?
+  roles           Roles?     @relation(fields: [rolesId], references: [id])
+  apps            Apps[]     @relation("AppsToDesigners")
+  books           Books[]    @relation("BooksToDesigners")
 
   @@index([slug])
-}
-
-model Questions {
-  id        String    @id @default(cuid())
-  question  String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  answerId  String?
-  Answers   Answers[]
-}
-
-model Answers {
-  id          String     @id @default(cuid())
-  answer      String[]
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
-  designerId  String?
-  questionsid String?
-  designer    Designers? @relation(fields: [designerId], references: [id])
-  questions   Questions? @relation(fields: [questionsid], references: [id])
 }
 
 model Apps {
@@ -85,38 +69,13 @@ model Roles {
   designers Designers[]
 }
 
-model Countries {
-  id        String      @id @default(cuid())
-  country   String?
-  createdAt DateTime    @default(now())
-  updatedAt DateTime    @updatedAt
-  designers Designers[]
-}
-
-model Salaries {
-  id        String      @id @default(cuid())
-  salary    Int?
-  createdAt DateTime    @default(now())
-  updatedAt DateTime    @updatedAt
-  designers Designers[]
-}
-
 model Companies {
-  id            String       @id @default(cuid())
-  company       String?
-  desc          String?
-  url           String?
-  companySizeId String?
-  createdAt     DateTime     @default(now())
-  updatedAt     DateTime     @updatedAt
-  CompanySize   CompanySize? @relation(fields: [companySizeId], references: [id])
-  designers     Designers[]
-}
-
-model CompanySize {
-  id        String      @id @default(cuid())
-  size      String?
-  createdAt DateTime    @default(now())
-  updatedAt DateTime    @updatedAt
-  companies Companies[]
+  id          String      @id @default(cuid())
+  company     String?
+  desc        String?
+  url         String?
+  companySize String?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  designers   Designers[]
 }

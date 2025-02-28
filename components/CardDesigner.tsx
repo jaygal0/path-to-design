@@ -14,7 +14,6 @@ export function CardDesigner({
   id,
   lastName,
   role,
-  salary,
   slug,
   updatedAt,
   country,
@@ -65,11 +64,6 @@ export function CardDesigner({
                   ? `${role}, ${company}`
                   : `${role} at ${company}`}
               </p>
-              {/* <p className="flex md:w-1/3">
-                {salary
-                  ? `Salary: $${salary.toLocaleString("en-US")}+`
-                  : "Salary: Non-disclosed"}
-              </p> */}
               <p className="flex justify-end md:w-1/3">
                 {updatedAt === createdAt ? "Posted at " : "Updated at "}
                 {dayjs(updatedAt).format("D MMM, YYYY")}

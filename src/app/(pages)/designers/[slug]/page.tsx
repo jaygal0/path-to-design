@@ -1,12 +1,13 @@
-import Image from "next/image";
 import { DesignerDetailBox } from "@/../components/DesignerDetailBox";
 import { AppsUsed } from "@/../components/designer/AppsUsed";
 import { BooksUsed } from "@/../components/designer/BooksUsed";
 import ScrollToTop from "@/../components/global/ScrollToTop";
 import prisma from "@/lib/db";
-import { CardDesigner } from "../../../../../components/CardDesigner";
-import { Button } from "../../../../../components/global/Button";
 import { shuffle } from "lodash";
+import Image from "next/image";
+import { CardDesigner } from "../../../../../components/CardDesigner";
+import { Answers } from "../../../../../components/designer/Answers";
+import { Button } from "../../../../../components/global/Button";
 
 async function getData() {
   const res = await fetch(`${process.env.WEB_SITE}/api/designers`, {
@@ -64,24 +65,32 @@ export default async function DesignerPage(props: {
   const randomDesigners = shuffle(filteredDesigners).slice(0, 5);
 
   const {
+    advice,
     apps,
-    answers,
     books,
     companies,
-    countries,
+    country,
     createdAt,
-    dribble,
+    difficulties,
+    dribbble,
     email,
     firstName,
+    getStarted,
+    incorporateApps,
     instagram,
     lastName,
+    linkedin,
     oneLiner,
+    regrets,
+    responsibilites,
     roles,
-    salaries,
+    stayInspired,
     updatedAt,
-    url,
+    website,
     x,
   } = designer;
+
+  console.log(designer);
 
   return (
     <>
@@ -93,17 +102,16 @@ export default async function DesignerPage(props: {
         <DesignerDetailBox
           company={companies.company}
           companyURL={companies.url}
-          country={countries.country}
+          country={country}
           createdAt={createdAt}
-          dribble={dribble}
+          dribbble={dribbble}
           email={email}
           firstName={firstName}
           instagram={instagram}
           lastName={lastName}
           role={roles.role}
-          salary={salaries?.salary}
           updatedAt={updatedAt}
-          url={url}
+          website={website}
           x={x}
         />
         <div className="relative aspect-video w-full overflow-hidden rounded-lg">
@@ -118,27 +126,48 @@ export default async function DesignerPage(props: {
         <div className="mb-12 flex flex-col gap-12">
           {apps.length > 0 && <AppsUsed apps={apps} />}
           {books.length > 0 && <BooksUsed books={books} />}
-          {answers
-            .sort((a: any, b: any) => {
-              const dateA = new Date(a.questions[0]?.createdAt || 0);
-              const dateB = new Date(b.questions[0]?.createdAt || 0);
-              return dateA.getTime() - dateB.getTime();
-            })
-            .map((answerData: any) => (
-              <div key={answerData.id} className="w-full">
-                <h3 className="mb-4 font-serif text-2xl text-stone-200">
-                  {answerData.questions.question}
-                </h3>
-                {answerData.answer.map((text: string, index: number) => (
-                  <p
-                    key={index}
-                    className="mb-3 font-sans text-lg font-thin leading-relaxed"
-                  >
-                    {text}
-                  </p>
-                ))}
-              </div>
-            ))}
+          {getStarted.length > 0 && (
+            <Answers
+              question="How did you get started in your role as a designer?"
+              answer={getStarted}
+            />
+          )}
+          {responsibilites.length > 0 && (
+            <Answers
+              question="What are the responsibilities of your role as a designer?"
+              answer={responsibilites}
+            />
+          )}
+          {difficulties.length > 0 && (
+            <Answers
+              question="What difficulties do you encounter in your role as a designer? "
+              answer={difficulties}
+            />
+          )}
+          {incorporateApps.length > 0 && (
+            <Answers
+              question="How do you incorporate the apps in your design process?"
+              answer={incorporateApps}
+            />
+          )}
+          {advice.length > 0 && (
+            <Answers
+              question="What advice would you give to your younger self trying to get into the field of design?"
+              answer={advice}
+            />
+          )}
+          {regrets.length > 0 && (
+            <Answers
+              question="Do you have any regrets in your journey in becoming a designer?"
+              answer={regrets}
+            />
+          )}
+          {stayInspired.length > 0 && (
+            <Answers
+              question="As a designer how do you stay inspired?"
+              answer={stayInspired}
+            />
+          )}
         </div>
         <h3 className="flex w-full justify-center text-4xl">
           Continue Reading
@@ -153,7 +182,6 @@ export default async function DesignerPage(props: {
             isPublished,
             lastName,
             roles,
-            salaries,
             slug,
             updatedAt,
           } = designer;
@@ -163,13 +191,12 @@ export default async function DesignerPage(props: {
               {isPublished && (
                 <CardDesigner
                   company={companies.company}
-                  country={countries?.country}
+                  country={country}
                   createdAt={createdAt}
                   firstName={firstName}
                   id={id}
                   lastName={lastName}
                   role={roles?.role}
-                  salary={salaries?.salary}
                   slug={slug}
                   updatedAt={updatedAt}
                 />

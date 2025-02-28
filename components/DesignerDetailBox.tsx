@@ -8,15 +8,14 @@ export function DesignerDetailBox({
   country,
   companyURL,
   createdAt,
-  dribble,
+  dribbble,
   email,
   firstName,
   instagram,
   lastName,
   role,
-  salary,
   updatedAt,
-  url,
+  website,
   x,
 }: DesignerProps) {
   return (
@@ -49,8 +48,8 @@ export function DesignerDetailBox({
                 </>
               )}
             </div>
-            {url ? (
-              <a className="underline" href={url} target="_blank">
+            {website ? (
+              <a className="underline" href={website} target="_blank">
                 View Website &gt;
               </a>
             ) : (
@@ -119,8 +118,8 @@ export function DesignerDetailBox({
               ""
             )}
             {/* Dribble Icon */}
-            {dribble ? (
-              <a href={`http://dribbble.com/${dribble}`} target="_blank">
+            {dribbble ? (
+              <a href={`http://dribbble.com/${dribbble}`} target="_blank">
                 <svg
                   width="24"
                   height="24"

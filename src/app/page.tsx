@@ -166,14 +166,13 @@ export default async function Home() {
           .map((designer: any, index: any) => {
             const {
               companies,
-              countries,
+              country,
               createdAt,
               firstName,
               id,
               isPublished,
               lastName,
               roles,
-              salaries,
               slug,
               updatedAt,
             } = designer;
@@ -183,13 +182,12 @@ export default async function Home() {
                 {isPublished && (
                   <CardDesigner
                     company={companies.company}
-                    country={countries?.country}
+                    country={country}
                     createdAt={createdAt}
                     firstName={firstName}
                     id={id}
                     lastName={lastName}
                     role={roles?.role}
-                    salary={salaries?.salary}
                     slug={slug}
                     updatedAt={updatedAt}
                   />

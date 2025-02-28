@@ -38,27 +38,33 @@ export type menuItem = {
 };
 
 export type DesignerProps = {
-  apps?: [];
-  books?: [];
+  id?: string;
+  isPublished?: boolean | null;
+  firstName: string;
+  lastName: string;
+  slug?: string;
+  email?: string | null;
+  website?: string | null;
+  linkedin?: string | null;
+  instagram?: string | null;
+  x?: string | null;
+  dribbble?: string | null;
+  country?: string;
+  getStarted?: [] | null;
+  responsibilities?: [] | null;
+  difficulties?: [] | null;
+  incorporateApps?: [] | null;
+  advice?: [] | null;
+  regrets?: [] | null;
+  stayInspired?: [] | null;
+  oneLiner?: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
   company?: any | null;
   companyURL?: string;
-  country?: string;
-  createdAt?: Date | string;
-  dribble?: string | null;
-  email?: string | null;
-  firstName: string;
-  id?: string;
-  instagram?: string | null;
-  lastName: string;
-  oneLiner?: string;
-  published?: boolean | null;
   role?: string | null;
-  answers?: any | null;
-  salary?: number;
-  slug?: string;
-  updatedAt?: Date | string;
-  url?: string | null;
-  x?: string | null;
+  apps?: [];
+  books?: [];
 };
 
 export type DetailQuestionsProps = {

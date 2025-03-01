@@ -8,33 +8,60 @@ export default function Page() {
     firstName: "",
     lastName: "",
     email: "",
-    stayInspired: "",
+    website: "",
+    company: "",
+    companyDesc: "",
+    companySize: "",
+    companyUrl: "",
+    role: "",
   });
 
-  // Handle input changes
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
+    setSuccess(null);
+    setError(null);
 
     try {
       const response = await fetch("/api/designers", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData), // Send textarea as a string
+        body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
-      console.log("Response:", data);
-    } catch (error) {
-      console.error("Error submitting form:", error);
+      const result = await response.json();
+
+      if (response.ok) {
+        setSuccess("Designer added successfully!");
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          website: "",
+          company: "",
+          companyDesc: "",
+          companySize: "",
+          companyUrl: "",
+          role: "",
+        });
+      } else {
+        setError(result.error || "Something went wrong.");
+      }
+    } catch (err) {
+      setError("Failed to save data.");
     }
+
+    setLoading(false);
   };
 
   return (
@@ -43,33 +70,98 @@ export default function Page() {
         heading="Get featured"
         desc="Submit your story to get featured in front of potential employers, professionals and aspiring designers."
       />
-      <form className="flex flex-col gap-8">
+      <h2 className="mb-4 text-2xl font-bold">Add Designer</h2>
+      {success && <p className="text-green-500">{success}</p>}
+      {error && <p className="text-red-500">{error}</p>}
+      <form onSubmit={handleSubmit} className="space-y-4">
         <input
+          type="text"
           name="firstName"
           value={formData.firstName}
           onChange={handleChange}
           placeholder="First Name"
+          required
+          className="w-full rounded-lg border p-2"
         />
         <input
+          type="text"
           name="lastName"
           value={formData.lastName}
           onChange={handleChange}
           placeholder="Last Name"
+          required
+          className="w-full rounded-lg border p-2"
         />
         <input
+          type="email"
           name="email"
           value={formData.email}
           onChange={handleChange}
           placeholder="Email"
+          required
+          className="w-full rounded-lg border p-2"
+        />
+        <input
+          type="text"
+          name="website"
+          value={formData.website}
+          onChange={handleChange}
+          placeholder="Website"
+          className="w-full rounded-lg border p-2"
+        />
+
+        {/* Company Fields */}
+        <input
+          type="text"
+          name="company"
+          value={formData.company}
+          onChange={handleChange}
+          placeholder="Company Name"
+          required
+          className="w-full rounded-lg border p-2"
+        />
+        <input
+          type="text"
+          name="companySize"
+          value={formData.companySize}
+          onChange={handleChange}
+          placeholder="Company Size"
+          className="w-full rounded-lg border p-2"
+        />
+        <input
+          type="text"
+          name="companyUrl"
+          value={formData.companyUrl}
+          onChange={handleChange}
+          placeholder="Company URL"
+          className="w-full rounded-lg border p-2"
         />
         <textarea
-          name="stayInspired"
-          value={formData.stayInspired}
+          name="companyDesc"
+          value={formData.companyDesc}
           onChange={handleChange}
-          placeholder="Text"
-          className="bg-black p-2 text-white"
+          placeholder="Company Description"
+          className="w-full rounded-lg border p-2"
         />
-        <button onClick={handleSubmit}>Submit</button>
+
+        {/* Role Field */}
+        <input
+          type="text"
+          name="role"
+          value={formData.role}
+          onChange={handleChange}
+          placeholder="Role (e.g., UX Designer)"
+          required
+          className="w-full rounded-lg border p-2"
+        />
+
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full rounded-lg bg-blue-500 p-2 text-white hover:bg-blue-600 disabled:bg-gray-400"
+        >
+          {loading ? "Saving..." : "Save Designer"}
+        </button>
       </form>
     </div>
   );

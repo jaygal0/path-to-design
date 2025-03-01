@@ -34,6 +34,8 @@ model Designers {
   companies       Companies? @relation(fields: [companiesId], references: [id])
   rolesId         String?
   roles           Roles?     @relation(fields: [rolesId], references: [id])
+  appsText        String?
+  BooksText       String?
   apps            Apps[]     @relation("AppsToDesigners")
   books           Books[]    @relation("BooksToDesigners")
 
@@ -63,7 +65,7 @@ model Books {
 
 model Roles {
   id        String      @id @default(cuid())
-  role      String?
+  role      String?     @unique
   createdAt DateTime    @default(now())
   updatedAt DateTime    @updatedAt
   designers Designers[]
@@ -71,7 +73,7 @@ model Roles {
 
 model Companies {
   id          String      @id @default(cuid())
-  company     String?
+  company     String?     @unique
   desc        String?
   url         String?
   companySize String?

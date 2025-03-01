@@ -20,13 +20,13 @@ model Designers {
   x               String?
   dribbble        String?
   country         String?
-  getStarted      String[]
-  responsibilites String[]
-  difficulties    String[]
-  incorporateApps String[]
-  advice          String[]
-  regrets         String[]
-  stayInspired    String[]
+  getStarted      String?
+  responsibilites String?
+  difficulties    String?
+  incorporateApps String?
+  advice          String?
+  regrets         String?
+  stayInspired    String?
   oneLiner        String?
   createdAt       DateTime   @default(now())
   updatedAt       DateTime   @updatedAt

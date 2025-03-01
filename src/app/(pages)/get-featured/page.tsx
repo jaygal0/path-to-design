@@ -8,43 +8,69 @@ export default function Page() {
     firstName: "",
     lastName: "",
     email: "",
+    stayInspired: "",
   });
-  const [answers, setAnswers] = useState([{ answer: "" }]);
 
-  const handleChange = (e: { target: { name: any; value: any } }) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  // Handle input changes
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleAnswerChange = (index: number, value: string) => {
-    const newAnswers = [...answers];
-    newAnswers[index].answer = value;
-    setAnswers(newAnswers);
-  };
+  // Handle form submission
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
-  const addAnswerField = () => {
-    setAnswers([...answers, { answer: "" }]);
-  };
+    try {
+      const response = await fetch("/api/designers", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData), // Send textarea as a string
+      });
 
-  const handleSubmit = async () => {
-    const res = await fetch("/api/designers", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        designerData: formData,
-        answersData: answers,
-      }),
-    });
-
-    if (res.ok) alert("Form submitted successfully!");
+      const data = await response.json();
+      console.log("Response:", data);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
   };
 
   return (
     <div className="col-span-full col-start-1 row-span-full row-start-1 flex min-h-screen flex-col justify-start py-64 md:col-span-6 md:col-start-2 xl:col-span-6 xl:col-start-4 xl:pt-72">
       <Heading
-        heading="Get featured on Path to Design"
+        heading="Get featured"
         desc="Submit your story to get featured in front of potential employers, professionals and aspiring designers."
       />
-      <form className="flex flex-col gap-8"></form>
+      <form className="flex flex-col gap-8">
+        <input
+          name="firstName"
+          value={formData.firstName}
+          onChange={handleChange}
+          placeholder="First Name"
+        />
+        <input
+          name="lastName"
+          value={formData.lastName}
+          onChange={handleChange}
+          placeholder="Last Name"
+        />
+        <input
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="Email"
+        />
+        <textarea
+          name="stayInspired"
+          value={formData.stayInspired}
+          onChange={handleChange}
+          placeholder="Text"
+          className="bg-black p-2 text-white"
+        />
+        <button onClick={handleSubmit}>Submit</button>
+      </form>
     </div>
   );
 }

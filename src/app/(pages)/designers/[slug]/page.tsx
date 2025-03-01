@@ -90,8 +90,6 @@ export default async function DesignerPage(props: {
     x,
   } = designer;
 
-  console.log(designer);
-
   return (
     <>
       <ScrollToTop />
@@ -126,43 +124,43 @@ export default async function DesignerPage(props: {
         <div className="mb-12 flex flex-col gap-12">
           {apps.length > 0 && <AppsUsed apps={apps} />}
           {books.length > 0 && <BooksUsed books={books} />}
-          {getStarted.length > 0 && (
+          {getStarted && (
             <Answers
               question="How did you get started in your role as a designer?"
               answer={getStarted}
             />
           )}
-          {responsibilites.length > 0 && (
+          {responsibilites && (
             <Answers
               question="What are the responsibilities of your role as a designer?"
               answer={responsibilites}
             />
           )}
-          {difficulties.length > 0 && (
+          {difficulties && (
             <Answers
               question="What difficulties do you encounter in your role as a designer? "
               answer={difficulties}
             />
           )}
-          {incorporateApps.length > 0 && (
+          {incorporateApps && (
             <Answers
               question="How do you incorporate the apps in your design process?"
               answer={incorporateApps}
             />
           )}
-          {advice.length > 0 && (
+          {advice && (
             <Answers
               question="What advice would you give to your younger self trying to get into the field of design?"
               answer={advice}
             />
           )}
-          {regrets.length > 0 && (
+          {regrets && (
             <Answers
               question="Do you have any regrets in your journey in becoming a designer?"
               answer={regrets}
             />
           )}
-          {stayInspired.length > 0 && (
+          {stayInspired && (
             <Answers
               question="As a designer how do you stay inspired?"
               answer={stayInspired}
@@ -175,7 +173,7 @@ export default async function DesignerPage(props: {
         {randomDesigners.map((designer: any) => {
           const {
             companies,
-            countries,
+            country,
             createdAt,
             firstName,
             id,

@@ -88,8 +88,12 @@ a .underline {
   top: -4rem;
 }
 
-input {
+input,
+textarea,
+select {
   padding: 8px;
   border-radius: 4px;
   background: #1e1e1e;
+  width: 100%;
+  margin: 0;
 }

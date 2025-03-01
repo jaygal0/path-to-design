@@ -2,18 +2,36 @@
 
 import { Heading } from "../../../../components/global/Heading";
 import { useState } from "react";
+import { companySizes } from "@/config/companySizes";
+import { designerRoles } from "@/config/designerRoles";
+import { countries } from "@/config/countries";
 
 export default function Page() {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
-    website: "",
+    role: "",
+    customRole: "",
     company: "",
-    companyDesc: "",
     companySize: "",
     companyUrl: "",
-    role: "",
+    website: "",
+    linkedin: "",
+    instagram: "",
+    x: "",
+    dribbble: "",
+    country: "",
+    apps: "",
+    books: "",
+    getStarted: "",
+    responsibilities: "",
+    difficulties: "",
+    incorporateApps: "",
+    advice: "",
+    regrets: "",
+    inspired: "",
+    oneLiner: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -21,7 +39,9 @@ export default function Page() {
   const [error, setError] = useState<string | null>(null);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -47,12 +67,27 @@ export default function Page() {
           firstName: "",
           lastName: "",
           email: "",
-          website: "",
+          role: "",
+          customRole: "",
           company: "",
-          companyDesc: "",
           companySize: "",
           companyUrl: "",
-          role: "",
+          website: "",
+          linkedin: "",
+          instagram: "",
+          x: "",
+          dribbble: "",
+          country: "",
+          apps: "",
+          books: "",
+          getStarted: "",
+          responsibilities: "",
+          difficulties: "",
+          incorporateApps: "",
+          advice: "",
+          regrets: "",
+          inspired: "",
+          oneLiner: "",
         });
       } else {
         setError(result.error || "Something went wrong.");
@@ -70,91 +105,254 @@ export default function Page() {
         heading="Get featured"
         desc="Submit your story to get featured in front of potential employers, professionals and aspiring designers."
       />
-      <h2 className="mb-4 text-2xl font-bold">Add Designer</h2>
       {success && <p className="text-green-500">{success}</p>}
       {error && <p className="text-red-500">{error}</p>}
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <label htmlFor="firstName">First name</label>
         <input
           type="text"
           name="firstName"
           value={formData.firstName}
           onChange={handleChange}
-          placeholder="First Name"
+          placeholder="Joshua"
           required
-          className="w-full rounded-lg border p-2"
         />
+        <label htmlFor="lastName">Last name</label>
         <input
           type="text"
           name="lastName"
           value={formData.lastName}
           onChange={handleChange}
-          placeholder="Last Name"
+          placeholder="Galinato"
           required
-          className="w-full rounded-lg border p-2"
         />
+        <label htmlFor="email">Email</label>
         <input
           type="email"
           name="email"
           value={formData.email}
           onChange={handleChange}
-          placeholder="Email"
+          placeholder="joshua@galina.to"
           required
-          className="w-full rounded-lg border p-2"
         />
-        <input
-          type="text"
-          name="website"
-          value={formData.website}
+        <label htmlFor="role">Job title</label>
+        <select
+          name="role"
+          value={formData.role}
           onChange={handleChange}
-          placeholder="Website"
-          className="w-full rounded-lg border p-2"
-        />
-
-        {/* Company Fields */}
+          required
+        >
+          <option value="" disabled>
+            --- Select Role ---
+          </option>
+          {designerRoles.map((size) => (
+            <option key={size} value={size}>
+              {size}
+            </option>
+          ))}
+          <option value="Other">Other</option>
+        </select>
+        {formData.role === "Other" && (
+          <input
+            type="text"
+            name="customRole"
+            value={formData.customRole}
+            onChange={handleChange}
+            placeholder="Enter new job title"
+            required
+            className="mt-2"
+          />
+        )}
+        <label htmlFor="company">Company</label>
         <input
           type="text"
           name="company"
           value={formData.company}
           onChange={handleChange}
-          placeholder="Company Name"
+          placeholder="Path to Design"
           required
-          className="w-full rounded-lg border p-2"
         />
-        <input
-          type="text"
+        <label htmlFor="companySize">Company size</label>
+        <select
           name="companySize"
           value={formData.companySize}
           onChange={handleChange}
           placeholder="Company Size"
-          className="w-full rounded-lg border p-2"
-        />
+        >
+          <option value="" disabled>
+            --- Select ---
+          </option>
+          {companySizes.map((size) => (
+            <option key={size} value={size}>
+              {size}
+            </option>
+          ))}
+        </select>
+        <label htmlFor="companyUrl">Company website</label>
         <input
           type="text"
           name="companyUrl"
           value={formData.companyUrl}
           onChange={handleChange}
-          placeholder="Company URL"
-          className="w-full rounded-lg border p-2"
+          placeholder="https://pathtodesign.com"
         />
-        <textarea
-          name="companyDesc"
-          value={formData.companyDesc}
-          onChange={handleChange}
-          placeholder="Company Description"
-          className="w-full rounded-lg border p-2"
-        />
-
-        {/* Role Field */}
+        <label htmlFor="website">Your personal website</label>
         <input
           type="text"
-          name="role"
-          value={formData.role}
+          name="website"
+          value={formData.website}
           onChange={handleChange}
-          placeholder="Role (e.g., UX Designer)"
-          required
-          className="w-full rounded-lg border p-2"
+          placeholder="https://galina.to"
         />
-
+        <label htmlFor="linkedin">LinkedIn profile</label>
+        <input
+          type="url"
+          name="linkedin"
+          value={formData.linkedin}
+          onChange={handleChange}
+          placeholder="https://linkedin/joshuagalinato"
+        />
+        <label htmlFor="instagram">Instgram handle</label>
+        <input
+          type="text"
+          name="instagram"
+          value={formData.instagram}
+          onChange={handleChange}
+          placeholder="@joshuagalinato"
+        />
+        <label htmlFor="x">X handle</label>
+        <input
+          type="text"
+          name="x"
+          value={formData.x}
+          onChange={handleChange}
+          placeholder="@joshuagalinato"
+        />
+        <label htmlFor="dribbble">Dribbble handle</label>
+        <input
+          type="text"
+          name="dribbble"
+          value={formData.dribbble}
+          onChange={handleChange}
+          placeholder="@joshuagalinato"
+        />
+        <label htmlFor="country">Country</label>
+        <select name="country" value={formData.country} onChange={handleChange}>
+          <option value="" disabled>
+            --- Select ---
+          </option>
+          {countries.map((country) => (
+            <option key={country} value={country}>
+              {country}
+            </option>
+          ))}
+        </select>
+        <label htmlFor="apps">What apps do you use to help you design?</label>
+        <textarea
+          name="apps"
+          value={formData.apps}
+          onChange={handleChange}
+          placeholder="Start writing..."
+          rows={7}
+          maxLength={1000}
+        />
+        <label htmlFor="books">
+          What books have you read that helped you get to where are now?
+        </label>
+        <textarea
+          name="books"
+          value={formData.books}
+          onChange={handleChange}
+          placeholder="Start writing..."
+          rows={7}
+          maxLength={1000}
+        />
+        <label htmlFor="getStarted">
+          How did you get started in your role as a designer?
+        </label>
+        <textarea
+          name="getStarted"
+          value={formData.getStarted}
+          onChange={handleChange}
+          placeholder="Start writing..."
+          rows={7}
+          maxLength={1000}
+        />
+        <label htmlFor="responsibilies">
+          What are the responsibilities of your role as a designer?
+        </label>
+        <textarea
+          name="responsibilities"
+          value={formData.responsibilities}
+          onChange={handleChange}
+          placeholder="Start writing..."
+          rows={7}
+          maxLength={1000}
+        />
+        <label htmlFor="difficulties">
+          What difficulties do you encounter in your role as a designer?
+        </label>
+        <textarea
+          name="difficulties"
+          value={formData.difficulties}
+          onChange={handleChange}
+          placeholder="Start writing..."
+          rows={7}
+          maxLength={1000}
+        />
+        <label htmlFor="incorporatedApps">
+          How do you incorporate the apps in your design process?
+        </label>
+        <textarea
+          name="incorporateApps"
+          value={formData.incorporateApps}
+          onChange={handleChange}
+          placeholder="Start writing..."
+          rows={7}
+          maxLength={1000}
+        />
+        <label htmlFor="advice">
+          What advice would you give to your younger self trying to get into the
+          field of design?
+        </label>
+        <textarea
+          name="advice"
+          value={formData.advice}
+          onChange={handleChange}
+          placeholder="Start writing..."
+          rows={7}
+          maxLength={1000}
+        />
+        <label htmlFor="regrets">
+          Do you have any regrets in your journey in becoming a designer?
+        </label>
+        <textarea
+          name="regrets"
+          value={formData.regrets}
+          onChange={handleChange}
+          placeholder="Start writing..."
+          rows={7}
+          maxLength={1000}
+        />
+        <label htmlFor="inspired">
+          As a designer how do you stay inspired?
+        </label>
+        <textarea
+          name="inspired"
+          value={formData.inspired}
+          onChange={handleChange}
+          placeholder="Start writing..."
+          rows={7}
+          maxLength={1000}
+        />
+        <label htmlFor="oneLiner">What's your one liner?</label>
+        <input
+          type="text"
+          name="oneLiner"
+          value={formData.oneLiner}
+          onChange={handleChange}
+          placeholder="Start writing..."
+        />
         <button
           type="submit"
           disabled={loading}

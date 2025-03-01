@@ -22,15 +22,15 @@ export default function Page() {
     x: "",
     dribbble: "",
     country: "",
-    apps: "",
-    books: "",
+    appsText: "",
+    booksText: "",
     getStarted: "",
     responsibilities: "",
     difficulties: "",
     incorporateApps: "",
     advice: "",
     regrets: "",
-    inspired: "",
+    stayInspired: "",
     oneLiner: "",
   });
 
@@ -78,15 +78,15 @@ export default function Page() {
           x: "",
           dribbble: "",
           country: "",
-          apps: "",
-          books: "",
+          appsText: "",
+          booksText: "",
           getStarted: "",
           responsibilities: "",
           difficulties: "",
           incorporateApps: "",
           advice: "",
           regrets: "",
-          inspired: "",
+          stayInspired: "",
           oneLiner: "",
         });
       } else {
@@ -247,21 +247,23 @@ export default function Page() {
             </option>
           ))}
         </select>
-        <label htmlFor="apps">What apps do you use to help you design?</label>
+        <label htmlFor="appsText">
+          What apps do you use to help you design?
+        </label>
         <textarea
-          name="apps"
-          value={formData.apps}
+          name="appsText"
+          value={formData.appsText}
           onChange={handleChange}
           placeholder="Start writing..."
           rows={7}
           maxLength={1000}
         />
-        <label htmlFor="books">
+        <label htmlFor="booksText">
           What books have you read that helped you get to where are now?
         </label>
         <textarea
-          name="books"
-          value={formData.books}
+          name="booksText"
+          value={formData.booksText}
           onChange={handleChange}
           placeholder="Start writing..."
           rows={7}
@@ -334,12 +336,12 @@ export default function Page() {
           rows={7}
           maxLength={1000}
         />
-        <label htmlFor="inspired">
+        <label htmlFor="stayInspired">
           As a designer how do you stay inspired?
         </label>
         <textarea
-          name="inspired"
-          value={formData.inspired}
+          name="stayInspired"
+          value={formData.stayInspired}
           onChange={handleChange}
           placeholder="Start writing..."
           rows={7}

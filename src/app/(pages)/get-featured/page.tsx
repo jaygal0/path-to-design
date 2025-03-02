@@ -5,6 +5,7 @@ import { useState } from "react";
 import { companySizes } from "@/config/companySizes";
 import { designerRoles } from "@/config/designerRoles";
 import { countries } from "@/config/countries";
+import { ButtonForm } from "../../../../components/global/ButtonForm";
 
 export default function Page() {
   const [formData, setFormData] = useState({
@@ -163,9 +164,10 @@ export default function Page() {
           />
         </>
       )}
-      {success && <p className="text-green-500">{success}</p>}
-      {error && <p className="text-red-500">{error}</p>}
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col gap-4 font-sans text-lg"
+      >
         {step === 1 && (
           <>
             <label htmlFor="firstName">First name</label>
@@ -259,18 +261,12 @@ export default function Page() {
                 )}
               </>
             )}
-
-            <button type="button" onClick={handleNext}>
-              Next
-            </button>
+            <ButtonForm prop={handleNext} />
           </>
         )}
         {step === 2 && (
           <>
-            <button type="button" onClick={handleBack}>
-              Back
-            </button>
-
+            <ButtonForm back prop={handleBack} />
             <label htmlFor="company">Company</label>
             <input
               type="text"
@@ -304,17 +300,12 @@ export default function Page() {
               onChange={handleChange}
               placeholder="https://pathtodesign.com"
             />
-
-            <button type="button" onClick={handleNext}>
-              Next
-            </button>
+            <ButtonForm prop={handleNext} />
           </>
         )}
         {step === 3 && (
           <>
-            <button type="button" onClick={handleBack}>
-              Back
-            </button>
+            <ButtonForm back prop={handleBack} />
             <label htmlFor="website">Your personal website</label>
             <input
               type="text"
@@ -355,17 +346,12 @@ export default function Page() {
               onChange={handleChange}
               placeholder="@joshuagalinato"
             />
-
-            <button type="button" onClick={handleNext}>
-              Next
-            </button>
+            <ButtonForm prop={handleNext} />
           </>
         )}
         {step === 4 && (
           <>
-            <button type="button" onClick={handleBack}>
-              Back
-            </button>
+            <ButtonForm back prop={handleBack} />
             <label htmlFor="appsText">
               What apps do you use to help you design?
             </label>
@@ -374,7 +360,7 @@ export default function Page() {
               value={formData.appsText}
               onChange={handleChange}
               placeholder="Start writing..."
-              rows={7}
+              rows={5}
               maxLength={1000}
             />
             <label htmlFor="booksText">
@@ -385,20 +371,15 @@ export default function Page() {
               value={formData.booksText}
               onChange={handleChange}
               placeholder="Start writing..."
-              rows={7}
+              rows={5}
               maxLength={1000}
             />
-
-            <button type="button" onClick={handleNext}>
-              Next
-            </button>
+            <ButtonForm prop={handleNext} />
           </>
         )}
         {step === 5 && (
           <>
-            <button type="button" onClick={handleBack}>
-              Back
-            </button>
+            <ButtonForm back prop={handleBack} />
             <label htmlFor="getStarted">
               How did you get started in your role as a designer?
             </label>
@@ -407,7 +388,7 @@ export default function Page() {
               value={formData.getStarted}
               onChange={handleChange}
               placeholder="Start writing..."
-              rows={7}
+              rows={5}
               maxLength={1000}
             />
             <label htmlFor="responsibilies">
@@ -418,7 +399,7 @@ export default function Page() {
               value={formData.responsibilities}
               onChange={handleChange}
               placeholder="Start writing..."
-              rows={7}
+              rows={5}
               maxLength={1000}
             />
             <label htmlFor="difficulties">
@@ -429,7 +410,7 @@ export default function Page() {
               value={formData.difficulties}
               onChange={handleChange}
               placeholder="Start writing..."
-              rows={7}
+              rows={5}
               maxLength={1000}
             />
             <label htmlFor="incorporatedApps">
@@ -440,7 +421,7 @@ export default function Page() {
               value={formData.incorporateApps}
               onChange={handleChange}
               placeholder="Start writing..."
-              rows={7}
+              rows={5}
               maxLength={1000}
             />
             <label htmlFor="advice">
@@ -452,7 +433,7 @@ export default function Page() {
               value={formData.advice}
               onChange={handleChange}
               placeholder="Start writing..."
-              rows={7}
+              rows={5}
               maxLength={1000}
             />
             <label htmlFor="regrets">
@@ -463,7 +444,7 @@ export default function Page() {
               value={formData.regrets}
               onChange={handleChange}
               placeholder="Start writing..."
-              rows={7}
+              rows={5}
               maxLength={1000}
             />
             <label htmlFor="stayInspired">
@@ -474,7 +455,7 @@ export default function Page() {
               value={formData.stayInspired}
               onChange={handleChange}
               placeholder="Start writing..."
-              rows={7}
+              rows={5}
               maxLength={1000}
             />
             <label htmlFor="oneLiner">What's your one liner?</label>
@@ -488,13 +469,18 @@ export default function Page() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full rounded-lg bg-blue-500 p-2 text-white hover:bg-blue-600 disabled:bg-gray-400"
+              className="text-1xl btn-gradient mt-8 flex w-fit items-center gap-4 rounded-md px-6 py-2 font-sans text-stone-950 transition-all hover:scale-105"
             >
-              {loading ? "Saving..." : "Save Designer"}
+              {loading ? "Submitting..." : "Submit"}
             </button>
           </>
         )}
       </form>
+      {error && (
+        <div className="mt-8 w-fit rounded-sm bg-red-500 p-2 px-4 font-sans text-white">
+          {error}
+        </div>
+      )}
     </div>
   );
 }

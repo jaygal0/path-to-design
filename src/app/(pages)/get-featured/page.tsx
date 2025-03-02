@@ -92,6 +92,7 @@ export default function Page() {
     if (validateStep()) {
       setStep(step + 1);
       setError(null);
+      window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       setError("Please fill in all required fields before proceeding.");
     }

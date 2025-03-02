@@ -6,6 +6,7 @@ import { companySizes } from "@/config/companySizes";
 import { designerRoles } from "@/config/designerRoles";
 import { countries } from "@/config/countries";
 import { ButtonForm } from "../../../../components/global/ButtonForm";
+import { FormContainer } from "../../../../components/getFeaturedForm/FormContainer";
 
 export default function Page() {
   const [formData, setFormData] = useState({
@@ -157,19 +158,14 @@ export default function Page() {
   return (
     <div className="col-span-full col-start-1 row-span-full row-start-1 flex min-h-screen flex-col justify-start py-64 md:col-span-6 md:col-start-2 xl:col-span-6 xl:col-start-4 xl:pt-72">
       {step <= 1 && (
-        <>
-          <Heading
-            heading="Get featured"
-            desc="Submit your story to get featured in front of potential employers, professionals and aspiring designers."
-          />
-        </>
+        <Heading
+          heading="Get featured"
+          desc="Submit your story to get featured in front of potential employers, professionals and aspiring designers."
+        />
       )}
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col gap-4 font-sans text-lg"
-      >
+      <form onSubmit={handleSubmit} className="text-lg">
         {step === 1 && (
-          <>
+          <FormContainer>
             <label htmlFor="firstName">First name</label>
             <input
               className={`${errors.firstName ? "border-red-500" : ""} border`}
@@ -262,210 +258,230 @@ export default function Page() {
               </>
             )}
             <ButtonForm prop={handleNext} />
-          </>
+          </FormContainer>
         )}
         {step === 2 && (
           <>
             <ButtonForm back prop={handleBack} />
-            <label htmlFor="company">Company</label>
-            <input
-              type="text"
-              name="company"
-              value={formData.company}
-              onChange={handleChange}
-              placeholder="Path to Design"
-              required
+            <Heading
+              heading="Company details"
+              desc="Share a bit about the company you work for—or even better, the one you built from the ground up!"
+              isSecondary
             />
-            <label htmlFor="companySize">Company size</label>
-            <select
-              name="companySize"
-              value={formData.companySize}
-              onChange={handleChange}
-              placeholder="Company Size"
-            >
-              <option value="" disabled>
-                --- Select ---
-              </option>
-              {companySizes.map((size) => (
-                <option key={size} value={size}>
-                  {size}
+            <FormContainer>
+              <label htmlFor="company">Company</label>
+              <input
+                type="text"
+                name="company"
+                value={formData.company}
+                onChange={handleChange}
+                placeholder="Path to Design"
+                required
+              />
+              <label htmlFor="companySize">Company size</label>
+              <select
+                name="companySize"
+                value={formData.companySize}
+                onChange={handleChange}
+                placeholder="Company Size"
+              >
+                <option value="" disabled>
+                  --- Select ---
                 </option>
-              ))}
-            </select>
-            <label htmlFor="companyUrl">Company website</label>
-            <input
-              type="text"
-              name="companyUrl"
-              value={formData.companyUrl}
-              onChange={handleChange}
-              placeholder="https://pathtodesign.com"
-            />
-            <ButtonForm prop={handleNext} />
+                {companySizes.map((size) => (
+                  <option key={size} value={size}>
+                    {size}
+                  </option>
+                ))}
+              </select>
+              <label htmlFor="companyUrl">Company website</label>
+              <input
+                type="text"
+                name="companyUrl"
+                value={formData.companyUrl}
+                onChange={handleChange}
+                placeholder="https://pathtodesign.com"
+              />
+              <ButtonForm prop={handleNext} />
+            </FormContainer>
           </>
         )}
         {step === 3 && (
           <>
             <ButtonForm back prop={handleBack} />
-            <label htmlFor="website">Your personal website</label>
-            <input
-              type="text"
-              name="website"
-              value={formData.website}
-              onChange={handleChange}
-              placeholder="https://galina.to"
+            <Heading
+              heading="Shareable links"
+              desc="Let others know where to find your personal website and other social media platforms."
+              isSecondary
             />
-            <label htmlFor="linkedin">LinkedIn profile</label>
-            <input
-              type="url"
-              name="linkedin"
-              value={formData.linkedin}
-              onChange={handleChange}
-              placeholder="https://linkedin/joshuagalinato"
-            />
-            <label htmlFor="instagram">Instgram handle</label>
-            <input
-              type="text"
-              name="instagram"
-              value={formData.instagram}
-              onChange={handleChange}
-              placeholder="@joshuagalinato"
-            />
-            <label htmlFor="x">X handle</label>
-            <input
-              type="text"
-              name="x"
-              value={formData.x}
-              onChange={handleChange}
-              placeholder="@joshuagalinato"
-            />
-            <label htmlFor="dribbble">Dribbble handle</label>
-            <input
-              type="text"
-              name="dribbble"
-              value={formData.dribbble}
-              onChange={handleChange}
-              placeholder="@joshuagalinato"
-            />
-            <ButtonForm prop={handleNext} />
+            <FormContainer>
+              <label htmlFor="website">Your personal website</label>
+              <input
+                type="text"
+                name="website"
+                value={formData.website}
+                onChange={handleChange}
+                placeholder="https://galina.to"
+              />
+              <label htmlFor="linkedin">LinkedIn profile</label>
+              <input
+                type="url"
+                name="linkedin"
+                value={formData.linkedin}
+                onChange={handleChange}
+                placeholder="https://linkedin/joshuagalinato"
+              />
+              <label htmlFor="instagram">Instgram handle</label>
+              <input
+                type="text"
+                name="instagram"
+                value={formData.instagram}
+                onChange={handleChange}
+                placeholder="@joshuagalinato"
+              />
+              <label htmlFor="x">X handle</label>
+              <input
+                type="text"
+                name="x"
+                value={formData.x}
+                onChange={handleChange}
+                placeholder="@joshuagalinato"
+              />
+              <label htmlFor="dribbble">Dribbble handle</label>
+              <input
+                type="text"
+                name="dribbble"
+                value={formData.dribbble}
+                onChange={handleChange}
+                placeholder="@joshuagalinato"
+              />
+              <ButtonForm prop={handleNext} />
+            </FormContainer>
           </>
         )}
         {step === 4 && (
           <>
             <ButtonForm back prop={handleBack} />
-            <label htmlFor="appsText">
-              What apps do you use to help you design?
-            </label>
-            <textarea
-              name="appsText"
-              value={formData.appsText}
-              onChange={handleChange}
-              placeholder="Start writing..."
-              rows={5}
-              maxLength={1000}
-            />
-            <label htmlFor="booksText">
-              What books have you read that helped you get to where are now?
-            </label>
-            <textarea
-              name="booksText"
-              value={formData.booksText}
-              onChange={handleChange}
-              placeholder="Start writing..."
-              rows={5}
-              maxLength={1000}
-            />
-            <ButtonForm prop={handleNext} />
+            <Heading heading="Helpful resources" isSecondary />
+            <FormContainer>
+              <label htmlFor="appsText">
+                What apps do you use to help you design?
+              </label>
+              <textarea
+                name="appsText"
+                value={formData.appsText}
+                onChange={handleChange}
+                placeholder="Start writing..."
+                rows={5}
+                maxLength={1000}
+              />
+              <label htmlFor="booksText">
+                What books have you read that helped you get to where are now?
+              </label>
+              <textarea
+                name="booksText"
+                value={formData.booksText}
+                onChange={handleChange}
+                placeholder="Start writing..."
+                rows={5}
+                maxLength={1000}
+              />
+              <ButtonForm prop={handleNext} />
+            </FormContainer>
           </>
         )}
         {step === 5 && (
           <>
             <ButtonForm back prop={handleBack} />
-            <label htmlFor="getStarted">
-              How did you get started in your role as a designer?
-            </label>
-            <textarea
-              name="getStarted"
-              value={formData.getStarted}
-              onChange={handleChange}
-              placeholder="Start writing..."
-              rows={5}
-              maxLength={1000}
-            />
-            <label htmlFor="responsibilies">
-              What are the responsibilities of your role as a designer?
-            </label>
-            <textarea
-              name="responsibilities"
-              value={formData.responsibilities}
-              onChange={handleChange}
-              placeholder="Start writing..."
-              rows={5}
-              maxLength={1000}
-            />
-            <label htmlFor="difficulties">
-              What difficulties do you encounter in your role as a designer?
-            </label>
-            <textarea
-              name="difficulties"
-              value={formData.difficulties}
-              onChange={handleChange}
-              placeholder="Start writing..."
-              rows={5}
-              maxLength={1000}
-            />
-            <label htmlFor="incorporatedApps">
-              How do you incorporate the apps in your design process?
-            </label>
-            <textarea
-              name="incorporateApps"
-              value={formData.incorporateApps}
-              onChange={handleChange}
-              placeholder="Start writing..."
-              rows={5}
-              maxLength={1000}
-            />
-            <label htmlFor="advice">
-              What advice would you give to your younger self trying to get into
-              the field of design?
-            </label>
-            <textarea
-              name="advice"
-              value={formData.advice}
-              onChange={handleChange}
-              placeholder="Start writing..."
-              rows={5}
-              maxLength={1000}
-            />
-            <label htmlFor="regrets">
-              Do you have any regrets in your journey in becoming a designer?
-            </label>
-            <textarea
-              name="regrets"
-              value={formData.regrets}
-              onChange={handleChange}
-              placeholder="Start writing..."
-              rows={5}
-              maxLength={1000}
-            />
-            <label htmlFor="stayInspired">
-              As a designer how do you stay inspired?
-            </label>
-            <textarea
-              name="stayInspired"
-              value={formData.stayInspired}
-              onChange={handleChange}
-              placeholder="Start writing..."
-              rows={5}
-              maxLength={1000}
-            />
-            <label htmlFor="oneLiner">What's your one liner?</label>
-            <input
-              type="text"
-              name="oneLiner"
-              value={formData.oneLiner}
-              onChange={handleChange}
-              placeholder="Start writing..."
-            />
+            <Heading heading="Share your path" isSecondary />
+            <FormContainer>
+              <label htmlFor="getStarted">
+                How did you get started in your role as a designer?
+              </label>
+              <textarea
+                name="getStarted"
+                value={formData.getStarted}
+                onChange={handleChange}
+                placeholder="Start writing..."
+                rows={5}
+                maxLength={1000}
+              />
+              <label htmlFor="responsibilies">
+                What are the responsibilities of your role as a designer?
+              </label>
+              <textarea
+                name="responsibilities"
+                value={formData.responsibilities}
+                onChange={handleChange}
+                placeholder="Start writing..."
+                rows={5}
+                maxLength={1000}
+              />
+              <label htmlFor="difficulties">
+                What difficulties do you encounter in your role as a designer?
+              </label>
+              <textarea
+                name="difficulties"
+                value={formData.difficulties}
+                onChange={handleChange}
+                placeholder="Start writing..."
+                rows={5}
+                maxLength={1000}
+              />
+              <label htmlFor="incorporatedApps">
+                How do you incorporate the apps in your design process?
+              </label>
+              <textarea
+                name="incorporateApps"
+                value={formData.incorporateApps}
+                onChange={handleChange}
+                placeholder="Start writing..."
+                rows={5}
+                maxLength={1000}
+              />
+              <label htmlFor="advice">
+                What advice would you give to your younger self trying to get
+                into the field of design?
+              </label>
+              <textarea
+                name="advice"
+                value={formData.advice}
+                onChange={handleChange}
+                placeholder="Start writing..."
+                rows={5}
+                maxLength={1000}
+              />
+              <label htmlFor="regrets">
+                Do you have any regrets in your journey in becoming a designer?
+              </label>
+              <textarea
+                name="regrets"
+                value={formData.regrets}
+                onChange={handleChange}
+                placeholder="Start writing..."
+                rows={5}
+                maxLength={1000}
+              />
+              <label htmlFor="stayInspired">
+                As a designer how do you stay inspired?
+              </label>
+              <textarea
+                name="stayInspired"
+                value={formData.stayInspired}
+                onChange={handleChange}
+                placeholder="Start writing..."
+                rows={5}
+                maxLength={1000}
+              />
+              <label htmlFor="oneLiner">What's your one liner?</label>
+              <input
+                type="text"
+                name="oneLiner"
+                value={formData.oneLiner}
+                onChange={handleChange}
+                placeholder="Start writing..."
+              />
+            </FormContainer>
             <button
               type="submit"
               disabled={loading}

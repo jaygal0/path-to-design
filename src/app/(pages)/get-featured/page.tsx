@@ -34,6 +34,7 @@ export default function Page() {
     oneLiner: "",
   });
 
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState<string | null>(null);
@@ -44,24 +45,45 @@ export default function Page() {
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >,
   ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+
+    // Clear error when user types
+    if (errors[name]) {
+      setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
+    }
+  };
+
+  const isValidEmail = (email: string) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
 
   const validateStep = () => {
+    let newErrors: { [key: string]: string } = {};
+
     if (step === 1) {
-      return (
-        formData.firstName?.trim() &&
-        formData.lastName?.trim() &&
-        formData.email?.trim() &&
-        formData.country?.trim()
-      );
+      if (!formData.firstName.trim())
+        newErrors.firstName = "First name is required";
+      if (!formData.lastName.trim())
+        newErrors.lastName = "Last name is required";
+      if (!formData.email.trim()) {
+        newErrors.email = "Email is required";
+      } else if (!isValidEmail(formData.email)) {
+        newErrors.email = "Invalid email format";
+      }
+
+      if (!formData.country.trim()) newErrors.country = "Country is required";
+      if (!formData.role.trim()) newErrors.role = "Job title is required";
+      if (formData.role === "Other" && !formData.customRole.trim()) {
+        newErrors.customRole = "Please specify your job title";
+      }
     } else if (step === 2) {
-      return (
-        formData.role?.trim() &&
-        (formData.role !== "Other" || formData.customRole?.trim()) // Validate custom role if 'Other' is selected
-      );
+      // Not sure if I want company required or not. I'll comment it out for now
+      // if (!formData.company.trim()) newErrors.company = "Company is required";
     }
-    return true; // Default case, though all steps are covered
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0; // Return true if no errors
   };
 
   const handleNext = () => {
@@ -85,7 +107,7 @@ export default function Page() {
     setError(null);
 
     try {
-      const response = await fetch("/api/designers", {
+      const response = await fetch("/api/get-featured", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -148,37 +170,49 @@ export default function Page() {
           <>
             <label htmlFor="firstName">First name</label>
             <input
-              type="text"
+              className={`${errors.firstName ? "border-red-500" : ""} border`}
               name="firstName"
-              value={formData.firstName}
               onChange={handleChange}
               placeholder="Joshua"
               required
+              type="text"
+              value={formData.firstName}
             />
+            {errors.firstName && (
+              <p className="text-red-500">{errors.firstName}</p>
+            )}
+
             <label htmlFor="lastName">Last name</label>
             <input
-              type="text"
+              className={`${errors.lastName ? "border-red-500" : ""} border`}
               name="lastName"
-              value={formData.lastName}
               onChange={handleChange}
               placeholder="Galinato"
               required
+              type="text"
+              value={formData.lastName}
             />
+            {errors.lastName && (
+              <p className="text-red-500">{errors.lastName}</p>
+            )}
             <label htmlFor="email">Email</label>
             <input
-              type="email"
+              className={`${errors.email ? "border-red-500" : ""} border`}
               name="email"
-              value={formData.email}
               onChange={handleChange}
               placeholder="joshua@galina.to"
               required
+              type="email"
+              value={formData.email}
             />
+            {errors.email && <p className="text-red-500">{errors.email}</p>}
             <label htmlFor="country">Where are you based?</label>
             <select
+              className={`${errors.country ? "border-red-500" : ""} border`}
               name="country"
-              value={formData.country}
               onChange={handleChange}
               required
+              value={formData.country}
             >
               <option value="" disabled>
                 --- Select ---
@@ -189,22 +223,14 @@ export default function Page() {
                 </option>
               ))}
             </select>
-            <button type="button" onClick={handleNext}>
-              Next
-            </button>
-          </>
-        )}
-        {step === 2 && (
-          <>
-            <button type="button" onClick={handleBack}>
-              Back
-            </button>
+            {errors.country && <p className="text-red-500">{errors.country}</p>}
             <label htmlFor="role">Job title</label>
             <select
+              className={`${errors.role ? "border-red-500" : ""} border`}
               name="role"
-              value={formData.role}
               onChange={handleChange}
               required
+              value={formData.role}
             >
               <option value="" disabled>
                 --- Select Role ---
@@ -216,17 +242,35 @@ export default function Page() {
               ))}
               <option value="Other">Other</option>
             </select>
+            {errors.role && <p className="text-red-500">{errors.role}</p>}
             {formData.role === "Other" && (
-              <input
-                type="text"
-                name="customRole"
-                value={formData.customRole}
-                onChange={handleChange}
-                placeholder="Enter new job title"
-                required
-                className="mt-2"
-              />
+              <>
+                <input
+                  className={`${errors.customRole ? "border-red-500" : ""} border`}
+                  type="text"
+                  name="customRole"
+                  value={formData.customRole}
+                  onChange={handleChange}
+                  placeholder="Enter new job title"
+                  required
+                />
+                {errors.customRole && (
+                  <p className="text-red-500">{errors.customRole}</p>
+                )}
+              </>
             )}
+
+            <button type="button" onClick={handleNext}>
+              Next
+            </button>
+          </>
+        )}
+        {step === 2 && (
+          <>
+            <button type="button" onClick={handleBack}>
+              Back
+            </button>
+
             <label htmlFor="company">Company</label>
             <input
               type="text"
@@ -352,6 +396,9 @@ export default function Page() {
         )}
         {step === 5 && (
           <>
+            <button type="button" onClick={handleBack}>
+              Back
+            </button>
             <label htmlFor="getStarted">
               How did you get started in your role as a designer?
             </label>

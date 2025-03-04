@@ -43,6 +43,11 @@ export default function Page() {
     null,
   );
 
+  const [coverImage, setCoverImage] = useState<File | null>(null);
+  const [coverImagePreview, setCoverImagePreview] = useState<string | null>(
+    null,
+  );
+
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -64,11 +69,19 @@ export default function Page() {
     }
   };
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleProfileImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
       setProfileImage(file);
       setProfileImagePreview(URL.createObjectURL(file)); // Show preview
+    }
+  };
+
+  const handleCoverImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      setCoverImage(file);
+      setCoverImagePreview(URL.createObjectURL(file)); // Show preview
     }
   };
 
@@ -124,7 +137,7 @@ export default function Page() {
     setLoading(true);
     setError(null);
 
-    let uploadedImageUrl = formData.profileImage;
+    let uploadedProfileImageUrl = formData.profileImage;
 
     if (profileImage) {
       const imageFormData = new FormData();
@@ -139,7 +152,30 @@ export default function Page() {
 
       const uploadResult = await uploadResponse.json();
       if (uploadResponse.ok) {
-        uploadedImageUrl = `/uploads/${uploadResult.filename}`;
+        uploadedProfileImageUrl = `/uploads/${uploadResult.filename}`;
+      } else {
+        setError(uploadResult.error || "Image upload failed.");
+        setLoading(false);
+        return;
+      }
+    }
+
+    let uploadedCoverImageUrl = formData.profileImage;
+
+    if (coverImage) {
+      const imageFormData = new FormData();
+      imageFormData.append("file", coverImage);
+      imageFormData.append("firstName", formData.firstName); //Include first name
+      imageFormData.append("lastName", formData.lastName); // Include last name
+
+      const uploadResponse = await fetch("/api/cover-image-upload", {
+        method: "POST",
+        body: imageFormData,
+      });
+
+      const uploadResult = await uploadResponse.json();
+      if (uploadResponse.ok) {
+        uploadedCoverImageUrl = `/uploads/${uploadResult.filename}`;
       } else {
         setError(uploadResult.error || "Image upload failed.");
         setLoading(false);
@@ -311,12 +347,29 @@ export default function Page() {
               </>
             )}
             <label htmlFor="profileImage">Profile Image</label>
-            <input type="file" accept="image/*" onChange={handleImageChange} />
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleProfileImageChange}
+            />
             {profileImagePreview && (
               <img
                 src={profileImagePreview}
                 alt="Preview"
                 className="mt-2 h-32 w-32"
+              />
+            )}
+            <label htmlFor="coverImage">Cover Image</label>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleCoverImageChange}
+            />
+            {coverImagePreview && (
+              <img
+                src={coverImagePreview}
+                alt="Preview"
+                className="mt-2 h-32 w-64"
               />
             )}
             <ButtonForm prop={handleNext} />

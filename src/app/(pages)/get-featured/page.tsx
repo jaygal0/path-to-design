@@ -34,12 +34,15 @@ export default function Page() {
     regrets: "",
     stayInspired: "",
     oneLiner: "",
+    profileImage: "",
   });
+
+  const [image, setImage] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const totalSteps = 5; // For progress bar
@@ -55,6 +58,14 @@ export default function Page() {
     // Clear error when user types
     if (errors[name]) {
       setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
+    }
+  };
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      setImage(file);
+      setImagePreview(URL.createObjectURL(file)); // Show preview
     }
   };
 
@@ -108,8 +119,30 @@ export default function Page() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setSuccess(null);
     setError(null);
+
+    let uploadedImageUrl = formData.profileImage;
+
+    if (image) {
+      const imageFormData = new FormData();
+      imageFormData.append("file", image);
+      imageFormData.append("firstName", formData.firstName); //Include first name
+      imageFormData.append("lastName", formData.lastName); // Include last name
+
+      const uploadResponse = await fetch("/api/profile-image-upload", {
+        method: "POST",
+        body: imageFormData,
+      });
+
+      const uploadResult = await uploadResponse.json();
+      if (uploadResponse.ok) {
+        uploadedImageUrl = `/uploads/${uploadResult.filename}`;
+      } else {
+        setError(uploadResult.error || "Image upload failed.");
+        setLoading(false);
+        return;
+      }
+    }
 
     try {
       const response = await fetch("/api/get-featured", {
@@ -121,7 +154,6 @@ export default function Page() {
       const result = await response.json();
 
       if (response.ok) {
-        setSuccess("Designer added successfully!");
         setFormData({
           firstName: "",
           lastName: "",
@@ -147,6 +179,7 @@ export default function Page() {
           regrets: "",
           stayInspired: "",
           oneLiner: "",
+          profileImage: "",
         });
       } else {
         setError(result.error || "Something went wrong.");
@@ -272,6 +305,15 @@ export default function Page() {
                   <p className="text-red-500">{errors.customRole}</p>
                 )}
               </>
+            )}
+            <label htmlFor="profileImage">Profile Image</label>
+            <input type="file" accept="image/*" onChange={handleImageChange} />
+            {imagePreview && (
+              <img
+                src={imagePreview}
+                alt="Preview"
+                className="mt-2 h-32 w-32"
+              />
             )}
             <ButtonForm prop={handleNext} />
           </FormContainer>

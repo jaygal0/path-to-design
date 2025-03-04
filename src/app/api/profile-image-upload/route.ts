@@ -12,6 +12,7 @@ export async function POST(req: Request) {
 
     // Validate file type
     const allowedTypes = ["image/jpeg", "image/png"];
+
     if (!allowedTypes.includes(file.type)) {
       return NextResponse.json(
         { error: "Only JPG and PNG formats are allowed." },
@@ -21,6 +22,7 @@ export async function POST(req: Request) {
 
     // Validate file size (Max 2MB)
     const maxSize = 2 * 1024 * 1024;
+
     if (file.size > maxSize) {
       return NextResponse.json(
         { error: "File is too large. Maximum allowed size is 2MB." },
@@ -39,6 +41,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: true, url: blob.url });
   } catch (error) {
     console.error(error);
+
     return NextResponse.json(
       { error: "Upload failed", details: error },
       { status: 500 },

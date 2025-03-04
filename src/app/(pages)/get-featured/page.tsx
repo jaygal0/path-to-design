@@ -228,6 +228,7 @@ export default function Page() {
           profileImage: "",
           coverImage: "",
         });
+        window.location.href = "/thank-you"; // redirect to /thank-you once submission is okay
       } else {
         setError(result.error || "Something went wrong.");
       }

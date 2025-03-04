@@ -97,3 +97,9 @@ select {
   width: 100%;
   margin: 0;
 }
+
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  color: rgb(85, 85, 85);
+}

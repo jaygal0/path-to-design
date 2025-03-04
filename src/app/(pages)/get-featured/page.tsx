@@ -141,9 +141,9 @@ export default function Page() {
 
     if (profileImage) {
       const imageFormData = new FormData();
-      const fileName = `${formData.firstName}-${formData.lastName}-${Date.now()}${profileImage.name.substring(profileImage.name.lastIndexOf("."))}`;
+      const profileFileName = `profile-${formData.firstName}-${formData.lastName}-${Date.now()}${profileImage.name.substring(profileImage.name.lastIndexOf("."))}`;
 
-      imageFormData.append("file", profileImage, fileName);
+      imageFormData.append("file", profileImage, profileFileName);
 
       const uploadResponse = await fetch("/api/profile-image-upload", {
         method: "POST",
@@ -152,7 +152,7 @@ export default function Page() {
 
       const uploadResult = await uploadResponse.json();
       if (uploadResponse.ok) {
-        uploadedProfileImageUrl = `${fileName}`;
+        uploadedProfileImageUrl = profileFileName;
       } else {
         setError(uploadResult.error || "Image upload failed.");
         setLoading(false);
@@ -164,7 +164,7 @@ export default function Page() {
 
     if (coverImage) {
       const imageFormData = new FormData();
-      const coverFileName = `${formData.firstName}-${formData.lastName}-${Date.now()}${coverImage.name.substring(coverImage.name.lastIndexOf("."))}`;
+      const coverFileName = `cover-${formData.firstName}-${formData.lastName}-${Date.now()}${coverImage.name.substring(coverImage.name.lastIndexOf("."))}`;
 
       imageFormData.append("file", coverImage, coverFileName);
 
@@ -175,7 +175,7 @@ export default function Page() {
 
       const uploadResult = await uploadResponse.json();
       if (uploadResponse.ok) {
-        uploadedCoverImageUrl = `/uploads/${coverFileName}`;
+        uploadedCoverImageUrl = coverFileName;
       } else {
         setError(uploadResult.error || "Image upload failed.");
         setLoading(false);

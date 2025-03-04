@@ -21,6 +21,7 @@ model Designers {
   dribbble         String?
   country          String?
   profileImage     String?
+  coverImage       String?
   getStarted       String?
   responsibilities String?
   difficulties     String?

@@ -141,7 +141,7 @@ export default function Page() {
 
     if (profileImage) {
       const imageFormData = new FormData();
-      const profileFileName = `profile-${formData.firstName}-${formData.lastName}-${Date.now()}${profileImage.name.substring(profileImage.name.lastIndexOf("."))}`;
+      const profileFileName = `profile-${formData.firstName.toLowerCase()}-${formData.lastName.toLowerCase()}-${Date.now()}${profileImage.name.substring(profileImage.name.lastIndexOf("."))}`;
 
       imageFormData.append("file", profileImage, profileFileName);
 
@@ -164,7 +164,7 @@ export default function Page() {
 
     if (coverImage) {
       const imageFormData = new FormData();
-      const coverFileName = `cover-${formData.firstName}-${formData.lastName}-${Date.now()}${coverImage.name.substring(coverImage.name.lastIndexOf("."))}`;
+      const coverFileName = `cover-${formData.firstName.toLowerCase()}-${formData.lastName.toLowerCase()}-${Date.now()}${coverImage.name.substring(coverImage.name.lastIndexOf("."))}`;
 
       imageFormData.append("file", coverImage, coverFileName);
 
@@ -183,7 +183,7 @@ export default function Page() {
       }
     }
 
-    // 🔹 Update formData before submission
+    // Update formData before submission
     const updatedFormData = {
       ...formData,
       profileImage: uploadedProfileImageUrl,
@@ -353,32 +353,7 @@ export default function Page() {
                 )}
               </>
             )}
-            <label htmlFor="profileImage">Profile Image</label>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleProfileImageChange}
-            />
-            {profileImagePreview && (
-              <img
-                src={profileImagePreview}
-                alt="Preview"
-                className="mt-2 h-32 w-32"
-              />
-            )}
-            <label htmlFor="coverImage">Cover Image</label>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleCoverImageChange}
-            />
-            {coverImagePreview && (
-              <img
-                src={coverImagePreview}
-                alt="Preview"
-                className="mt-2 h-32 w-64"
-              />
-            )}
+
             <ButtonForm prop={handleNext} />
           </FormContainer>
         )}
@@ -477,6 +452,32 @@ export default function Page() {
                 onChange={handleChange}
                 placeholder="@joshuagalinato"
               />
+              <label htmlFor="profileImage">Profile Image</label>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleProfileImageChange}
+              />
+              {profileImagePreview && (
+                <img
+                  src={profileImagePreview}
+                  alt="Preview"
+                  className="mt-2 h-32 w-32"
+                />
+              )}
+              <label htmlFor="coverImage">Cover Image</label>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleCoverImageChange}
+              />
+              {coverImagePreview && (
+                <img
+                  src={coverImagePreview}
+                  alt="Preview"
+                  className="mt-2 aspect-video w-full lg:w-64 "
+                />
+              )}
               <ButtonForm prop={handleNext} />
             </FormContainer>
           </>

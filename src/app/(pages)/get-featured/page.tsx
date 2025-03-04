@@ -35,10 +35,13 @@ export default function Page() {
     stayInspired: "",
     oneLiner: "",
     profileImage: "",
+    coverImage: "",
   });
 
-  const [image, setImage] = useState<File | null>(null);
-  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [profileImage, setProfileImage] = useState<File | null>(null);
+  const [profileImagePreview, setProfileImagePreview] = useState<string | null>(
+    null,
+  );
 
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [step, setStep] = useState(1);
@@ -64,8 +67,8 @@ export default function Page() {
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
-      setImage(file);
-      setImagePreview(URL.createObjectURL(file)); // Show preview
+      setProfileImage(file);
+      setProfileImagePreview(URL.createObjectURL(file)); // Show preview
     }
   };
 
@@ -123,9 +126,9 @@ export default function Page() {
 
     let uploadedImageUrl = formData.profileImage;
 
-    if (image) {
+    if (profileImage) {
       const imageFormData = new FormData();
-      imageFormData.append("file", image);
+      imageFormData.append("file", profileImage);
       imageFormData.append("firstName", formData.firstName); //Include first name
       imageFormData.append("lastName", formData.lastName); // Include last name
 
@@ -180,6 +183,7 @@ export default function Page() {
           stayInspired: "",
           oneLiner: "",
           profileImage: "",
+          coverImage: "",
         });
       } else {
         setError(result.error || "Something went wrong.");
@@ -308,9 +312,9 @@ export default function Page() {
             )}
             <label htmlFor="profileImage">Profile Image</label>
             <input type="file" accept="image/*" onChange={handleImageChange} />
-            {imagePreview && (
+            {profileImagePreview && (
               <img
-                src={imagePreview}
+                src={profileImagePreview}
                 alt="Preview"
                 className="mt-2 h-32 w-32"
               />

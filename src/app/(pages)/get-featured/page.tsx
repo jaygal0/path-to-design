@@ -141,9 +141,9 @@ export default function Page() {
 
     if (profileImage) {
       const imageFormData = new FormData();
-      imageFormData.append("file", profileImage);
-      imageFormData.append("firstName", formData.firstName); //Include first name
-      imageFormData.append("lastName", formData.lastName); // Include last name
+      const fileName = `${formData.firstName}-${formData.lastName}-${Date.now()}${profileImage.name.substring(profileImage.name.lastIndexOf("."))}`;
+
+      imageFormData.append("file", profileImage, fileName);
 
       const uploadResponse = await fetch("/api/profile-image-upload", {
         method: "POST",
@@ -152,7 +152,7 @@ export default function Page() {
 
       const uploadResult = await uploadResponse.json();
       if (uploadResponse.ok) {
-        uploadedProfileImageUrl = `/uploads/${uploadResult.filename}`;
+        uploadedProfileImageUrl = `${fileName}`;
       } else {
         setError(uploadResult.error || "Image upload failed.");
         setLoading(false);
@@ -160,13 +160,13 @@ export default function Page() {
       }
     }
 
-    let uploadedCoverImageUrl = formData.profileImage;
+    let uploadedCoverImageUrl = formData.coverImage; // Fix variable name here
 
     if (coverImage) {
       const imageFormData = new FormData();
-      imageFormData.append("file", coverImage);
-      imageFormData.append("firstName", formData.firstName); //Include first name
-      imageFormData.append("lastName", formData.lastName); // Include last name
+      const coverFileName = `${formData.firstName}-${formData.lastName}-${Date.now()}${coverImage.name.substring(coverImage.name.lastIndexOf("."))}`;
+
+      imageFormData.append("file", coverImage, coverFileName);
 
       const uploadResponse = await fetch("/api/cover-image-upload", {
         method: "POST",
@@ -175,7 +175,7 @@ export default function Page() {
 
       const uploadResult = await uploadResponse.json();
       if (uploadResponse.ok) {
-        uploadedCoverImageUrl = `/uploads/${uploadResult.filename}`;
+        uploadedCoverImageUrl = `/uploads/${coverFileName}`;
       } else {
         setError(uploadResult.error || "Image upload failed.");
         setLoading(false);
@@ -183,11 +183,18 @@ export default function Page() {
       }
     }
 
+    // 🔹 Update formData before submission
+    const updatedFormData = {
+      ...formData,
+      profileImage: uploadedProfileImageUrl,
+      coverImage: uploadedCoverImageUrl,
+    };
+
     try {
       const response = await fetch("/api/get-featured", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(updatedFormData), // Use updated data
       });
 
       const result = await response.json();

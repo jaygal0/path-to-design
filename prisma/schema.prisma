@@ -20,6 +20,7 @@ model Designers {
   x                String?
   dribbble         String?
   country          String?
+  profileImage     String?
   getStarted       String?
   responsibilities String?
   difficulties     String?

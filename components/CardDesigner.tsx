@@ -5,7 +5,7 @@ import { Suspense, useState } from "react";
 import { CardDesignerGradient } from "./CardDesignerGradient";
 import { DesignerProps } from "@/types";
 import Image from "next/legacy/image";
-import dayjs from "dayjs"; // Import dayjs at the top
+import dayjs from "dayjs";
 
 export function CardDesigner({
   company,
@@ -17,8 +17,10 @@ export function CardDesigner({
   slug,
   updatedAt,
   country,
+  coverImage,
+  profileImage,
 }: DesignerProps) {
-  const [coverImage, setCoverImage] = useState<boolean>(false);
+  const [coverImageHover, setCoverImageHover] = useState<boolean>(false);
 
   return (
     <Suspense fallback={"Loading..."}>
@@ -29,30 +31,29 @@ export function CardDesigner({
         <article
           className="relative flex"
           onMouseEnter={() => {
-            setCoverImage(true);
+            setCoverImageHover(true);
           }}
           onMouseLeave={() => {
-            setCoverImage(false);
+            setCoverImageHover(false);
           }}
         >
           <div
             className={`cover-image absolute -z-10 hidden overflow-hidden rounded-lg md:block ${
-              !coverImage && "opacity-0"
-            } ${coverImage && "opacity-60"} transition-opacity`}
+              !coverImageHover && "opacity-0"
+            } ${coverImageHover && "opacity-60"} transition-opacity`}
           >
-            <Image
-              width={300}
-              height={168.75}
-              src={`/covers/${firstName.toLocaleLowerCase()}-${lastName.toLocaleLowerCase()}.jpg`}
+            <img
+              src={coverImage}
               alt={`An image of ${firstName} ${lastName}'s portfolio`}
-              objectFit="cover"
+              className="aspect-video w-80 object-cover"
             />
           </div>
           <CardDesignerGradient
             firstName={firstName}
             lastName={lastName}
             country={country}
-            state={coverImage}
+            state={coverImageHover}
+            profileImage={profileImage}
           />
           <div className="flex w-full flex-col gap-3 py-2">
             <h2 className="text-4xl font-semibold lg:text-6xl">
@@ -60,8 +61,8 @@ export function CardDesigner({
             </h2>
             <div className="flex flex-col justify-between gap-2 font-sans font-light text-stone-400 sm:flex-row md:flex-col xl:flex-row">
               <p className="md:w-2/3">
-                {company === "Self-employed"
-                  ? `${role}, ${company}`
+                {company === "Self-Employed"
+                  ? `${role} ${company}`
                   : `${role} at ${company}`}
               </p>
               <p>

@@ -88,6 +88,8 @@ export default async function DesignerPage(props: {
     updatedAt,
     website,
     x,
+    profileImage,
+    coverImage,
   } = designer;
 
   return (
@@ -112,14 +114,13 @@ export default async function DesignerPage(props: {
           updatedAt={updatedAt}
           website={website}
           x={x}
+          profileImage={profileImage}
         />
         <div className="relative aspect-video w-full overflow-hidden rounded-lg">
-          <Image
-            src={`/covers/${firstName.toLowerCase()}-${lastName.toLowerCase()}.jpg`}
+          <img
+            src={coverImage}
             alt={`Portfolio cover image of ${firstName} ${lastName}`}
-            fill
-            priority
-            style={{ objectFit: "cover" }}
+            className="h-full w-full object-cover"
           />
         </div>
         <div className="mb-12 flex flex-col gap-12">

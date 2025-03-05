@@ -18,12 +18,18 @@ export function DesignerDetailBox({
   updatedAt,
   website,
   x,
+  profileImage,
 }: DesignerProps) {
   return (
     <div className="flex flex-col gap-3">
       <div className="designer-box-gradient flex flex-col justify-between gap-2 rounded-md p-4 font-sans text-stone-950 md:flex-row">
         <div className="flex items-center gap-4">
-          <Avatar firstName={firstName} lastName={lastName} size="md" />
+          <Avatar
+            firstName={firstName}
+            lastName={lastName}
+            profileImage={profileImage}
+            size="md"
+          />
           <div className="flex flex-col justify-center">
             <div className="text-xl font-semibold">
               {firstName} {lastName}

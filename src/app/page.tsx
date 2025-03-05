@@ -175,6 +175,8 @@ export default async function Home() {
               roles,
               slug,
               updatedAt,
+              coverImage,
+              profileImage,
             } = designer;
 
             return (
@@ -183,6 +185,8 @@ export default async function Home() {
                   <CardDesigner
                     company={companies.company}
                     country={country}
+                    profileImage={profileImage}
+                    coverImage={coverImage}
                     createdAt={createdAt}
                     firstName={firstName}
                     id={id}

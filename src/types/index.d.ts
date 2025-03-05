@@ -65,6 +65,8 @@ export type DesignerProps = {
   role?: string | null;
   apps?: [];
   books?: [];
+  profileImage?: string;
+  coverImage?: string;
 };
 
 export type DetailQuestionsProps = {
@@ -80,4 +82,5 @@ export type AvatarProps = {
   size?: string;
   country?: string;
   state?: boolean;
+  profileImage?: string;
 };

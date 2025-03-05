@@ -138,7 +138,9 @@ export default function Page() {
     setError(null);
 
     let uploadedProfileImageUrl = formData.profileImage;
+    let uploadedCoverImageUrl = formData.coverImage;
 
+    // Upload profile image if provided
     if (profileImage) {
       const imageFormData = new FormData();
       const profileFileName = `profile-${formData.firstName.toLowerCase()}-${formData.lastName.toLowerCase()}-${Date.now()}${profileImage.name.substring(profileImage.name.lastIndexOf("."))}`;
@@ -160,8 +162,7 @@ export default function Page() {
       }
     }
 
-    let uploadedCoverImageUrl = formData.coverImage; // Fix variable name here
-
+    // Upload cover image if provided
     if (coverImage) {
       const imageFormData = new FormData();
       const coverFileName = `cover-${formData.firstName.toLowerCase()}-${formData.lastName.toLowerCase()}-${Date.now()}${coverImage.name.substring(coverImage.name.lastIndexOf("."))}`;
@@ -183,7 +184,7 @@ export default function Page() {
       }
     }
 
-    // Update formData before submission
+    // Update formData with uploaded images
     const updatedFormData = {
       ...formData,
       profileImage: uploadedProfileImageUrl,
@@ -191,47 +192,64 @@ export default function Page() {
     };
 
     try {
+      // Submit form data
       const response = await fetch("/api/get-featured", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updatedFormData), // Use updated data
+        body: JSON.stringify(updatedFormData),
       });
 
       const result = await response.json();
 
-      if (response.ok) {
-        setFormData({
-          firstName: "",
-          lastName: "",
-          email: "",
-          role: "",
-          customRole: "",
-          company: "",
-          companySize: "",
-          companyUrl: "",
-          website: "",
-          linkedin: "",
-          instagram: "",
-          x: "",
-          dribbble: "",
-          country: "",
-          appsText: "",
-          booksText: "",
-          getStarted: "",
-          responsibilities: "",
-          difficulties: "",
-          incorporateApps: "",
-          advice: "",
-          regrets: "",
-          stayInspired: "",
-          oneLiner: "",
-          profileImage: "",
-          coverImage: "",
-        });
-        window.location.href = "/thank-you"; // redirect to /thank-you once submission is okay
-      } else {
+      if (!response.ok) {
         setError(result.error || "Something went wrong.");
+        setLoading(false);
+        return;
       }
+
+      // Send email notifications via Resend
+      await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName: updatedFormData.firstName,
+          lastName: updatedFormData.lastName,
+          email: updatedFormData.email,
+          message: "New form submission received.",
+        }),
+      });
+
+      // Reset form and redirect
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        role: "",
+        customRole: "",
+        company: "",
+        companySize: "",
+        companyUrl: "",
+        website: "",
+        linkedin: "",
+        instagram: "",
+        x: "",
+        dribbble: "",
+        country: "",
+        appsText: "",
+        booksText: "",
+        getStarted: "",
+        responsibilities: "",
+        difficulties: "",
+        incorporateApps: "",
+        advice: "",
+        regrets: "",
+        stayInspired: "",
+        oneLiner: "",
+        profileImage: "",
+        coverImage: "",
+      });
+
+      window.location.href = "/thank-you";
     } catch (err) {
       setError("Failed to save data.");
     }

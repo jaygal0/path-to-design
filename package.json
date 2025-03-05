@@ -29,7 +29,8 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "remark-frontmatter": "^4.0.1",
-    "remark-mdx-frontmatter": "^3.0.0"
+    "remark-mdx-frontmatter": "^3.0.0",
+    "resend": "^4.1.2"
   },
   "devDependencies": {
     "@types/lodash": "^4.17.15",

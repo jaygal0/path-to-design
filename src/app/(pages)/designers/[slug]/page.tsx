@@ -4,7 +4,6 @@ import { BooksUsed } from "@/../components/designer/BooksUsed";
 import ScrollToTop from "@/../components/global/ScrollToTop";
 import prisma from "@/lib/db";
 import { shuffle } from "lodash";
-import Image from "next/image";
 import { CardDesigner } from "../../../../../components/CardDesigner";
 import { Answers } from "../../../../../components/designer/Answers";
 import { Button } from "../../../../../components/global/Button";
@@ -184,6 +183,8 @@ export default async function DesignerPage(props: {
             roles,
             slug,
             updatedAt,
+            profileImage,
+            coverImage,
           } = designer;
 
           return (
@@ -199,6 +200,8 @@ export default async function DesignerPage(props: {
                   role={roles?.role}
                   slug={slug}
                   updatedAt={updatedAt}
+                  profileImage={profileImage}
+                  coverImage={coverImage}
                 />
               )}
             </div>

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { Avatar } from "../Avatar";
+import { profile } from "console";
 
 export default function AppItem({ tool }: { tool: any }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -52,6 +53,7 @@ export default function AppItem({ tool }: { tool: any }) {
                     firstName={designer.firstName}
                     lastName={designer.lastName}
                     size="sm"
+                    profileImage={designer.profileImage}
                   />
                 ))}
             </div>

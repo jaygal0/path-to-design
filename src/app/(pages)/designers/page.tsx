@@ -1,6 +1,5 @@
 import { Heading } from "../../../../components/global/Heading";
 import { CardDesigner } from "../../../../components/CardDesigner";
-import Image from "next/image";
 
 async function getData() {
   const res = await fetch(`${process.env.WEB_SITE}/api/designers`, {
@@ -29,32 +28,34 @@ export default async function Page() {
         {designers.map((designer: any, index: any) => {
           const {
             companies,
-            countries,
+            country,
             createdAt,
             firstName,
             id,
             isPublished,
             lastName,
             roles,
-            salaries,
             slug,
             updatedAt,
+            profileImage,
+            coverImage,
           } = designer;
 
           return (
             <div key={id}>
               {isPublished && (
                 <CardDesigner
-                  company={companies.company}
-                  country={countries?.country}
+                  company={companies?.company}
+                  country={country}
                   createdAt={createdAt}
                   firstName={firstName}
                   id={id}
                   lastName={lastName}
                   role={roles?.role}
-                  salary={salaries?.salary}
                   slug={slug}
                   updatedAt={updatedAt}
+                  coverImage={coverImage}
+                  profileImage={profileImage}
                 />
               )}
             </div>

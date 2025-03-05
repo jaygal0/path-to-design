@@ -60,7 +60,7 @@ export type DesignerProps = {
   oneLiner?: string;
   createdAt?: Date | string;
   updatedAt?: Date | string;
-  company?: any | null;
+  company?: string | null;
   companyURL?: string;
   role?: string | null;
   apps?: [];

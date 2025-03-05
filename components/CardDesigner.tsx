@@ -58,13 +58,13 @@ export function CardDesigner({
             <h2 className="text-4xl font-semibold lg:text-6xl">
               {firstName} {lastName}
             </h2>
-            <div className="flex flex-col justify-between gap-2 font-sans font-light text-stone-400 lg:flex-row">
+            <div className="flex flex-col justify-between gap-2 font-sans font-light text-stone-400 sm:flex-row md:flex-col xl:flex-row">
               <p className="md:w-2/3">
                 {company === "Self-employed"
                   ? `${role}, ${company}`
                   : `${role} at ${company}`}
               </p>
-              <p className="flex justify-end md:w-1/3">
+              <p>
                 {updatedAt === createdAt ? "Posted at " : "Updated at "}
                 {dayjs(updatedAt).format("D MMM, YYYY")}
               </p>

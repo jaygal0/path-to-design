@@ -59,8 +59,8 @@ export function DesignerDetailBox({
           </div>
         </div>
         <div className="flex flex-col justify-between gap-2">
-          <div className="flex justify-end gap-2">
-            <p className="text-right font-sans text-stone-800">{`Based in ${country}`}</p>{" "}
+          <div className="flex gap-2 py-2 md:justify-end">
+            <p className="font-sans text-stone-800">{`Based in ${country}`}</p>{" "}
             <Country country={country} />
           </div>
           <div className="flex justify-start gap-5">

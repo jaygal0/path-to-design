@@ -107,6 +107,7 @@ export default async function DesignerPage(props: {
           firstName={firstName}
           instagram={instagram}
           lastName={lastName}
+          linkedin={linkedin}
           role={roles.role}
           updatedAt={updatedAt}
           website={website}

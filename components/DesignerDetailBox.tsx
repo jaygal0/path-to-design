@@ -100,7 +100,7 @@ export function DesignerDetailBox({
             )}
             {/* Linkedin Icon */}
             {linkedin && (
-              <a href={`${linkedin}`}>
+              <a href={`${linkedin}`} target="_blank">
                 <svg
                   width="24"
                   height="24"

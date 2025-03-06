@@ -1,12 +1,12 @@
 import Link from "next/link";
 
-interface T {
+interface Props {
   label: string;
   url: string;
   isSecondary?: Boolean;
 }
 
-export function Button({ label, url, isSecondary }: T) {
+export function Button({ label, url, isSecondary }: Props) {
   return (
     <Link
       href={url}

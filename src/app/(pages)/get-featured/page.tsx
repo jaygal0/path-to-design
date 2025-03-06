@@ -7,6 +7,7 @@ import { designerRoles } from "@/config/designerRoles";
 import { countries } from "@/config/countries";
 import { ButtonForm } from "../../../../components/global/ButtonForm";
 import { FormContainer } from "../../../../components/getFeaturedForm/FormContainer";
+import { Benefits } from "../../../../components/getFeaturedForm/Benefits";
 
 export default function Page() {
   const [formData, setFormData] = useState({
@@ -273,14 +274,34 @@ export default function Page() {
         </div>
       )}
       {step <= 1 && (
-        <Heading
-          heading="Get featured"
-          desc="Submit your story to get featured in front of potential employers, professionals and aspiring designers."
-        />
+        <>
+          <Heading
+            heading="Get featured"
+            desc="Submit your story to get featured in front of potential employers, professionals and aspiring designers."
+          />
+          <div className="font-sans">
+            <h2 className="mb-4 text-xl">Why share your story?</h2>
+            <ul className="flex flex-col gap-8 py-4 text-lg">
+              <Benefits
+                heading="Expand Your Reach"
+                desc="Connect with fellow designers, inspire newcomers, and attract potential employers."
+              />
+              <Benefits
+                heading="Boost Your Personal Brand"
+                desc="Showcase your unique journey and let your voice be heard."
+              />
+              <Benefits
+                heading="100% Free"
+                desc="No cost, no catch—just an opportunity to share your story and make an impact."
+              />
+            </ul>
+          </div>
+        </>
       )}
       <form onSubmit={handleSubmit} className="text-lg">
         {step === 1 && (
           <FormContainer>
+            <h2 className="mb-4 text-xl">Start sharing your story...</h2>
             <label htmlFor="firstName">First name</label>
             <input
               className={`${errors.firstName ? "border-red-500" : ""} border`}

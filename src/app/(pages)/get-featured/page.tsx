@@ -8,6 +8,7 @@ import { countries } from "@/config/countries";
 import { ButtonForm } from "../../../../components/global/ButtonForm";
 import { FormContainer } from "../../../../components/getFeaturedForm/FormContainer";
 import { Benefits } from "../../../../components/getFeaturedForm/Benefits";
+import Image from "next/image";
 
 export default function Page() {
   const [formData, setFormData] = useState({
@@ -499,10 +500,11 @@ export default function Page() {
                 onChange={handleProfileImageChange}
               />
               {profileImagePreview && (
-                <img
+                <Image
                   src={profileImagePreview}
                   alt="Preview"
                   className="mt-2 h-32 w-32"
+                  layout="fill"
                 />
               )}
               <label htmlFor="coverImage">Cover Image</label>
@@ -512,10 +514,11 @@ export default function Page() {
                 onChange={handleCoverImageChange}
               />
               {coverImagePreview && (
-                <img
+                <Image
                   src={coverImagePreview}
                   alt="Preview"
                   className="mt-2 aspect-video w-full lg:w-64 "
+                  layout="fill"
                 />
               )}
               <ButtonForm prop={handleNext} />
@@ -636,7 +639,7 @@ export default function Page() {
                 rows={5}
                 maxLength={1000}
               />
-              <label htmlFor="oneLiner">What's your one liner?</label>
+              <label htmlFor="oneLiner">What&apos;s your one liner?</label>
               <input
                 type="text"
                 name="oneLiner"

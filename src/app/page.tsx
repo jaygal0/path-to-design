@@ -179,8 +179,6 @@ export default async function Home() {
               profileImage,
             } = designer;
 
-            console.log(designer);
-
             return (
               <div key={id}>
                 {isPublished && (

@@ -7,6 +7,7 @@ import { shuffle } from "lodash";
 import { CardDesigner } from "../../../../../components/CardDesigner";
 import { Answers } from "../../../../../components/designer/Answers";
 import { Button } from "../../../../../components/global/Button";
+import Image from "next/image";
 
 async function getData() {
   const res = await fetch(`${process.env.WEB_SITE}/api/designers`, {
@@ -116,10 +117,11 @@ export default async function DesignerPage(props: {
           profileImage={profileImage}
         />
         <div className="relative aspect-video w-full overflow-hidden rounded-lg">
-          <img
-            src={coverImage}
+          <Image
+            src={coverImage!}
             alt={`Portfolio cover image of ${firstName} ${lastName}`}
             className="h-full w-full object-cover"
+            layout="fill"
           />
         </div>
         <div className="mb-12 flex flex-col gap-12">

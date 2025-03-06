@@ -40,13 +40,15 @@ export function CardDesigner({
           <div
             className={`cover-image absolute -z-10 hidden overflow-hidden rounded-lg md:block ${
               !coverImageHover && "opacity-0"
-            } ${coverImageHover && "opacity-60"} transition-opacity`}
+            } ${coverImageHover && "opacity-20"} transition-opacity`}
           >
-            <img
-              src={coverImage}
-              alt={`An image of ${firstName} ${lastName}'s portfolio`}
-              className="aspect-video w-80 object-cover"
-            />
+            <div className="aspect-video w-80 object-cover">
+              <Image
+                src={coverImage!}
+                alt={`An image of ${firstName} ${lastName}'s portfolio`}
+                layout="fill"
+              />
+            </div>
           </div>
           <CardDesignerGradient
             firstName={firstName}

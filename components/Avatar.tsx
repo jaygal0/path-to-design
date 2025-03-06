@@ -11,10 +11,11 @@ export function Avatar({
     <div
       className={`relative ${size == "md" && "h-16 w-16"} ${size == "sm" && "h-6 w-6"} overflow-hidden rounded-full bg-slate-50`}
     >
-      <img
-        src={profileImage}
+      <Image
+        src={profileImage!}
         alt={`Profile image of ${firstName} ${lastName}`}
         className="w-full object-cover"
+        layout="fill"
       />
     </div>
   );

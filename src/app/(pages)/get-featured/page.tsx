@@ -302,7 +302,7 @@ export default function Page() {
         {step === 1 && (
           <FormContainer>
             <h2 className="mb-4 text-xl">Start sharing your story...</h2>
-            <label htmlFor="firstName">First name</label>
+            <label htmlFor="firstName">First name*</label>
             <input
               className={`${errors.firstName ? "border-red-500" : ""} border`}
               name="firstName"
@@ -316,7 +316,7 @@ export default function Page() {
               <p className="text-red-500">{errors.firstName}</p>
             )}
 
-            <label htmlFor="lastName">Last name</label>
+            <label htmlFor="lastName">Last name*</label>
             <input
               className={`${errors.lastName ? "border-red-500" : ""} border`}
               name="lastName"
@@ -329,7 +329,7 @@ export default function Page() {
             {errors.lastName && (
               <p className="text-red-500">{errors.lastName}</p>
             )}
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">Email*</label>
             <input
               className={`${errors.email ? "border-red-500" : ""} border`}
               name="email"
@@ -340,7 +340,7 @@ export default function Page() {
               value={formData.email}
             />
             {errors.email && <p className="text-red-500">{errors.email}</p>}
-            <label htmlFor="country">Where are you based?</label>
+            <label htmlFor="country">Where are you based?*</label>
             <select
               className={`${errors.country ? "border-red-500" : ""} border`}
               name="country"
@@ -358,7 +358,7 @@ export default function Page() {
               ))}
             </select>
             {errors.country && <p className="text-red-500">{errors.country}</p>}
-            <label htmlFor="role">Job title</label>
+            <label htmlFor="role">Job title*</label>
             <select
               className={`${errors.role ? "border-red-500" : ""} border`}
               name="role"

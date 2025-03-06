@@ -500,12 +500,13 @@ export default function Page() {
                 onChange={handleProfileImageChange}
               />
               {profileImagePreview && (
-                <Image
-                  src={profileImagePreview}
-                  alt="Preview"
-                  className="mt-2 h-32 w-32"
-                  layout="fill"
-                />
+                <div className="relative mt-2 h-32 w-32">
+                  <Image
+                    src={profileImagePreview}
+                    alt="Preview"
+                    layout="fill"
+                  />
+                </div>
               )}
               <label htmlFor="coverImage">Cover Image</label>
               <input
@@ -514,12 +515,9 @@ export default function Page() {
                 onChange={handleCoverImageChange}
               />
               {coverImagePreview && (
-                <Image
-                  src={coverImagePreview}
-                  alt="Preview"
-                  className="mt-2 aspect-video w-full lg:w-64 "
-                  layout="fill"
-                />
+                <div className="relative mt-2 aspect-video w-full lg:w-64 ">
+                  <Image src={coverImagePreview} alt="Preview" layout="fill" />
+                </div>
               )}
               <ButtonForm prop={handleNext} />
             </FormContainer>

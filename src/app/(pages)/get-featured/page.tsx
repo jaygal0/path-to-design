@@ -493,7 +493,10 @@ export default function Page() {
                 onChange={handleChange}
                 placeholder="@joshuagalinato"
               />
-              <label htmlFor="profileImage">Profile Image</label>
+              <div className="flex flex-col gap-1">
+                <label htmlFor="profileImage">Profile Image</label>
+                <p className="text-stone-400">Recommended aspect ratio: 1:1</p>
+              </div>
               <input
                 type="file"
                 accept="image/*"
@@ -508,7 +511,10 @@ export default function Page() {
                   />
                 </div>
               )}
-              <label htmlFor="coverImage">Cover Image</label>
+              <div className="flex flex-col gap-1">
+                <label htmlFor="coverImage">Cover Image</label>
+                <p className="text-stone-400">Recommended aspect ratio: 16:9</p>
+              </div>
               <input
                 type="file"
                 accept="image/*"

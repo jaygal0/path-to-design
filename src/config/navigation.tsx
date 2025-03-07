@@ -15,16 +15,20 @@ export const menu: menuItem[] = [
     href: "/designers",
   },
   {
-    title: "Tools",
-    href: "/tools",
+    title: "Apps",
+    href: "/apps",
   },
   {
-    title: "Learn",
-    href: "/learn",
+    title: "Books",
+    href: "/books",
   },
+  // {
+  //   title: "Learn",
+  //   href: "/learn",
+  // },
 ];
 
 export const mainCTA: menuItem = {
-  title: "Get Featured",
+  title: "Get featured",
   href: "/get-featured",
 };

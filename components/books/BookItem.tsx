@@ -3,11 +3,10 @@
 import Image from "next/image";
 import { useState } from "react";
 import { Avatar } from "../Avatar";
-import { profile } from "console";
 
-export default function AppItem({ tool }: { tool: any }) {
+export default function BookItem({ item }: { item: any }) {
   const [isHovered, setIsHovered] = useState(false);
-  const { app, desc, url, designers } = tool;
+  const { book, author, url, bookCover, designers } = item;
 
   return (
     <a
@@ -22,20 +21,29 @@ export default function AppItem({ tool }: { tool: any }) {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Image
-              src={`/apps/${app.toLowerCase().replace(/ /g, "-")}.jpg`}
-              alt={app}
-              width={80}
-              height={80}
+              src={bookCover}
+              alt={`${book} by ${author}`}
+              width={100}
+              height={160}
               quality={100}
-              className={`rounded-xl transition-all ${isHovered ? "scale-105" : ""} h-10 w-10 sm:h-20 sm:w-20`}
-              sizes="(max-width: 640px) 40px, 80px"
+              className="rounded-lg object-cover transition-all hover:scale-105"
+              onError={() => {
+                // Handle image error
+                const fallbackImage = "/book-fallback.jpg";
+                // Update bookCover to fallback image
+                book.bookCover = fallbackImage;
+              }}
             />
-
-            <h3
-              className={`mb-0 text-xl transition-all md:text-2xl lg:text-4xl ${isHovered ? "underline" : ""}`}
-            >
-              {app}
-            </h3>
+            <div className="flex flex-col gap-1">
+              <h3
+                className={`mb-0 text-xl transition-all md:text-2xl lg:text-4xl ${isHovered ? "underline" : ""}`}
+              >
+                {book}
+              </h3>
+              <div className="font-sans text-lg text-stone-400">
+                by {author}
+              </div>
+            </div>
           </div>
           <div className="flex flex-col gap-2">
             <div className="flex -space-x-1">
@@ -59,12 +67,11 @@ export default function AppItem({ tool }: { tool: any }) {
             </div>
 
             <div className="font-sans text-sm lg:text-base">
-              Used by {designers.length}{" "}
+              Read by {designers.length}{" "}
               {designers.length === 1 ? "designer" : "designers"}
             </div>
           </div>
         </div>
-        <div className="font-sans text-stone-400">{desc}</div>
       </article>
     </a>
   );

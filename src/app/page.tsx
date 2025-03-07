@@ -94,26 +94,23 @@ export default async function Home() {
           className="mb-24 pl-2 xl:hidden"
         />
         <h3 className="mb-4 text-5xl font-bold md:text-6xl xl:text-7xl">
-          Explore <span className="text-gradient">top tools</span> designers use
-          in the industry
+          <span className="text-gradient">Essential apps</span> for designers
         </h3>
         <p className="mb-20 text-2xl">
-          Discover the must-have tools and software that professional designers
-          rely on to stay creative, efficient, and ahead in the design world.
+          Discover the industry’s go-to design tools—explore the apps that power
+          creativity and efficiency
         </p>
-        <Button label="Explore Tools" url="/tools" isSecondary />
+        <Button label="Explore Apps" url="/apps" isSecondary />
       </div>
       <h3 className="col-span-full col-start-1 row-span-1 row-start-5 mb-8 mt-20 text-4xl font-bold leading-tight md:col-span-5 md:col-start-2 xl:col-span-6 xl:col-start-3 xl:text-5xl xl:leading-tight">
-        <span className="text-gradient">Learn proven strategies</span> to start
-        your design career
+        <span className="text-gradient">Books that inspire</span> designers
       </h3>
       <div className="col-span-full col-start-1 row-span-1 row-start-6 mb-24 md:col-span-5 md:col-start-3 xl:col-span-5 xl:col-start-5">
         <p className="mb-20 text-2xl">
-          Gain insider tips and proven strategies from top designers who&apos;ve
-          made their mark. Discover how to build a standout portfolio, network
-          effectively, and launch your design career with confidence.
+          Discover the books that have shaped the careers of top designers—fuel
+          your creativity and grow your skills with expert-recommended reads.
         </p>
-        <Button label="Start Learning" url="/learn" isSecondary />
+        <Button label="Explore Books" url="/books" isSecondary />
       </div>
 
       <h3 className="col-span-full col-start-1 row-span-1 row-start-7 mb-10 mt-20 text-4xl font-bold leading-tight md:col-span-5 md:col-start-2 xl:col-span-6 xl:col-start-2 xl:text-5xl xl:leading-tight">

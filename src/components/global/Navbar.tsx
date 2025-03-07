@@ -4,6 +4,7 @@ import { mainCTA, menu, pathToDesign } from "@/config/navigation";
 import Link from "next/link";
 import * as React from "react";
 import { Button } from "./Button";
+import { usePathname } from "next/navigation";
 
 export function Navbar() {
   const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false);
@@ -12,8 +13,10 @@ export function Navbar() {
     setShowMobileMenu(!showMobileMenu);
   };
 
+  const pathname = usePathname();
+
   return (
-    <nav className="fixed left-0 top-0 z-40 flex w-screen justify-between border-b-2 bg-stone-950 p-4 ">
+    <nav className="fixed left-0 top-0 z-40 flex w-screen justify-between border-b-2 bg-stone-950 p-3 ">
       {/* MOBILE MENU  */}
 
       <div
@@ -124,7 +127,11 @@ export function Navbar() {
       )}
       <div className="hidden items-center gap-12 pr-4 font-sans md:flex">
         {menu.map((menu, index) => (
-          <Link key={index} href={menu.href}>
+          <Link
+            key={index}
+            href={menu.href}
+            className={`${pathname === menu.href ? "text-gradient" : "text-white"}`}
+          >
             {menu.title}
           </Link>
         ))}

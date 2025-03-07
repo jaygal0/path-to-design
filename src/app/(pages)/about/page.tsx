@@ -1,4 +1,4 @@
-import { Heading } from "../../../../components/global/Heading";
+import { Heading } from "../../../components/global/Heading";
 
 export default function Page() {
   return (

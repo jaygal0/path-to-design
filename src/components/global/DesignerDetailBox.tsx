@@ -1,7 +1,7 @@
 import dayjs from "dayjs"; // Import dayjs at the top
 import { DesignerProps } from "@/types";
 import { Avatar } from "./Avatar";
-import { Country } from "./global/Country";
+import { Country } from "./Country";
 
 export function DesignerDetailBox({
   company,

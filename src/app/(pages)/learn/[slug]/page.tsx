@@ -3,7 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
-import { Author } from "../../../../../components/blog/Author";
+import { Author } from "../../../../components/blog/Author";
 
 export async function generateStaticParams() {
   // Update the path to read from "data/blogs"

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Suspense } from "react";
 import dayjs from "dayjs"; // Import dayjs at the top
-import { Avatar } from "../Avatar";
+import { Avatar } from "../global/Avatar";
 
 export function Author({ createdAt, firstName, lastName, updatedAt }: any) {
   return (

@@ -1,12 +1,12 @@
-import { DesignerDetailBox } from "@/../components/DesignerDetailBox";
-import { AppsUsed } from "@/../components/designer/AppsUsed";
-import { BooksUsed } from "@/../components/designer/BooksUsed";
-import ScrollToTop from "@/../components/global/ScrollToTop";
+import { DesignerDetailBox } from "@/components/global/DesignerDetailBox";
+import { AppsUsed } from "@/components/designer/AppsUsed";
+import { BooksUsed } from "@/components/designer/BooksUsed";
+import ScrollToTop from "@/components/global/ScrollToTop";
 import prisma from "@/lib/db";
 import { shuffle } from "lodash";
-import { CardDesigner } from "../../../../../components/CardDesigner";
-import { Answers } from "../../../../../components/designer/Answers";
-import { Button } from "../../../../../components/global/Button";
+import { CardDesigner } from "../../../../components/global/CardDesigner";
+import { Answers } from "../../../../components/designer/Answers";
+import { Button } from "../../../../components/global/Button";
 import Image from "next/image";
 
 async function getData() {

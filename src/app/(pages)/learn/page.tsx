@@ -2,9 +2,9 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
-import { Avatar } from "../../../../components/Avatar";
+import { Avatar } from "../../../components/global/Avatar";
 import dayjs from "dayjs";
-import { Heading } from "../../../../components/global/Heading";
+import { Heading } from "../../../components/global/Heading";
 
 export default async function Page({ posts }: any) {
   const blogDir = path.join("blogs");

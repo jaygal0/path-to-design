@@ -1,5 +1,5 @@
-import { Button } from "../../../../components/global/Button";
-import { Heading } from "../../../../components/global/Heading";
+import { Button } from "../../../components/global/Button";
+import { Heading } from "../../../components/global/Heading";
 
 export default function Page() {
   return (

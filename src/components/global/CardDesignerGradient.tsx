@@ -1,6 +1,6 @@
 import { Avatar } from "./Avatar";
 import { AvatarProps } from "@/types";
-import { Country } from "./global/Country";
+import { Country } from "./Country";
 
 export function CardDesignerGradient({
   firstName,

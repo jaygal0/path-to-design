@@ -1,5 +1,5 @@
-import { Heading } from "../../../../components/global/Heading";
-import { CardDesigner } from "../../../../components/CardDesigner";
+import { Heading } from "../../../components/global/Heading";
+import { CardDesigner } from "../../../components/global/CardDesigner";
 
 async function getData() {
   const res = await fetch(`${process.env.WEB_SITE}/api/designers`, {

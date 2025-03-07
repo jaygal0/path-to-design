@@ -1,6 +1,6 @@
-import { CardDesigner } from "../../components/CardDesigner";
+import { CardDesigner } from "../components/global/CardDesigner";
 import Image from "next/image";
-import { Button } from "../../components/global/Button";
+import { Button } from "../components/global/Button";
 
 async function getData() {
   const res = await fetch(`${process.env.WEB_SITE}/api/designers`, {

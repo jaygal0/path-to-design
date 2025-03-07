@@ -1,13 +1,13 @@
 "use client";
 
-import { Heading } from "../../../../components/global/Heading";
+import { Heading } from "../../../components/global/Heading";
 import { useState } from "react";
 import { companySizes } from "@/config/companySizes";
 import { designerRoles } from "@/config/designerRoles";
 import { countries } from "@/config/countries";
-import { ButtonForm } from "../../../../components/global/ButtonForm";
-import { FormContainer } from "../../../../components/getFeaturedForm/FormContainer";
-import { Benefits } from "../../../../components/getFeaturedForm/Benefits";
+import { ButtonForm } from "../../../components/global/ButtonForm";
+import { FormContainer } from "../../../components/getFeaturedForm/FormContainer";
+import { Benefits } from "../../../components/getFeaturedForm/Benefits";
 import Image from "next/image";
 
 export default function Page() {

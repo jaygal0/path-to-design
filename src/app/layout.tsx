@@ -44,7 +44,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <PlausibleProvider domain="pathtodesign.com" />
+        <PlausibleProvider domain="pathtodesign.com" taggedEvents={true} />
       </head>
       <body
         className={`${cormorant.variable} ${cabin.variable} bg-stone-950 font-serif`}

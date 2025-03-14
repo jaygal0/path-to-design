@@ -1,15 +1,16 @@
 export interface Props {
   back?: boolean;
+  plausibleEventTracking?: string;
   prop: () => void;
 }
 
-export function ButtonForm({ back, prop }: Props) {
+export function ButtonForm({ back, plausibleEventTracking, prop }: Props) {
   return (
     <>
       {!back ? (
         <button
           type="button"
-          className="mt-8 flex w-fit items-center gap-4 rounded-md border bg-none px-6 py-2 font-sans text-white transition-all hover:scale-105"
+          className={`${plausibleEventTracking} mt-8 flex w-fit items-center gap-4 rounded-md border bg-none px-6 py-2 font-sans text-white transition-all hover:scale-105`}
           onClick={prop}
         >
           Next

@@ -395,7 +395,10 @@ export default function Page() {
               </>
             )}
 
-            <ButtonForm prop={handleNext} />
+            <ButtonForm
+              prop={handleNext}
+              plausibleEventTracking="plausible-event-name=form-step-one"
+            />
           </FormContainer>
         )}
         {step === 2 && (
@@ -440,7 +443,10 @@ export default function Page() {
                 onChange={handleChange}
                 placeholder="https://pathtodesign.com"
               />
-              <ButtonForm prop={handleNext} />
+              <ButtonForm
+                prop={handleNext}
+                plausibleEventTracking="plausible-event-name=form-step-two"
+              />
             </FormContainer>
           </>
         )}
@@ -525,7 +531,10 @@ export default function Page() {
                   <Image src={coverImagePreview} alt="Preview" layout="fill" />
                 </div>
               )}
-              <ButtonForm prop={handleNext} />
+              <ButtonForm
+                prop={handleNext}
+                plausibleEventTracking="plausible-event-name=form-step-three"
+              />
             </FormContainer>
           </>
         )}
@@ -556,7 +565,10 @@ export default function Page() {
                 rows={5}
                 maxLength={1000}
               />
-              <ButtonForm prop={handleNext} />
+              <ButtonForm
+                prop={handleNext}
+                plausibleEventTracking="plausible-event-name=form-step-four"
+              />
             </FormContainer>
           </>
         )}

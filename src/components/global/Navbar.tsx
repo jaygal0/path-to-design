@@ -5,6 +5,7 @@ import Link from "next/link";
 import * as React from "react";
 import { Button } from "./Button";
 import { usePathname } from "next/navigation";
+import { Logo } from "./Logo";
 
 export function Navbar() {
   const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false);
@@ -99,9 +100,10 @@ export function Navbar() {
       {/* DESKTOP NAV */}
 
       <Link
-        className="text-gradient text-xl font-bold"
+        className="text-gradient flex items-center gap-2 text-xl font-bold"
         href={pathToDesign.href}
       >
+        <Logo size="32" />
         {pathToDesign.title}
       </Link>
 

@@ -1,6 +1,7 @@
 import { CardDesigner } from "../components/global/CardDesigner";
 import Image from "next/image";
 import { Button } from "../components/global/Button";
+import LogoMouse from "@/components/home/LogoMouse";
 
 async function getData() {
   const res = await fetch(`${process.env.WEB_SITE}/api/designers`, {
@@ -168,6 +169,7 @@ export default async function Home() {
           <Button label="View more" url="/designers" isSecondary />
         </div>
       </div>
+      <LogoMouse />
     </>
   );
 }

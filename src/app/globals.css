@@ -103,3 +103,9 @@ textarea::placeholder,
 select::placeholder {
   color: rgb(85, 85, 85);
 }
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

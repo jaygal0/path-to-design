@@ -17,16 +17,15 @@ export function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed left-0 top-0 z-40 flex w-screen justify-between border-b-2 bg-stone-950 p-3 ">
+    <nav className="fixed left-0 top-0 z-40 flex w-screen items-center justify-between p-3 ">
       {/* MOBILE MENU  */}
-
       <div
-        className={`absolute ${!showMobileMenu ? "left-[-100%]" : "left-0"} top-0 flex h-screen w-full flex-col justify-between border-r-2 border-white bg-stone-950 p-4 transition-all`}
+        className={`absolute z-10 ${!showMobileMenu ? "left-[-100%]" : "left-0"} top-0 flex h-screen w-full flex-col justify-between border-r-2 border-white bg-stone-950 p-4 transition-all`}
       >
         {/* CLOSE BUTTON */}
 
         <svg
-          className="absolute right-4 top-4"
+          className="absolute right-4 top-6"
           onClick={toggleMobileMenu}
           width="28"
           height="28"
@@ -44,10 +43,11 @@ export function Navbar() {
 
         <div className="flex h-full flex-col justify-between pb-8">
           <Link
-            className="text-gradient text-xl font-bold"
+            className="text-gradient flex items-center gap-2 py-2 text-xl font-bold"
             href={pathToDesign.href}
             onClick={toggleMobileMenu}
           >
+            <Logo size="32" />
             {pathToDesign.title}
           </Link>
 
@@ -99,13 +99,15 @@ export function Navbar() {
 
       {/* DESKTOP NAV */}
 
-      <Link
-        className="text-gradient flex items-center gap-2 text-xl font-bold"
-        href={pathToDesign.href}
-      >
-        <Logo size="32" />
-        {pathToDesign.title}
-      </Link>
+      <div className="bg-white/2 rounded-md px-2 py-2 backdrop-blur-md md:px-4">
+        <Link
+          className="text-gradient flex items-center gap-2 text-xl font-bold"
+          href={pathToDesign.href}
+        >
+          <Logo size="32" />
+          {pathToDesign.title}
+        </Link>
+      </div>
 
       {/* HAMBURGER ICON */}
 
@@ -127,7 +129,7 @@ export function Navbar() {
           />
         </svg>
       )}
-      <div className="hidden items-center gap-12 pr-4 font-sans md:flex">
+      <div className="bg-white/2 hidden items-center gap-12 rounded-md px-4 py-2 font-sans backdrop-blur-md md:flex">
         {menu.map((menu, index) => (
           <Link
             key={index}

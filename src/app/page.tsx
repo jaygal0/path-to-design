@@ -1,6 +1,3 @@
-import { CardDesigner } from "../components/global/CardDesigner";
-import Image from "next/image";
-import { Button } from "../components/global/Button";
 import LogoMouse from "@/components/home/LogoMouse";
 import { Hero } from "@/components/home/Hero";
 import { Understand } from "@/components/home/Understand";

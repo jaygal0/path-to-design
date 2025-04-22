@@ -1,12 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Avatar } from "../global/Avatar";
 
 export default function BookItem({ item }: { item: any }) {
   const [isHovered, setIsHovered] = useState(false);
   const { book, author, url, bookCover, designers } = item;
+
+  // Shuffle designers only once on component mount
+  const shuffledDesigners = useMemo(() => {
+    return designers
+      .slice()
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 3);
+  }, [designers]);
 
   return (
     <a
@@ -15,7 +23,7 @@ export default function BookItem({ item }: { item: any }) {
       rel="noopener noreferrer"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="block"
+      className="plausible-event-name=view-book block"
     >
       <article className="flex flex-col gap-3">
         <div className="flex items-center justify-between">
@@ -28,10 +36,7 @@ export default function BookItem({ item }: { item: any }) {
               quality={100}
               className="rounded-lg object-cover transition-all hover:scale-105"
               onError={() => {
-                // Handle image error
-                const fallbackImage = "/book-fallback.jpg";
-                // Update bookCover to fallback image
-                book.bookCover = fallbackImage;
+                // Ideally handle fallback in a more React way — this won't work here
               }}
             />
             <div className="flex flex-col gap-1">
@@ -47,23 +52,15 @@ export default function BookItem({ item }: { item: any }) {
           </div>
           <div className="flex flex-col gap-2">
             <div className="flex -space-x-1">
-              {designers
-                // Create a copy before shuffling to avoid mutating original array
-                .slice()
-                // Proper Fisher-Yates shuffle implementation
-                .sort(() => Math.random() - 0.5)
-                // Take first 3 designers after shuffling
-                .slice(0, 3)
-                // Map with proper unique keys
-                .map((designer: any) => (
-                  <Avatar
-                    key={`${designer.firstName}-${designer.lastName}`}
-                    firstName={designer.firstName}
-                    lastName={designer.lastName}
-                    size="sm"
-                    profileImage={designer.profileImage}
-                  />
-                ))}
+              {shuffledDesigners.map((designer: any) => (
+                <Avatar
+                  key={`${designer.firstName}-${designer.lastName}`}
+                  firstName={designer.firstName}
+                  lastName={designer.lastName}
+                  size="sm"
+                  profileImage={designer.profileImage}
+                />
+              ))}
             </div>
 
             <div className="font-sans text-sm lg:text-base">

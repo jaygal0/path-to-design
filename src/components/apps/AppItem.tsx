@@ -1,12 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Avatar } from "../global/Avatar";
 
 export default function AppItem({ tool }: { tool: any }) {
   const [isHovered, setIsHovered] = useState(false);
   const { app, desc, url, designers } = tool;
+
+  // Shuffle designers only once on mount
+  const shuffledDesigners = useMemo(() => {
+    return designers
+      .slice()
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 3);
+  }, []);
 
   return (
     <a
@@ -15,7 +23,7 @@ export default function AppItem({ tool }: { tool: any }) {
       rel="noopener noreferrer"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="block"
+      className="plausible-event-name=view-app block"
     >
       <article className="flex flex-col gap-3">
         <div className="flex items-center justify-between">
@@ -38,23 +46,15 @@ export default function AppItem({ tool }: { tool: any }) {
           </div>
           <div className="flex flex-col gap-2">
             <div className="flex -space-x-1">
-              {designers
-                // Create a copy before shuffling to avoid mutating original array
-                .slice()
-                // Proper Fisher-Yates shuffle implementation
-                .sort(() => Math.random() - 0.5)
-                // Take first 3 designers after shuffling
-                .slice(0, 3)
-                // Map with proper unique keys
-                .map((designer: any) => (
-                  <Avatar
-                    key={`${designer.firstName}-${designer.lastName}`}
-                    firstName={designer.firstName}
-                    lastName={designer.lastName}
-                    size="sm"
-                    profileImage={designer.profileImage}
-                  />
-                ))}
+              {shuffledDesigners.map((designer: any) => (
+                <Avatar
+                  key={`${designer.firstName}-${designer.lastName}`}
+                  firstName={designer.firstName}
+                  lastName={designer.lastName}
+                  size="sm"
+                  profileImage={designer.profileImage}
+                />
+              ))}
             </div>
 
             <div className="font-sans text-sm lg:text-base">

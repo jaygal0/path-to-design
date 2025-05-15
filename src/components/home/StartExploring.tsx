@@ -26,7 +26,7 @@ export function StartExploring({ designers }: any) {
     };
   }, [hasAnimated]);
 
-  const filterNames = ["Joshua", "Shannel", "Amalie", "Florian", "Kavé"]; // Select which designers to present on the first page
+  const filterNames = ["Joshua", "Shannel", "Meghan", "Florian", "Vivek"]; // Select which designers to present on the first page
 
   return (
     <div

@@ -116,14 +116,16 @@ export default async function DesignerPage(props: {
           x={x}
           profileImage={profileImage}
         />
-        <div className="relative aspect-video w-full overflow-hidden rounded-lg">
-          <Image
-            src={coverImage!}
-            alt={`Portfolio cover image of ${firstName} ${lastName}`}
-            className="h-full w-full object-cover"
-            layout="fill"
-          />
-        </div>
+        {coverImage && (
+          <div className="relative aspect-video w-full overflow-hidden rounded-lg">
+            <Image
+              src={coverImage!}
+              alt={`Portfolio cover image of ${firstName} ${lastName}`}
+              className="h-full w-full object-cover"
+              layout="fill"
+            />
+          </div>
+        )}
         <div className="mb-12 flex flex-col gap-12">
           {apps.length > 0 && <AppsUsed apps={apps} />}
           {books.length > 0 && <BooksUsed books={books} />}

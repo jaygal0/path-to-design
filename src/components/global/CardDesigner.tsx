@@ -44,7 +44,7 @@ export function CardDesigner({
           >
             <div className="aspect-video w-80 object-cover">
               <Image
-                src={coverImage!}
+                src={coverImage! || "/path-to-design-og-image.jpg"}
                 alt={`An image of ${firstName} ${lastName}'s portfolio`}
                 layout="fill"
               />

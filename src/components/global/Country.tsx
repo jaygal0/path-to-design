@@ -2,6 +2,7 @@ export function Country({ country }: any) {
   return (
     <div className="inline">
       {country === "England" && "🏴󠁧󠁢󠁥󠁮󠁧󠁿"}
+      {country === "United Kingdom" && "🇬🇧"}
       {country === "Mexico" && "🇲🇽"}
       {country === "Sweden" && "🇸🇪"}
       {country === "India" && "🇮🇳"}

@@ -34,7 +34,7 @@ export function BooksUsed({ books }: any) {
                     className="rounded-lg object-cover transition-all hover:scale-105"
                     onError={() => {
                       // Handle image error
-                      const fallbackImage = "/book-fallback.jpg";
+                      const fallbackImage = "/books/fallback.jpg";
                       // Update bookCover to fallback image
                       book.bookCover = fallbackImage;
                     }}

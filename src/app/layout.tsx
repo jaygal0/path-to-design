@@ -1,20 +1,15 @@
 import type { Metadata } from "next";
 import PlausibleProvider from "next-plausible";
-import { Cabin, Cormorant } from "next/font/google";
+import { Open_Sans } from "next/font/google";
 import { Navbar } from "../components/global/Navbar";
 import "./globals.css";
 import Footer from "../components/global/Footer";
 import { BreakpointIndicator } from "../components/global/BreakpointIndicator";
 import ScrollToTop from "../components/global/ScrollToTop";
 
-const cormorant = Cormorant({
+const openSans = Open_Sans({
   subsets: ["latin"],
-  variable: "--font-cormorant",
-});
-
-const cabin = Cabin({
-  subsets: ["latin"],
-  variable: "--font-cabin",
+  variable: "--font-open-sans",
 });
 
 export const metadata: Metadata = {
@@ -42,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <head>
         <PlausibleProvider
           domain="pathtodesign.com"
@@ -50,28 +45,12 @@ export default function RootLayout({
           trackOutboundLinks={true}
         />
       </head>
-      <body
-        className={`${cormorant.variable} ${cabin.variable} bg-stone-950 font-serif`}
-      >
+      <body className={`${openSans.variable} bg-stone-950`}>
         <ScrollToTop />
         <BreakpointIndicator />
         <Navbar />
-        <main className="grid min-h-screen place-items-center">
-          <div className="grid min-w-full max-w-screen-2xl grid-cols-4 grid-rows-[repeat(10,min-content)] gap-4 px-4 md:grid-cols-8 xl:grid-cols-12 2xl:min-w-[1536px]">
-            <div className="-z-10 col-span-1 col-start-1 row-span-full row-start-1 bg-gray-500 opacity-3" />
-            <div className="-z-10 col-span-1 col-start-2 row-span-full row-start-1 bg-gray-500 opacity-3" />
-            <div className="-z-10 col-span-1 col-start-3 row-span-full row-start-1 bg-gray-500 opacity-3" />
-            <div className="-z-10 col-span-1 col-start-4 row-span-full row-start-1 bg-gray-500 opacity-3" />
-            <div className="-z-10 col-span-1 col-start-5 row-span-full row-start-1 hidden bg-gray-500 opacity-3 md:block" />
-            <div className="-z-10 col-span-1 col-start-6 row-span-full row-start-1 hidden bg-gray-500 opacity-3 md:block" />
-            <div className="-z-10 col-span-1 col-start-7 row-span-full row-start-1 hidden bg-gray-500 opacity-3 md:block" />
-            <div className="-z-10 col-span-1 col-start-8 row-span-full row-start-1 hidden bg-gray-500 opacity-3 md:block" />
-            <div className="-z-10 col-span-1 col-start-9 row-span-full row-start-1 hidden bg-gray-500 opacity-3 xl:block" />
-            <div className="-z-10 col-span-1 col-start-10 row-span-full row-start-1 hidden bg-gray-500 opacity-3 xl:block" />
-            <div className="-z-10 col-span-1 col-start-11 row-span-full row-start-1 hidden bg-gray-500 opacity-3 xl:block" />
-            <div className="-z-10 col-span-1 col-start-12 row-span-full row-start-1 hidden bg-gray-500 opacity-3 xl:block" />
-            {children}
-          </div>
+        <main className="min-h-screen place-items-center py-48">
+          <div className="w-lvw max-w-screen-2xl px-8">{children}</div>
         </main>
         <Footer />
       </body>

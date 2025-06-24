@@ -3,9 +3,9 @@
 import { mainCTA, menu, pathToDesign } from "@/config/navigation";
 import Link from "next/link";
 import * as React from "react";
-import { Button } from "./Button";
 import { usePathname } from "next/navigation";
 import { Logo } from "./Logo";
+import { Button } from "../ui/button";
 
 export function Navbar() {
   const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false);
@@ -17,7 +17,7 @@ export function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed left-0 top-0 z-40 flex w-screen items-center justify-between p-3 ">
+    <nav className="fixed left-0 top-0 z-40 flex w-screen items-center justify-between p-3 font-sans ">
       {/* MOBILE MENU  */}
       <div
         className={`absolute z-10 ${!showMobileMenu ? "left-[-100%]" : "left-0"} top-0 flex h-screen w-full flex-col justify-between border-r-2 border-white bg-stone-950 p-4 transition-all`}
@@ -105,7 +105,6 @@ export function Navbar() {
           href={pathToDesign.href}
         >
           <Logo size="32" />
-          {pathToDesign.title}
         </Link>
       </div>
 
@@ -129,18 +128,9 @@ export function Navbar() {
           />
         </svg>
       )}
-      <div className="bg-white/2 hidden items-center gap-12 rounded-md px-4 py-2 font-sans backdrop-blur-md md:flex">
-        {menu.map((menu, index) => (
-          <Link
-            key={index}
-            href={menu.href}
-            className={`${pathname === menu.href ? "text-gradient" : "text-white"}`}
-          >
-            {menu.title}
-          </Link>
-        ))}
-        <Button label={mainCTA.title} url={mainCTA.href} />
-      </div>
+      <Link href={mainCTA.href}>
+        <Button>{mainCTA.title}</Button>
+      </Link>
     </nav>
   );
 }

@@ -28,7 +28,7 @@ export function AppsUsed({ apps }: any) {
                     width={80}
                     height={80}
                     quality={100}
-                    className="rounded-xl transition-all hover:scale-105" // Add this here
+                    className="rounded-xl transition-all hover:scale-105"
                   />
                   <p className="my-0 w-[80px] text-center text-sm capitalize">
                     {app.app}

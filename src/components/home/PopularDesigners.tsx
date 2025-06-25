@@ -9,9 +9,9 @@ export function PopularDesigners({ designers }: any) {
   const filterNames = ["Joshua", "Shannel", "Meghan", "Florian", "Vivek"]; // Select which designers to present on the first page
 
   return (
-    <div className="rounded-2xl bg-neutral-900 p-6">
+    <div className="h-fit flex-grow rounded-2xl bg-neutral-900 p-6">
       <div className="mb-6 flex justify-between">
-        <div className="text-lg text-muted-foreground">Popular Designers</div>
+        <div className="text-lg text-muted-foreground">Popular designers</div>
         <Link href="/designers">
           <Button variant="ghost" className="flex items-center gap-1">
             See all <ChevronRight className="h-4 w-4" />
@@ -37,22 +37,18 @@ export function PopularDesigners({ designers }: any) {
             } = designer;
 
             return (
-              <>
-                {isPublished && (
-                  <CardDesigner
-                    key={index}
-                    company={companies.company}
-                    country={country}
-                    coverImage={coverImage}
-                    firstName={firstName}
-                    lastName={lastName}
-                    oneLiner={oneLiner}
-                    profileImage={profileImage}
-                    role={roles?.role}
-                    slug={slug}
-                  />
-                )}
-              </>
+              <CardDesigner
+                key={index}
+                company={companies.company}
+                country={country}
+                coverImage={coverImage}
+                firstName={firstName}
+                lastName={lastName}
+                oneLiner={oneLiner}
+                profileImage={profileImage}
+                role={roles?.role}
+                slug={slug}
+              />
             );
           })}
       </div>

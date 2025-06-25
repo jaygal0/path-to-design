@@ -25,7 +25,7 @@ export default function BookItem({ item }: { item: any }) {
       onMouseLeave={() => setIsHovered(false)}
       className="plausible-event-name=view-book block"
     >
-      <article className="flex flex-col gap-3">
+      <article className="flex w-full flex-col gap-3 rounded-2xl border p-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Image
@@ -39,7 +39,7 @@ export default function BookItem({ item }: { item: any }) {
                 // Ideally handle fallback in a more React way — this won't work here
               }}
             />
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-4">
               <h3
                 className={`mb-0 text-xl transition-all md:text-2xl lg:text-4xl ${isHovered ? "underline" : ""}`}
               >
@@ -48,24 +48,23 @@ export default function BookItem({ item }: { item: any }) {
               <div className="font-sans text-lg text-stone-400">
                 by {author}
               </div>
-            </div>
-          </div>
-          <div className="flex flex-col gap-2">
-            <div className="flex -space-x-1">
-              {shuffledDesigners.map((designer: any) => (
-                <Avatar
-                  key={`${designer.firstName}-${designer.lastName}`}
-                  firstName={designer.firstName}
-                  lastName={designer.lastName}
-                  size="sm"
-                  profileImage={designer.profileImage}
-                />
-              ))}
-            </div>
-
-            <div className="font-sans text-sm lg:text-base">
-              Read by {designers.length}{" "}
-              {designers.length === 1 ? "designer" : "designers"}
+              <div className="flex gap-3">
+                <div className="flex -space-x-1">
+                  {shuffledDesigners.map((designer: any) => (
+                    <Avatar
+                      key={`${designer.firstName}-${designer.lastName}`}
+                      firstName={designer.firstName}
+                      lastName={designer.lastName}
+                      size="sm"
+                      profileImage={designer.profileImage}
+                    />
+                  ))}
+                </div>
+                <div className="font-sans text-sm lg:text-base">
+                  Read by {designers.length}{" "}
+                  {designers.length === 1 ? "designer" : "designers"}
+                </div>
+              </div>
             </div>
           </div>
         </div>

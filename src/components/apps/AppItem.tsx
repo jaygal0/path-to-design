@@ -25,7 +25,7 @@ export default function AppItem({ tool }: { tool: any }) {
       onMouseLeave={() => setIsHovered(false)}
       className="plausible-event-name=view-app block"
     >
-      <article className="p flex flex-col gap-3 p-6">
+      <article className="flex flex-col gap-3 rounded-2xl border p-6">
         <div className="flex items-center gap-4">
           <Image
             src={`/apps/${app.toLowerCase().replace(/ /g, "-")}.jpg`}

@@ -9,9 +9,9 @@ export function PopularDesigners({ designers }: any) {
   const filterNames = ["Joshua", "Shannel", "Meghan", "Florian", "Vivek"]; // Select which designers to present on the first page
 
   return (
-    <div className="w-1/2 rounded-2xl bg-neutral-900 p-6">
+    <div className="rounded-2xl bg-neutral-900 p-6">
       <div className="mb-6 flex justify-between">
-        <div className="text-muted-foreground text-lg">Popular Designers</div>
+        <div className="text-lg text-muted-foreground">Popular Designers</div>
         <Link href="/designers">
           <Button variant="ghost" className="flex items-center gap-1">
             See all <ChevronRight className="h-4 w-4" />

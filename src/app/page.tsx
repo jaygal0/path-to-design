@@ -1,27 +1,43 @@
+import AppItem from "@/components/apps/AppItem";
 import { Hero } from "@/components/home/Hero";
 import { PopularDesigners } from "@/components/home/PopularDesigners";
 
 async function getData() {
-  const res = await fetch(`${process.env.WEB_SITE}/api/designers`, {
-    next: {
-      revalidate: 60,
-    },
-  });
+  const [designersRes, appsRes] = await Promise.all([
+    fetch(`${process.env.WEB_SITE}/api/designers`, {
+      next: { revalidate: 60 },
+    }),
+    fetch(`${process.env.WEB_SITE}/api/apps`, {
+      next: { revalidate: 60 },
+    }),
+  ]);
 
-  const data = await res.json();
-  if (!res.ok) {
+  if (!designersRes.ok || !appsRes.ok) {
     throw new Error("Failed to fetch data");
   }
-  return data;
+
+  const [designers, apps] = await Promise.all([
+    designersRes.json(),
+    appsRes.json(),
+  ]);
+
+  return { designers, apps };
 }
 
 export default async function Home() {
-  const designers = await getData();
+  const { designers, apps } = await getData();
 
   return (
     <>
       <Hero />
-      <PopularDesigners designers={designers} />
+      <div className="flex">
+        <PopularDesigners designers={designers} />
+        <div className="flex flex-col gap-14">
+          {apps.map((tool: any, index: number) => (
+            <AppItem key={index} tool={tool} />
+          ))}
+        </div>
+      </div>
     </>
   );
 }

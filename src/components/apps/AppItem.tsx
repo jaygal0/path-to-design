@@ -44,7 +44,7 @@ export default function AppItem({ tool }: { tool: any }) {
           </h3>
         </div>
         <div className="font-sans text-stone-400">{desc}</div>
-        <div className="flex flex-col gap-2">
+        <div className="flex gap-2">
           <div className="flex -space-x-1">
             {shuffledDesigners.map((designer: any) => (
               <Avatar
@@ -56,8 +56,7 @@ export default function AppItem({ tool }: { tool: any }) {
               />
             ))}
           </div>
-
-          <div className="font-sans text-sm lg:text-base">
+          <div className="text-sm text-muted-foreground lg:text-base">
             Used by {designers.length}{" "}
             {designers.length === 1 ? "designer" : "designers"}
           </div>

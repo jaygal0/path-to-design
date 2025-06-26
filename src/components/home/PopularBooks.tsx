@@ -21,7 +21,7 @@ export function PopularBooks({ books }: any) {
           </Button>
         </Link>
       </div>
-      <div className="flex flex-wrap gap-6">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {books.slice(0, 5).map((item: any, index: any) => {
           return <BookItem key={index} item={item} />;
         })}

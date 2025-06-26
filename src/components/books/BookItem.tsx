@@ -25,7 +25,7 @@ export default function BookItem({ item }: { item: any }) {
       onMouseLeave={() => setIsHovered(false)}
       className="plausible-event-name=view-book block"
     >
-      <article className="flex w-full flex-col gap-3 rounded-2xl border p-6">
+      <article className="flex h-full w-full flex-col gap-3 rounded-2xl border p-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Image
@@ -35,13 +35,10 @@ export default function BookItem({ item }: { item: any }) {
               height={160}
               quality={100}
               className="rounded-lg object-cover transition-all hover:scale-105"
-              onError={() => {
-                // Ideally handle fallback in a more React way — this won't work here
-              }}
             />
             <div className="flex flex-col gap-4">
               <h3
-                className={`mb-0 text-xl transition-all md:text-2xl lg:text-4xl ${isHovered ? "underline" : ""}`}
+                className={`mb-0 text-xl transition-all ${isHovered ? "underline" : ""}`}
               >
                 {book}
               </h3>
@@ -60,7 +57,7 @@ export default function BookItem({ item }: { item: any }) {
                     />
                   ))}
                 </div>
-                <div className="font-sans text-sm lg:text-base">
+                <div className="text-sm text-muted-foreground lg:text-base">
                   Read by {designers.length}{" "}
                   {designers.length === 1 ? "designer" : "designers"}
                 </div>

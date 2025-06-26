@@ -1,8 +1,8 @@
 interface Props {
   size?: string;
-  white?: boolean;
 }
-export function Logo({ size, white }: Props) {
+
+export function Logo({ size }: Props) {
   return (
     <svg
       width="110"
@@ -10,6 +10,8 @@ export function Logo({ size, white }: Props) {
       viewBox="0 0 110 43"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      style={{ height: "auto" }}
+      className={size}
     >
       <g clip-path="url(#clip0_24072_4622)">
         <path

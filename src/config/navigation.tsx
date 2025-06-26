@@ -11,21 +11,13 @@ export const menu: menuItem[] = [
     href: "/about",
   },
   {
-    title: "Designers",
-    href: "/designers",
+    title: "Contact",
+    href: "mailto:info@pathtodesign.com",
   },
   {
-    title: "Apps",
-    href: "/apps",
+    title: "Privacy Policy",
+    href: "/privacy",
   },
-  {
-    title: "Books",
-    href: "/books",
-  },
-  // {
-  //   title: "Learn",
-  //   href: "/learn",
-  // },
 ];
 
 export const mainCTA: menuItem = {

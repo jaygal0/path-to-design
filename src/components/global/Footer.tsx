@@ -1,19 +1,27 @@
 import dayjs from "dayjs";
+import { Logo } from "./Logo";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { menu } from "@/config/navigation";
 
 export default function Footer() {
   return (
-    <footer className="w-full border-t-2 border-gray-200 bg-stone-950 p-4 font-sans shadow md:flex md:items-center md:justify-between md:p-6">
-      <div className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-        © {dayjs().year()}{" "}
-        <span className="text-md text-gradient font-sans">Path to Design</span>.
-        All Rights Reserved.
+    <footer className="w-full p-4 font-sans shadow md:flex md:items-center md:justify-between md:p-6">
+      <div className="flex flex-col gap-3">
+        <Logo size="w-40" />
+        <div className="text-sm text-muted-foreground">
+          © {dayjs().year()} Path to Design. All Rights Reserved.
+        </div>
       </div>
-      <ul className="mt-3 flex flex-wrap items-center gap-10 font-sans text-sm font-medium text-gray-500 sm:mt-0 dark:text-gray-400">
-        <li>
-          <a href="/privacy" className="hover:underline">
-            Privacy Policy
-          </a>
-        </li>
+
+      <ul className="mt-3 flex flex-wrap items-center gap-12 text-sm font-medium sm:mt-0">
+        {menu.map((item) => (
+          <li key={item.href}>
+            <Button asChild variant="link" className="h-auto p-0 text-sm">
+              <Link href={item.href}>{item.title}</Link>
+            </Button>
+          </li>
+        ))}
       </ul>
     </footer>
   );

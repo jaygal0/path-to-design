@@ -12,11 +12,7 @@ export function Heading({ heading, desc, isSecondary }: Props) {
       >
         {heading}
       </h1>
-      {desc && (
-        <p className="mb-12 font-sans text-xl font-thin leading-relaxed">
-          {desc}
-        </p>
-      )}
+      {desc && <p className="mb-12 text-xl leading-relaxed">{desc}</p>}
     </>
   );
 }

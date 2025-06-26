@@ -2,9 +2,9 @@ import { Heading } from "../../../components/global/Heading";
 
 export default function Page() {
   return (
-    <div className="col-span-full col-start-1 row-span-full row-start-1 flex min-h-screen flex-col justify-start py-64 md:col-span-6 md:col-start-2 xl:col-span-6 xl:col-start-4 xl:pt-72">
+    <div className="px-96 pb-24">
       <Heading heading="About" />
-      <div className="flex flex-col gap-4 font-sans text-xl font-thin leading-relaxed">
+      <div className="flex flex-col gap-4 text-xl leading-relaxed">
         <p>Hi 👋</p>
         <p>
           My name is Joshua Galinato, and I&apos;m a designer too. You can view

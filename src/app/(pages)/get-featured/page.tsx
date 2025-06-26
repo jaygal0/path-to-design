@@ -260,10 +260,10 @@ export default function Page() {
   };
 
   return (
-    <div className="col-span-full col-start-1 row-span-full row-start-1 flex min-h-screen flex-col justify-start py-64 md:col-span-6 md:col-start-2 xl:col-span-6 xl:col-start-4 xl:pt-72">
+    <div className="px-96 pb-24">
       {step >= 2 && (
         <div className="mb-6 w-full">
-          <p className="mb-2 text-left font-sans text-neutral-500">
+          <p className="mb-2 text-left">
             Step {step} of {totalSteps}
           </p>
           <div className="h-2.5 w-full rounded-full bg-gray-800">

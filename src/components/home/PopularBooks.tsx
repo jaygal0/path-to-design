@@ -1,14 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { CardDesigner } from "../global/CardDesigner";
 import { Button } from "../ui/button";
 import { ChevronRight } from "lucide-react";
 import BookItem from "../books/BookItem";
 
 export function PopularBooks({ books }: any) {
-  const filterNames = ["Joshua", "Shannel", "Meghan", "Florian", "Vivek"]; // Select which designers to present on the first page
-
   return (
     <div className="col-span-3 h-fit rounded-2xl bg-neutral-900 p-6">
       <div className="mb-6 flex justify-between">
@@ -22,7 +19,7 @@ export function PopularBooks({ books }: any) {
         </Link>
       </div>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {books.slice(0, 5).map((item: any, index: any) => {
+        {books.slice(0, 9).map((item: any, index: any) => {
           return <BookItem key={index} item={item} />;
         })}
       </div>

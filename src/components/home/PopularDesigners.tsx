@@ -6,13 +6,21 @@ import { Button } from "../ui/button";
 import { ChevronRight } from "lucide-react";
 
 export function PopularDesigners({ designers }: any) {
-  const filterNames = ["Joshua", "Shannel", "Meghan", "Florian", "Vivek"]; // Select which designers to present on the first page
+  const filterNames = [
+    "Joshua",
+    "Shannel",
+    "Meghan",
+    "Florian",
+    "Vivek",
+    "Nizar",
+    "Eriol",
+  ]; // Select which designers to present on the first page
 
   return (
     <div className="col-span-2 h-fit rounded-2xl bg-neutral-900 p-6">
       <div className="mb-6 flex justify-between">
         <div className="text-lg text-muted-foreground">Popular designers</div>
-        <Link href="/designers">
+        <Link href="/browse">
           <Button variant="ghost" className="flex items-center gap-1">
             See all <ChevronRight className="h-4 w-4" />
           </Button>
@@ -21,7 +29,7 @@ export function PopularDesigners({ designers }: any) {
       <div className="flex flex-col gap-6">
         {designers
           .filter((designer: any) => filterNames.includes(designer.firstName))
-          .slice(0, 5)
+          .slice(0, 7)
           .map((designer: any, index: any) => {
             const {
               companies,

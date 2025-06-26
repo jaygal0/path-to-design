@@ -1,6 +1,6 @@
 "use client";
 
-import { mainCTA } from "@/config/navigation";
+import { mainCTA, menu } from "@/config/navigation";
 import { Button } from "../ui/button";
 import Link from "next/link";
 
@@ -18,7 +18,7 @@ export function Hero() {
         <Link href={mainCTA.href}>
           <Button>{mainCTA.title}</Button>
         </Link>
-        <Link href={mainCTA.href}>
+        <Link href={menu[0].href}>
           <Button variant={"secondary"}>Browse all</Button>
         </Link>
       </div>

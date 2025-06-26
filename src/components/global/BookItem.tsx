@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import { useMemo, useState } from "react";
-import { Avatar } from "../global/Avatar";
-import LogoArrow from "../global/LogoArrow";
+import { Avatar } from "./Avatar";
+import LogoArrow from "./LogoArrow";
 
 export default function BookItem({ item }: { item: any }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -26,7 +26,7 @@ export default function BookItem({ item }: { item: any }) {
       onMouseLeave={() => setIsHovered(false)}
       className="plausible-event-name=view-book block"
     >
-      <article className="flex h-full w-full flex-col gap-3 rounded-2xl border p-6">
+      <article className="flex h-full w-full flex-col gap-3 rounded-2xl border p-6 hover:cursor-pointer hover:border-white">
         <div className="flex items-center justify-between">
           <div className="flex w-full items-center gap-4">
             <Image
@@ -39,11 +39,7 @@ export default function BookItem({ item }: { item: any }) {
             />
             <div className="flex w-full flex-col gap-4">
               <div className="flex">
-                <h3
-                  className={`mb-0 flex-grow text-xl transition-all ${isHovered ? "underline" : ""}`}
-                >
-                  {book}
-                </h3>
+                <h3 className="mb-0 flex-grow text-xl">{book}</h3>
                 <LogoArrow />
               </div>
               <div className="font-sans text-lg text-stone-400">

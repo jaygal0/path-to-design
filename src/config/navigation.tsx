@@ -7,6 +7,10 @@ export const pathToDesign: menuItem = {
 
 export const menu: menuItem[] = [
   {
+    title: "Browse",
+    href: "/browse",
+  },
+  {
     title: "About",
     href: "/about",
   },

@@ -1,5 +1,5 @@
 import { Heading } from "../../../components/global/Heading";
-import AppItem from "../../../components/apps/AppItem";
+import AppItem from "../../../components/global/AppItem";
 
 async function getData() {
   const res = await fetch(`${process.env.WEB_SITE}/api/apps`, {

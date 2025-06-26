@@ -6,7 +6,7 @@ import { menu } from "@/config/navigation";
 
 export default function Footer() {
   return (
-    <footer className="w-full p-4 font-sans shadow md:flex md:items-center md:justify-between md:p-6">
+    <footer className="w-full p-4 font-sans shadow md:flex md:items-center md:justify-between md:p-6 md:pb-16">
       <div className="flex flex-col gap-3">
         <Logo size="w-40" />
         <div className="text-sm text-muted-foreground">

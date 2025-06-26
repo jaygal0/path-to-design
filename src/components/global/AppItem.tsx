@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import { useState, useMemo } from "react";
-import { Avatar } from "../global/Avatar";
-import LogoArrow from "../global/LogoArrow";
+import { Avatar } from "./Avatar";
+import LogoArrow from "./LogoArrow";
 
 export default function AppItem({ tool }: { tool: any }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -18,15 +18,8 @@ export default function AppItem({ tool }: { tool: any }) {
   }, []);
 
   return (
-    <a
-      href={url}
-      target="_blank"
-      rel="noopener noreferrer"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className="plausible-event-name=view-app block"
-    >
-      <article className="flex flex-col gap-3 rounded-2xl border p-6">
+    <a target="_blank" className="plausible-event-name=view-app block">
+      <article className="flex flex-col gap-3 rounded-2xl border p-6 transition-all hover:cursor-pointer hover:border-white">
         <div className="flex items-center gap-4">
           <Image
             src={`/apps/${app.toLowerCase().replace(/ /g, "-")}.jpg`}
@@ -34,7 +27,7 @@ export default function AppItem({ tool }: { tool: any }) {
             width={32}
             height={32}
             quality={100}
-            className={`rounded-xl transition-all ${isHovered ? "scale-105" : ""} h-8 w-8`}
+            className="h-8 w-8 rounded-xl transition-all"
             sizes="(max-width: 640px) 40px, 80px"
           />
 
@@ -45,7 +38,7 @@ export default function AppItem({ tool }: { tool: any }) {
           </h3>
           <LogoArrow />
         </div>
-        <div className="font-sans text-stone-400">{desc}</div>
+        <div className="text-muted-foreground">{desc}</div>
         <div className="flex gap-2">
           <div className="flex -space-x-1">
             {shuffledDesigners.map((designer: any) => (

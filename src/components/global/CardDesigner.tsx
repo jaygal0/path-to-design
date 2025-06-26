@@ -19,7 +19,7 @@ export function CardDesigner({
   return (
     <Suspense fallback={"Loading..."}>
       <Link href={`/browse/${slug}`}>
-        <article className="flex flex-col gap-3 rounded-2xl border p-6">
+        <article className="flex flex-col gap-3 rounded-2xl border p-6 transition-all hover:border-white">
           <div className="flex gap-2">
             <Avatar>
               <AvatarImage src={profileImage} />

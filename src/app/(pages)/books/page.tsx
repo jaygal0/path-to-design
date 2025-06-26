@@ -1,6 +1,6 @@
 import { Heading } from "../../../components/global/Heading";
-import AppItem from "../../../components/apps/AppItem";
-import BookItem from "../../../components/books/BookItem";
+import AppItem from "../../../components/global/AppItem";
+import BookItem from "../../../components/global/BookItem";
 
 async function getData() {
   const res = await fetch(`${process.env.WEB_SITE}/api/books`, {

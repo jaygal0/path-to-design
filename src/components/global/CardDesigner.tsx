@@ -18,7 +18,7 @@ export function CardDesigner({
 }: DesignerProps) {
   return (
     <Suspense fallback={"Loading..."}>
-      <Link href={`/designers/${slug}`}>
+      <Link href={`/browse/${slug}`}>
         <article className="flex flex-col gap-3 rounded-2xl border p-6">
           <div className="flex gap-2">
             <Avatar>

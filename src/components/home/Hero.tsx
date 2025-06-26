@@ -6,11 +6,11 @@ import Link from "next/link";
 
 export function Hero() {
   return (
-    <div className="mb-20 flex flex-col gap-2">
+    <div className="mb-20 mt-48 flex flex-col gap-2">
       <h1 className="text-5xl font-bold">
         A Directory of Designers, <span className="block">for Designers.</span>
       </h1>
-      <h2 className="text-muted-foreground mb-8 w-1/2 text-2xl font-light">
+      <h2 className="mb-8 w-1/2 text-2xl font-light text-muted-foreground">
         Explore the paths designers have taken in the tech industry and find
         your own.
       </h2>

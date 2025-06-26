@@ -6,6 +6,7 @@ import "./globals.css";
 import Footer from "../components/global/Footer";
 import { BreakpointIndicator } from "../components/global/BreakpointIndicator";
 import ScrollToTop from "../components/global/ScrollToTop";
+import { Breadcrumbs } from "@/components/global/Breadcrumbs";
 
 const openSans = Open_Sans({
   subsets: ["latin"],
@@ -49,8 +50,11 @@ export default function RootLayout({
         <ScrollToTop />
         <BreakpointIndicator />
         <Navbar />
-        <main className="min-h-screen place-items-center py-48">
-          <div className="m-auto w-lvw max-w-screen-2xl px-8">{children}</div>
+        <main className="min-h-screen py-24">
+          <div className="m-auto w-lvw max-w-screen-2xl px-8">
+            <Breadcrumbs />
+            {children}
+          </div>
         </main>
         <Footer />
       </body>

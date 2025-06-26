@@ -10,7 +10,7 @@ export function PopularBooks({ books }: any) {
   const filterNames = ["Joshua", "Shannel", "Meghan", "Florian", "Vivek"]; // Select which designers to present on the first page
 
   return (
-    <div className="h-fit w-full rounded-2xl bg-neutral-900 p-6">
+    <div className="col-span-3 h-fit rounded-2xl bg-neutral-900 p-6">
       <div className="mb-6 flex justify-between">
         <div className="text-lg text-muted-foreground">
           Popular books read by designers

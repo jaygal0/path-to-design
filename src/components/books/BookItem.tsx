@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import { Avatar } from "../global/Avatar";
+import LogoArrow from "../global/LogoArrow";
 
 export default function BookItem({ item }: { item: any }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -27,7 +28,7 @@ export default function BookItem({ item }: { item: any }) {
     >
       <article className="flex h-full w-full flex-col gap-3 rounded-2xl border p-6">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4">
+          <div className="flex w-full items-center gap-4">
             <Image
               src={bookCover}
               alt={`${book} by ${author}`}
@@ -36,12 +37,15 @@ export default function BookItem({ item }: { item: any }) {
               quality={100}
               className="rounded-lg object-cover transition-all hover:scale-105"
             />
-            <div className="flex flex-col gap-4">
-              <h3
-                className={`mb-0 text-xl transition-all ${isHovered ? "underline" : ""}`}
-              >
-                {book}
-              </h3>
+            <div className="flex w-full flex-col gap-4">
+              <div className="flex">
+                <h3
+                  className={`mb-0 flex-grow text-xl transition-all ${isHovered ? "underline" : ""}`}
+                >
+                  {book}
+                </h3>
+                <LogoArrow />
+              </div>
               <div className="font-sans text-lg text-stone-400">
                 by {author}
               </div>

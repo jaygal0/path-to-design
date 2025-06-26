@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState, useMemo } from "react";
 import { Avatar } from "../global/Avatar";
+import LogoArrow from "../global/LogoArrow";
 
 export default function AppItem({ tool }: { tool: any }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -38,10 +39,11 @@ export default function AppItem({ tool }: { tool: any }) {
           />
 
           <h3
-            className={`mb-0 text-xl transition-all ${isHovered ? "underline" : ""}`}
+            className={`mb-0 flex-grow text-xl transition-all ${isHovered ? "underline" : ""}`}
           >
             {app}
           </h3>
+          <LogoArrow />
         </div>
         <div className="font-sans text-stone-400">{desc}</div>
         <div className="flex gap-2">

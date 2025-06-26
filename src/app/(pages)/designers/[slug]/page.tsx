@@ -109,7 +109,7 @@ export default async function DesignerPage(props: {
 
   return (
     <div>
-      <h1 className="mb-20 mt-32 w-2/3 text-4xl font-bold leading-normal md:text-6xl md:leading-tight">
+      <h1 className="mb-20 w-2/3 text-2xl font-bold leading-normal md:text-5xl md:leading-tight">
         &quot;{oneLiner}&quot;
       </h1>
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">

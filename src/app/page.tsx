@@ -35,7 +35,7 @@ export default async function Home() {
   return (
     <>
       <Hero />
-      <div className="flex flex-wrap gap-6">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
         <PopularDesigners designers={designers} />
         <PopularApps apps={apps} />
         <PopularBooks books={books} />

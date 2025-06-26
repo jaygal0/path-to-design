@@ -3,7 +3,7 @@ import Image from "next/image";
 export function AppsUsed({ apps }: any) {
   return (
     <div>
-      <h3 className="mb-4 font-serif text-2xl text-stone-200">
+      <h3 className="mb-4 text-xl text-muted-foreground">
         What apps do you use to help you design?
       </h3>
       <div className="flex flex-wrap gap-10 gap-y-4">
@@ -14,7 +14,7 @@ export function AppsUsed({ apps }: any) {
             return (
               <a
                 key={app.app}
-                className="font-sans font-thin leading-relaxed"
+                className="leading-relaxed text-muted-foreground"
                 href={app.url}
                 target="_blank"
               >

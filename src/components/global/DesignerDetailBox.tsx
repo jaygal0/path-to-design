@@ -93,7 +93,7 @@ export function DesignerDetailBox({
           </div>
         </div>
       </div>
-      <p className="font-sans text-base text-stone-400">
+      <p className="text-muted-foreground">
         {updatedAt == createdAt
           ? `Posted on ${dayjs(updatedAt).format("D MMM, YYYY")}`
           : `Last updated on ${dayjs(updatedAt).format("D MMM, YYYY")}`}

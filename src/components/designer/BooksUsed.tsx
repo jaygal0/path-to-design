@@ -5,7 +5,7 @@ import Image from "next/image";
 export function BooksUsed({ books }: any) {
   return (
     <div>
-      <h3 className="mb-4 font-serif text-2xl text-stone-200">
+      <h3 className="mb-4 text-xl text-muted-foreground">
         What books do you recommend?
       </h3>
       <div className="flex flex-wrap gap-8 gap-y-4">
@@ -16,7 +16,7 @@ export function BooksUsed({ books }: any) {
             return (
               <a
                 key={book.book}
-                className="font-sans font-thin leading-relaxed"
+                className="leading-relaxed text-muted-foreground"
                 href={book.url}
                 target="_blank"
                 rel="noopener noreferrer"

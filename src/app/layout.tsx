@@ -50,7 +50,7 @@ export default function RootLayout({
         <BreakpointIndicator />
         <Navbar />
         <main className="min-h-screen place-items-center py-48">
-          <div className="w-lvw max-w-screen-2xl px-8">{children}</div>
+          <div className="m-auto w-lvw max-w-screen-2xl px-8">{children}</div>
         </main>
         <Footer />
       </body>

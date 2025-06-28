@@ -4,8 +4,8 @@ interface Props {
 }
 export function Benefits({ heading, desc }: Props) {
   return (
-    <li className="text-stone-400">
-      ✅ <span className="font-bold text-white">{heading}</span> &ndash; {desc}
+    <li className="text-muted-foreground">
+      ✅ <span className="text-foreground">{heading}</span> &ndash; {desc}
     </li>
   );
 }

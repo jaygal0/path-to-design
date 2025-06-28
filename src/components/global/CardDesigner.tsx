@@ -5,6 +5,34 @@ import { Suspense } from "react";
 import { DesignerProps } from "@/types";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import Image from "next/image";
+import clsx from "clsx";
+
+// Color palette for text (15 colors)
+const roleTextColors = [
+  "text-pink-400",
+  "text-red-400",
+  "text-indigo-400",
+  "text-blue-400",
+  "text-yellow-400",
+  "text-purple-400",
+  "text-green-400",
+  "text-teal-400",
+  "text-cyan-400",
+  "text-emerald-400",
+  "text-orange-400",
+  "text-rose-400",
+  "text-lime-400",
+  "text-fuchsia-400",
+  "text-violet-400",
+];
+
+// Deterministic hashing function to assign color by role
+function getRoleTextColor(role: string) {
+  const index =
+    role.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0) %
+    roleTextColors.length;
+  return roleTextColors[index];
+}
 
 export function CardDesigner({
   company,
@@ -16,6 +44,9 @@ export function CardDesigner({
   profileImage,
   oneLiner,
 }: DesignerProps) {
+  const safeRole = role ?? "Unknown";
+  const roleColorClass = getRoleTextColor(safeRole);
+
   return (
     <Suspense fallback={"Loading..."}>
       <Link href={`/browse/${slug}`}>
@@ -36,9 +67,12 @@ export function CardDesigner({
               className="ml-2 inline"
             />
           </div>
-          <div className="text-xl">
-            {role} at {company}
+
+          <div className="flex flex-wrap items-center gap-2 text-xl font-light">
+            <span className={roleColorClass}>{role}</span>
+            <span className="text-xl">at {company}</span>
           </div>
+
           <div className="text-muted-foreground">{oneLiner}</div>
         </article>
       </Link>

@@ -1,9 +1,6 @@
-import { Heading } from "../../../components/global/Heading";
-
 export default function Page() {
   return (
-    <div className="px-96 pb-24">
-      <Heading heading="About" />
+    <div className="px-96">
       <div className="flex flex-col gap-4 text-xl leading-relaxed">
         <p>Hi 👋</p>
         <p>

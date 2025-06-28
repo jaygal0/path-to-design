@@ -276,12 +276,10 @@ export default function Page() {
       )}
       {step <= 1 && (
         <>
-          <Heading
-            heading="Get featured"
-            desc="Submit your story to get featured in front of potential employers, professionals and aspiring designers."
-          />
           <div className="font-sans">
-            <h2 className="mb-4 text-xl">Why share your story?</h2>
+            <h1 className="mb-4 text-2xl font-bold">
+              Share your path to design
+            </h1>
             <ul className="flex flex-col gap-8 py-4 text-lg">
               <Benefits
                 heading="Expand Your Reach"
@@ -293,7 +291,7 @@ export default function Page() {
               />
               <Benefits
                 heading="100% Free"
-                desc="No cost, no catch—just an opportunity to share your story and make an impact."
+                desc="No cost, no catch. Just an opportunity to share your story and make an impact."
               />
             </ul>
           </div>
@@ -302,7 +300,6 @@ export default function Page() {
       <form onSubmit={handleSubmit} className="text-lg">
         {step === 1 && (
           <FormContainer>
-            <h2 className="mb-4 text-xl">Start sharing your story...</h2>
             <label htmlFor="firstName">First name*</label>
             <input
               className={`${errors.firstName ? "border-red-500" : ""} border`}

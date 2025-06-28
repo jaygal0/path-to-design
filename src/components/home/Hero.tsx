@@ -11,8 +11,8 @@ export function Hero() {
         A Directory of Designers, <span className="block">for Designers.</span>
       </h1>
       <h2 className="mb-8 w-1/2 text-2xl font-light text-muted-foreground">
-        Explore the paths designers have taken in the tech industry and find
-        your own.
+        Explore how designers found their path into the tech industry and get
+        inspired to find yours.
       </h2>
       <div className="flex gap-4">
         <Link href={mainCTA.href}>

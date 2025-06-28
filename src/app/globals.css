@@ -30,58 +30,6 @@ a .underline {
   }
 }
 
-.text-gradient {
-  background: -webkit-linear-gradient(
-    303deg,
-    rgba(255, 237, 70, 1) 0%,
-    rgba(255, 126, 199, 1) 100%
-  );
-  background-clip: inherit;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.rectangle-gradient {
-  background: rgb(183, 220, 255);
-  background: linear-gradient(
-    0deg,
-    rgba(183, 220, 255, 1) 0%,
-    rgba(255, 164, 246, 1) 100%
-  );
-}
-.rectangle-gradient-hover {
-  background: rgb(183, 220, 255);
-  background: linear-gradient(
-    0deg,
-    rgba(255, 237, 70, 1) 0%,
-    rgba(255, 126, 199, 1) 100%
-  );
-}
-.designer-box-gradient {
-  background: rgb(183, 220, 255);
-  background: linear-gradient(
-    90deg,
-    rgba(183, 220, 255, 1) 0%,
-    rgba(255, 164, 246, 1) 100%
-  );
-}
-
-.btn-gradient {
-  background: rgb(183, 220, 255);
-  background: linear-gradient(
-    90deg,
-    rgba(183, 220, 255, 1) 0%,
-    rgba(255, 164, 246, 1) 100%
-  );
-}
-.line-gradient {
-  background: rgb(183, 220, 255);
-  background: linear-gradient(
-    180deg,
-    rgba(183, 220, 255, 1) 0%,
-    rgba(255, 164, 246, 1) 100%
-  );
-}
-
 .cover-image {
   right: -7rem;
   top: -4rem;
@@ -108,8 +56,6 @@ select::placeholder {
     stroke-dashoffset: 0;
   }
 }
-
-
 
 @layer base {
   :root {
@@ -146,7 +92,7 @@ select::placeholder {
     --card-foreground: 0 0% 98%;
     --popover: 0 0% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
+    --primary: 142 76% 61%; /* updated to match #4ADE80 */
     --primary-foreground: 0 0% 9%;
     --secondary: 0 0% 14.9%;
     --secondary-foreground: 0 0% 98%;
@@ -165,15 +111,13 @@ select::placeholder {
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
-}
 
-
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
+  @layer base {
+    * {
+      @apply border-border;
+    }
+    body {
+      @apply bg-background text-foreground;
+    }
   }
 }

@@ -50,7 +50,7 @@ export default function RootLayout({
         <ScrollToTop />
         <BreakpointIndicator />
         <Navbar />
-        <main className="min-h-screen py-24">
+        <main className="min-h-screen py-56">
           <div className="m-auto w-lvw max-w-screen-2xl px-8">
             <Breadcrumbs />
             {children}

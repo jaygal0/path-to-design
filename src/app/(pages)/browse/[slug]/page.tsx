@@ -207,7 +207,6 @@ export default async function DesignerPage(props: {
                   createdAt,
                   firstName,
                   id,
-                  isPublished,
                   lastName,
                   roles,
                   slug,

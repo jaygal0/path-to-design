@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export function Hero() {
   return (
-    <div className="mb-20 mt-48 flex flex-col gap-2">
+    <div className="mb-20 flex flex-col gap-2">
       <h1 className="text-5xl font-bold">
         A Directory of Designers, <span className="block">for Designers.</span>
       </h1>

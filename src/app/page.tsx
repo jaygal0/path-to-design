@@ -1,7 +1,7 @@
 import { Hero } from "@/components/home/Hero";
 import { PopularApps } from "@/components/home/PopularApps";
 import { PopularBooks } from "@/components/home/PopularBooks";
-import { PopularDesigners } from "@/components/home/PopularDesigners";
+import { DesignersPopular } from "@/components/home/DesignersPopular";
 
 async function getData() {
   const [designersRes, appsRes, booksRes] = await Promise.all([
@@ -36,7 +36,7 @@ export default async function Home() {
     <>
       <Hero />
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-        <PopularDesigners designers={designers} />
+        <DesignersPopular designers={designers} />
         <PopularApps apps={apps} />
         <PopularBooks books={books} />
       </div>

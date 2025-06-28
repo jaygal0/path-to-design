@@ -5,7 +5,12 @@ import { CardDesigner } from "../global/CardDesigner";
 import { Button } from "../ui/button";
 import { ChevronRight } from "lucide-react";
 
-export function PopularDesigners({ designers }: any) {
+interface Props {
+  designers: any;
+  slice?: number;
+}
+
+export function DesignersPopular({ designers, slice }: Props) {
   const filterNames = [
     "Joshua",
     "Shannel",
@@ -29,7 +34,6 @@ export function PopularDesigners({ designers }: any) {
       <div className="flex flex-col gap-6">
         {designers
           .filter((designer: any) => filterNames.includes(designer.firstName))
-          .slice(0, 7)
           .map((designer: any, index: any) => {
             const {
               companies,

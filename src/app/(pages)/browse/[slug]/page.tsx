@@ -193,7 +193,7 @@ export default async function DesignerPage(props: {
               <div className="text-lg text-muted-foreground">
                 Continue reading
               </div>
-              <Link href="/designers">
+              <Link href="/browse">
                 <Button variant="ghost" className="flex items-center gap-1">
                   See all <ChevronRight className="h-4 w-4" />
                 </Button>

@@ -248,8 +248,8 @@ export default function BrowsePage({ designers, apps, books }: Props) {
             <div className="md:col-span-3">
               <h1 className="mb-6 text-4xl">Apps</h1>
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
-                {filteredApps.map((app) => (
-                  <AppItem tool={app} />
+                {filteredApps.map((app, index) => (
+                  <AppItem tool={app} key={index} />
                 ))}
               </div>
             </div>
@@ -323,8 +323,8 @@ export default function BrowsePage({ designers, apps, books }: Props) {
             <div className="md:col-span-3">
               <h1 className="mb-6 text-4xl">Books</h1>
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
-                {filteredBooks.map((book) => (
-                  <BookItem item={book} />
+                {filteredBooks.map((book, index) => (
+                  <BookItem item={book} key={index} />
                 ))}
               </div>
             </div>

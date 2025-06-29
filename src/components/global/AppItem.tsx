@@ -15,7 +15,7 @@ export default function AppItem({ tool }: { tool: any }) {
       .slice()
       .sort(() => Math.random() - 0.5)
       .slice(0, 3);
-  }, []);
+  }, [designers]);
 
   return (
     <a

@@ -9,6 +9,7 @@ import { ButtonForm } from "../../../components/global/ButtonForm";
 import { FormContainer } from "../../../components/getFeaturedForm/FormContainer";
 import { Benefits } from "../../../components/getFeaturedForm/Benefits";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
 export default function Page() {
   const [formData, setFormData] = useState({
@@ -268,7 +269,7 @@ export default function Page() {
           </p>
           <div className="h-2.5 w-full rounded-full bg-gray-800">
             <div
-              className="btn-gradient h-2.5 rounded-full transition-all duration-1000"
+              className="h-2.5 rounded-full bg-green-400 transition-all duration-1000"
               style={{ width: `${(step / totalSteps) * 100}%` }}
             />
           </div>
@@ -661,13 +662,13 @@ export default function Page() {
                 placeholder="Start writing..."
               />
             </FormContainer>
-            <button
+            <Button
               type="submit"
               disabled={loading}
-              className="text-1xl btn-gradient mt-8 flex w-fit items-center gap-4 rounded-md px-6 py-2 font-sans text-stone-950 transition-all hover:scale-105"
+              className="mt-8 gap-4 text-lg"
             >
               {loading ? "Submitting..." : "Submit"}
-            </button>
+            </Button>
           </>
         )}
       </form>

@@ -104,7 +104,7 @@ export default function BrowsePage({ designers, apps, books }: Props) {
         </TabsList>
 
         {/* Designers */}
-        <TabsContent value="designers">
+        <TabsContent value="designers" className="w-full">
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-4">
             <aside className="hidden space-y-6 lg:block">
               <Button

@@ -8,7 +8,7 @@ import { Button } from "../ui/button";
 
 export function Navbar() {
   return (
-    <nav className="fixed left-0 top-0 z-40 flex w-screen items-center justify-between p-3 font-sans ">
+    <nav className="sticky left-0 top-0 z-40 flex w-full items-center justify-between p-3 font-sans ">
       <div className="bg-white/2 rounded-md px-2 py-2 backdrop-blur-md md:px-4">
         <Link
           className="text-gradient flex items-center gap-2 text-xl font-bold"

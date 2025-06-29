@@ -46,12 +46,14 @@ export default function RootLayout({
           trackOutboundLinks={true}
         />
       </head>
-      <body className={`${openSans.variable} bg-stone-950`}>
+      <body
+        className={`${openSans.variable} relative mx-auto max-w-screen-2xl bg-stone-950`}
+      >
         <ScrollToTop />
         <BreakpointIndicator />
         <Navbar />
-        <main className="min-h-screen py-48 md:py-56">
-          <div className="m-auto w-lvw max-w-screen-2xl px-4 md:px-8">
+        <main className="mx-auto min-h-screen py-48 md:py-32">
+          <div className="px-4 md:px-8">
             <Breadcrumbs />
             {children}
           </div>

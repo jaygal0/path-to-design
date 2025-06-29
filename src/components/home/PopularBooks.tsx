@@ -7,7 +7,7 @@ import BookItem from "@/components/global/BookItem";
 
 export function PopularBooks({ books }: any) {
   return (
-    <div className="col-span-1 mb-10 h-fit rounded-2xl bg-neutral-900 p-6 md:col-span-3 md:mb-40">
+    <div className="col-span-1 mb-10 h-fit rounded-2xl bg-neutral-900 p-6 xl:col-span-3 xl:mb-40">
       <div className="mb-6 flex justify-between">
         <div className="text-lg text-muted-foreground">
           Popular books read by designers
@@ -18,7 +18,7 @@ export function PopularBooks({ books }: any) {
           </Button>
         </Link>
       </div>
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-1 lg:grid-cols-3">
         {books.slice(0, 9).map((item: any, index: any) => {
           return <BookItem key={index} item={item} />;
         })}

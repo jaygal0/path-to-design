@@ -105,8 +105,8 @@ export default function BrowsePage({ designers, apps, books }: Props) {
 
         {/* Designers */}
         <TabsContent value="designers">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
-            <aside className="hidden space-y-6 md:block">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-4">
+            <aside className="hidden space-y-6 lg:block">
               <Button
                 variant="outline"
                 size="sm"
@@ -210,8 +210,8 @@ export default function BrowsePage({ designers, apps, books }: Props) {
 
         {/* Apps */}
         <TabsContent value="apps">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
-            <aside className="hidden space-y-6 md:block">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-4">
+            <aside className="hidden space-y-6 lg:block">
               <Button
                 variant="outline"
                 size="sm"
@@ -258,8 +258,8 @@ export default function BrowsePage({ designers, apps, books }: Props) {
 
         {/* Books */}
         <TabsContent value="books">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
-            <aside className="hidden space-y-6 md:block">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-4">
+            <aside className="hidden space-y-6 lg:block">
               <Button
                 variant="outline"
                 size="sm"

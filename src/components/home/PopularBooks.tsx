@@ -7,7 +7,7 @@ import BookItem from "@/components/global/BookItem";
 
 export function PopularBooks({ books }: any) {
   return (
-    <div className="col-span-3 mb-40 h-fit rounded-2xl bg-neutral-900 p-6">
+    <div className="col-span-1 mb-10 h-fit rounded-2xl bg-neutral-900 p-6 md:col-span-3 md:mb-40">
       <div className="mb-6 flex justify-between">
         <div className="text-lg text-muted-foreground">
           Popular books read by designers

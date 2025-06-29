@@ -10,7 +10,7 @@ export function Hero() {
       <h1 className="text-5xl font-bold">
         A Directory of Designers, <span className="block">for Designers.</span>
       </h1>
-      <h2 className="mb-8 w-1/2 text-2xl font-light text-muted-foreground">
+      <h2 className="mb-8 text-2xl font-light text-muted-foreground md:w-1/2">
         Explore how designers found their path into the tech industry and get
         inspired to find yours.
       </h2>

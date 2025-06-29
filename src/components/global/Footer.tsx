@@ -6,7 +6,7 @@ import { menu } from "@/config/navigation";
 
 export default function Footer() {
   return (
-    <footer className="w-full p-4 font-sans shadow md:flex md:items-center md:justify-between md:p-6 md:pb-16">
+    <footer className="w-full p-4 pb-16 font-sans shadow md:flex md:items-center md:justify-between md:p-6">
       <div className="flex flex-col gap-3">
         <Logo size="w-40" />
         <div className="text-sm text-muted-foreground">
@@ -14,7 +14,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <ul className="mt-3 flex flex-wrap items-center gap-12 text-sm font-medium sm:mt-0">
+      <ul className="item-start mt-10 flex w-min flex-col flex-wrap gap-4 text-left text-sm font-medium sm:mt-0 md:mt-3 md:items-center md:gap-12">
         {menu.map((item) => (
           <li key={item.href}>
             <Button asChild variant="link" className="h-auto p-0 text-sm">

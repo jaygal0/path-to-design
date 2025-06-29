@@ -92,8 +92,8 @@ export default function BrowsePage({ designers, apps, books }: Props) {
 
   return (
     <div className="mx-auto w-full">
-      <Tabs defaultValue="designers" className="w-full">
-        <TabsList className="mb-6">
+      <Tabs defaultValue="designers" className="flex flex-col items-center">
+        <TabsList className="mb-6 w-min p-4">
           <TabsTrigger value="designers">Designers</TabsTrigger>
           <TabsTrigger value="apps">Apps</TabsTrigger>
           <TabsTrigger value="books">Books</TabsTrigger>

@@ -17,7 +17,7 @@ export default function Footer() {
       <ul className="flex w-min flex-col items-start gap-4 text-left text-sm md:flex-row md:gap-12 lg:items-center">
         {menu.map((item) => (
           <li key={item.href}>
-            <Button asChild variant="link" className="h-auto p-0 text-sm">
+            <Button asChild variant="ghost" className="h-auto p-0 text-sm">
               <Link href={item.href}>{item.title}</Link>
             </Button>
           </li>

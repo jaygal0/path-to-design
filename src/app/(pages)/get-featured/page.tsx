@@ -541,7 +541,7 @@ export default function Page() {
             <Heading heading="Helpful resources" isSecondary />
             <FormContainer>
               <label htmlFor="appsText">
-                What apps do you use to help you design?
+                List out the apps you use to help you design
               </label>
               <textarea
                 name="appsText"
@@ -552,7 +552,7 @@ export default function Page() {
                 maxLength={1000}
               />
               <label htmlFor="booksText">
-                What books have you read that helped you get to where are now?
+                List out the books you read that helped you get to where are now
               </label>
               <textarea
                 name="booksText"

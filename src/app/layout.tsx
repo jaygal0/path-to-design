@@ -52,7 +52,7 @@ export default function RootLayout({
         <ScrollToTop />
         <BreakpointIndicator />
         <Navbar />
-        <main className="mx-auto min-h-screen py-48 md:py-32">
+        <main className="min-h-screen py-48 md:py-32">
           <div className="px-4 md:px-8">
             <Breadcrumbs />
             {children}

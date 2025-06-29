@@ -12,7 +12,7 @@ export function PopularBooks({ books }: any) {
         <div className="text-lg text-muted-foreground">
           Popular books read by designers
         </div>
-        <Link href="/browse">
+        <Link href="/browse?tab=books">
           <Button variant="ghost" className="flex items-center gap-1">
             See all <ChevronRight className="h-4 w-4" />
           </Button>

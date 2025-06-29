@@ -260,7 +260,7 @@ export default function Page() {
   };
 
   return (
-    <div className="px-96 pb-24">
+    <div className="lg:px-96 lg:pb-24">
       {step >= 2 && (
         <div className="mb-6 w-full">
           <p className="mb-2 text-left">

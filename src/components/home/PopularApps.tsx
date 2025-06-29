@@ -10,15 +10,13 @@ interface Props {
 }
 
 export function PopularApps({ apps }: Props) {
-  const filterNames = ["Joshua", "Shannel", "Meghan", "Florian", "Vivek"]; // Select which designers to present on the first page
-
   return (
     <div className="col-span-1 h-min rounded-2xl bg-neutral-900 p-6">
       <div className="mb-6 flex justify-between">
         <div className="text-lg text-muted-foreground">
           Popular apps used by designers
         </div>
-        <Link href="/browse">
+        <Link href="/browse?tab=apps">
           <Button variant="ghost" className="flex items-center gap-1">
             See all <ChevronRight className="h-4 w-4" />
           </Button>

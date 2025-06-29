@@ -1,6 +1,6 @@
 export default function Page() {
   return (
-    <div className="px-96">
+    <div className="md:px-96">
       <div className="flex flex-col gap-4 text-xl leading-relaxed">
         <p>Hi 👋</p>
         <p>
@@ -25,9 +25,9 @@ export default function Page() {
           becoming a designer. If so, feel free to reach out at{" "}
           <a
             className="underline hover:cursor-pointer"
-            href="mailto:info@pathtodesign.com"
+            href="mailto:joshua@pathtodesign.com"
           >
-            info@pathtodesign.com.
+            joshua@pathtodesign.com.
           </a>
         </p>
         <p>I&apos;d love to hear from you!</p>

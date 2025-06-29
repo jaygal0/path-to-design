@@ -7,6 +7,7 @@ import { CardDesigner } from "@/components/global/CardDesigner";
 import { Button } from "../ui/button";
 import BookItem from "../global/BookItem";
 import AppItem from "../global/AppItem";
+import { useSearchParams, useRouter } from "next/navigation";
 
 type Props = {
   designers: any[];
@@ -90,9 +91,12 @@ export default function BrowsePage({ designers, apps, books }: Props) {
     });
   }, [books, selectedBookAuthors, selectedBookCategories]);
 
+  const searchParams = useSearchParams();
+  const tab = searchParams.get("tab") || "designers";
+
   return (
     <div className="mx-auto w-full">
-      <Tabs defaultValue="designers" className="flex flex-col items-center">
+      <Tabs defaultValue={tab} className="flex flex-col items-center">
         <TabsList className="mb-6 w-min p-4">
           <TabsTrigger value="designers">Designers</TabsTrigger>
           <TabsTrigger value="apps">Apps</TabsTrigger>
@@ -102,7 +106,7 @@ export default function BrowsePage({ designers, apps, books }: Props) {
         {/* Designers */}
         <TabsContent value="designers">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
-            <aside className="space-y-6">
+            <aside className="hidden space-y-6 md:block">
               <Button
                 variant="outline"
                 size="sm"
@@ -207,7 +211,7 @@ export default function BrowsePage({ designers, apps, books }: Props) {
         {/* Apps */}
         <TabsContent value="apps">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
-            <aside className="space-y-6">
+            <aside className="hidden space-y-6 md:block">
               <Button
                 variant="outline"
                 size="sm"
@@ -255,7 +259,7 @@ export default function BrowsePage({ designers, apps, books }: Props) {
         {/* Books */}
         <TabsContent value="books">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
-            <aside className="space-y-6">
+            <aside className="hidden space-y-6 md:block">
               <Button
                 variant="outline"
                 size="sm"

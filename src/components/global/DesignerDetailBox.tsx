@@ -1,8 +1,15 @@
 import dayjs from "dayjs"; // Import dayjs at the top
 import { DesignerProps } from "@/types";
-import { Country } from "./Country";
 import { Button } from "@/components/ui/button";
-import { Linkedin, Twitter, Instagram, Dribbble, LinkIcon } from "lucide-react";
+import {
+  Linkedin,
+  Twitter,
+  Instagram,
+  Dribbble,
+  LinkIcon,
+  MailIcon,
+  ExternalLink,
+} from "lucide-react";
 import Image from "next/image";
 import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
 
@@ -43,14 +50,55 @@ export function DesignerDetailBox({
           />
         </div>
         <div className="text-xl">
-          {role} at {company}
+          {role} at{" "}
+          {companyURL ? (
+            <a
+              href={companyURL}
+              target="_blank"
+              className="inline-flex items-center gap-1 text-green-400 underline"
+            >
+              {company}
+              <ExternalLink className="h-3 w-3" />
+            </a>
+          ) : (
+            company
+          )}
         </div>
         <div className="flex flex-col justify-between gap-2">
           <div className="flex justify-start gap-5">
+            {email && (
+              <a
+                href={`mailto:${email}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-event-name="contact-email"
+              >
+                <Button variant="outline" size="icon">
+                  <MailIcon className="h-5 w-5" />
+                </Button>
+              </a>
+            )}
             {website && (
-              <a href={website} target="_blank" rel="noopener noreferrer">
+              <a
+                href={website}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-event-name="view-website"
+              >
                 <Button variant="outline" size="icon">
                   <LinkIcon className="h-5 w-5" />
+                </Button>
+              </a>
+            )}
+            {linkedin && (
+              <a
+                href={linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-event-name="view-linkedin"
+              >
+                <Button variant="outline" size="icon">
+                  <Linkedin className="h-5 w-5" />
                 </Button>
               </a>
             )}
@@ -59,6 +107,7 @@ export function DesignerDetailBox({
                 href={`https://x.com/${x}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-event-name="view-x"
               >
                 <Button variant="outline" size="icon">
                   <Twitter className="h-5 w-5" />
@@ -70,6 +119,7 @@ export function DesignerDetailBox({
                 href={`https://instagram.com/${instagram}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-event-name="view-instagram"
               >
                 <Button variant="outline" size="icon">
                   <Instagram className="h-5 w-5" />
@@ -81,6 +131,7 @@ export function DesignerDetailBox({
                 href={`https://dribbble.com/${dribbble}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-event-name="view-dribbble"
               >
                 <Button variant="outline" size="icon">
                   <Dribbble className="h-5 w-5" />

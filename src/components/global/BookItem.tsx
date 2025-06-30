@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useMemo, useState } from "react";
 import { Avatar } from "./Avatar";
 import LogoArrow from "./LogoArrow";
+import { plausibleEvents } from "@/config/plausibleEvents";
 
 export default function BookItem({ item }: { item: any }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -25,7 +26,7 @@ export default function BookItem({ item }: { item: any }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className="plausible-event-name=view-book block"
-      data-event-name="view-book"
+      data-event-name={plausibleEvents.VIEW_BOOK}
     >
       <article className="flex h-full w-full flex-col gap-3 rounded-2xl border p-6 hover:cursor-pointer hover:border-white">
         <div className="flex w-full items-start gap-4">

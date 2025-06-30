@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
+import { plausibleEvents } from "@/config/plausibleEvents";
 
 export function DesignerDetailBox({
   company,
@@ -56,6 +57,7 @@ export function DesignerDetailBox({
               href={companyURL}
               target="_blank"
               className="inline-flex items-center gap-1 text-green-400 underline"
+              data-event-name={plausibleEvents.VIEW_COMPANY}
             >
               {company}
               <ExternalLink className="h-3 w-3" />
@@ -71,7 +73,7 @@ export function DesignerDetailBox({
                 href={`mailto:${email}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                data-event-name="contact-email"
+                data-event-name={plausibleEvents.CONTACT_EMAIL}
               >
                 <Button variant="outline" size="icon">
                   <MailIcon className="h-5 w-5" />
@@ -83,7 +85,7 @@ export function DesignerDetailBox({
                 href={website}
                 target="_blank"
                 rel="noopener noreferrer"
-                data-event-name="view-website"
+                data-event-name={plausibleEvents.VIEW_WEBSITE}
               >
                 <Button variant="outline" size="icon">
                   <LinkIcon className="h-5 w-5" />
@@ -95,7 +97,7 @@ export function DesignerDetailBox({
                 href={linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                data-event-name="view-linkedin"
+                data-event-name={plausibleEvents.VIEW_LINKEDIN}
               >
                 <Button variant="outline" size="icon">
                   <Linkedin className="h-5 w-5" />
@@ -107,7 +109,7 @@ export function DesignerDetailBox({
                 href={`https://x.com/${x}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                data-event-name="view-x"
+                data-event-name={plausibleEvents.VIEW_X}
               >
                 <Button variant="outline" size="icon">
                   <Twitter className="h-5 w-5" />
@@ -119,7 +121,7 @@ export function DesignerDetailBox({
                 href={`https://instagram.com/${instagram}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                data-event-name="view-instagram"
+                data-event-name={plausibleEvents.VIEW_INSTAGRAM}
               >
                 <Button variant="outline" size="icon">
                   <Instagram className="h-5 w-5" />
@@ -131,7 +133,7 @@ export function DesignerDetailBox({
                 href={`https://dribbble.com/${dribbble}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                data-event-name="view-dribbble"
+                data-event-name={plausibleEvents.VIEW_dribbble}
               >
                 <Button variant="outline" size="icon">
                   <Dribbble className="h-5 w-5" />

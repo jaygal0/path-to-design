@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState, useMemo } from "react";
 import { Avatar } from "./Avatar";
 import LogoArrow from "./LogoArrow";
+import { plausibleEvents } from "@/config/plausibleEvents";
 
 export default function AppItem({ tool }: { tool: any }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -22,7 +23,7 @@ export default function AppItem({ tool }: { tool: any }) {
       href={url}
       target="_blank"
       className="plausible-event-name=view-app block"
-      data-event-name="view-app"
+      data-event-name={plausibleEvents.VIEW_APP}
     >
       <article className="flex h-full flex-col gap-3 rounded-2xl border p-6 transition-all hover:cursor-pointer hover:border-white">
         <div className="flex items-center gap-4">

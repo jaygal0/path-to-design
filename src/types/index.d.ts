@@ -1,6 +1,10 @@
 import { LucideIcon } from "lucide-react";
 export type Icon = LucideIcon;
 
+export type PlausibleEvents = {
+  event: string;
+};
+
 export type SiteConfig = {
   name: string;
   description: string;

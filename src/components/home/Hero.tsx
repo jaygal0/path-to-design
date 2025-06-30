@@ -7,10 +7,10 @@ import Link from "next/link";
 export function Hero() {
   return (
     <div className="mb-20 flex flex-col gap-2">
-      <h1 className="text-5xl font-bold">
+      <h1 className="text-3xl font-bold md:text-5xl">
         A Directory of Designers, <span className="block">for Designers.</span>
       </h1>
-      <h2 className="mb-8 text-2xl font-light text-muted-foreground md:w-1/2">
+      <h2 className="mb-8 text-lg font-light text-muted-foreground md:w-1/2 md:text-2xl">
         Explore how designers found their path into the tech industry and get
         inspired to find yours.
       </h2>

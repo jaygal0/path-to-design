@@ -51,12 +51,12 @@ export function CardDesigner({
     <Suspense fallback={"Loading..."}>
       <Link href={`/browse/${slug}`}>
         <article className="flex h-full flex-col gap-3 rounded-2xl border p-6 transition-all hover:border-white">
-          <div className="flex items-start gap-2">
+          <div className="flex items-center gap-2">
             <Avatar>
               <AvatarImage src={profileImage} />
               <AvatarFallback>{firstName.slice(0, 1)}</AvatarFallback>
             </Avatar>
-            <h2 className="flex-grow text-3xl">
+            <h2 className="flex-grow text-xl md:text-3xl">
               {firstName} {lastName}
             </h2>
             <Image
@@ -68,9 +68,9 @@ export function CardDesigner({
             />
           </div>
 
-          <div className="flex flex-wrap items-center gap-2 text-xl font-light">
+          <div className="flex flex-wrap items-center gap-2 text-base font-light md:text-xl">
             <span className={roleColorClass}>{role}</span>
-            <span className="text-xl">at {company}</span>
+            <span className="text-base md:text-xl">at {company}</span>
           </div>
 
           <div className="text-muted-foreground">{oneLiner}</div>

@@ -193,7 +193,7 @@ export default function BrowsePage({ designers, apps, books }: Props) {
             </aside>
 
             <div className="md:col-span-3">
-              <h1 className="mb-6 text-4xl">Designers</h1>
+              <h2 className="mb-6 hidden text-4xl lg:block">Designers</h2>
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
                 {filteredDesigners.map((d) => (
                   <CardDesigner
@@ -246,7 +246,7 @@ export default function BrowsePage({ designers, apps, books }: Props) {
             </aside>
 
             <div className="md:col-span-3">
-              <h1 className="mb-6 text-4xl">Apps</h1>
+              <h2 className="mb-6 hidden text-4xl lg:block">Apps</h2>
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
                 {filteredApps.map((app, index) => (
                   <AppItem tool={app} key={index} />
@@ -321,7 +321,7 @@ export default function BrowsePage({ designers, apps, books }: Props) {
             </aside>
 
             <div className="md:col-span-3">
-              <h1 className="mb-6 text-4xl">Books</h1>
+              <h2 className="mb-6 hidden text-4xl lg:block">Books</h2>
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
                 {filteredBooks.map((book, index) => (
                   <BookItem item={book} key={index} />

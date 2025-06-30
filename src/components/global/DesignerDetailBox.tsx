@@ -26,24 +26,21 @@ export function DesignerDetailBox({
   return (
     <>
       <div className="flex flex-col gap-3 rounded-2xl border p-6">
-        <div className="flex gap-2">
+        <div className="flex items-center gap-2">
           <Avatar>
             <AvatarImage src={profileImage} />
             <AvatarFallback>{firstName.slice(0, 1)}</AvatarFallback>
           </Avatar>
-          <h2 className="flex-grow text-3xl">
+          <h2 className="flex-grow text-lg md:text-3xl">
             {firstName} {lastName}
           </h2>
-          <div>
-            Based in
-            <Image
-              src={`/flags/${country}.svg`}
-              width={24}
-              height={24}
-              alt={`${country}`}
-              className="ml-2 inline"
-            />
-          </div>
+          <Image
+            src={`/flags/${country}.svg`}
+            width={24}
+            height={24}
+            alt={`${country}`}
+            className="ml-2 inline"
+          />
         </div>
         <div className="text-xl">
           {role} at {company}

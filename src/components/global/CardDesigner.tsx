@@ -5,7 +5,6 @@ import { Suspense } from "react";
 import { DesignerProps } from "@/types";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import Image from "next/image";
-import clsx from "clsx";
 
 // Color palette for text (15 colors)
 const roleTextColors = [

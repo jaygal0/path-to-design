@@ -22,6 +22,7 @@ export default function AppItem({ tool }: { tool: any }) {
       href={url}
       target="_blank"
       className="plausible-event-name=view-app block"
+      data-event-name="view-app"
     >
       <article className="flex h-full flex-col gap-3 rounded-2xl border p-6 transition-all hover:cursor-pointer hover:border-white">
         <div className="flex items-center gap-4">

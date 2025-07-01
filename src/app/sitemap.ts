@@ -15,28 +15,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     },
     {
-      url: "https://pathtodesign.com/designers",
+      url: "https://pathtodesign.com/browse",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
-      url: "https://pathtodesign.com/learn",
+      url: "https://pathtodesign.com/get-featured",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
-      url: "https://pathtodesign.com/tools",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: "https://pathtodesign.com/share",
+      url: "https://pathtodesign.com/privacy",
       lastModified: new Date(),
       changeFrequency: "monthly",
-      priority: 0.8,
+      priority: 0.1,
     },
   ];
 }

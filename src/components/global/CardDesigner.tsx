@@ -67,8 +67,8 @@ export function CardDesigner({
             />
           </div>
 
-          <div className="flex flex-wrap items-center gap-2 text-base font-light md:text-xl">
-            <span className={roleColorClass}>{role}</span>
+          <div className="text-base font-light md:text-xl">
+            <span className={roleColorClass}>{role}</span>{" "}
             <span className="text-base md:text-xl">at {company}</span>
           </div>
 

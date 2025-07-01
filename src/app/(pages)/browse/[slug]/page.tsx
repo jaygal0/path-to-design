@@ -188,7 +188,7 @@ export default async function DesignerPage(props: {
               />
             )}
           </div>
-          <div className="col-span-2 h-fit rounded-2xl bg-neutral-900 p-6">
+          <div className="col-span-2 h-fit rounded-2xl bg-neutral-900 p-3 md:p-6">
             <div className="mb-6 flex justify-between">
               <div className="text-lg text-muted-foreground">
                 Continue reading

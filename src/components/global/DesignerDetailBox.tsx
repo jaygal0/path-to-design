@@ -50,7 +50,7 @@ export function DesignerDetailBox({
             className="ml-2 inline"
           />
         </div>
-        <div className="text-xl">
+        <div className="text-lg md:text-xl">
           {role} at{" "}
           {companyURL ? (
             <a
@@ -67,7 +67,7 @@ export function DesignerDetailBox({
           )}
         </div>
         <div className="flex flex-col justify-between gap-2">
-          <div className="flex justify-start gap-5">
+          <div className="flex flex-wrap justify-start gap-5 gap-y-2">
             {email && (
               <a
                 href={`mailto:${email}`}

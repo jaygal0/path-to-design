@@ -14,7 +14,7 @@ const openSans = Open_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Path to Design | A Directory of Designers,for Designers",
+  title: "Path to Design | A Directory of Designers, for Designers",
   description:
     "Explore how designers found their path into the tech industry and get inspired to find yours.",
   openGraph: {

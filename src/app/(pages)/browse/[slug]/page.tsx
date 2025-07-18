@@ -97,7 +97,7 @@ export default async function DesignerPage(props: {
     linkedin,
     oneLiner,
     regrets,
-    responsibilites,
+    responsibilities,
     roles,
     stayInspired,
     updatedAt,
@@ -151,10 +151,10 @@ export default async function DesignerPage(props: {
                 answer={getStarted}
               />
             )}
-            {responsibilites && (
+            {responsibilities && (
               <Answers
                 question="What are the responsibilities of your role as a designer?"
-                answer={responsibilites}
+                answer={responsibilities}
               />
             )}
             {difficulties && (

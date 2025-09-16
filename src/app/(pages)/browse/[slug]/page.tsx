@@ -11,6 +11,7 @@ import { PopularApps } from "@/components/home/PopularApps";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { on } from "events";
 
 async function getData() {
   const [designersRes, appsRes, booksRes] = await Promise.all([
@@ -109,9 +110,11 @@ export default async function DesignerPage(props: {
 
   return (
     <div>
-      <h1 className="mb-20 text-3xl font-bold leading-normal md:text-5xl md:leading-tight lg:w-2/3">
-        &quot;{oneLiner}&quot;
-      </h1>
+      {oneLiner && (
+        <h1 className="mb-20 text-3xl font-bold leading-normal md:text-5xl md:leading-tight lg:w-2/3">
+          &quot;{oneLiner}&quot;
+        </h1>
+      )}
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
         <ScrollToTop />
         <div className="col-span-2 flex flex-col flex-wrap gap-6">

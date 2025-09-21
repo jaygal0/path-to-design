@@ -45,13 +45,24 @@ model Designers {
 }
 
 model Apps {
-  id        String      @id @default(cuid())
-  app       String?
-  desc      String?
+  id               String          @id @default(cuid())
+  app              String?
+  desc             String?
+  url              String?
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+  designers        Designers[]     @relation("AppsToDesigners")
+  AffiliateLinks   AffiliateLinks? @relation(fields: [affiliateLinksId], references: [id])
+  affiliateLinksId String?
+}
+
+model AffiliateLinks {
+  id        String   @id @default(cuid())
+  name      String?
   url       String?
-  createdAt DateTime    @default(now())
-  updatedAt DateTime    @updatedAt
-  designers Designers[] @relation("AppsToDesigners")
+  apps      Apps[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Books {

@@ -52,7 +52,10 @@ export function CardDesigner({
         <article className="flex h-full flex-col gap-3 rounded-2xl border p-6 transition-all hover:border-white">
           <div className="flex items-center gap-2">
             <Avatar>
-              <AvatarImage src={profileImage} />
+              <AvatarImage
+                src={profileImage}
+                alt={`Profile image of ${firstName} ${lastName}`}
+              />
               <AvatarFallback>{firstName.slice(0, 1)}</AvatarFallback>
             </Avatar>
             <h2 className="flex-grow text-xl md:text-3xl">

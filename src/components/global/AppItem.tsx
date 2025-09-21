@@ -22,6 +22,7 @@ export default function AppItem({ tool }: { tool: any }) {
     <a
       href={url}
       target="_blank"
+      rel="sponsored noopener noreferrer"
       className="plausible-event-name=view-app block"
       data-event-name={plausibleEvents.VIEW_APP}
     >

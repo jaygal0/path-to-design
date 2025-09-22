@@ -15,7 +15,7 @@ export function CTA() {
         Explore designers, tools, and stories. Or share your path to inspire the
         next generation.
       </h2>
-      <div className="flex justify-center gap-4">
+      <div className="flex flex-col justify-center gap-4 md:flex-row">
         <Link href={mainCTA.href}>
           <Button>{mainCTA.title}</Button>
         </Link>

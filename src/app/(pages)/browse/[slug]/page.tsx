@@ -239,7 +239,9 @@ export default async function DesignerPage(props: {
           </div>
         </div>
         <div className="col-span-2 flex flex-col gap-8 lg:col-span-1">
-          <PopularApps apps={appsData} />
+          <div className="sticky top-8">
+            <PopularApps apps={appsData} />
+          </div>
         </div>
       </div>
     </div>

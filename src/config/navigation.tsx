@@ -7,8 +7,8 @@ export const pathToDesign: menuItem = {
 
 export const menu: menuItem[] = [
   {
-    title: "Browse",
-    href: "/browse",
+    title: "Share Your Path",
+    href: "/get-featured",
   },
   {
     title: "About",
@@ -25,6 +25,6 @@ export const menu: menuItem[] = [
 ];
 
 export const mainCTA: menuItem = {
-  title: "Get featured",
-  href: "/get-featured",
+  title: "Explore the Directory",
+  href: "/browse",
 };

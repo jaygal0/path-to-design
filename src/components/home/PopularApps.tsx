@@ -18,7 +18,7 @@ export function PopularApps({ apps }: Props) {
         </div>
         <Link href="/browse?tab=apps">
           <Button variant="ghost" className="flex items-center gap-1">
-            See all <ChevronRight className="h-4 w-4" />
+            Explore all <ChevronRight className="h-4 w-4" />
           </Button>
         </Link>
       </div>

@@ -27,7 +27,7 @@ export function DesignersPopular({ designers, slice }: Props) {
         <div className="text-lg text-muted-foreground">Popular designers</div>
         <Link href="/browse">
           <Button variant="ghost" className="flex items-center gap-1">
-            See all <ChevronRight className="h-4 w-4" />
+            Explore all <ChevronRight className="h-4 w-4" />
           </Button>
         </Link>
       </div>

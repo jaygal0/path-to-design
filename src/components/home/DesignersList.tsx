@@ -16,7 +16,7 @@ export function DesignersList({ designers }: Props) {
         <div className="text-lg text-muted-foreground">Continue reading</div>
         <Link href="/designers">
           <Button variant="ghost" className="flex items-center gap-1">
-            See all <ChevronRight className="h-4 w-4" />
+            Explore all <ChevronRight className="h-4 w-4" />
           </Button>
         </Link>
       </div>

@@ -2,6 +2,7 @@ import { Hero } from "@/components/home/Hero";
 import { PopularApps } from "@/components/home/PopularApps";
 import { PopularBooks } from "@/components/home/PopularBooks";
 import { DesignersPopular } from "@/components/home/DesignersPopular";
+import { CTA } from "@/components/home/CTA";
 
 async function getData() {
   const [designersRes, appsRes, booksRes] = await Promise.all([
@@ -39,6 +40,7 @@ export default async function Home() {
         <DesignersPopular designers={designers} />
         <PopularApps apps={apps} />
         <PopularBooks books={books} />
+        <CTA />
       </div>
     </>
   );

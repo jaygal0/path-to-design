@@ -9,8 +9,14 @@ export function PopularBooks({ books }: any) {
   return (
     <div className="col-span-1 h-fit rounded-2xl bg-neutral-900 p-3 md:p-6 xl:col-span-3">
       <div className="mb-6 flex justify-between">
-        <div className="text-lg text-muted-foreground">
-          Popular books read by designers
+        <div className="flex flex-col gap-1">
+          <div className="text-lg text-foreground">
+            Popular books read by designers
+          </div>
+          <p className="text-sm text-muted-foreground">
+            Links to books may be affiliate links. As an Amazon Associate I earn
+            from qualifying purchases. Your support makes a difference.
+          </p>
         </div>
         <Link href="/browse?tab=books">
           <Button variant="ghost" className="flex items-center gap-1">

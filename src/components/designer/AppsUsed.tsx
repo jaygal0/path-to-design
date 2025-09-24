@@ -6,7 +6,7 @@ export function AppsUsed({ apps }: any) {
       <h3 className="mb-4 text-xl text-muted-foreground">
         What apps do you use to help you design?
       </h3>
-      <div className="flex flex-wrap gap-10 gap-y-4">
+      <div className="mb-8 flex flex-wrap gap-10 gap-y-4">
         {apps
           ?.slice() // Create a shallow copy to avoid mutating the original array
           .sort((a: any, b: any) => a.app.localeCompare(b.app)) // Sort alphabetically
@@ -38,6 +38,9 @@ export function AppsUsed({ apps }: any) {
             );
           })}
       </div>
+      <p className="text-sm text-muted-foreground">
+        Links to apps may be affiliate links.
+      </p>
     </div>
   );
 }

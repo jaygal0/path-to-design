@@ -8,7 +8,7 @@ export function BooksUsed({ books }: any) {
       <h3 className="mb-4 text-xl text-muted-foreground">
         What books do you recommend?
       </h3>
-      <div className="flex flex-wrap gap-8 gap-y-4">
+      <div className="mb-8 flex flex-wrap gap-8 gap-y-4">
         {books
           ?.slice() // Create a shallow copy to avoid mutating the original array
           .sort((a: any, b: any) => a.book.localeCompare(b.book)) // Sort alphabetically
@@ -47,6 +47,10 @@ export function BooksUsed({ books }: any) {
             );
           })}
       </div>
+      <p className="mb-4 text-sm text-muted-foreground">
+        Links to books may be affiliate links. As an Amazon Associate I earn
+        from qualifying purchases. Your support makes a difference.
+      </p>
     </div>
   );
 }

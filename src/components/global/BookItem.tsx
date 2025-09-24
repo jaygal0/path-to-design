@@ -22,7 +22,7 @@ export default function BookItem({ item }: { item: any }) {
     <a
       href={url}
       target="_blank"
-      rel="noopener noreferrer"
+      rel="noopener noreferrer nofollow sponsored"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className="plausible-event-name=view-book block"

@@ -24,7 +24,13 @@ export function DesignersPopular({ designers, slice }: Props) {
   return (
     <div className="col-span-1 h-fit rounded-2xl bg-neutral-900 p-3 md:p-6 xl:col-span-2">
       <div className="mb-6 flex justify-between">
-        <div className="text-lg text-muted-foreground">Popular designers</div>
+        <div className="flex flex-col gap-1">
+          <div className="text-lg text-foreground">Popular designers</div>
+          <p className="text-sm text-muted-foreground">
+            Explore the journeys of designers in tech and creative fields. Learn
+            from their paths, experiences, and insights.
+          </p>
+        </div>
         <Link href="/browse">
           <Button variant="ghost" className="flex items-center gap-1">
             Explore all <ChevronRight className="h-4 w-4" />

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Avatar } from "./Avatar";
 import LogoArrow from "./LogoArrow";
 import { plausibleEvents } from "@/config/plausibleEvents";
@@ -10,12 +10,17 @@ export default function BookItem({ item }: { item: any }) {
   const [isHovered, setIsHovered] = useState(false);
   const { book, author, url, bookCover, designers } = item;
 
-  // Shuffle designers only once on component mount
-  const shuffledDesigners = useMemo(() => {
-    return designers
-      .slice()
-      .sort(() => Math.random() - 0.5)
-      .slice(0, 3);
+  const [shuffledDesigners, setShuffledDesigners] = useState(
+    designers.slice(0, 3),
+  );
+
+  useEffect(() => {
+    setShuffledDesigners(
+      designers
+        .slice()
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 3),
+    );
   }, [designers]);
 
   return (

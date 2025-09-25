@@ -15,7 +15,7 @@ export function PopularApps({ apps }: Props) {
       <div className="mb-6">
         <div className="mb-1 flex items-center justify-between gap-1">
           <div className="text-lg text-foreground">Popular apps</div>
-          <Link href="/apps">
+          <Link href="/browse?tab=apps">
             <Button variant="ghost" className="flex items-center gap-1">
               Explore all <ChevronRight className="h-4 w-4" />
             </Button>

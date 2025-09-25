@@ -1,6 +1,5 @@
 "use client";
 
-import { companyInfo } from "@/config/companyInfo";
 import { mainCTA, menu } from "@/config/navigation";
 import Link from "next/link";
 import { Button } from "../ui/button";

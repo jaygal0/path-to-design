@@ -15,12 +15,14 @@ export function CTA() {
         Explore designers, tools, and stories. Or share your path to inspire the
         next generation.
       </h2>
-      <div className="flex flex-col justify-center gap-4 md:flex-row">
+      <div className="flex flex-col justify-center gap-4 sm:flex-row">
         <Link href={mainCTA.href}>
-          <Button>{mainCTA.title}</Button>
+          <Button className="w-full md:w-min">{mainCTA.title}</Button>
         </Link>
         <Link href={menu[0].href}>
-          <Button variant={"secondary"}>{menu[0].title}</Button>
+          <Button variant={"secondary"} className="w-full sm:w-min">
+            {menu[0].title}
+          </Button>
         </Link>
       </div>
     </div>

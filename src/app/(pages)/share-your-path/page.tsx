@@ -47,7 +47,7 @@ export default function Page() {
   const stepTitles = [
     "Your info",
     "Links & Media",
-    "Helpful Resources",
+    "Resources",
     "Share Your Path",
     "Review & Submit",
   ];

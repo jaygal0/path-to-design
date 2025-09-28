@@ -5,6 +5,7 @@ export function Spinner() {
       width="80"
       height="80"
       viewBox="0 0 48 48"
+      className="mt-6"
     >
       <g>
         <circle cx="12" cy="3" r="1" fill="currentColor">

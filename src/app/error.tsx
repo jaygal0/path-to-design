@@ -1,4 +1,6 @@
 "use client";
+import { Button } from "@/components/ui/button";
+import { mainCTA, menu } from "@/config/navigation";
 import Link from "next/link";
 
 export default function Error() {
@@ -13,12 +15,16 @@ export default function Error() {
           on it!
         </p>
       </div>
-      <Link
-        href="/"
-        className="btn-gradient mt-12 w-max cursor-pointer rounded-sm px-10 py-2 font-sans text-stone-950 hover:bg-slate-300"
-      >
-        Go Home
-      </Link>
+      <div className="mt-10 flex flex-col gap-4 md:flex-row">
+        <Link href={mainCTA.href}>
+          <Button className="w-full">{mainCTA.title}</Button>
+        </Link>
+        <Link href={menu[0].href}>
+          <Button className="w-full" variant={"secondary"}>
+            {menu[0].title}
+          </Button>
+        </Link>
+      </div>
     </div>
   );
 }

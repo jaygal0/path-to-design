@@ -20,7 +20,7 @@ export async function POST(req: Request) {
       country,
       appsText,
       booksText,
-      productsText, // new field
+      productsText,
       getStarted,
       responsibilities,
       difficulties,
@@ -83,7 +83,8 @@ export async function POST(req: Request) {
           x,
           dribbble,
           appsText,
-
+          booksText,
+          productsText,
           getStarted,
           responsibilities,
           difficulties,

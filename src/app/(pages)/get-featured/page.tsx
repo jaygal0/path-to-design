@@ -392,65 +392,49 @@ export default function Page() {
                 )}
               </>
             )}
-
-            <ButtonForm
-              prop={handleNext}
-              plausibleEventTracking="plausible-event-name=form-step-one"
+            <label htmlFor="company">Company</label>
+            <input
+              type="text"
+              name="company"
+              value={formData.company}
+              onChange={handleChange}
+              placeholder="Path to Design"
+              required
             />
+            <label htmlFor="companySize">Company size</label>
+            <select
+              name="companySize"
+              value={formData.companySize}
+              onChange={handleChange}
+              placeholder="Company Size"
+            >
+              <option value="" disabled>
+                --- Select ---
+              </option>
+              {companySizes.map((size) => (
+                <option key={size} value={size}>
+                  {size}
+                </option>
+              ))}
+            </select>
+            <label htmlFor="companyUrl">Company website</label>
+            <input
+              type="text"
+              name="companyUrl"
+              value={formData.companyUrl}
+              onChange={handleChange}
+              placeholder="https://pathtodesign.com"
+            />
+            <div className="mt-4 flex items-center justify-end">
+              <ButtonForm
+                prop={handleNext}
+                plausibleEventTracking="plausible-event-name=form-step-one"
+              />
+            </div>
           </FormContainer>
         )}
         {step === 2 && (
           <>
-            <ButtonForm back prop={handleBack} />
-            <Heading
-              heading="Company details"
-              desc="Share a bit about the company you work for—or even better, the one you built from the ground up!"
-              isSecondary
-            />
-            <FormContainer>
-              <label htmlFor="company">Company</label>
-              <input
-                type="text"
-                name="company"
-                value={formData.company}
-                onChange={handleChange}
-                placeholder="Path to Design"
-                required
-              />
-              <label htmlFor="companySize">Company size</label>
-              <select
-                name="companySize"
-                value={formData.companySize}
-                onChange={handleChange}
-                placeholder="Company Size"
-              >
-                <option value="" disabled>
-                  --- Select ---
-                </option>
-                {companySizes.map((size) => (
-                  <option key={size} value={size}>
-                    {size}
-                  </option>
-                ))}
-              </select>
-              <label htmlFor="companyUrl">Company website</label>
-              <input
-                type="text"
-                name="companyUrl"
-                value={formData.companyUrl}
-                onChange={handleChange}
-                placeholder="https://pathtodesign.com"
-              />
-              <ButtonForm
-                prop={handleNext}
-                plausibleEventTracking="plausible-event-name=form-step-two"
-              />
-            </FormContainer>
-          </>
-        )}
-        {step === 3 && (
-          <>
-            <ButtonForm back prop={handleBack} />
             <Heading
               heading="Shareable links"
               desc="Let others know where to find your personal website and other social media platforms."
@@ -529,14 +513,17 @@ export default function Page() {
                   <Image src={coverImagePreview} alt="Preview" layout="fill" />
                 </div>
               )}
-              <ButtonForm
-                prop={handleNext}
-                plausibleEventTracking="plausible-event-name=form-step-three"
-              />
+              <div className="mt-4 flex items-center justify-between">
+                <ButtonForm back prop={handleBack} />
+                <ButtonForm
+                  prop={handleNext}
+                  plausibleEventTracking="plausible-event-name=form-step-two"
+                />
+              </div>
             </FormContainer>
           </>
         )}
-        {step === 4 && (
+        {step === 3 && (
           <>
             <ButtonForm back prop={handleBack} />
             <Heading heading="Helpful resources" isSecondary />
@@ -563,14 +550,17 @@ export default function Page() {
                 rows={5}
                 maxLength={1000}
               />
-              <ButtonForm
-                prop={handleNext}
-                plausibleEventTracking="plausible-event-name=form-step-four"
-              />
+              <div className="mt-4 flex items-center justify-between">
+                <ButtonForm back prop={handleBack} />
+                <ButtonForm
+                  prop={handleNext}
+                  plausibleEventTracking="plausible-event-name=form-step-three"
+                />
+              </div>
             </FormContainer>
           </>
         )}
-        {step === 5 && (
+        {step === 4 && (
           <>
             <ButtonForm back prop={handleBack} />
             <Heading heading="Share your path" isSecondary />
@@ -662,13 +652,12 @@ export default function Page() {
                 placeholder="Start writing..."
               />
             </FormContainer>
-            <Button
-              type="submit"
-              disabled={loading}
-              className="mt-8 gap-4 text-lg"
-            >
-              {loading ? "Submitting..." : "Submit"}
-            </Button>
+            <div className="mt-8 flex items-center justify-between">
+              <ButtonForm back prop={handleBack} />
+              <Button type="submit" disabled={loading} className="text-lg">
+                {loading ? "Submitting..." : "Submit"}
+              </Button>
+            </div>
           </>
         )}
       </form>

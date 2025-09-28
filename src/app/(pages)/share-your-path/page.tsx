@@ -84,7 +84,8 @@ export default function Page() {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
       setProfileImage(file);
-      setProfileImagePreview(URL.createObjectURL(file)); // Show preview
+      setProfileImagePreview(URL.createObjectURL(file)); // optional
+      setFormData((prev) => ({ ...prev, profileImage: file.name })); // store file name
     }
   };
 
@@ -92,7 +93,8 @@ export default function Page() {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
       setCoverImage(file);
-      setCoverImagePreview(URL.createObjectURL(file)); // Show preview
+      setCoverImagePreview(URL.createObjectURL(file)); // optional
+      setFormData((prev) => ({ ...prev, coverImage: file.name })); // store file name
     }
   };
 
@@ -130,6 +132,7 @@ export default function Page() {
 
   const handleNext = () => {
     if (validateStep()) {
+      // move to next step
       setStep(step + 1);
       setError(null);
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -271,8 +274,10 @@ export default function Page() {
   return (
     <div className="mx-auto min-h-screen w-full max-w-3xl px-4 pt-12 lg:px-0 lg:pb-24">
       {step <= 1 && (
-        <div className="font-sans">
-          <h1 className="mb-4 text-2xl font-bold">Share your path to design</h1>
+        <div className="mb-32 font-sans">
+          <h1 className="mb-4 text-2xl font-bold lg:text-3xl">
+            Share Your Path
+          </h1>
           <ul className="flex flex-col gap-8 py-4 text-lg">
             <Benefits
               heading="Expand Your Reach"
@@ -692,14 +697,82 @@ export default function Page() {
                   placeholder="Start writing..."
                 />
               </FormField>
+              {/* Navigation Buttons */}
+              <div className="mt-4 flex items-center justify-between">
+                <ButtonForm back prop={handleBack} />
+                <ButtonForm
+                  prop={handleNext}
+                  plausibleEventTracking="plausible-event-name=form-step-three"
+                />
+              </div>
             </FormContainer>
+          </>
+        )}
+        {step === 5 && (
+          <FormContainer>
+            <div className="space-y-6">
+              {Object.entries(formData).map(([key, value]) => {
+                if (!value) return null; // skip empty fields
+
+                const labels: Record<string, string> = {
+                  firstName: "First name",
+                  lastName: "Last name",
+                  email: "Email",
+                  role: "Job title",
+                  customRole: "Custom Job Title",
+                  company: "Company",
+                  companySize: "Company size",
+                  companyUrl: "Company website",
+                  website: "Your personal website",
+                  linkedin: "LinkedIn profile",
+                  instagram: "Instagram handle",
+                  x: "X handle",
+                  dribbble: "Dribbble handle",
+                  country: "Where are you based?",
+                  appsText: "Apps you use to help you design",
+                  booksText: "Books that helped you get to where you are now",
+                  getStarted:
+                    "How did you get started in your role as a designer?",
+                  responsibilities:
+                    "Responsibilities of your role as a designer",
+                  difficulties:
+                    "Difficulties you encounter in your role as a designer",
+                  incorporateApps:
+                    "How you incorporate apps in your design process",
+                  advice:
+                    "Advice to your younger self trying to get into design",
+                  regrets: "Any regrets in your journey as a designer?",
+                  stayInspired: "How do you stay inspired as a designer?",
+                  oneLiner: "What's your one liner?",
+                  profileImage: "Profile Image",
+                  coverImage: "Cover Image",
+                };
+
+                return (
+                  <div key={key} className="flex flex-col gap-1">
+                    <span className="text-sm font-medium text-muted-foreground">
+                      {labels[key] || key}
+                    </span>
+                    {key === "profileImage" || key === "coverImage" ? (
+                      <span className="text-white">{value}</span>
+                    ) : (
+                      <span className="whitespace-pre-wrap text-white">
+                        {value}
+                      </span>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Navigation Buttons */}
             <div className="mt-8 flex items-center justify-between">
               <ButtonForm back prop={handleBack} />
               <Button type="submit" disabled={loading} className="text-lg">
                 {loading ? "Submitting..." : "Submit"}
               </Button>
             </div>
-          </>
+          </FormContainer>
         )}
       </form>
       {error && (

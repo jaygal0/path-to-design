@@ -8,7 +8,7 @@ export const pathToDesign: menuItem = {
 export const menu: menuItem[] = [
   {
     title: "Share Your Path",
-    href: "/get-featured",
+    href: "/share-your-path",
   },
   {
     title: "About",

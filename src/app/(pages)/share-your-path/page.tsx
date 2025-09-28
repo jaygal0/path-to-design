@@ -336,7 +336,7 @@ export default function Page() {
                 className={`${errors.email ? "border-red-500" : ""} border`}
                 name="email"
                 onChange={handleChange}
-                placeholder="joshua@galina.to"
+                placeholder="joshua@pathtodesign.com"
                 required
                 type="email"
                 value={formData.email}
@@ -538,10 +538,7 @@ export default function Page() {
             {/* Navigation Buttons */}
             <div className="mt-4 flex items-center justify-between">
               <ButtonForm back prop={handleBack} />
-              <ButtonForm
-                prop={handleNext}
-                plausibleEventTracking="plausible-event-name=form-step-two"
-              />
+              <ButtonForm prop={handleNext} />
             </div>
           </FormContainer>
         )}
@@ -580,10 +577,7 @@ export default function Page() {
             {/* Navigation Buttons */}
             <div className="mt-4 flex items-center justify-between">
               <ButtonForm back prop={handleBack} />
-              <ButtonForm
-                prop={handleNext}
-                plausibleEventTracking="plausible-event-name=form-step-three"
-              />
+              <ButtonForm prop={handleNext} />
             </div>
           </FormContainer>
         )}
@@ -700,10 +694,7 @@ export default function Page() {
               {/* Navigation Buttons */}
               <div className="mt-4 flex items-center justify-between">
                 <ButtonForm back prop={handleBack} />
-                <ButtonForm
-                  prop={handleNext}
-                  plausibleEventTracking="plausible-event-name=form-step-three"
-                />
+                <ButtonForm prop={handleNext} />
               </div>
             </FormContainer>
           </>

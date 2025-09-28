@@ -38,8 +38,10 @@ model Designers {
   roles            Roles?     @relation(fields: [rolesId], references: [id])
   appsText         String?
   booksText        String?
+  productsText     String?
   apps             Apps[]     @relation("AppsToDesigners")
   books            Books[]    @relation("BooksToDesigners")
+  products         Products[] @relation("ProductsToDesigners")
 
   @@index([slug])
 }
@@ -56,15 +58,6 @@ model Apps {
   affiliateLinksId String?
 }
 
-model AffiliateLinks {
-  id        String   @id @default(cuid())
-  name      String?
-  url       String?
-  apps      Apps[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
 model Books {
   id        String      @id @default(cuid())
   book      String?
@@ -74,6 +67,25 @@ model Books {
   updatedAt DateTime    @updatedAt
   bookCover String?
   designers Designers[] @relation("BooksToDesigners")
+}
+
+model Products {
+  id          String      @id @default(cuid())
+  name        String?
+  description String?
+  url         String?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  designers   Designers[] @relation("ProductsToDesigners")
+}
+
+model AffiliateLinks {
+  id        String   @id @default(cuid())
+  name      String?
+  url       String?
+  apps      Apps[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Roles {

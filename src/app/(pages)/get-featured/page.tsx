@@ -11,6 +11,7 @@ import { Benefits } from "../../../components/getFeaturedForm/Benefits";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import FormField from "@/components/global/FormField";
+import { Stepper } from "@/components/getFeaturedForm/Stepper";
 
 export default function Page() {
   const [formData, setFormData] = useState({
@@ -42,6 +43,14 @@ export default function Page() {
     coverImage: "",
   });
 
+  const stepTitles = [
+    "Your info",
+    "Links & Media",
+    "Helpful Resources",
+    "Share Your Path",
+    "Review & Submit", // optional if you want a 5th step
+  ];
+
   const [profileImage, setProfileImage] = useState<File | null>(null);
   const [profileImagePreview, setProfileImagePreview] = useState<string | null>(
     null,
@@ -56,8 +65,6 @@ export default function Page() {
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  const totalSteps = 5; // For progress bar
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -263,43 +270,28 @@ export default function Page() {
 
   return (
     <div className="lg:px-96 lg:pb-24">
-      {step >= 2 && (
-        <div className="mb-6 w-full">
-          <p className="mb-2 text-left">
-            Step {step} of {totalSteps}
-          </p>
-          <div className="h-2.5 w-full rounded-full bg-gray-800">
-            <div
-              className="h-2.5 rounded-full bg-green-400 transition-all duration-1000"
-              style={{ width: `${(step / totalSteps) * 100}%` }}
+      {step <= 1 && (
+        <div className="font-sans">
+          <h1 className="mb-4 text-2xl font-bold">Share your path to design</h1>
+          <ul className="flex flex-col gap-8 py-4 text-lg">
+            <Benefits
+              heading="Expand Your Reach"
+              desc="Connect with fellow designers, inspire newcomers, and attract potential employers."
             />
-          </div>
+            <Benefits
+              heading="Boost Your Personal Brand"
+              desc="Showcase your unique journey and let your voice be heard."
+            />
+            <Benefits
+              heading="100% Free"
+              desc="No cost, no catch. Just an opportunity to share your story and make an impact."
+            />
+          </ul>
         </div>
       )}
-      {step <= 1 && (
-        <>
-          <div className="font-sans">
-            <h1 className="mb-4 text-2xl font-bold">
-              Share your path to design
-            </h1>
-            <ul className="flex flex-col gap-8 py-4 text-lg">
-              <Benefits
-                heading="Expand Your Reach"
-                desc="Connect with fellow designers, inspire newcomers, and attract potential employers."
-              />
-              <Benefits
-                heading="Boost Your Personal Brand"
-                desc="Showcase your unique journey and let your voice be heard."
-              />
-              <Benefits
-                heading="100% Free"
-                desc="No cost, no catch. Just an opportunity to share your story and make an impact."
-              />
-            </ul>
-          </div>
-        </>
-      )}
+
       <form onSubmit={handleSubmit} className="text-lg">
+        <Stepper steps={stepTitles} currentStep={step} />
         {step === 1 && (
           <FormContainer>
             <FormField
@@ -448,165 +440,150 @@ export default function Page() {
           </FormContainer>
         )}
         {step === 2 && (
-          <>
-            <Heading
-              heading="Shareable links"
-              desc="Let others know where to find your personal website and other social media platforms."
-              isSecondary
-            />
-            <FormContainer>
-              {/* Personal Website */}
-              <FormField label="Your personal website" htmlFor="website">
-                <input
-                  type="text"
-                  name="website"
-                  value={formData.website}
-                  onChange={handleChange}
-                  placeholder="https://galina.to"
-                />
-              </FormField>
+          <FormContainer>
+            {/* Personal Website */}
+            <FormField label="Your personal website" htmlFor="website">
+              <input
+                type="text"
+                name="website"
+                value={formData.website}
+                onChange={handleChange}
+                placeholder="https://galina.to"
+              />
+            </FormField>
 
-              {/* LinkedIn */}
-              <FormField label="LinkedIn profile" htmlFor="linkedin">
-                <input
-                  type="url"
-                  name="linkedin"
-                  value={formData.linkedin}
-                  onChange={handleChange}
-                  placeholder="https://linkedin/joshuagalinato"
-                />
-              </FormField>
+            {/* LinkedIn */}
+            <FormField label="LinkedIn profile" htmlFor="linkedin">
+              <input
+                type="url"
+                name="linkedin"
+                value={formData.linkedin}
+                onChange={handleChange}
+                placeholder="https://linkedin/joshuagalinato"
+              />
+            </FormField>
 
-              {/* Instagram */}
-              <FormField label="Instagram handle" htmlFor="instagram">
-                <input
-                  type="text"
-                  name="instagram"
-                  value={formData.instagram}
-                  onChange={handleChange}
-                  placeholder="@joshuagalinato"
-                />
-              </FormField>
+            {/* Instagram */}
+            <FormField label="Instagram handle" htmlFor="instagram">
+              <input
+                type="text"
+                name="instagram"
+                value={formData.instagram}
+                onChange={handleChange}
+                placeholder="@joshuagalinato"
+              />
+            </FormField>
 
-              {/* X handle */}
-              <FormField label="X handle" htmlFor="x">
-                <input
-                  type="text"
-                  name="x"
-                  value={formData.x}
-                  onChange={handleChange}
-                  placeholder="@joshuagalinato"
-                />
-              </FormField>
+            {/* X handle */}
+            <FormField label="X handle" htmlFor="x">
+              <input
+                type="text"
+                name="x"
+                value={formData.x}
+                onChange={handleChange}
+                placeholder="@joshuagalinato"
+              />
+            </FormField>
 
-              {/* Dribbble */}
-              <FormField label="Dribbble handle" htmlFor="dribbble">
-                <input
-                  type="text"
-                  name="dribbble"
-                  value={formData.dribbble}
-                  onChange={handleChange}
-                  placeholder="@joshuagalinato"
-                />
-              </FormField>
+            {/* Dribbble */}
+            <FormField label="Dribbble handle" htmlFor="dribbble">
+              <input
+                type="text"
+                name="dribbble"
+                value={formData.dribbble}
+                onChange={handleChange}
+                placeholder="@joshuagalinato"
+              />
+            </FormField>
 
-              {/* Profile Image */}
-              <FormField label="Profile Image" htmlFor="profileImage">
-                <p className="text-stone-400">Recommended aspect ratio: 1:1</p>
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleProfileImageChange}
-                />
-                {profileImagePreview && (
-                  <div className="relative mt-2 h-32 w-32">
-                    <Image
-                      src={profileImagePreview}
-                      alt="Preview"
-                      layout="fill"
-                    />
-                  </div>
-                )}
-              </FormField>
+            {/* Profile Image */}
+            <FormField label="Profile Image" htmlFor="profileImage">
+              <p className="text-stone-400">Recommended aspect ratio: 1:1</p>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleProfileImageChange}
+              />
+              {profileImagePreview && (
+                <div className="relative mt-2 h-32 w-32">
+                  <Image
+                    src={profileImagePreview}
+                    alt="Preview"
+                    layout="fill"
+                  />
+                </div>
+              )}
+            </FormField>
 
-              {/* Cover Image */}
-              <FormField label="Cover Image" htmlFor="coverImage">
-                <p className="text-stone-400">Recommended aspect ratio: 16:9</p>
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleCoverImageChange}
-                />
-                {coverImagePreview && (
-                  <div className="relative mt-2 aspect-video w-full lg:w-64">
-                    <Image
-                      src={coverImagePreview}
-                      alt="Preview"
-                      layout="fill"
-                    />
-                  </div>
-                )}
-              </FormField>
+            {/* Cover Image */}
+            <FormField label="Cover Image" htmlFor="coverImage">
+              <p className="text-stone-400">Recommended aspect ratio: 16:9</p>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleCoverImageChange}
+              />
+              {coverImagePreview && (
+                <div className="relative mt-2 aspect-video w-full lg:w-64">
+                  <Image src={coverImagePreview} alt="Preview" layout="fill" />
+                </div>
+              )}
+            </FormField>
 
-              {/* Navigation Buttons */}
-              <div className="mt-4 flex items-center justify-between">
-                <ButtonForm back prop={handleBack} />
-                <ButtonForm
-                  prop={handleNext}
-                  plausibleEventTracking="plausible-event-name=form-step-two"
-                />
-              </div>
-            </FormContainer>
-          </>
+            {/* Navigation Buttons */}
+            <div className="mt-4 flex items-center justify-between">
+              <ButtonForm back prop={handleBack} />
+              <ButtonForm
+                prop={handleNext}
+                plausibleEventTracking="plausible-event-name=form-step-two"
+              />
+            </div>
+          </FormContainer>
         )}
         {step === 3 && (
-          <>
-            <Heading heading="Helpful resources" isSecondary />
-            <FormContainer>
-              {/* Apps */}
-              <FormField
-                label="List out the apps you use to help you design"
-                htmlFor="appsText"
-              >
-                <textarea
-                  name="appsText"
-                  value={formData.appsText}
-                  onChange={handleChange}
-                  placeholder="Start writing..."
-                  rows={5}
-                  maxLength={1000}
-                />
-              </FormField>
+          <FormContainer>
+            {/* Apps */}
+            <FormField
+              label="List out the apps you use to help you design"
+              htmlFor="appsText"
+            >
+              <textarea
+                name="appsText"
+                value={formData.appsText}
+                onChange={handleChange}
+                placeholder="Start writing..."
+                rows={5}
+                maxLength={1000}
+              />
+            </FormField>
 
-              {/* Books */}
-              <FormField
-                label="List out the books you read that helped you get to where you are now"
-                htmlFor="booksText"
-              >
-                <textarea
-                  name="booksText"
-                  value={formData.booksText}
-                  onChange={handleChange}
-                  placeholder="Start writing..."
-                  rows={5}
-                  maxLength={1000}
-                />
-              </FormField>
+            {/* Books */}
+            <FormField
+              label="List out the books you read that helped you get to where you are now"
+              htmlFor="booksText"
+            >
+              <textarea
+                name="booksText"
+                value={formData.booksText}
+                onChange={handleChange}
+                placeholder="Start writing..."
+                rows={5}
+                maxLength={1000}
+              />
+            </FormField>
 
-              {/* Navigation Buttons */}
-              <div className="mt-4 flex items-center justify-between">
-                <ButtonForm back prop={handleBack} />
-                <ButtonForm
-                  prop={handleNext}
-                  plausibleEventTracking="plausible-event-name=form-step-three"
-                />
-              </div>
-            </FormContainer>
-          </>
+            {/* Navigation Buttons */}
+            <div className="mt-4 flex items-center justify-between">
+              <ButtonForm back prop={handleBack} />
+              <ButtonForm
+                prop={handleNext}
+                plausibleEventTracking="plausible-event-name=form-step-three"
+              />
+            </div>
+          </FormContainer>
         )}
         {step === 4 && (
           <>
-            <Heading heading="Share your path" isSecondary />
             <FormContainer>
               <FormField
                 label="How did you get started in your role as a designer?"

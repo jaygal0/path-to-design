@@ -31,6 +31,7 @@ export default function Page() {
     country: "",
     appsText: "",
     booksText: "",
+    productsText: "",
     getStarted: "",
     responsibilities: "",
     difficulties: "",
@@ -48,7 +49,7 @@ export default function Page() {
     "Links & Media",
     "Helpful Resources",
     "Share Your Path",
-    "Review & Submit", // optional if you want a 5th step
+    "Review & Submit",
   ];
 
   const [profileImage, setProfileImage] = useState<File | null>(null);
@@ -251,6 +252,7 @@ export default function Page() {
         country: "",
         appsText: "",
         booksText: "",
+        productsText: "",
         getStarted: "",
         responsibilities: "",
         difficulties: "",
@@ -574,6 +576,21 @@ export default function Page() {
               />
             </FormField>
 
+            {/* Products */}
+            <FormField
+              label="List out the products you use to help you design"
+              htmlFor="productsText"
+            >
+              <textarea
+                name="productsText"
+                value={formData.productsText}
+                onChange={handleChange}
+                placeholder="Start writing..."
+                rows={5}
+                maxLength={1000}
+              />
+            </FormField>
+
             {/* Navigation Buttons */}
             <div className="mt-4 flex items-center justify-between">
               <ButtonForm back prop={handleBack} />
@@ -722,6 +739,7 @@ export default function Page() {
                   country: "Where are you based?",
                   appsText: "Apps you use to help you design",
                   booksText: "Books that helped you get to where you are now",
+                  productsText: "Products you use to help you design",
                   getStarted:
                     "How did you get started in your role as a designer?",
                   responsibilities:

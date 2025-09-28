@@ -20,7 +20,7 @@ export async function POST(req: Request) {
       country,
       appsText,
       booksText,
-      productsText,
+      productsText, // new field
       getStarted,
       responsibilities,
       difficulties,
@@ -41,13 +41,12 @@ export async function POST(req: Request) {
       );
     }
 
-    // Determine the role to save (custom or selected)
     const roleToSave = role === "Other" ? customRole : role;
 
     const result = await prisma.$transaction(async (tx) => {
       let existingCompany = null;
 
-      // Only create a company if the company name is provided
+      // Only create company if provided
       if (company && company.trim() !== "") {
         existingCompany = await tx.companies.findFirst({
           where: { company },
@@ -60,7 +59,7 @@ export async function POST(req: Request) {
         }
       }
 
-      // Check if role exists
+      // Check or create role
       let existingRole = await tx.roles.findFirst({
         where: { role: roleToSave },
       });
@@ -71,23 +70,20 @@ export async function POST(req: Request) {
         });
       }
 
-      // Create designer with or without company association
+      // Create designer
       const designer = await tx.designers.create({
         data: {
           firstName,
           lastName,
           email,
           website,
-          companiesId: existingCompany ? existingCompany.id : null, // Assign only if a company exists
-          rolesId: existingRole.id, // Ensure this matches your schema
+          country,
           linkedin,
           instagram,
           x,
           dribbble,
-          country,
           appsText,
-          booksText,
-          productsText,
+
           getStarted,
           responsibilities,
           difficulties,
@@ -98,6 +94,10 @@ export async function POST(req: Request) {
           oneLiner,
           profileImage,
           coverImage,
+          companies: existingCompany
+            ? { connect: { id: existingCompany.id } }
+            : undefined,
+          roles: { connect: { id: existingRole.id } },
         },
       });
 

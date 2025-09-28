@@ -269,7 +269,7 @@ export default function Page() {
   };
 
   return (
-    <div className="lg:px-96 lg:pb-24">
+    <div className="mx-auto min-h-screen w-full max-w-3xl px-4 pt-12 lg:px-0 lg:pb-24">
       {step <= 1 && (
         <div className="font-sans">
           <h1 className="mb-4 text-2xl font-bold">Share your path to design</h1>

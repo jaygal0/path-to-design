@@ -61,7 +61,7 @@ const faqs = [
   {
     question: "Who runs Path to Design?",
     answer:
-      "Path to Design is run by Joshua Galinato. I personally review submissions and maintain the site to ensure it stays a supportive space for designers.",
+      "Path to Design is run by me, Joshua Galinato. I personally review submissions and maintain the site to ensure it stays a supportive space for designers.",
   },
 ];
 

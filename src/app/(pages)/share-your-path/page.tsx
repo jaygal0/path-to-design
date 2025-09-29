@@ -555,7 +555,22 @@ export default function Page() {
                 name="appsText"
                 value={formData.appsText}
                 onChange={handleChange}
-                placeholder="Start writing..."
+                placeholder="e.g. Figma, Notion, Slack, etc."
+                rows={5}
+                maxLength={1000}
+              />
+            </FormField>
+
+            {/* Products */}
+            <FormField
+              label="List out the tools you use to help you design"
+              htmlFor="productsText"
+            >
+              <textarea
+                name="productsText"
+                value={formData.productsText}
+                onChange={handleChange}
+                placeholder="e.g. MacBook Pro, iPad Pro, Wacom, etc."
                 rows={5}
                 maxLength={1000}
               />
@@ -570,22 +585,7 @@ export default function Page() {
                 name="booksText"
                 value={formData.booksText}
                 onChange={handleChange}
-                placeholder="Start writing..."
-                rows={5}
-                maxLength={1000}
-              />
-            </FormField>
-
-            {/* Products */}
-            <FormField
-              label="List out the products you use to help you design"
-              htmlFor="productsText"
-            >
-              <textarea
-                name="productsText"
-                value={formData.productsText}
-                onChange={handleChange}
-                placeholder="Start writing..."
+                placeholder="e.g. Atomic Habits, The Design of Everyday Things, etc."
                 rows={5}
                 maxLength={1000}
               />
@@ -739,7 +739,7 @@ export default function Page() {
                   country: "Where are you based?",
                   appsText: "Apps you use to help you design",
                   booksText: "Books that helped you get to where you are now",
-                  productsText: "Products you use to help you design",
+                  productsText: "Tools you use to help you design",
                   getStarted:
                     "How did you get started in your role as a designer?",
                   responsibilities:

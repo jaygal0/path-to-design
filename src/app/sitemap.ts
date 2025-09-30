@@ -21,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: "https://pathtodesign.com/get-featured",
+      url: "https://pathtodesign.com/share-your-path",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,

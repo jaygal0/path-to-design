@@ -2,12 +2,18 @@
 
 import { useState, useMemo } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Checkbox } from "@/components/ui/checkbox";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { CardDesigner } from "@/components/global/CardDesigner";
-import { Button } from "../ui/button";
-import BookItem from "../global/BookItem";
 import AppItem from "../global/AppItem";
-import { useSearchParams, useRouter } from "next/navigation";
+import BookItem from "../global/BookItem";
+import { useSearchParams } from "next/navigation";
 
 type Props = {
   designers: any[];
@@ -16,7 +22,7 @@ type Props = {
 };
 
 export default function BrowsePage({ designers, apps, books }: Props) {
-  // Designers filters
+  // Designer filters
   const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
   const [selectedRoles, setSelectedRoles] = useState<string[]>([]);
   const [selectedCompanies, setSelectedCompanies] = useState<string[]>([]);
@@ -32,6 +38,7 @@ export default function BrowsePage({ designers, apps, books }: Props) {
     string[]
   >([]);
 
+  // Unique filter sets
   const countries = [
     ...new Set(designers.map((d) => d.country).filter(Boolean)),
   ];
@@ -41,37 +48,33 @@ export default function BrowsePage({ designers, apps, books }: Props) {
   const companies = [
     ...new Set(designers.map((d) => d.companies?.company).filter(Boolean)),
   ];
-
   const appCategories = [
     ...new Set(apps.map((a) => a.category).filter(Boolean)),
   ];
-
   const bookCategories = [
     ...new Set(books.map((b) => b.category).filter(Boolean)),
   ];
   const bookAuthors = [...new Set(books.map((b) => b.author).filter(Boolean))];
 
+  // Filtering logic
   const filteredDesigners = useMemo(() => {
     return designers.filter((designer) => {
-      const matchCountry =
-        selectedCountries.length > 0
-          ? selectedCountries.includes(designer.country)
-          : true;
-      const matchRole =
-        selectedRoles.length > 0
-          ? selectedRoles.includes(designer.roles?.role)
-          : true;
-      const matchCompany =
-        selectedCompanies.length > 0
-          ? selectedCompanies.includes(designer.companies?.company)
-          : true;
+      const matchCountry = selectedCountries.length
+        ? selectedCountries.includes(designer.country)
+        : true;
+      const matchRole = selectedRoles.length
+        ? selectedRoles.includes(designer.roles?.role)
+        : true;
+      const matchCompany = selectedCompanies.length
+        ? selectedCompanies.includes(designer.companies?.company)
+        : true;
       return matchCountry && matchRole && matchCompany;
     });
   }, [designers, selectedCountries, selectedRoles, selectedCompanies]);
 
   const filteredApps = useMemo(() => {
     return apps.filter((app) =>
-      selectedAppCategories.length > 0
+      selectedAppCategories.length
         ? selectedAppCategories.includes(app.category)
         : true,
     );
@@ -79,14 +82,12 @@ export default function BrowsePage({ designers, apps, books }: Props) {
 
   const filteredBooks = useMemo(() => {
     return books.filter((book) => {
-      const matchAuthor =
-        selectedBookAuthors.length > 0
-          ? selectedBookAuthors.includes(book.author)
-          : true;
-      const matchCategory =
-        selectedBookCategories.length > 0
-          ? selectedBookCategories.includes(book.category)
-          : true;
+      const matchAuthor = selectedBookAuthors.length
+        ? selectedBookAuthors.includes(book.author)
+        : true;
+      const matchCategory = selectedBookCategories.length
+        ? selectedBookCategories.includes(book.category)
+        : true;
       return matchAuthor && matchCategory;
     });
   }, [books, selectedBookAuthors, selectedBookCategories]);
@@ -94,247 +95,290 @@ export default function BrowsePage({ designers, apps, books }: Props) {
   const searchParams = useSearchParams();
   const tab = searchParams.get("tab") || "designers";
 
+  // helper for chip toggle
+  const toggleChip = (
+    value: string,
+    state: string[],
+    setter: (v: string[]) => void,
+  ) => {
+    setter(
+      state.includes(value)
+        ? state.filter((v) => v !== value)
+        : [...state, value],
+    );
+  };
+
   return (
     <div className="mx-auto w-full">
-      <Tabs defaultValue={tab} className="flex flex-col items-center">
-        <TabsList className="mb-10 w-min p-4">
-          <TabsTrigger value="designers">Designers</TabsTrigger>
-          <TabsTrigger value="apps">Apps</TabsTrigger>
-          <TabsTrigger value="books">Books</TabsTrigger>
+      <Tabs defaultValue={tab} className="flex flex-col">
+        <TabsList className="mb-2 w-min py-6">
+          <TabsTrigger className="text-lg font-semibold" value="designers">
+            Designers
+          </TabsTrigger>
+          <TabsTrigger className="text-lg font-semibold" value="apps">
+            Apps
+          </TabsTrigger>
+          <TabsTrigger className="text-lg font-semibold" value="books">
+            Books
+          </TabsTrigger>
         </TabsList>
 
         {/* Designers */}
-        <TabsContent value="designers" className="w-full">
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-4">
-            <aside className="hidden space-y-6 lg:block">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => {
-                  setSelectedCountries([]);
-                  setSelectedRoles([]);
-                  setSelectedCompanies([]);
-                }}
-              >
-                Clear Filters
-              </Button>
-
-              <div>
-                <p className="mb-2 text-sm font-medium">Based In</p>
-                <div className="space-y-2">
+        <TabsContent value="designers" className="w-full space-y-6">
+          <div className="w-full">
+            <Accordion type="multiple" className="w-full">
+              <AccordionItem value="countries">
+                <AccordionTrigger>Countries</AccordionTrigger>
+                <AccordionContent className="flex flex-wrap gap-2">
                   {countries.sort().map((country) => (
-                    <label
+                    <Badge
                       key={country}
-                      className="flex items-center gap-2 text-sm"
+                      variant={
+                        selectedCountries.includes(country)
+                          ? "default"
+                          : "outline"
+                      }
+                      className="cursor-pointer"
+                      onClick={() =>
+                        toggleChip(
+                          country,
+                          selectedCountries,
+                          setSelectedCountries,
+                        )
+                      }
                     >
-                      <Checkbox
-                        checked={selectedCountries.includes(country)}
-                        onCheckedChange={(checked) =>
-                          setSelectedCountries((prev) =>
-                            checked
-                              ? [...prev, country]
-                              : prev.filter((c) => c !== country),
-                          )
-                        }
-                      />
                       {country}
-                    </label>
+                    </Badge>
                   ))}
-                </div>
-              </div>
+                </AccordionContent>
+              </AccordionItem>
 
-              <div>
-                <p className="mb-2 text-sm font-medium">Roles</p>
-                <div className="space-y-2 pr-2">
+              <AccordionItem value="roles">
+                <AccordionTrigger>Roles</AccordionTrigger>
+                <AccordionContent className="flex flex-wrap gap-2">
                   {roles.sort().map((role) => (
-                    <label
+                    <Badge
                       key={role}
-                      className="flex items-center gap-2 text-sm"
+                      variant={
+                        selectedRoles.includes(role) ? "default" : "outline"
+                      }
+                      className="cursor-pointer"
+                      onClick={() =>
+                        toggleChip(role, selectedRoles, setSelectedRoles)
+                      }
                     >
-                      <Checkbox
-                        checked={selectedRoles.includes(role)}
-                        onCheckedChange={(checked) =>
-                          setSelectedRoles((prev) =>
-                            checked
-                              ? [...prev, role]
-                              : prev.filter((r) => r !== role),
-                          )
-                        }
-                      />
                       {role}
-                    </label>
+                    </Badge>
                   ))}
-                </div>
-              </div>
+                </AccordionContent>
+              </AccordionItem>
 
-              <div>
-                <p className="mb-2 text-sm font-medium">Companies</p>
-                <div className="space-y-2 pr-2">
+              <AccordionItem value="companies">
+                <AccordionTrigger>Companies</AccordionTrigger>
+                <AccordionContent className="flex flex-wrap gap-2">
                   {companies.sort().map((company) => (
-                    <label
+                    <Badge
                       key={company}
-                      className="flex items-center gap-2 text-sm"
+                      variant={
+                        selectedCompanies.includes(company)
+                          ? "default"
+                          : "outline"
+                      }
+                      className="cursor-pointer"
+                      onClick={() =>
+                        toggleChip(
+                          company,
+                          selectedCompanies,
+                          setSelectedCompanies,
+                        )
+                      }
                     >
-                      <Checkbox
-                        checked={selectedCompanies.includes(company)}
-                        onCheckedChange={(checked) =>
-                          setSelectedCompanies((prev) =>
-                            checked
-                              ? [...prev, company]
-                              : prev.filter((c) => c !== company),
-                          )
-                        }
-                      />
                       {company}
-                    </label>
+                    </Badge>
                   ))}
-                </div>
-              </div>
-            </aside>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
 
-            <div className="md:col-span-3">
-              <h2 className="mb-6 text-4xl lg:block">Designers</h2>
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
-                {filteredDesigners.map((d) => (
-                  <CardDesigner
-                    key={d.id}
-                    {...d}
-                    role={d.roles.role}
-                    company={d.companies.company}
-                  />
-                ))}
-              </div>
+            <div className="h-10">
+              {(selectedCountries.length > 0 ||
+                selectedRoles.length > 0 ||
+                selectedCompanies.length > 0) && (
+                <Button
+                  variant="link"
+                  size="sm"
+                  className="mt-3 px-0"
+                  onClick={() => {
+                    setSelectedCountries([]);
+                    setSelectedRoles([]);
+                    setSelectedCompanies([]);
+                  }}
+                >
+                  Clear Filters
+                </Button>
+              )}
+            </div>
+          </div>
+
+          <div>
+            <h2 className="mb-6 text-4xl">Designers</h2>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
+              {filteredDesigners.map((d) => (
+                <CardDesigner
+                  key={d.id}
+                  {...d}
+                  role={d.roles.role}
+                  company={d.companies.company}
+                />
+              ))}
             </div>
           </div>
         </TabsContent>
 
         {/* Apps */}
-        <TabsContent value="apps" className="w-full">
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-4">
-            <aside className="hidden space-y-6 lg:block">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setSelectedAppCategories([])}
-              >
-                Clear Filters
-              </Button>
-
-              <div>
-                <p className="mb-2 text-sm font-medium">Categories</p>
-                <div className="space-y-2">
+        <TabsContent value="apps" className="w-full space-y-6">
+          <div className="w-full">
+            <Accordion type="multiple" className="w-full">
+              <AccordionItem value="categories">
+                <AccordionTrigger>Categories</AccordionTrigger>
+                <AccordionContent className="flex flex-wrap gap-2">
                   {appCategories.sort().map((category) => (
-                    <label
+                    <Badge
                       key={category}
-                      className="flex items-center gap-2 text-sm"
+                      variant={
+                        selectedAppCategories.includes(category)
+                          ? "default"
+                          : "outline"
+                      }
+                      className="cursor-pointer"
+                      onClick={() =>
+                        toggleChip(
+                          category,
+                          selectedAppCategories,
+                          setSelectedAppCategories,
+                        )
+                      }
                     >
-                      <Checkbox
-                        checked={selectedAppCategories.includes(category)}
-                        onCheckedChange={(checked) =>
-                          setSelectedAppCategories((prev) =>
-                            checked
-                              ? [...prev, category]
-                              : prev.filter((c) => c !== category),
-                          )
-                        }
-                      />
                       {category}
-                    </label>
+                    </Badge>
                   ))}
-                </div>
-              </div>
-            </aside>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
 
-            <div className="md:col-span-3">
-              <h2 className="mb-2 text-4xl lg:block">Apps</h2>
-              <p className="mb-6 text-sm text-muted-foreground">
-                Links to apps may be affiliate links. Your support makes a
-                difference.
-              </p>
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
-                {filteredApps.map((app, index) => (
-                  <AppItem tool={app} key={index} />
-                ))}
-              </div>
+            <div className="h-10">
+              {selectedAppCategories.length > 0 && (
+                <Button
+                  variant="link"
+                  size="sm"
+                  className="mt-3 px-0"
+                  onClick={() => setSelectedAppCategories([])}
+                >
+                  Clear Filters
+                </Button>
+              )}
+            </div>
+          </div>
+
+          <div>
+            <h2 className="mb-2 text-4xl">Apps</h2>
+            <p className="mb-6 text-sm text-muted-foreground">
+              Links to apps may be affiliate links. Your support makes a
+              difference.
+            </p>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
+              {filteredApps.map((app, index) => (
+                <AppItem tool={app} key={index} />
+              ))}
             </div>
           </div>
         </TabsContent>
 
         {/* Books */}
-        <TabsContent value="books" className="w-full">
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-4">
-            <aside className="hidden space-y-6 lg:block">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => {
-                  setSelectedBookAuthors([]);
-                  setSelectedBookCategories([]);
-                }}
-              >
-                Clear Filters
-              </Button>
-
-              <div>
-                <p className="mb-2 text-sm font-medium">Authors</p>
-                <div className="space-y-2">
+        <TabsContent value="books" className="w-full space-y-6">
+          <div className="w-full">
+            <Accordion type="multiple" className="w-full">
+              <AccordionItem value="authors">
+                <AccordionTrigger>Authors</AccordionTrigger>
+                <AccordionContent className="flex flex-wrap gap-2">
                   {bookAuthors.sort().map((author) => (
-                    <label
+                    <Badge
                       key={author}
-                      className="flex items-center gap-2 text-sm"
+                      variant={
+                        selectedBookAuthors.includes(author)
+                          ? "default"
+                          : "outline"
+                      }
+                      className="cursor-pointer"
+                      onClick={() =>
+                        toggleChip(
+                          author,
+                          selectedBookAuthors,
+                          setSelectedBookAuthors,
+                        )
+                      }
                     >
-                      <Checkbox
-                        checked={selectedBookAuthors.includes(author)}
-                        onCheckedChange={(checked) =>
-                          setSelectedBookAuthors((prev) =>
-                            checked
-                              ? [...prev, author]
-                              : prev.filter((a) => a !== author),
-                          )
-                        }
-                      />
                       {author}
-                    </label>
+                    </Badge>
                   ))}
-                </div>
-              </div>
+                </AccordionContent>
+              </AccordionItem>
 
-              <div>
-                <p className="mb-2 text-sm font-medium">Categories</p>
-                <div className="space-y-2">
+              <AccordionItem value="categories">
+                <AccordionTrigger>Categories</AccordionTrigger>
+                <AccordionContent className="flex flex-wrap gap-2">
                   {bookCategories.sort().map((category) => (
-                    <label
+                    <Badge
                       key={category}
-                      className="flex items-center gap-2 text-sm"
+                      variant={
+                        selectedBookCategories.includes(category)
+                          ? "default"
+                          : "outline"
+                      }
+                      className="cursor-pointer"
+                      onClick={() =>
+                        toggleChip(
+                          category,
+                          selectedBookCategories,
+                          setSelectedBookCategories,
+                        )
+                      }
                     >
-                      <Checkbox
-                        checked={selectedBookCategories.includes(category)}
-                        onCheckedChange={(checked) =>
-                          setSelectedBookCategories((prev) =>
-                            checked
-                              ? [...prev, category]
-                              : prev.filter((c) => c !== category),
-                          )
-                        }
-                      />
                       {category}
-                    </label>
+                    </Badge>
                   ))}
-                </div>
-              </div>
-            </aside>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
 
-            <div className="md:col-span-3">
-              <h2 className="mb-2 text-4xl lg:block">Books</h2>
-              <p className="mb-6 text-sm text-muted-foreground">
-                Links to books may be affiliate links. As an Amazon Associate I
-                earn from qualifying purchases. Your support makes a difference.
-              </p>
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
-                {filteredBooks.map((book, index) => (
-                  <BookItem item={book} key={index} />
-                ))}
-              </div>
+            <div className="h-10">
+              {(selectedBookAuthors.length > 0 ||
+                selectedBookCategories.length > 0) && (
+                <Button
+                  variant="link"
+                  size="sm"
+                  className="mt-3 px-0"
+                  onClick={() => {
+                    setSelectedBookAuthors([]);
+                    setSelectedBookCategories([]);
+                  }}
+                >
+                  Clear Filters
+                </Button>
+              )}
+            </div>
+          </div>
+
+          <div>
+            <h2 className="mb-2 text-4xl">Books</h2>
+            <p className="mb-6 text-sm text-muted-foreground">
+              Links to books may be affiliate links. As an Amazon Associate I
+              earn from qualifying purchases. Your support makes a difference.
+            </p>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
+              {filteredBooks.map((book, index) => (
+                <BookItem item={book} key={index} />
+              ))}
             </div>
           </div>
         </TabsContent>

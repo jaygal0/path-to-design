@@ -17,7 +17,7 @@ const faqs = [
   {
     question: "Who can contribute to the directory?",
     answer:
-      "Any designer, whether you’re a student, freelancer, or working in tech, can share your path. We welcome stories from all design disciplines: UX, UI, product, visual, motion, and more.",
+      "Any designer, whether you’re a freelancer, or working in tech, can share your path. We welcome stories from all design disciplines: UX, UI, product, visual, motion, and more.",
   },
   {
     question: "How do I share my design journey?",

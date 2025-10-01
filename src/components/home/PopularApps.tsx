@@ -22,7 +22,7 @@ export function PopularApps({ apps }: Props) {
           </Link>
         </div>
         <p className="text-sm text-muted-foreground md:w-3/4">
-          Links to apps may be affiliate links.
+          Discover helpful apps that support designers in their careers.
         </p>
       </div>
       <div className="flex flex-col gap-6">

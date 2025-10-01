@@ -47,10 +47,6 @@ export function BooksUsed({ books }: any) {
             );
           })}
       </div>
-      <p className="mb-4 text-sm text-muted-foreground">
-        Links to books may be affiliate links. As an Amazon Associate I earn
-        from qualifying purchases. Your support makes a difference.
-      </p>
     </div>
   );
 }

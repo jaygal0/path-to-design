@@ -38,9 +38,6 @@ export function AppsUsed({ apps }: any) {
             );
           })}
       </div>
-      <p className="text-sm text-muted-foreground">
-        Links to apps may be affiliate links.
-      </p>
     </div>
   );
 }

@@ -282,10 +282,6 @@ export default function BrowsePage({ designers, apps, books }: Props) {
 
           <div>
             <h2 className="mb-2 text-4xl">Apps</h2>
-            <p className="mb-6 text-sm text-muted-foreground">
-              Links to apps may be affiliate links. Your support makes a
-              difference.
-            </p>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
               {filteredApps.map((app, index) => (
                 <AppItem tool={app} key={index} />
@@ -371,10 +367,6 @@ export default function BrowsePage({ designers, apps, books }: Props) {
 
           <div>
             <h2 className="mb-2 text-4xl">Books</h2>
-            <p className="mb-6 text-sm text-muted-foreground">
-              Links to books may be affiliate links. As an Amazon Associate I
-              earn from qualifying purchases. Your support makes a difference.
-            </p>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
               {filteredBooks.map((book, index) => (
                 <BookItem item={book} key={index} />

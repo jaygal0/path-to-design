@@ -7,11 +7,15 @@ export default function Page() {
     <div className="xl:px-96">
       <Heading
         heading="Thank You!"
-        desc="Your submission has been received. We'll get back to you as soon as possible to let you know when your profile is live."
+        desc={`Joshua here 👋 
+          
+         Thanks for submitting your post! I'll review your submission and get back to you as soon as possible. It'll usually take about 1-3 days. 
+         
+         In the meantime, feel free to explore the directory and connect with our amazing community of designers.`}
       />
 
-      <Link href="/">
-        <Button>Go Home</Button>
+      <Link href="/browse">
+        <Button>Explore the Directory</Button>
       </Link>
     </div>
   );

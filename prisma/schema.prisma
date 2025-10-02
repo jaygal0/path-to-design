@@ -56,6 +56,15 @@ model Apps {
   designers        Designers[]     @relation("AppsToDesigners")
   AffiliateLinks   AffiliateLinks? @relation(fields: [affiliateLinksId], references: [id])
   affiliateLinksId String?
+  categories       AppCategories[] @relation("AppsToCategories")
+}
+
+model AppCategories {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  apps      Apps[]   @relation("AppsToCategories")
 }
 
 model Books {

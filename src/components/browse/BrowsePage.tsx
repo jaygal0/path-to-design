@@ -223,14 +223,17 @@ export default function BrowsePage({ designers, apps, books }: Props) {
           <div>
             <h2 className="mb-6 text-4xl">Designers</h2>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
-              {filteredDesigners.map((d) => (
-                <CardDesigner
-                  key={d.id}
-                  {...d}
-                  role={d.roles.role}
-                  company={d.companies.company}
-                />
-              ))}
+              {filteredDesigners.map(
+                (d) =>
+                  d.isPublished && (
+                    <CardDesigner
+                      key={d.id}
+                      {...d}
+                      role={d.roles.role}
+                      company={d.companies.company}
+                    />
+                  ),
+              )}
             </div>
           </div>
         </TabsContent>

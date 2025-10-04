@@ -49,7 +49,9 @@ export default function BrowsePage({ designers, apps, books }: Props) {
     ...new Set(designers.map((d) => d.companies?.company).filter(Boolean)),
   ];
   const appCategories = [
-    ...new Set(apps.map((a) => a.category).filter(Boolean)),
+    ...new Set(
+      apps.flatMap((a) => a.categories?.map((c: any) => c.name) ?? []),
+    ),
   ];
   const bookCategories = [
     ...new Set(books.map((b) => b.category).filter(Boolean)),
@@ -72,10 +74,13 @@ export default function BrowsePage({ designers, apps, books }: Props) {
     });
   }, [designers, selectedCountries, selectedRoles, selectedCompanies]);
 
+  // Filtering Apps
   const filteredApps = useMemo(() => {
     return apps.filter((app) =>
       selectedAppCategories.length
-        ? selectedAppCategories.includes(app.category)
+        ? app.categories?.some((c: any) =>
+            selectedAppCategories.includes(c.name),
+          )
         : true,
     );
   }, [apps, selectedAppCategories]);

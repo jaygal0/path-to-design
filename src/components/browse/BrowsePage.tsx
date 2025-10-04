@@ -37,6 +37,9 @@ export default function BrowsePage({ designers, apps, books }: Props) {
   const [sortOption, setSortOption] = useState<"date-desc" | "alpha-desc">(
     "date-desc",
   );
+  const [appSort, setAppSort] = useState<"popularity-desc" | "alpha-desc">(
+    "popularity-desc",
+  );
 
   // Apps filters
   const [selectedAppCategories, setSelectedAppCategories] = useState<string[]>(
@@ -113,6 +116,19 @@ export default function BrowsePage({ designers, apps, books }: Props) {
         : true,
     );
   }, [apps, selectedAppCategories]);
+
+  const filteredAppsSorted = useMemo(() => {
+    let results = [...filteredApps];
+
+    if (appSort === "alpha-desc") {
+      results.sort((a, b) => a.app.localeCompare(b.app));
+    } else {
+      // popularity-desc
+      results.sort((a, b) => (b.popularity || 0) - (a.popularity || 0));
+    }
+
+    return results;
+  }, [filteredApps, appSort]);
 
   const filteredBooks = useMemo(() => {
     return books.filter((book) => {
@@ -334,9 +350,23 @@ export default function BrowsePage({ designers, apps, books }: Props) {
           </div>
 
           <div>
-            <h2 className="mb-2 text-4xl">Apps</h2>
+            <div className="mb-6 flex items-center justify-between">
+              <h2 className="text-4xl">Apps</h2>
+              <Select
+                value={appSort}
+                onValueChange={(val) => setAppSort(val as any)}
+              >
+                <SelectTrigger className="w-min">
+                  <SelectValue placeholder="Sort by" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="popularity-desc">Popularity</SelectItem>
+                  <SelectItem value="alpha-desc">Alphabetical</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
-              {filteredApps.map((app, index) => (
+              {filteredAppsSorted.map((app, index) => (
                 <AppItem tool={app} key={index} />
               ))}
             </div>

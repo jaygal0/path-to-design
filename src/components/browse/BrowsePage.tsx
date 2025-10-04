@@ -3,6 +3,14 @@
 import { useState, useMemo } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+import {
   Accordion,
   AccordionItem,
   AccordionTrigger,
@@ -26,6 +34,9 @@ export default function BrowsePage({ designers, apps, books }: Props) {
   const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
   const [selectedRoles, setSelectedRoles] = useState<string[]>([]);
   const [selectedCompanies, setSelectedCompanies] = useState<string[]>([]);
+  const [sortOption, setSortOption] = useState<"date-desc" | "alpha-desc">(
+    "date-desc",
+  );
 
   // Apps filters
   const [selectedAppCategories, setSelectedAppCategories] = useState<string[]>(
@@ -58,9 +69,8 @@ export default function BrowsePage({ designers, apps, books }: Props) {
   ];
   const bookAuthors = [...new Set(books.map((b) => b.author).filter(Boolean))];
 
-  // Filtering logic
   const filteredDesigners = useMemo(() => {
-    return designers.filter((designer) => {
+    let results = designers.filter((designer) => {
       const matchCountry = selectedCountries.length
         ? selectedCountries.includes(designer.country)
         : true;
@@ -72,7 +82,26 @@ export default function BrowsePage({ designers, apps, books }: Props) {
         : true;
       return matchCountry && matchRole && matchCompany;
     });
-  }, [designers, selectedCountries, selectedRoles, selectedCompanies]);
+
+    // Sorting
+    if (sortOption === "alpha-desc") {
+      results.sort((a, b) => a.firstName.localeCompare(b.firstName));
+    } else {
+      // date-desc
+      results.sort(
+        (a, b) =>
+          new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime(),
+      );
+    }
+
+    return results;
+  }, [
+    designers,
+    selectedCountries,
+    selectedRoles,
+    selectedCompanies,
+    sortOption,
+  ]);
 
   // Filtering Apps
   const filteredApps = useMemo(() => {
@@ -226,7 +255,23 @@ export default function BrowsePage({ designers, apps, books }: Props) {
           </div>
 
           <div>
-            <h2 className="mb-6 text-4xl">Designers</h2>
+            <div className="mb-6 flex items-center justify-between">
+              <h2 className="text-4xl">Designers</h2>
+              <Select
+                value={sortOption}
+                onValueChange={(val) => setSortOption(val as any)}
+              >
+                <SelectTrigger className="w-min">
+                  <SelectValue placeholder="Sort by" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="date-desc">Date posted</SelectItem>
+                  <SelectItem value="alpha-desc">Alphabetical</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* Designers Grid */}
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
               {filteredDesigners.map(
                 (d) =>

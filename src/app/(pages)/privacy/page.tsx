@@ -80,6 +80,16 @@ export default function Page() {
           websites you visit.
         </p>
 
+        <h2>Affiliate Link Disclosure</h2>
+        <p>
+          Some of the links on PathToDesign.com are affiliate links, which means
+          we may earn a small commission if you make a purchase through those
+          links, at no additional cost to you. This helps support the website
+          and our mission to provide free resources for designers. We only
+          promote products and services we believe will be valuable to our
+          audience.
+        </p>
+
         <h2>Changes to This Privacy Policy</h2>
         <p>
           We may update our Privacy Policy from time to time. We will notify you

@@ -11,7 +11,6 @@ import { PopularApps } from "@/components/home/PopularApps";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { on } from "events";
 
 async function getData() {
   const [designersRes, appsRes, booksRes] = await Promise.all([

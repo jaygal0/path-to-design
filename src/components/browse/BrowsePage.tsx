@@ -271,7 +271,7 @@ export default function BrowsePage({ designers, apps, books }: Props) {
           </div>
 
           <div>
-            <div className="mb-6 flex items-center justify-between">
+            <div className="mb-6 flex w-full items-center justify-between">
               <h2 className="text-4xl">Designers</h2>
               <Select
                 value={sortOption}

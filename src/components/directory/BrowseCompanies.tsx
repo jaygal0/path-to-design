@@ -25,11 +25,9 @@ import { useSearchParams } from "next/navigation";
 
 type Props = {
   designers: any[];
-  apps: any[];
-  books: any[];
 };
 
-export default function BrowsePage({ designers, apps, books }: Props) {
+export default function BrowseDesigners({ designers }: Props) {
   // Designer filters
   const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
   const [selectedRoles, setSelectedRoles] = useState<string[]>([]);

@@ -1,5 +1,5 @@
 // app/browse/page.tsx
-import BrowsePage from "@/components/browse/BrowsePage";
+import BrowsePage from "@/components/directory/BrowseDesigners";
 
 async function getData() {
   const [designersRes, appsRes, booksRes] = await Promise.all([

@@ -2,6 +2,7 @@ export default function Page() {
   return (
     <div className="md:px-96">
       <div className="flex flex-col gap-4 font-sans text-xl font-thin leading-relaxed">
+        <h1 className="mb-8 text-2xl font-bold">Privacy Policy</h1>
         <p>
           <strong>Effective Date:</strong> 14/07/2024
         </p>

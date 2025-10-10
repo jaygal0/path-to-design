@@ -2,6 +2,7 @@ export default function Page() {
   return (
     <div className="md:px-96">
       <div className="flex flex-col gap-4 text-xl leading-relaxed">
+        <h1 className="mb-8 text-2xl font-bold">About</h1>
         <p>Hi 👋</p>
         <p>
           My name is Joshua Galinato, and I&apos;m a designer too. You can view

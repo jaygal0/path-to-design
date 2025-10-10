@@ -58,9 +58,9 @@ export function CardDesigner({
               />
               <AvatarFallback>{firstName.slice(0, 1)}</AvatarFallback>
             </Avatar>
-            <h2 className="flex-grow text-xl md:text-3xl">
+            <h3 className="flex-grow text-xl md:text-3xl">
               {firstName} {lastName}
-            </h2>
+            </h3>
             <Image
               src={`/flags/${country}.svg`}
               width={24}

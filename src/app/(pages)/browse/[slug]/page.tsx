@@ -11,6 +11,77 @@ import { PopularApps } from "@/components/home/PopularApps";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import type { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const res = await fetch(`${process.env.WEB_SITE}/api/designers/${slug}`, {
+    next: { revalidate: 60 },
+  });
+
+  if (!res.ok) {
+    return {
+      title: "Designer not found | Path to Design",
+      description: "Explore designer journeys on Path to Design.",
+    };
+  }
+
+  const designer = await res.json();
+  const {
+    firstName,
+    lastName,
+    oneLiner,
+    roles,
+    companies,
+    coverImage,
+    linkedin,
+    instagram,
+    x,
+  } = designer;
+
+  const title = `${firstName} ${lastName}${roles?.role ? ` – ${roles.role}` : ""}${
+    companies?.company ? ` at ${companies.company}` : ""
+  } | Path to Design`;
+
+  const description =
+    oneLiner ||
+    `Discover how ${firstName} ${lastName} built their path into design at Path to Design.`;
+
+  const canonicalUrl = `https://www.pathtodesign.com/browse/${slug}`;
+  const ogImage = coverImage || "/path-to-design-og-image.jpg";
+
+  return {
+    title,
+    description,
+    alternates: { canonical: canonicalUrl },
+    openGraph: {
+      title,
+      description,
+      url: canonicalUrl,
+      siteName: "Path to Design",
+      type: "profile",
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: `${firstName} ${lastName} on Path to Design`,
+        },
+      ],
+      locale: "en",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [ogImage],
+    },
+  };
+}
 
 async function getData() {
   const [designersRes, appsRes, booksRes] = await Promise.all([

@@ -4,14 +4,15 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import { ChevronRight } from "lucide-react";
 import BookItem from "@/components/global/BookItem";
+import { mainCTAs } from "@/config/navigation";
 
 export function PopularBooks({ books }: any) {
   return (
     <div className="col-span-1 h-fit rounded-2xl bg-neutral-900 p-3 md:p-6 xl:col-span-3">
       <div className="mb-6">
         <div className="mb-1 flex items-center justify-between gap-1">
-          <h2 className="text-lg text-foreground">Popular books</h2>
-          <Link href="/browse?tab=books">
+          <h2 className="text-lg text-foreground">{mainCTAs[4].title}</h2>
+          <Link href={mainCTAs[4].href}>
             <Button variant="ghost" className="flex items-center gap-1">
               Explore all <ChevronRight className="h-4 w-4" />
             </Button>

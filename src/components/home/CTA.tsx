@@ -1,6 +1,6 @@
 "use client";
 
-import { mainCTA, menu } from "@/config/navigation";
+import { mainCTAs, menu } from "@/config/navigation";
 import Link from "next/link";
 import { Button } from "../ui/button";
 
@@ -15,12 +15,12 @@ export function CTA() {
         next generation.
       </h2>
       <div className="flex flex-col justify-center gap-4 sm:flex-row">
-        <Link href={mainCTA.href}>
-          <Button className="w-full md:w-min">{mainCTA.title}</Button>
+        <Link href={mainCTAs[1].href}>
+          <Button className="w-full md:w-min">{mainCTAs[1].title}</Button>
         </Link>
-        <Link href={menu[0].href}>
+        <Link href={mainCTAs[2].href}>
           <Button variant={"secondary"} className="w-full sm:w-min">
-            {menu[0].title}
+            {mainCTAs[2].title}
           </Button>
         </Link>
       </div>

@@ -17,49 +17,42 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { QuickNav } from "./QuickNav";
-import BookItem from "../global/BookItem";
+import AppItem from "../global/AppItem";
 
 type Props = {
-  books: any[];
+  apps: any[];
 };
 
-export default function BrowseBooks({ books }: Props) {
-  const [selectedAuthors, setSelectedAuthors] = useState<string[]>([]);
+export default function BrowseApps({ apps }: Props) {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [sortOption, setSortOption] = useState<
     "popularity-desc" | "alpha-desc"
   >("popularity-desc");
 
-  // Unique filter sets
-  const authors = [
-    ...new Set(books.map((b) => b.author).filter(Boolean)),
-  ].sort();
-  const categories = [
-    ...new Set(books.map((b) => b.category).filter(Boolean)),
-  ].sort();
+  // Unique category filter set
+  const appCategories = [
+    ...new Set(
+      apps.flatMap((a) => a.categories?.map((c: any) => c.name) ?? []),
+    ),
+  ];
 
-  const filteredBooks = useMemo(() => {
-    // Filter by selected authors/categories
-    const results = books.filter((book) => {
-      const matchAuthor = selectedAuthors.length
-        ? selectedAuthors.includes(book.author)
-        : true;
+  const filteredApps = useMemo(() => {
+    const results = apps.filter((app) => {
       const matchCategory = selectedCategories.length
-        ? selectedCategories.includes(book.category)
+        ? app.categories?.some((c: any) => selectedCategories.includes(c.name))
         : true;
-      return matchAuthor && matchCategory;
+      return matchCategory;
     });
 
     // Sort results
     if (sortOption === "alpha-desc") {
-      results.sort((a, b) => a.book.localeCompare(b.book));
+      results.sort((a, b) => a.app.localeCompare(b.app));
     } else {
-      // popularity-desc
       results.sort((a, b) => (b.popularity ?? 0) - (a.popularity ?? 0));
     }
 
     return results;
-  }, [books, selectedAuthors, selectedCategories, sortOption]);
+  }, [apps, selectedCategories, sortOption]);
 
   const toggleChip = (
     value: string,
@@ -77,35 +70,17 @@ export default function BrowseBooks({ books }: Props) {
     <div className="mx-auto w-full space-y-6">
       <QuickNav />
 
-      {/* Page Header */}
-      <h1 className="text-4xl font-bold">Books</h1>
+      {/* Page Header with Sorting */}
+      <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
+        <h1 className="text-4xl font-bold">Apps</h1>
+      </div>
 
-      {/* Filters */}
+      {/* Category Filters */}
       <Accordion type="multiple" className="mb-6 w-full">
-        <AccordionItem value="authors">
-          <AccordionTrigger>Authors</AccordionTrigger>
-          <AccordionContent className="flex flex-wrap gap-2">
-            {authors.map((author) => (
-              <Badge
-                key={author}
-                variant={
-                  selectedAuthors.includes(author) ? "default" : "outline"
-                }
-                className="cursor-pointer"
-                onClick={() =>
-                  toggleChip(author, selectedAuthors, setSelectedAuthors)
-                }
-              >
-                {author}
-              </Badge>
-            ))}
-          </AccordionContent>
-        </AccordionItem>
-
         <AccordionItem value="categories">
           <AccordionTrigger>Categories</AccordionTrigger>
           <AccordionContent className="flex flex-wrap gap-2">
-            {categories.map((category) => (
+            {appCategories.sort().map((category) => (
               <Badge
                 key={category}
                 variant={
@@ -128,7 +103,7 @@ export default function BrowseBooks({ books }: Props) {
       </Accordion>
 
       {/* Sorting and Clear Filters Row */}
-      <div className="flex flex-wrap items-center justify-between gap-4">
+      <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-4">
           <Select
             value={sortOption}
@@ -147,19 +122,16 @@ export default function BrowseBooks({ books }: Props) {
           variant="link"
           size="sm"
           className="px-0"
-          onClick={() => {
-            setSelectedAuthors([]);
-            setSelectedCategories([]);
-          }}
+          onClick={() => setSelectedCategories([])}
         >
           Clear Filters
         </Button>
       </div>
 
-      {/* Books Grid */}
+      {/* Apps Grid */}
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
-        {filteredBooks.map((book, index) => (
-          <BookItem item={book} key={index} />
+        {filteredApps.map((app, index) => (
+          <AppItem tool={app} key={index} />
         ))}
       </div>
     </div>

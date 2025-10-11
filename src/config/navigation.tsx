@@ -1,10 +1,5 @@
 import { menuItem } from "../types";
 
-export const pathToDesign: menuItem = {
-  title: "Path to Design",
-  href: "/",
-};
-
 export const menu: menuItem[] = [
   {
     title: "Share Your Path",
@@ -24,7 +19,25 @@ export const menu: menuItem[] = [
   },
 ];
 
-export const mainCTA: menuItem = {
-  title: "Explore the Directory",
-  href: "/browse",
-};
+export const mainCTAs: menuItem[] = [
+  {
+    title: "Path to Design",
+    href: "/",
+  },
+  {
+    title: "Explore the Directory",
+    href: "/designers",
+  },
+  {
+    title: "Share Your Path",
+    href: "/share-your-path",
+  },
+  {
+    title: "Best Design Apps",
+    href: "/best-design-apps",
+  },
+  {
+    title: "Best Design Books",
+    href: "/best-design-books",
+  },
+];

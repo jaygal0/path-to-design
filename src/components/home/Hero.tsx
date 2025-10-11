@@ -1,6 +1,6 @@
 "use client";
 
-import { mainCTA, menu } from "@/config/navigation";
+import { mainCTAs } from "@/config/navigation";
 import { companyInfo } from "@/config/companyInfo";
 import { Button } from "../ui/button";
 import Link from "next/link";
@@ -15,11 +15,11 @@ export function Hero() {
         {companyInfo.copy.subheading}
       </h2>
       <div className="flex gap-4">
-        <Link href={mainCTA.href}>
-          <Button>{mainCTA.title}</Button>
+        <Link href={mainCTAs[1].href}>
+          <Button>{mainCTAs[1].title}</Button>
         </Link>
-        <Link href={menu[0].href}>
-          <Button variant={"secondary"}>{menu[0].title}</Button>
+        <Link href={mainCTAs[2].href}>
+          <Button variant={"secondary"}>{mainCTAs[2].title}</Button>
         </Link>
       </div>
     </div>

@@ -95,18 +95,6 @@ export default function BrowseDesigners({ designers }: Props) {
       {/* Page Header with Sorting */}
       <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
         <h1 className="text-4xl font-bold">Designers</h1>
-        <Select
-          value={sortOption}
-          onValueChange={(val) => setSortOption(val as any)}
-        >
-          <SelectTrigger className="w-min">
-            <SelectValue placeholder="Sort by" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="date-desc">Date posted</SelectItem>
-            <SelectItem value="alpha-desc">Alphabetical</SelectItem>
-          </SelectContent>
-        </Select>
       </div>
 
       {/* Filters */}
@@ -170,14 +158,26 @@ export default function BrowseDesigners({ designers }: Props) {
         </AccordionItem>
       </Accordion>
 
-      {/* Clear Filters */}
-      {(selectedCountries.length > 0 ||
-        selectedRoles.length > 0 ||
-        selectedCompanies.length > 0) && (
+      {/* Sorting and Clear Filters Row */}
+      <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
+        <div className="flex items-center gap-4">
+          <Select
+            value={sortOption}
+            onValueChange={(val) => setSortOption(val as any)}
+          >
+            <SelectTrigger className="w-min">
+              <SelectValue placeholder="Sort by" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="date-desc">Date posted</SelectItem>
+              <SelectItem value="alpha-desc">Alphabetical</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
         <Button
           variant="link"
           size="sm"
-          className="mb-6 px-0"
+          className="px-0"
           onClick={() => {
             setSelectedCountries([]);
             setSelectedRoles([]);
@@ -186,7 +186,7 @@ export default function BrowseDesigners({ designers }: Props) {
         >
           Clear Filters
         </Button>
-      )}
+      </div>
 
       {/* Designers Grid */}
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">

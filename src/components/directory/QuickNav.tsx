@@ -9,9 +9,8 @@ export function QuickNav() {
 
   const navItems = [
     { href: "/designers", label: "Designers" },
-    { href: "/best-design-tools", label: "Tools" },
+    { href: "/best-design-apps", label: "Apps" },
     { href: "/best-design-books", label: "Books" },
-    { href: "/best-design-companies", label: "Companies" },
   ];
 
   return (

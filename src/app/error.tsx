@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { mainCTA, menu } from "@/config/navigation";
+import { mainCTAs, menu } from "@/config/navigation";
 import Link from "next/link";
 
 export default function Error() {
@@ -16,12 +16,12 @@ export default function Error() {
         </p>
       </div>
       <div className="mt-10 flex flex-col gap-4 md:flex-row">
-        <Link href={mainCTA.href}>
-          <Button className="w-full">{mainCTA.title}</Button>
+        <Link href={mainCTAs[1].href}>
+          <Button className="w-full">{mainCTAs[1].title}</Button>
         </Link>
-        <Link href={menu[0].href}>
+        <Link href={mainCTAs[2].href}>
           <Button className="w-full" variant={"secondary"}>
-            {menu[0].title}
+            {mainCTAs[2].title}
           </Button>
         </Link>
       </div>

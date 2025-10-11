@@ -12,6 +12,7 @@ export async function GET(
     include: {
       apps: true,
       books: true,
+      products: true,
       companies: true,
       roles: true,
     },

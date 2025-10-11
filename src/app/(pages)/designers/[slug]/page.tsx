@@ -12,6 +12,7 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
+import { ProductsUsed } from "@/components/designer/ProductsUsed";
 
 export async function generateMetadata({
   params,
@@ -84,14 +85,11 @@ export async function generateMetadata({
 }
 
 async function getData() {
-  const [designersRes, appsRes, booksRes] = await Promise.all([
+  const [designersRes, appsRes] = await Promise.all([
     fetch(`${process.env.WEB_SITE}/api/designers`, {
       next: { revalidate: 60 },
     }),
     fetch(`${process.env.WEB_SITE}/api/apps`, {
-      next: { revalidate: 60 },
-    }),
-    fetch(`${process.env.WEB_SITE}/api/books`, {
       next: { revalidate: 60 },
     }),
   ]);
@@ -100,13 +98,12 @@ async function getData() {
     throw new Error("Failed to fetch data");
   }
 
-  const [designersData, appsData, booksData] = await Promise.all([
+  const [designersData, appsData] = await Promise.all([
     designersRes.json(),
     appsRes.json(),
-    booksRes.json(),
   ]);
 
-  return { designersData, appsData, booksData };
+  return { designersData, appsData };
 }
 
 async function fetchDesignerData(slug: string) {
@@ -143,7 +140,7 @@ export default async function DesignerPage(props: {
   params: Promise<{ slug: string }>;
 }) {
   const params = await props.params;
-  const { designersData, appsData, booksData } = await getData();
+  const { designersData, appsData } = await getData();
   const designer = await fetchDesignerData(params.slug);
   const filteredDesigners = designersData.filter(
     (designer: any) => designer.slug !== params.slug,
@@ -154,6 +151,7 @@ export default async function DesignerPage(props: {
     advice,
     apps,
     books,
+    products,
     companies,
     country,
     createdAt,
@@ -218,6 +216,7 @@ export default async function DesignerPage(props: {
           <div className="mb-12 flex flex-col gap-12">
             {apps.length > 0 && <AppsUsed apps={apps} />}
             {books.length > 0 && <BooksUsed books={books} />}
+            {products.length > 0 && <ProductsUsed product={products} />}
             {getStarted && (
               <Answers
                 question="How did you get started in your role as a designer?"

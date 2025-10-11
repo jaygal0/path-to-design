@@ -21,7 +21,7 @@ export function ProductsUsed({
             href={prod.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground underline"
+            className={`${!prod.url ? "" : "underline"}`}
           >
             {prod.name}
           </a>

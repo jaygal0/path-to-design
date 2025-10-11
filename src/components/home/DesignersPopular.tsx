@@ -14,12 +14,12 @@ interface Props {
 export function DesignersPopular({ designers, slice }: Props) {
   const filterNames = [
     "Joshua",
-    "Shannel",
-    "Meghan",
-    "Florian",
+    "Pascal",
     "Vivek",
-    "Nizar",
+    "Craig",
+    "Meghan",
     "Eriol",
+    "Elena",
   ]; // Select which designers to present on the first page
 
   return (
@@ -39,37 +39,37 @@ export function DesignersPopular({ designers, slice }: Props) {
         </p>
       </div>
       <div className="flex flex-col gap-6">
-        {designers
-          .filter((designer: any) => filterNames.includes(designer.firstName))
-          .map((designer: any, index: any) => {
-            const {
-              companies,
-              country,
-              coverImage,
-              firstName,
-              isPublished,
-              lastName,
-              oneLiner,
-              profileImage,
-              roles,
-              slug,
-            } = designer;
+        {filterNames.map((name, index) => {
+          const designer = designers.find((d: any) => d.firstName === name);
+          if (!designer) return null;
 
-            return (
-              <CardDesigner
-                key={index}
-                company={companies.company}
-                country={country}
-                coverImage={coverImage}
-                firstName={firstName}
-                lastName={lastName}
-                oneLiner={oneLiner}
-                profileImage={profileImage}
-                role={roles?.role}
-                slug={slug}
-              />
-            );
-          })}
+          const {
+            companies,
+            country,
+            coverImage,
+            firstName,
+            lastName,
+            oneLiner,
+            profileImage,
+            roles,
+            slug,
+          } = designer;
+
+          return (
+            <CardDesigner
+              key={index}
+              company={companies.company}
+              country={country}
+              coverImage={coverImage}
+              firstName={firstName}
+              lastName={lastName}
+              oneLiner={oneLiner}
+              profileImage={profileImage}
+              role={roles?.role}
+              slug={slug}
+            />
+          );
+        })}
       </div>
     </div>
   );

@@ -1,28 +1,31 @@
-"use client";
+export function ProductsUsed({
+  product = [],
+}: {
+  product?: { name: string; url: string }[];
+}) {
+  if (product.length === 0) return null;
 
-export function ProductsUsed({ product }: any) {
+  const sortedProducts = [...product].sort((a, b) =>
+    a.name.localeCompare(b.name),
+  );
+
   return (
     <div>
       <h3 className="mb-4 text-xl text-muted-foreground">
         What tools do you use to help you design?
       </h3>
       <div className="mb-8 flex flex-col flex-wrap gap-4">
-        {product
-          ?.slice() // Create a shallow copy to avoid mutating the original array
-          .sort((a: any, b: any) => a.name.localeCompare(b.name)) // Sort alphabetically
-          .map((product: any) => {
-            return (
-              <a
-                key={product.name}
-                href={product.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${!product.url ? "" : "underline"}`}
-              >
-                {product.name}
-              </a>
-            );
-          })}
+        {sortedProducts.map((prod) => (
+          <a
+            key={prod.name}
+            href={prod.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground underline"
+          >
+            {prod.name}
+          </a>
+        ))}
       </div>
     </div>
   );

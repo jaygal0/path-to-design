@@ -216,7 +216,7 @@ export default async function DesignerPage(props: {
           <div className="mb-12 flex flex-col gap-12">
             {apps.length > 0 && <AppsUsed apps={apps} />}
             {books.length > 0 && <BooksUsed books={books} />}
-            {products.length > 0 && <ProductsUsed product={products} />}
+            {products?.length > 0 && <ProductsUsed product={products} />}
             {getStarted && (
               <Answers
                 question="How did you get started in your role as a designer?"

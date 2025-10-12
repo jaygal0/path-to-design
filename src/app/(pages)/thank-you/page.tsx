@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Heading } from "../../../components/global/Heading";
 import Link from "next/link";
+import { mainCTAs } from "@/config/navigation";
 
 export default function Page() {
   return (
@@ -14,7 +15,7 @@ export default function Page() {
          In the meantime, feel free to explore the directory and connect with our amazing community of designers.`}
       />
 
-      <Link href="/browse">
+      <Link href={mainCTAs[1].href}>
         <Button>Explore the Directory</Button>
       </Link>
     </div>

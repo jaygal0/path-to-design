@@ -187,8 +187,8 @@ export default async function DesignerPage(props: {
         <ScrollToTop />
         <div className="col-span-2 flex flex-col flex-wrap gap-6">
           <DesignerDetailBox
-            company={companies.company || ""}
-            companyURL={companies.url || ""}
+            company={companies?.company || ""}
+            companyURL={companies?.url || ""}
             country={country}
             createdAt={createdAt}
             dribbble={dribbble}
@@ -197,7 +197,7 @@ export default async function DesignerPage(props: {
             instagram={instagram}
             lastName={lastName}
             linkedin={linkedin}
-            role={roles.role || ""}
+            role={roles?.role || ""}
             updatedAt={updatedAt}
             website={website}
             x={x}
@@ -290,7 +290,7 @@ export default async function DesignerPage(props: {
                 return (
                   <CardDesigner
                     key={index}
-                    company={companies.company || ""}
+                    company={companies?.company || ""}
                     country={country}
                     createdAt={createdAt}
                     firstName={firstName}

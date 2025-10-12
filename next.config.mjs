@@ -27,6 +27,15 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/browse/:slug",
+        destination: "/designers/:slug",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 const withMDX = createMDX();

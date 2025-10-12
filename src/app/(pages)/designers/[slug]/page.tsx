@@ -13,6 +13,7 @@ import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
 import { ProductsUsed } from "@/components/designer/ProductsUsed";
+import { notFound } from "next/navigation";
 
 export async function generateMetadata({
   params,
@@ -142,6 +143,11 @@ export default async function DesignerPage(props: {
   const params = await props.params;
   const { designersData, appsData } = await getData();
   const designer = await fetchDesignerData(params.slug);
+
+  if (!designer) {
+    notFound(); // This will render your 404 page
+  }
+
   const filteredDesigners = designersData.filter(
     (designer: any) => designer.slug !== params.slug,
   );

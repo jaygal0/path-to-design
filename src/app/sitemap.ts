@@ -15,7 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     },
     {
-      url: "https://pathtodesign.com/browse",
+      url: "https://pathtodesign.com/designers",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.9,
@@ -25,6 +25,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
+    },
+    {
+      url: "https://pathtodesign.com/best-design-apps",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: "https://pathtodesign.com/best-design-books",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
     },
     {
       url: "https://pathtodesign.com/privacy",

@@ -108,13 +108,24 @@ async function getData() {
 }
 
 async function fetchDesignerData(slug: string) {
-  const res = await fetch(`${process.env.WEB_SITE}/api/designers/${slug}`, {
-    next: { revalidate: 60 },
-  });
+  try {
+    const res = await fetch(`${process.env.WEB_SITE}/api/designers/${slug}`, {
+      next: { revalidate: 60 },
+    });
 
-  if (!res.ok) throw new Error("Failed to fetch data");
+    if (!res.ok) {
+      notFound();
+    }
 
-  return res.json();
+    const designer = await res.json();
+    if (!designer) {
+      notFound();
+    }
+
+    return designer;
+  } catch (err) {
+    notFound();
+  }
 }
 
 // Pre-generate static paths for designers
@@ -143,10 +154,6 @@ export default async function DesignerPage(props: {
   const params = await props.params;
   const { designersData, appsData } = await getData();
   const designer = await fetchDesignerData(params.slug);
-
-  if (!designer) {
-    notFound(); // This will render your 404 page
-  }
 
   const filteredDesigners = designersData.filter(
     (designer: any) => designer.slug !== params.slug,

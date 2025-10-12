@@ -290,13 +290,13 @@ export default async function DesignerPage(props: {
                 return (
                   <CardDesigner
                     key={index}
-                    company={companies.company}
+                    company={companies.company || ""}
                     country={country}
                     createdAt={createdAt}
                     firstName={firstName}
                     id={id}
                     lastName={lastName}
-                    role={roles?.role}
+                    role={roles?.role || ""}
                     slug={slug}
                     updatedAt={updatedAt}
                     profileImage={profileImage}

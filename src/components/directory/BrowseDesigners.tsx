@@ -196,8 +196,8 @@ export default function BrowseDesigners({ designers }: Props) {
               <CardDesigner
                 key={d.id}
                 {...d}
-                role={d.roles.role}
-                company={d.companies.company}
+                role={d.roles.role || ""}
+                company={d.companies.company || ""}
               />
             ),
         )}

@@ -8,7 +8,7 @@ export async function POST(req: Request) {
 
     // Send email to the user
     await resend.emails.send({
-      from: "Path to Design <no-reply@send.transactional.pathtodesign.com>", // Use a verified domain email
+      from: "Path to Design <no-reply@transactional.pathtodesign.com>", // Use a verified domain email
       to: email,
       subject: "Thank You for Your Submission!",
       html: `<p>Hi ${firstName},</p>
@@ -20,7 +20,7 @@ export async function POST(req: Request) {
 
     // Send email notification to yourself
     await resend.emails.send({
-      from: "Path to Design <no-reply@send.transactional.pathtodesign.com>",
+      from: "Path to Design <no-reply@transactional.pathtodesign.com>",
       to: process.env.ADMIN_EMAIL!,
       subject: "New Form Submission",
       html: `<p><strong>Name:</strong> ${firstName} ${lastName}</p>

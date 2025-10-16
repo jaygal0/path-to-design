@@ -40,7 +40,7 @@ export default function BookItem({ item }: { item: any }) {
             alt={`${book} by ${author}`}
             width={100}
             height={160}
-            quality={100}
+            quality={70}
             className="rounded-lg object-cover transition-all hover:scale-105"
           />
           <div className="flex w-full flex-col gap-4">

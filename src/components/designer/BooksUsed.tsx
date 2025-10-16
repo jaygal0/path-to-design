@@ -30,7 +30,7 @@ export function BooksUsed({ books }: any) {
                     alt={book.book}
                     width={100}
                     height={160}
-                    quality={100}
+                    quality={70}
                     className="rounded-lg object-cover transition-all hover:scale-105"
                     onError={() => {
                       // Handle image error

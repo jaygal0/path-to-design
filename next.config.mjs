@@ -7,11 +7,6 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "www.google.com",
-        pathname: "/**", // Allow all paths under this hostname
-      },
-      {
-        protocol: "https",
         hostname: "m.media-amazon.com",
         pathname: "/**", // Allow all paths under this hostname
       },
@@ -26,6 +21,10 @@ const nextConfig = {
         pathname: "/**", // Allow all paths under this hostname
       },
     ],
+    minimumCacheTTL: 7776000,
+    formats: ["image/webp"],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256],
+    deviceSizes: [640, 768, 1024, 1280],
   },
   async redirects() {
     return [

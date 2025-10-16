@@ -517,6 +517,7 @@ export default function Page() {
                     src={profileImagePreview}
                     alt="Preview"
                     layout="fill"
+                    quality={70}
                   />
                 </div>
               )}
@@ -532,7 +533,12 @@ export default function Page() {
               />
               {coverImagePreview && (
                 <div className="relative mt-2 aspect-video w-full lg:w-64">
-                  <Image src={coverImagePreview} alt="Preview" layout="fill" />
+                  <Image
+                    src={coverImagePreview}
+                    alt="Preview"
+                    layout="fill"
+                    quality={70}
+                  />
                 </div>
               )}
             </FormField>

@@ -16,6 +16,7 @@ export function Avatar({
         alt={`Profile image of ${firstName} ${lastName}`}
         className="w-full object-cover"
         layout="fill"
+        quality={70}
       />
     </div>
   );

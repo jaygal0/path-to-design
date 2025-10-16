@@ -223,6 +223,7 @@ export default async function DesignerPage(props: {
                 alt={`Portfolio cover image of ${firstName} ${lastName}`}
                 className="h-full w-full object-cover"
                 layout="fill"
+                quality={70}
               />
             </div>
           )}

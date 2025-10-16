@@ -67,6 +67,7 @@ export function CardDesigner({
               height={24}
               alt={`${country}`}
               className="ml-2 inline"
+              quality={70}
             />
           </div>
 

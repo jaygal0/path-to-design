@@ -38,9 +38,10 @@ export default function AppItem({ tool }: { tool: any }) {
             alt={app}
             width={32}
             height={32}
-            quality={100}
+            quality={70}
             className="h-8 w-8 rounded-xl transition-all"
             sizes="(max-width: 640px) 40px, 80px"
+            unoptimized
           />
 
           <h3

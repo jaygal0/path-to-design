@@ -138,8 +138,10 @@ export async function generateStaticParams() {
       select: { slug: true },
     });
 
+    // Instead of throwing an error:
     if (!designers || designers.length === 0) {
-      throw new Error("No designers found.");
+      console.warn("⚠️ No designers found for static generation.");
+      return []; // Prevent build failure
     }
 
     return designers.map((designer) => ({
@@ -147,7 +149,7 @@ export async function generateStaticParams() {
     }));
   } catch (error) {
     console.error("Error generating static params:", error);
-    throw error;
+    return []; // Avoid crashing the build
   }
 }
 

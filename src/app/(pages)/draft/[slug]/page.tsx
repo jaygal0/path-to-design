@@ -118,7 +118,9 @@ async function fetchDesignerData(slug: string) {
     }
 
     const designer = await res.json();
-    if (!designer || designer.isPublished !== true) {
+
+    // Only return designers with isPublished false
+    if (!designer || designer.isPublished !== false) {
       notFound();
     }
 
@@ -132,7 +134,7 @@ async function fetchDesignerData(slug: string) {
 export async function generateStaticParams() {
   try {
     const designers = await prisma.designers.findMany({
-      where: { isPublished: true },
+      where: { isPublished: false },
       select: { slug: true },
     });
 

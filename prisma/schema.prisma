@@ -48,7 +48,7 @@ model Designers {
 
 model Apps {
   id               String          @id @default(cuid())
-  app              String?
+  app              String          @unique
   desc             String?
   url              String?
   createdAt        DateTime        @default(now())

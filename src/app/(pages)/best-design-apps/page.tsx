@@ -1,6 +1,5 @@
 // app/browse/page.tsx
 import BrowseApps from "@/components/directory/BrowseApps";
-import BrowseBooks from "@/components/directory/BrowseBooks";
 
 async function getData() {
   const res = await fetch(`${process.env.WEB_SITE}/api/apps`, {

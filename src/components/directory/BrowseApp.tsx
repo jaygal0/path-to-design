@@ -1,21 +1,79 @@
 "use client";
 
-import AppItem from "../global/AppItem";
+import { LucideExternalLink } from "lucide-react";
+import { Heading } from "../global/Heading";
+import { Button } from "../ui/button";
+import { plausibleEvents } from "@/config/plausibleEvents";
+import { CardDesigner } from "../global/CardDesigner";
+import Image from "next/image";
 
 type Props = {
   app: any;
 };
 
 export default function BrowseApp({ app }: Props) {
-  return (
-    <div className="mx-auto w-full space-y-6">
-      <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
-        <h1 className="text-4xl font-bold">{app.name}</h1>
-      </div>
+  const { desc, url, designers } = app;
 
-      {/* Single App Display */}
+  return (
+    <div>
+      <div className="mb-8 flex flex-col items-start gap-8 md:flex-row md:items-center">
+        <Image
+          src={`/apps/${app.app.toLowerCase().replace(/ /g, "-")}.jpg`}
+          alt={app.app}
+          width={32}
+          height={32}
+          quality={70}
+          className="h-24 w-24 rounded-xl transition-all"
+          sizes="(max-width: 640px) 40px, 80px"
+          unoptimized
+        />
+        <div>
+          <h1 className="text-4xl font-bold">{app.app}</h1>
+          <p className="mt-4 text-lg text-muted-foreground">{desc}</p>
+        </div>
+      </div>
+      <Image
+        src="https://cdn.sanity.io/images/599r6htc/regionalized/1adfa5a99040c80af7b4b5e3e2cf845315ea2367-2400x1260.png?w=1200&q=70&fit=max&auto=format"
+        alt={app.app}
+        width={32}
+        height={32}
+        quality={70}
+        className="mb-8 aspect-video w-full rounded-xl object-cover transition-all sm:w-96"
+        unoptimized
+      />
+      <a
+        href={url}
+        target="_blank"
+        rel="sponsored noopener noreferrer"
+        className="plausible-event-name=view-app block"
+        data-event-name={plausibleEvents.VIEW_APP}
+      >
+        <Button variant="secondary">
+          View website
+          <LucideExternalLink />
+        </Button>
+      </a>
+      <h2 className="mb-8 mt-14 text-lg text-foreground">
+        Used by {designers.length} designers
+      </h2>
+
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
-        <AppItem tool={app} />
+        {designers
+          .sort(
+            (a: any, b: any) =>
+              new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime(),
+          )
+          .map(
+            (d: any) =>
+              d.isPublished && (
+                <CardDesigner
+                  key={d.id}
+                  {...d}
+                  role={d.roles?.role || ""}
+                  company={d.companies?.company || ""}
+                />
+              ),
+          )}
       </div>
     </div>
   );

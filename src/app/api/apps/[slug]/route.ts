@@ -9,7 +9,11 @@ export async function GET(
 
   const app = await prisma.apps.findFirst({
     where: { app: { equals: slug, mode: "insensitive" } },
-    include: { designers: true },
+    include: {
+      designers: {
+        include: { roles: true, companies: true },
+      },
+    },
   });
 
   if (!app) {

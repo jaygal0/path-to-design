@@ -16,6 +16,7 @@ export function DesignersPopular({ designers, slice }: Props) {
     "Joshua",
     "Pascal",
     "Vivek",
+    "Elisa",
     "Craig",
     "Meghan",
     "Eriol",

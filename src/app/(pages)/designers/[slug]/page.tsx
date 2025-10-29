@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
 import { ProductsUsed } from "@/components/designer/ProductsUsed";
 import { notFound } from "next/navigation";
+import { mainCTAs } from "@/config/navigation";
 
 export async function generateMetadata({
   params,
@@ -280,7 +281,7 @@ export default async function DesignerPage(props: {
               <div className="text-lg text-muted-foreground">
                 Continue reading
               </div>
-              <Link href="/browse">
+              <Link href={mainCTAs[1].href}>
                 <Button variant="ghost" className="flex items-center gap-1">
                   See all <ChevronRight className="h-4 w-4" />
                 </Button>
@@ -300,23 +301,26 @@ export default async function DesignerPage(props: {
                   updatedAt,
                   profileImage,
                   coverImage,
+                  isPublished,
                 } = designer;
 
                 return (
-                  <CardDesigner
-                    key={index}
-                    company={companies?.company || ""}
-                    country={country}
-                    createdAt={createdAt}
-                    firstName={firstName}
-                    id={id}
-                    lastName={lastName}
-                    role={roles?.role || ""}
-                    slug={slug}
-                    updatedAt={updatedAt}
-                    profileImage={profileImage}
-                    coverImage={coverImage}
-                  />
+                  isPublished && (
+                    <CardDesigner
+                      key={index}
+                      company={companies?.company || ""}
+                      country={country}
+                      createdAt={createdAt}
+                      firstName={firstName}
+                      id={id}
+                      lastName={lastName}
+                      role={roles?.role || ""}
+                      slug={slug}
+                      updatedAt={updatedAt}
+                      profileImage={profileImage}
+                      coverImage={coverImage}
+                    />
+                  )
                 );
               })}
             </div>

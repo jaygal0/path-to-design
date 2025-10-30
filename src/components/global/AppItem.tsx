@@ -8,7 +8,7 @@ import { plausibleEvents } from "@/config/plausibleEvents";
 
 export default function AppItem({ tool }: { tool: any }) {
   const [isHovered, setIsHovered] = useState(false);
-  const { app, desc, url, designers } = tool;
+  const { app, desc, url, designers, slug } = tool;
 
   const [shuffledDesigners, setShuffledDesigners] = useState(
     designers.slice(0, 3),
@@ -25,11 +25,8 @@ export default function AppItem({ tool }: { tool: any }) {
 
   return (
     <a
-      href={url}
-      target="_blank"
-      rel="sponsored noopener noreferrer"
+      href={`/best-design-apps/${slug}`}
       className="plausible-event-name=view-app block"
-      data-event-name={plausibleEvents.VIEW_APP}
     >
       <article className="flex h-full flex-col gap-3 rounded-2xl border p-6 transition-all hover:cursor-pointer hover:border-white">
         <div className="flex items-center gap-4">
@@ -49,7 +46,6 @@ export default function AppItem({ tool }: { tool: any }) {
           >
             {app}
           </h3>
-          <LogoArrow />
         </div>
         <div className="text-muted-foreground">{desc}</div>
         <div className="flex gap-2">

@@ -1,7 +1,6 @@
 "use client";
 
 import { LucideExternalLink } from "lucide-react";
-import { Heading } from "../global/Heading";
 import { Button } from "../ui/button";
 import { plausibleEvents } from "@/config/plausibleEvents";
 import { CardDesigner } from "../global/CardDesigner";
@@ -12,7 +11,7 @@ type Props = {
 };
 
 export default function BrowseApp({ app }: Props) {
-  const { desc, url, designers } = app;
+  const { desc, url, designers, coverImage } = app;
 
   return (
     <div>
@@ -32,15 +31,17 @@ export default function BrowseApp({ app }: Props) {
           <p className="mt-4 text-lg text-muted-foreground">{desc}</p>
         </div>
       </div>
-      <Image
-        src="https://cdn.sanity.io/images/599r6htc/regionalized/1adfa5a99040c80af7b4b5e3e2cf845315ea2367-2400x1260.png?w=1200&q=70&fit=max&auto=format"
-        alt={app.app}
-        width={32}
-        height={32}
-        quality={70}
-        className="mb-8 aspect-video w-full rounded-xl object-cover transition-all sm:w-96"
-        unoptimized
-      />
+      {coverImage && (
+        <Image
+          src={coverImage || ""}
+          alt={app.app}
+          width={32}
+          height={32}
+          quality={70}
+          className="mb-8 aspect-video w-full rounded-xl object-cover transition-all sm:w-96"
+          unoptimized
+        />
+      )}
       <a
         href={url}
         target="_blank"

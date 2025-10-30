@@ -7,8 +7,8 @@ export async function GET(
 ) {
   const slug = params.slug.toLowerCase();
 
-  const app = await prisma.apps.findFirst({
-    where: { app: { equals: slug, mode: "insensitive" } },
+  const app = await prisma.apps.findUnique({
+    where: { slug },
     include: {
       designers: {
         include: { roles: true, companies: true },

@@ -48,9 +48,11 @@ model Designers {
 
 model Apps {
   id               String          @id @default(cuid())
-  app              String?
+  app              String          @unique
+  slug             String?         @unique
   desc             String?
   url              String?
+  coverImage       String?
   createdAt        DateTime        @default(now())
   updatedAt        DateTime        @updatedAt
   designers        Designers[]     @relation("AppsToDesigners")
@@ -70,6 +72,7 @@ model AppCategories {
 model Books {
   id        String      @id @default(cuid())
   book      String?
+  slug      String?     @unique
   author    String?
   url       String?
   createdAt DateTime    @default(now())

@@ -15,8 +15,7 @@ export function AppsUsed({ apps }: any) {
               <a
                 key={app.app}
                 className="leading-relaxed text-muted-foreground"
-                href={app.url}
-                target="_blank"
+                href={`/best-design-apps/${app.slug}`}
               >
                 <div
                   key={app.app}

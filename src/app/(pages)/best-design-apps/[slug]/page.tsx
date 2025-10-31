@@ -31,7 +31,7 @@ export default async function AppDetailPage({
 
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-      <div className="col-span-2">
+      <div className="col-span-1 lg:col-span-2">
         <BrowseApp app={app} />
       </div>
       <div className="col-span-1">

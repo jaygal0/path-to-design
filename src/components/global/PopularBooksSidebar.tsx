@@ -8,7 +8,7 @@ import { mainCTAs } from "@/config/navigation";
 
 export function PopularBooksSidebar({ books }: any) {
   return (
-    <div className="col-span-1 h-fit rounded-2xl bg-neutral-900 p-3 md:p-6 xl:col-span-3">
+    <div className="h-fit rounded-2xl bg-neutral-900 p-3 md:p-6">
       <div className="mb-6">
         <div className="mb-1 flex items-center justify-between gap-1">
           <h2 className="text-lg text-foreground">{mainCTAs[4].title}</h2>

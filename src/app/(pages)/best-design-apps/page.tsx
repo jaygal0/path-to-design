@@ -3,7 +3,7 @@ import BrowseApps from "@/components/directory/BrowseApps";
 
 async function getData() {
   const res = await fetch(`${process.env.WEB_SITE}/api/apps`, {
-    next: { revalidate: 60 },
+    next: { revalidate: 86400 },
   });
 
   if (!res.ok) {

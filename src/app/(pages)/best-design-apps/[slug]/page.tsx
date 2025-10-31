@@ -10,7 +10,7 @@ export default async function AppDetailPage({
 }) {
   const { slug } = params;
   const res = await fetch(`${process.env.WEB_SITE}/api/apps/${slug}`, {
-    next: { revalidate: 60 },
+    next: { revalidate: 86400 },
   });
 
   if (!res.ok) {
@@ -20,7 +20,7 @@ export default async function AppDetailPage({
   const app = await res.json();
 
   const booksRes = await fetch(`${process.env.WEB_SITE}/api/books`, {
-    next: { revalidate: 60 },
+    next: { revalidate: 86400 },
   });
 
   if (!booksRes.ok) {

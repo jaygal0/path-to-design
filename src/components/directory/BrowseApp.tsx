@@ -55,7 +55,8 @@ export default function BrowseApp({ app }: Props) {
         </Button>
       </a>
       <h2 className="mb-8 mt-14 text-lg text-foreground">
-        Used by {designers.length} designers
+        Used by {designers.length}{" "}
+        {designers.length === 1 ? "designer" : "designers"}
       </h2>
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">

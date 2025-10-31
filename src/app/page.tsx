@@ -8,13 +8,13 @@ import FaqSection from "@/components/home/FAQSection";
 async function getData() {
   const [designersRes, appsRes, booksRes] = await Promise.all([
     fetch(`${process.env.WEB_SITE}/api/designers`, {
-      next: { revalidate: 60 },
+      next: { revalidate: 3600 },
     }),
     fetch(`${process.env.WEB_SITE}/api/apps`, {
-      next: { revalidate: 60 },
+      next: { revalidate: 3600 },
     }),
     fetch(`${process.env.WEB_SITE}/api/books`, {
-      next: { revalidate: 60 },
+      next: { revalidate: 3600 },
     }),
   ]);
 

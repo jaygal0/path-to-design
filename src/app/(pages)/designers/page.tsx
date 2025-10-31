@@ -3,7 +3,7 @@ import BrowseDesigners from "@/components/directory/BrowseDesigners";
 
 async function getData() {
   const res = await fetch(`${process.env.WEB_SITE}/api/designers`, {
-    next: { revalidate: 60 },
+    next: { revalidate: 86400 },
   });
 
   if (!res.ok) {

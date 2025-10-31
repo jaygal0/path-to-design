@@ -3,7 +3,7 @@ import BrowseBooks from "@/components/directory/BrowseBooks";
 
 async function getData() {
   const res = await fetch(`${process.env.WEB_SITE}/api/books`, {
-    next: { revalidate: 60 },
+    next: { revalidate: 86400 },
   });
 
   if (!res.ok) {

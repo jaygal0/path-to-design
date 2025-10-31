@@ -23,7 +23,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const res = await fetch(`${process.env.WEB_SITE}/api/designers/${slug}`, {
-    next: { revalidate: 60 },
+    next: { revalidate: 604800 },
   });
 
   if (!res.ok) {
@@ -89,10 +89,10 @@ export async function generateMetadata({
 async function getData() {
   const [designersRes, appsRes] = await Promise.all([
     fetch(`${process.env.WEB_SITE}/api/designers`, {
-      next: { revalidate: 60 },
+      next: { revalidate: 604800 },
     }),
     fetch(`${process.env.WEB_SITE}/api/apps`, {
-      next: { revalidate: 60 },
+      next: { revalidate: 604800 },
     }),
   ]);
 
@@ -111,7 +111,7 @@ async function getData() {
 async function fetchDesignerData(slug: string) {
   try {
     const res = await fetch(`${process.env.WEB_SITE}/api/designers/${slug}`, {
-      next: { revalidate: 60 },
+      next: { revalidate: 604800 },
     });
 
     if (!res.ok) {

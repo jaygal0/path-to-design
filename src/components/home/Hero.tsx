@@ -29,7 +29,7 @@ export function Hero() {
         </div>
       </div>
       <div className="col-span-1 flex flex-col justify-end gap-4">
-        <h3 className="mt-16 text-sm text-muted-foreground">As featured in</h3>
+        <h3 className="mt-16 text-sm text-muted-foreground">Featured in</h3>
         <div className="flex gap-8">
           <a
             href="https://www.toools.design/"

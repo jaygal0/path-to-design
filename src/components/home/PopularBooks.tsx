@@ -24,7 +24,7 @@ export function PopularBooks({ books }: any) {
         </p>
       </div>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-1 lg:grid-cols-3">
-        {books.slice(0, 9).map((item: any, index: any) => {
+        {books.slice(0, 12).map((item: any, index: any) => {
           return <BookItem key={index} item={item} />;
         })}
       </div>

@@ -27,7 +27,7 @@ export function PopularApps({ apps }: Props) {
         </p>
       </div>
       <div className="flex flex-col gap-6">
-        {apps.slice(0, 7).map((tool: any, index: number) => (
+        {apps.slice(0, 8).map((tool: any, index: number) => (
           <AppItem key={index} tool={tool} />
         ))}
       </div>

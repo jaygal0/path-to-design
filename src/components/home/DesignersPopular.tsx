@@ -13,14 +13,15 @@ interface Props {
 
 export function DesignersPopular({ designers, slice }: Props) {
   const filterNames = [
-    "Joshua",
-    "Pascal",
-    "Vivek",
-    "Elisa",
-    "Craig",
-    "Meghan",
-    "Eriol",
-    "Elena",
+    "Galinato",
+    "Strasche",
+    "Kumar",
+    "Paduraru",
+    "Hansen",
+    "Martin",
+    "Fox",
+    "Butler",
+    "Molinari",
   ]; // Select which designers to present on the first page
 
   return (
@@ -41,7 +42,7 @@ export function DesignersPopular({ designers, slice }: Props) {
       </div>
       <div className="flex flex-col gap-6">
         {filterNames.map((name, index) => {
-          const designer = designers.find((d: any) => d.firstName === name);
+          const designer = designers.find((d: any) => d.lastName === name);
           if (!designer) return null;
 
           const {

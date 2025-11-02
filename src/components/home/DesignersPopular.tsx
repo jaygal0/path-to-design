@@ -19,13 +19,14 @@ export function DesignersPopular({ designers, slice }: Props) {
     "Paduraru",
     "Hansen",
     "Martin",
-    "Fox",
     "Butler",
+    "Fox",
+    "Oz",
     "Molinari",
   ]; // Select which designers to present on the first page
 
   return (
-    <div className="col-span-1 h-fit rounded-2xl bg-neutral-900 p-3 md:p-6 xl:col-span-2">
+    <div className="col-span-1 row-start-1 h-fit rounded-2xl bg-neutral-900 p-3 md:p-6 xl:col-span-2">
       <div className="mb-6">
         <div className="mb-1 flex items-center justify-between gap-1">
           <h2 className="text-lg text-foreground">Popular Designers</h2>

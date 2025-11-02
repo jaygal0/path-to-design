@@ -1,5 +1,6 @@
 import BrowseApp from "@/components/directory/BrowseApp";
 import { PopularBooksSidebar } from "@/components/global/PopularBooksSidebar";
+import { NewsletterSidebar } from "@/components/home/NewsletterSidebar";
 import { PopularApps } from "@/components/home/PopularApps";
 import { notFound } from "next/navigation";
 
@@ -35,7 +36,8 @@ export default async function AppDetailPage({
         <BrowseApp app={app} />
       </div>
       <div className="col-span-1">
-        <div className="sticky top-8">
+        <div className="sticky top-8 flex flex-col gap-8">
+          <NewsletterSidebar />
           <PopularBooksSidebar books={booksData} />
         </div>
       </div>

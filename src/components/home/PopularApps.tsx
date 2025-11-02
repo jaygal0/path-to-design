@@ -12,7 +12,7 @@ interface Props {
 
 export function PopularApps({ apps }: Props) {
   return (
-    <div className="col-span-1 h-min rounded-2xl bg-neutral-900 p-3 md:p-6">
+    <div className="co-start-3 col-span-1 h-min rounded-2xl bg-neutral-900 p-3 md:p-6">
       <div className="mb-6">
         <div className="mb-1 flex items-center justify-between gap-1">
           <h2 className="text-lg text-foreground">{mainCTAs[3].title}</h2>

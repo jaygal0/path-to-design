@@ -6,7 +6,7 @@ import { Button } from "../ui/button";
 
 export function CTA() {
   return (
-    <div className="col-span-1 mb-10 h-fit rounded-2xl bg-neutral-900 p-3 text-center md:p-6 xl:col-span-3 xl:mb-40 xl:px-40">
+    <div className="col-span-1 row-span-4 row-start-4 mb-10 h-fit rounded-2xl bg-neutral-900 p-3 text-center md:p-6 xl:col-span-3 xl:mb-40 xl:px-40">
       <h3 className="mb-2 text-xl font-bold md:text-3xl">
         Ready to take the next step?
       </h3>

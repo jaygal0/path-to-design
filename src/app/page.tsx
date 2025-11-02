@@ -4,6 +4,7 @@ import { PopularBooks } from "@/components/home/PopularBooks";
 import { DesignersPopular } from "@/components/home/DesignersPopular";
 import { CTA } from "@/components/home/CTA";
 import FaqSection from "@/components/home/FAQSection";
+import { NewsletterSidebar } from "@/components/home/NewsletterSidebar";
 
 async function getData() {
   const [designersRes, appsRes, booksRes] = await Promise.all([
@@ -37,13 +38,16 @@ export default async function Home() {
   return (
     <>
       <Hero />
-      <div className="grid grid-cols-1 gap-8 xl:grid-cols-3">
+      <div className="mb-8 grid grid-cols-1 gap-8 xl:grid-cols-3">
         <DesignersPopular designers={designers} />
-        <PopularApps apps={apps} />
-        <PopularBooks books={books} />
-        <FaqSection />
-        <CTA />
+        <div className="col-span-1 flex flex-col gap-8 xl:col-start-3 xl:row-start-1">
+          <NewsletterSidebar />
+          <PopularApps apps={apps} />
+        </div>
       </div>
+      <PopularBooks books={books} />
+      <FaqSection />
+      <CTA />
     </>
   );
 }

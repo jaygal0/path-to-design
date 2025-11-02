@@ -67,7 +67,7 @@ const faqs = [
 
 export default function FaqSection() {
   return (
-    <section className="col-span-1 my-8 p-3 md:p-6 xl:col-span-3">
+    <section className="col-span-1 row-span-1 row-start-3 my-8 p-3 md:p-6 xl:col-span-3">
       <div className="px-0 lg:px-72">
         <h2 className="mb-8 text-center text-3xl font-bold">
           Frequently Asked Questions

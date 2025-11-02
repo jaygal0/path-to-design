@@ -15,6 +15,7 @@ import type { Metadata } from "next";
 import { ProductsUsed } from "@/components/designer/ProductsUsed";
 import { notFound } from "next/navigation";
 import { mainCTAs } from "@/config/navigation";
+import { NewsletterSidebar } from "@/components/home/NewsletterSidebar";
 
 export async function generateMetadata({
   params,
@@ -326,8 +327,9 @@ export default async function DesignerPage(props: {
             </div>
           </div>
         </div>
-        <div className="col-span-2 flex flex-col gap-8 lg:col-span-1">
-          <div className="sticky top-8">
+        <div className="col-span-2 lg:col-span-1">
+          <div className="sticky top-8 flex flex-col gap-8">
+            <NewsletterSidebar />
             <PopularApps apps={appsData} />
           </div>
         </div>

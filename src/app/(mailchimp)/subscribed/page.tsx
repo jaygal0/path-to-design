@@ -6,7 +6,7 @@ export default function Page() {
   return (
     <div className="flex flex-col">
       <h1 className="mb-20 mt-40 text-5xl font-bold">
-        You've subscribed to the newsletter!
+        You&apos;ve subscribed to the newsletter!
       </h1>
       <div className="flex flex-col gap-4 font-sans text-xl font-thin leading-relaxed">
         <p>Thank you for subscribing!</p>

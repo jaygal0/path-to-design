@@ -1,21 +1,23 @@
 import type { MetadataRoute } from "next";
 
-// Example: Replace this with your real data fetching logic
 async function getDesigners() {
-  // If you store designers in a local JSON file, CMS, or API, fetch them here.
-  // For example:
   const res = await fetch("https://pathtodesign.com/api/designers");
   if (!res.ok) return [];
-  const designers = await res.json();
-  return designers;
+  return res.json();
+}
+
+async function getApps() {
+  const res = await fetch("https://pathtodesign.com/api/apps");
+  if (!res.ok) return [];
+  return res.json();
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://pathtodesign.com";
 
-  const designers = await getDesigners();
+  const [designers, apps] = await Promise.all([getDesigners(), getApps()]);
 
-  // Map designer pages
+  // Designer pages
   const designerPages = designers.map(
     (designer: { slug: string; updatedAt?: string }) => ({
       url: `${baseUrl}/designers/${designer.slug}`,
@@ -27,7 +29,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }),
   );
 
-  // Static routes
+  // App pages
+  const appPages = apps.map((app: { slug: string; updatedAt?: string }) => ({
+    url: `${baseUrl}/best-design-apps/${app.slug}`,
+    lastModified: app.updatedAt ? new Date(app.updatedAt) : new Date(),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  // Static pages
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: `${baseUrl}`,
@@ -48,12 +58,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/share-your-path`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
       url: `${baseUrl}/best-design-apps`,
       lastModified: new Date(),
       changeFrequency: "weekly",
@@ -66,6 +70,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/share-your-path`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/privacy`,
       lastModified: new Date(),
       changeFrequency: "monthly",
@@ -73,6 +83,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  // Combine static + dynamic
-  return [...staticPages, ...designerPages];
+  // Combine everything
+  return [...staticPages, ...designerPages, ...appPages];
 }

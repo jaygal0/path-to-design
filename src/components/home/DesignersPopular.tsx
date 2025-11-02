@@ -20,10 +20,10 @@ export function DesignersPopular({ designers, slice }: Props) {
     "Hansen",
     "Martin",
     "Butler",
-    "Fox",
     "Oz",
+    "Fox",
     "Molinari",
-  ]; // Select which designers to present on the first page
+  ];
 
   return (
     <div className="col-span-1 row-start-1 h-fit rounded-2xl bg-neutral-900 p-3 md:p-6 xl:col-span-2">

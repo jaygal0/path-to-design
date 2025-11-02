@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 
 export function NewsletterSidebar() {
   return (
-    <div className="h-min rounded-2xl bg-neutral-900 p-3 md:p-6">
+    <div className="h-min rounded-2xl border border-neutral-400 bg-neutral-900 p-3 md:p-6">
       <div className="mb-6">
         <div className="mb-1 flex items-center justify-between gap-1">
           <h2 className="text-lg text-foreground">

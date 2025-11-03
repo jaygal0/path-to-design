@@ -3,8 +3,6 @@
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { Avatar } from "./Avatar";
-import LogoArrow from "./LogoArrow";
-import { plausibleEvents } from "@/config/plausibleEvents";
 
 export default function BookItem({ item }: { item: any }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -25,13 +23,11 @@ export default function BookItem({ item }: { item: any }) {
 
   return (
     <a
-      href={url}
+      href={`/best-design-books/${item.slug}`}
       target="_blank"
       rel="noopener noreferrer nofollow sponsored"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="plausible-event-name=view-book block"
-      data-event-name={plausibleEvents.VIEW_BOOK}
     >
       <article className="flex h-full w-full flex-col gap-3 rounded-2xl border p-6 hover:cursor-pointer hover:border-white">
         <div className="flex w-full items-start gap-4">
@@ -46,7 +42,6 @@ export default function BookItem({ item }: { item: any }) {
           <div className="flex w-full flex-col gap-4">
             <div className="flex">
               <h3 className="mb-0 flex-grow text-lg md:text-xl">{book}</h3>
-              <LogoArrow />
             </div>
             <div className="font-sans text-lg text-stone-400">by {author}</div>
             <div className="flex flex-col gap-3 md:flex-row">

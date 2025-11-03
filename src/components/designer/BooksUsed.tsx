@@ -17,7 +17,7 @@ export function BooksUsed({ books }: any) {
               <a
                 key={book.book}
                 className="leading-relaxed text-muted-foreground"
-                href={book.url}
+                href={`/best-design-books/${book.slug}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >

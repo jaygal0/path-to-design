@@ -18,8 +18,6 @@ export function BooksUsed({ books }: any) {
                 key={book.book}
                 className="leading-relaxed text-muted-foreground"
                 href={`/best-design-books/${book.slug}`}
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 <div
                   key={book.book}

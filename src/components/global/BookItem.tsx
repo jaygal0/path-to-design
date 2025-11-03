@@ -24,8 +24,6 @@ export default function BookItem({ item }: { item: any }) {
   return (
     <a
       href={`/best-design-books/${item.slug}`}
-      target="_blank"
-      rel="noopener noreferrer nofollow sponsored"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

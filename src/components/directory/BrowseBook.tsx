@@ -22,7 +22,7 @@ export default function BrowseBook({ book }: Props) {
           width={100}
           height={160}
           quality={70}
-          className="rounded-lg object-cover transition-all hover:scale-105"
+          className="rounded-lg object-cover"
           unoptimized
         />
         <div>

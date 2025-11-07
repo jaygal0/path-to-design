@@ -38,10 +38,11 @@ export default function BrowseApps({ apps }: Props) {
 
   const filteredApps = useMemo(() => {
     const results = apps.filter((app) => {
+      const hasDesigners = app.designers?.length > 0;
       const matchCategory = selectedCategories.length
         ? app.categories?.some((c: any) => selectedCategories.includes(c.name))
         : true;
-      return matchCategory;
+      return hasDesigners && matchCategory;
     });
 
     // Sort results

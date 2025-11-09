@@ -66,8 +66,8 @@ export default async function AppDetailPage({
             </Link>
           </div>
           <div className="flex flex-col gap-6">
-            {otherApps.map((a: any) => {
-              return <AppItem tool={a} />;
+            {otherApps.map((otherApp: any, index: any) => {
+              return <AppItem key={index} tool={otherApp} />;
             })}
           </div>
         </div>

@@ -68,8 +68,8 @@ export default async function BookDetailPage({
             </Link>
           </div>
           <div className="flex flex-col gap-6">
-            {otherBooks.map((book: any) => {
-              return <BookItem item={book} />;
+            {otherBooks.map((book: any, index: any) => {
+              return <BookItem key={index} item={book} />;
             })}
           </div>
         </div>

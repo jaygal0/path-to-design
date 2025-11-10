@@ -18,6 +18,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { QuickNav } from "./QuickNav";
+import { NewsletterSidebar } from "../home/NewsletterSidebar";
+// import { ShareYourPathAd } from "@/components/global/ShareYourPathAd";
 
 type Props = {
   designers: any[];
@@ -189,17 +191,22 @@ export default function BrowseDesigners({ designers }: Props) {
 
       {/* Designers Grid */}
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
-        {filteredDesigners.map(
-          (d) =>
-            d.isPublished && (
-              <CardDesigner
-                key={d.id}
-                {...d}
-                role={d.roles.role || ""}
-                company={d.companies.company || ""}
-              />
-            ),
-        )}
+        {filteredDesigners.flatMap((d, i) => {
+          const items = [
+            <CardDesigner
+              key={d.id}
+              {...d}
+              role={d.roles.role || ""}
+              company={d.companies.company || ""}
+            />,
+          ];
+
+          if (i === 2) {
+            items.push(<NewsletterSidebar key="newsletter" />);
+          }
+
+          return items;
+        })}
       </div>
     </div>
   );

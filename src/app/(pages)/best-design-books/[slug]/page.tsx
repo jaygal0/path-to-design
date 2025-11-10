@@ -1,7 +1,6 @@
 import BrowseApp from "@/components/directory/BrowseApp";
 import BrowseBook from "@/components/directory/BrowseBook";
 import BookItem from "@/components/global/BookItem";
-import { PopularBooksSidebar } from "@/components/global/PopularBooksSidebar";
 import { NewsletterSidebar } from "@/components/home/NewsletterSidebar";
 import { PopularApps } from "@/components/home/PopularApps";
 import { Button } from "@/components/ui/button";

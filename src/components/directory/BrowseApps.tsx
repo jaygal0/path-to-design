@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/select";
 import { QuickNav } from "./QuickNav";
 import AppItem from "../global/AppItem";
+import { NewsletterSidebar } from "../home/NewsletterSidebar";
 
 type Props = {
   apps: any[];
@@ -131,9 +132,13 @@ export default function BrowseApps({ apps }: Props) {
 
       {/* Apps Grid */}
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
-        {filteredApps.map((app, index) => (
-          <AppItem tool={app} key={index} />
-        ))}
+        {filteredApps.flatMap((app, index) => {
+          const items = [<AppItem tool={app} key={index} />];
+          if (index === 2) {
+            items.push(<NewsletterSidebar key="newsletter" />);
+          }
+          return items;
+        })}
       </div>
     </div>
   );

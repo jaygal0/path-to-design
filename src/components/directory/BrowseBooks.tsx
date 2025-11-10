@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/select";
 import { QuickNav } from "./QuickNav";
 import BookItem from "../global/BookItem";
+import { NewsletterSidebar } from "../home/NewsletterSidebar";
 
 type Props = {
   books: any[];
@@ -158,9 +159,13 @@ export default function BrowseBooks({ books }: Props) {
 
       {/* Books Grid */}
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
-        {filteredBooks.map((book, index) => (
-          <BookItem item={book} key={index} />
-        ))}
+        {filteredBooks.flatMap((book, index) => {
+          const items = [<BookItem item={book} key={index} />];
+          if (index === 2) {
+            items.push(<NewsletterSidebar key="newsletter" />);
+          }
+          return items;
+        })}
       </div>
     </div>
   );

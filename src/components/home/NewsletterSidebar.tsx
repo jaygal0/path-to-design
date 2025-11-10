@@ -13,8 +13,8 @@ export function NewsletterSidebar() {
           </h2>
         </div>
         <p className="text-sm text-muted-foreground md:w-3/4">
-          Get insights, tools, and recommendations from designers who’ve made it
-          into the industry.
+          Get insights, tools, and recommendations from designers who&apos;ve
+          made it into the industry.
         </p>
       </div>
       <form

@@ -4,7 +4,7 @@ import { PopularBooks } from "@/components/home/PopularBooks";
 import { DesignersPopular } from "@/components/home/DesignersPopular";
 import { CTA } from "@/components/home/CTA";
 import FaqSection from "@/components/home/FAQSection";
-import { NewsletterSidebar } from "@/components/home/NewsletterSidebar";
+import { NewsletterSidebar } from "@/components/global/NewsletterSidebar";
 
 async function getData() {
   const [designersRes, appsRes, booksRes] = await Promise.all([

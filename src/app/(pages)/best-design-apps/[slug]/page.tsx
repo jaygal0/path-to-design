@@ -1,13 +1,14 @@
 import BrowseApp from "@/components/directory/BrowseApp";
 import AppItem from "@/components/global/AppItem";
 import { PopularBooksSidebar } from "@/components/global/PopularBooksSidebar";
-import { NewsletterSidebar } from "@/components/home/NewsletterSidebar";
+import { NewsletterSidebar } from "@/components/global/NewsletterSidebar";
 import { PopularApps } from "@/components/home/PopularApps";
 import { Button } from "@/components/ui/button";
 import { mainCTAs } from "@/config/navigation";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ShareYourPath } from "@/components/global/ShareYourPath";
 
 export default async function AppDetailPage({
   params,
@@ -74,8 +75,9 @@ export default async function AppDetailPage({
       </div>
       <div className="col-span-1">
         <div className="sticky top-8 flex flex-col gap-8">
-          <div className="hidden lg:block">
+          <div className="hidden lg:flex lg:flex-col lg:gap-8">
             <NewsletterSidebar />
+            <ShareYourPath />
           </div>
           <PopularBooksSidebar books={booksData} />
         </div>

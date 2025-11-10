@@ -1,7 +1,8 @@
 import BrowseApp from "@/components/directory/BrowseApp";
 import BrowseBook from "@/components/directory/BrowseBook";
 import BookItem from "@/components/global/BookItem";
-import { NewsletterSidebar } from "@/components/home/NewsletterSidebar";
+import { NewsletterSidebar } from "@/components/global/NewsletterSidebar";
+import { ShareYourPath } from "@/components/global/ShareYourPath";
 import { PopularApps } from "@/components/home/PopularApps";
 import { Button } from "@/components/ui/button";
 import { mainCTAs } from "@/config/navigation";
@@ -75,8 +76,9 @@ export default async function BookDetailPage({
       </div>
       <div className="col-span-1">
         <div className="sticky top-8 flex flex-col gap-8">
-          <div className="hidden lg:block">
+          <div className="hidden lg:flex lg:flex-col lg:gap-8">
             <NewsletterSidebar />
+            <ShareYourPath />
           </div>
           <PopularApps apps={appsData} />
         </div>

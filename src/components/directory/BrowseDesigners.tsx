@@ -18,7 +18,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { QuickNav } from "./QuickNav";
-import { NewsletterSidebar } from "../home/NewsletterSidebar";
+import { NewsletterSidebar } from "../global/NewsletterSidebar";
 // import { ShareYourPathAd } from "@/components/global/ShareYourPathAd";
 
 type Props = {

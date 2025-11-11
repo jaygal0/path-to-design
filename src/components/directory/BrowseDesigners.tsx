@@ -47,6 +47,7 @@ export default function BrowseDesigners({ designers }: Props) {
 
   const filteredDesigners = useMemo(() => {
     let results = designers.filter((designer) => {
+      if (!designer.isPublished) return false;
       const matchCountry = selectedCountries.length
         ? selectedCountries.includes(designer.country)
         : true;

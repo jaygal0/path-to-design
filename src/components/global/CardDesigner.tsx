@@ -75,8 +75,16 @@ export function CardDesigner({
             <span className={roleColorClass}>{role}</span>{" "}
             <span className="text-base md:text-xl">at {company}</span>
           </div>
-
-          <div className="text-muted-foreground">{oneLiner}</div>
+          <div
+            className="overflow-hidden text-ellipsis text-muted-foreground"
+            style={{
+              display: "-webkit-box",
+              WebkitBoxOrient: "vertical",
+              WebkitLineClamp: 2,
+            }}
+          >
+            {oneLiner}
+          </div>
         </article>
       </Link>
     </Suspense>

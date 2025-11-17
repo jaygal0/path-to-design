@@ -52,21 +52,30 @@ export function DesignerDetailBox({
           />
         </div>
         <div className="text-lg md:text-xl">
-          {role} at{" "}
-          {companyURL ? (
-            <a
-              href={companyURL}
-              target="_blank"
-              className="inline-flex items-center gap-1 text-green-400 underline"
-              data-event-name={plausibleEvents.VIEW_COMPANY}
-            >
-              {company}
-              <ExternalLink className="h-3 w-3" />
-            </a>
+          {!company ? (
+            <>
+              Self-employed <span className="font-semibold">{role}</span>
+            </>
           ) : (
-            company
+            <>
+              {role} at{" "}
+              {companyURL ? (
+                <a
+                  href={companyURL}
+                  target="_blank"
+                  className="inline-flex items-center gap-1 text-green-400 underline"
+                  data-event-name={plausibleEvents.VIEW_COMPANY}
+                >
+                  {company}
+                  <ExternalLink className="h-3 w-3" />
+                </a>
+              ) : (
+                company
+              )}
+            </>
           )}
         </div>
+
         <div className="flex flex-col justify-between gap-2">
           <div className="flex flex-wrap justify-start gap-5 gap-y-2">
             {email && (

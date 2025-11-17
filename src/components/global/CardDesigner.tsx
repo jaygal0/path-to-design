@@ -72,8 +72,16 @@ export function CardDesigner({
           </div>
 
           <div className="text-base font-light md:text-xl">
-            <span className={roleColorClass}>{role}</span>{" "}
-            <span className="text-base md:text-xl">at {company}</span>
+            {!company ? (
+              <>
+                Self-employed <span className={roleColorClass}>{role}</span>
+              </>
+            ) : (
+              <>
+                <span className={roleColorClass}>{role}</span>{" "}
+                <span className="text-base md:text-xl">at {company}</span>
+              </>
+            )}
           </div>
           <div
             className="overflow-hidden text-ellipsis text-muted-foreground"

@@ -3,108 +3,139 @@ export default function Page() {
     <div className="md:px-96">
       <div className="flex flex-col gap-4 font-sans text-xl font-thin leading-relaxed">
         <h1 className="mb-8 text-2xl font-bold">Privacy Policy</h1>
+
         <p>
-          <strong>Effective Date:</strong> 14/07/2024
+          <strong>Last Updated:</strong> 22/11/2025
         </p>
 
         <p>
-          At PathToDesign.com, we are committed to protecting your privacy. This
-          Privacy Policy outlines the types of personal information we collect,
-          how we use it, and the measures we take to safeguard your information.
+          PathToDesign.com (“we”, “our”, “us”) is committed to protecting your
+          privacy. This Privacy Policy explains what personal data we collect,
+          how we use it, and the rights you have under the GDPR and other
+          applicable data protection laws.
         </p>
 
         <h2>Information We Collect</h2>
-        <ul>
+        <ul className="list-inside list-disc">
           <li>
-            <strong>Personal Information:</strong> When you visit our website,
-            we may collect personal information that you voluntarily provide to
-            us, such as your name, email address, and any other information you
-            provide when you contact us or subscribe to our newsletter.
+            <strong>Personal Information You Provide:</strong> When you
+            subscribe to our newsletter or contact us, we may collect your name,
+            email address, and any information you include in your message.
           </li>
           <li>
-            <strong>Usage Data:</strong> We may also collect information on how
-            our website is accessed and used. This data may include your IP
-            address, browser type, pages visited, time spent on pages, and other
-            diagnostic data.
+            <strong>Usage Data:</strong> We use Plausible Analytics, a
+            privacy-focused and cookie-free analytics platform, to collect
+            aggregated, anonymous data such as pages visited, referring
+            websites, and general device information. Plausible does not collect
+            personal data or use cookies.
+          </li>
+          <li>
+            <strong>Hosting and Server Logs:</strong> Our site is hosted on
+            Vercel. Their systems may temporarily process IP addresses and
+            technical information for performance, security, and error
+            detection. This data is processed under legitimate interest and is
+            not used for tracking.
           </li>
         </ul>
 
         <h2>How We Use Your Information</h2>
-        <ul>
-          <li>To provide and maintain our website.</li>
+        <ul className="list-inside list-disc">
+          <li>To operate, maintain, and improve our website.</li>
+          <li>To respond to inquiries and provide customer support.</li>
           <li>
-            To communicate with you, respond to your inquiries, and provide
-            customer support.
+            To send newsletters and updates, but only if you have provided
+            consent.
           </li>
           <li>
-            To send you newsletters, updates, and promotional materials if you
-            have subscribed.
+            To analyze website performance and understand usage trends through
+            anonymous analytics.
+          </li>
+          <li>To maintain the security and reliability of our services.</li>
+        </ul>
+
+        <h2>Legal Basis for Processing (GDPR)</h2>
+        <ul className="list-inside list-disc">
+          <li>
+            <strong>Consent:</strong> For newsletters and email communication.
           </li>
           <li>
-            To monitor and analyze usage and trends to improve our website and
-            services.
+            <strong>Legitimate Interest:</strong> For analytics (via Plausible)
+            and essential hosting functions (via Vercel).
           </li>
-          <li>To detect, prevent, and address technical issues.</li>
+          <li>
+            <strong>Contractual Necessity:</strong> When responding to contact
+            requests.
+          </li>
         </ul>
 
         <h2>Sharing Your Information</h2>
         <p>
-          We do not sell, trade, or otherwise transfer your personal information
-          to outside parties. We may share your information with trusted third
-          parties who assist us in operating our website, conducting our
-          business, or servicing you, as long as those parties agree to keep
-          this information confidential.
+          We do not sell, trade, or rent your personal information. We only
+          share data with trusted third-party providers who help us operate the
+          website:
+        </p>
+        <ul className="list-inside list-disc">
+          <li>Vercel – hosting and infrastructure</li>
+          <li>Plausible – anonymous analytics</li>
+          <li>Mailchimp – newsletter management</li>
+        </ul>
+        <p>
+          These providers process data on our behalf and in compliance with
+          applicable data protection laws.
         </p>
 
         <h2>Cookies</h2>
         <p>
-          Our website uses Plausible Analytics to help us understand visitor
-          trends and the effectiveness of our marketing outreach. We chose
-          Plausible Analytics because it is a privacy-focused company and
-          platform that eschews personally identifiable information in favor of
-          anonymous aggregate data. See the Plausible Analytics Data Policy.
+          PathToDesign.com currently does not use cookies for analytics or
+          tracking. Plausible Analytics is fully cookie-free. If we introduce
+          cookies in the future, we will update this policy and display a cookie
+          notice if required.
         </p>
 
         <h2>Security</h2>
         <p>
-          We take reasonable measures to protect your personal information from
-          unauthorized access, use, or disclosure. However, no method of
-          transmission over the internet or electronic storage is completely
-          secure, and we cannot guarantee absolute security.
+          We take reasonable technical and organizational measures to protect
+          your personal data. However, no online transmission or storage method
+          can be guaranteed completely secure.
         </p>
 
         <h2>Links to Other Websites</h2>
         <p>
-          Our website may contain links to other websites. We are not
-          responsible for the privacy practices or content of these external
-          sites. We encourage you to read the privacy policies of any linked
-          websites you visit.
+          Our website may contain links to external sites. We are not
+          responsible for their content or privacy practices. We recommend
+          reviewing the privacy policies of any external websites you visit.
         </p>
 
-        <h2>Affiliate Link Disclosure</h2>
+        <h2>Affiliate Disclosure</h2>
         <p>
-          Some of the links on PathToDesign.com are affiliate links, which means
-          we may earn a small commission if you make a purchase through those
-          links, at no additional cost to you. This helps support the website
-          and our mission to provide free resources for designers. We only
-          promote products and services we believe will be valuable to our
-          audience.
+          Some links on PathToDesign.com are affiliate links, meaning we may
+          earn a small commission if you purchase through them—at no additional
+          cost to you. We only recommend products and services we believe are
+          genuinely valuable.
         </p>
+
+        <h2>Your Rights (GDPR)</h2>
+        <ul className="list-inside list-disc">
+          <li>Access your personal data</li>
+          <li>Request correction or deletion</li>
+          <li>Withdraw consent at any time</li>
+          <li>Object to certain types of processing</li>
+          <li>Request a copy of your data</li>
+        </ul>
 
         <h2>Changes to This Privacy Policy</h2>
         <p>
-          We may update our Privacy Policy from time to time. We will notify you
-          of any changes by posting the new Privacy Policy on this page. You are
-          advised to review this Privacy Policy periodically for any changes.
+          We may update this Privacy Policy periodically. Changes will be posted
+          on this page with an updated “Last Updated” date.
         </p>
 
         <h2>Contact Us</h2>
         <p>
-          If you have any questions about this Privacy Policy, please contact us
-          at info@pathtodesign.com.
+          If you have any questions or privacy-related requests, please contact
+          us at <strong>info@pathtodesign.com</strong>.
         </p>
 
-        <p>By using PathToDesign.com, you consent to our Privacy Policy.</p>
+        <p>By using PathToDesign.com, you agree to this Privacy Policy.</p>
       </div>
     </div>
   );

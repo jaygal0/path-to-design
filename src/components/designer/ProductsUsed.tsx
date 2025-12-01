@@ -21,7 +21,7 @@ export function ProductsUsed({
             href={prod.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={`${!prod.url ? "" : "underline"}`}
+            className={`${!prod.url ? "" : "underline"} plausible-event-name=view-product`}
           >
             {prod.name}
           </a>

@@ -1,20 +1,20 @@
 // app/browse/page.tsx
-import BrowseApps from "@/components/directory/BrowseApps";
+import BrowseDesigners from "@/components/directory/BrowseDesigners";
+import { fetchSafe } from "@/lib/fetchSafe";
 
 async function getData() {
-  const res = await fetch(`${process.env.WEB_SITE}/api/apps`, {
-    next: { revalidate: 86400 },
-  });
+  const designers = await fetchSafe(
+    `${process.env.WEB_SITE}/api/designers`,
+    {
+      next: { revalidate: 86400 },
+    },
+    [],
+  );
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch books");
-  }
-
-  const apps = await res.json();
-  return { apps };
+  return { designers };
 }
 
 export default async function BrowsePageWrapper() {
-  const { apps } = await getData();
-  return <BrowseApps apps={apps} />;
+  const { designers } = await getData();
+  return <BrowseDesigners designers={designers} />;
 }

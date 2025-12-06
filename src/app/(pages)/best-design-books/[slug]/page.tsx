@@ -9,47 +9,46 @@ import { mainCTAs } from "@/config/navigation";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { fetchSafe } from "@/lib/fetchSafe";
 
 export default async function BookDetailPage(props: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await props.params;
 
-  const res = await fetch(`${process.env.WEB_SITE}/api/books/${slug}`, {
-    next: { revalidate: 86400 },
-  });
+  const book = await fetchSafe(
+    `${process.env.WEB_SITE}/api/books/${slug}`,
+    {
+      next: { revalidate: 86400 },
+    },
+    null,
+  );
 
-  if (!res.ok) {
+  if (!book) {
     notFound();
   }
 
-  const book = await res.json();
-
-  const allBooksRes = await fetch(`${process.env.WEB_SITE}/api/books`, {
-    next: { revalidate: 86400 },
-  });
-
-  if (!allBooksRes.ok) {
-    throw new Error("Failed to fetch all books data");
-  }
-
-  const allBooks = await allBooksRes.json();
+  const allBooks = await fetchSafe(
+    `${process.env.WEB_SITE}/api/books`,
+    {
+      next: { revalidate: 86400 },
+    },
+    [],
+  );
 
   // Filter out the current book and randomize order, then slice to 3
-  const otherBooks = allBooks
+  const otherBooks = (allBooks || [])
     .filter((b: any) => b.slug !== slug)
     .sort(() => 0.5 - Math.random())
     .slice(0, 10);
 
-  const appsRes = await fetch(`${process.env.WEB_SITE}/api/apps`, {
-    next: { revalidate: 86400 },
-  });
-
-  if (!appsRes.ok) {
-    throw new Error("Failed to fetch books data");
-  }
-
-  const appsData = await appsRes.json();
+  const appsData = await fetchSafe(
+    `${process.env.WEB_SITE}/api/apps`,
+    {
+      next: { revalidate: 86400 },
+    },
+    [],
+  );
 
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">

@@ -17,6 +17,7 @@ import { notFound } from "next/navigation";
 import { mainCTAs } from "@/config/navigation";
 import { NewsletterSidebar } from "@/components/global/NewsletterSidebar";
 import { ShareYourPath } from "@/components/global/ShareYourPath";
+import { fetchSafe } from "@/lib/fetchSafe";
 
 export async function generateMetadata({
   params,
@@ -24,111 +25,104 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const res = await fetch(`${process.env.WEB_SITE}/api/designers/${slug}`, {
-    next: { revalidate: 604800 },
-  });
 
-  if (!res.ok) {
-    return {
-      title: "Designer not found | Path to Design",
-      description: "Explore designer journeys on Path to Design.",
-    };
-  }
-
-  const designer = await res.json();
-  const {
-    firstName,
-    lastName,
-    oneLiner,
-    roles,
-    companies,
-    coverImage,
-    linkedin,
-    instagram,
-    x,
-  } = designer;
-
-  const title = `${firstName} ${lastName}${roles?.role ? ` – ${roles.role}` : ""}${
-    companies?.company ? ` at ${companies.company}` : ""
-  } | Path to Design`;
-
-  const description =
-    oneLiner ||
-    `Discover how ${firstName} ${lastName} built their path into design at Path to Design.`;
-
-  const canonicalUrl = `https://www.pathtodesign.com/browse/${slug}`;
-  const ogImage = coverImage || "/path-to-design-og-image.jpg";
-
-  return {
-    title,
-    description,
-    alternates: { canonical: canonicalUrl },
-    openGraph: {
-      title,
-      description,
-      url: canonicalUrl,
-      siteName: "Path to Design",
-      type: "profile",
-      images: [
-        {
-          url: ogImage,
-          width: 1200,
-          height: 630,
-          alt: `${firstName} ${lastName} on Path to Design`,
-        },
-      ],
-      locale: "en",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [ogImage],
-    },
-  };
-}
-
-async function getData() {
-  const [designersRes, appsRes] = await Promise.all([
-    fetch(`${process.env.WEB_SITE}/api/designers`, {
-      next: { revalidate: 604800 },
-    }),
-    fetch(`${process.env.WEB_SITE}/api/apps`, {
-      next: { revalidate: 604800 },
-    }),
-  ]);
-
-  if (!designersRes.ok || !appsRes.ok) {
-    throw new Error("Failed to fetch data");
-  }
-
-  const [designersData, appsData] = await Promise.all([
-    designersRes.json(),
-    appsRes.json(),
-  ]);
-
-  return { designersData, appsData };
-}
-
-async function fetchDesignerData(slug: string) {
   try {
     const res = await fetch(`${process.env.WEB_SITE}/api/designers/${slug}`, {
       next: { revalidate: 604800 },
     });
 
     if (!res.ok) {
-      notFound();
+      return {
+        title: "Designer not found | Path to Design",
+        description: "Explore designer journeys on Path to Design.",
+      };
     }
 
     const designer = await res.json();
-    if (!designer || designer.isPublished !== true) {
-      notFound();
-    }
+    const { firstName, lastName, oneLiner, roles, companies, coverImage } =
+      designer;
 
-    return designer;
+    const title = `${firstName} ${lastName}${roles?.role ? ` – ${roles.role}` : ""}$
+${companies?.company ? ` at ${companies.company}` : ""} | Path to Design`;
+
+    const description =
+      oneLiner ||
+      `Discover how ${firstName} ${lastName} built their path into design at Path to Design.`;
+
+    const canonicalUrl = `https://www.pathtodesign.com/browse/${slug}`;
+    const ogImage = coverImage || "/path-to-design-og-image.jpg";
+
+    return {
+      title,
+      description,
+      alternates: { canonical: canonicalUrl },
+      openGraph: {
+        title,
+        description,
+        url: canonicalUrl,
+        siteName: "Path to Design",
+        type: "profile",
+        images: [
+          {
+            url: ogImage,
+            width: 1200,
+            height: 630,
+            alt: `${firstName} ${lastName} on Path to Design`,
+          },
+        ],
+        locale: "en",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title,
+        description,
+        images: [ogImage],
+      },
+    };
   } catch (err) {
+    // If the metadata fetch fails (eg. ECONNREFUSED) return a sensible fallback
+    console.error("generateMetadata: failed to fetch designer metadata:", err);
+    return {
+      title: "Designer not found | Path to Design",
+      description: "Explore designer journeys on Path to Design.",
+    };
+  }
+}
+
+async function getData() {
+  const designersData = await fetchSafe(
+    `${process.env.WEB_SITE}/api/designers`,
+    {
+      next: { revalidate: 604800 },
+    },
+    [],
+  );
+
+  const appsData = await fetchSafe(
+    `${process.env.WEB_SITE}/api/apps`,
+    {
+      next: { revalidate: 604800 },
+    },
+    [],
+  );
+
+  return { designersData, appsData };
+}
+
+async function fetchDesignerData(slug: string) {
+  const designer = await fetchSafe(
+    `${process.env.WEB_SITE}/api/designers/${slug}`,
+    {
+      next: { revalidate: 604800 },
+    },
+    null,
+  );
+
+  if (!designer || designer.isPublished !== true) {
     notFound();
   }
+
+  return designer;
 }
 
 // Pre-generate static paths for designers
@@ -139,16 +133,12 @@ export async function generateStaticParams() {
       select: { slug: true },
     });
 
-    if (!designers || designers.length === 0) {
-      throw new Error("No designers found.");
-    }
-
-    return designers.map((designer) => ({
+    return (designers || []).map((designer) => ({
       slug: designer.slug,
     }));
   } catch (error) {
     console.error("Error generating static params:", error);
-    throw error;
+    return [];
   }
 }
 
@@ -156,7 +146,23 @@ export default async function DesignerPage(props: {
   params: Promise<{ slug: string }>;
 }) {
   const params = await props.params;
-  const { designersData, appsData } = await getData();
+
+  // getData() may fail if the API is unreachable during build (ECONNREFUSED).
+  // Protect the build by falling back to empty arrays and logging the error.
+  let designersData: any[] = [];
+  let appsData: any[] = [];
+
+  try {
+    const data = await getData();
+    designersData = data.designersData || [];
+    appsData = data.appsData || [];
+  } catch (err) {
+    console.error(
+      "DesignerPage: getData failed, falling back to empty arrays:",
+      err,
+    );
+  }
+
   const designer = await fetchDesignerData(params.slug);
 
   const filteredDesigners = designersData.filter(

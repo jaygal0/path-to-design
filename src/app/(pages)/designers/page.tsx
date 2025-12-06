@@ -1,16 +1,16 @@
 // app/browse/page.tsx
 import BrowseDesigners from "@/components/directory/BrowseDesigners";
+import { fetchSafe } from "@/lib/fetchSafe";
 
 async function getData() {
-  const res = await fetch(`${process.env.WEB_SITE}/api/designers`, {
-    next: { revalidate: 86400 },
-  });
+  const designers = await fetchSafe(
+    `${process.env.WEB_SITE}/api/designers`,
+    {
+      next: { revalidate: 86400 },
+    },
+    [],
+  );
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch designers");
-  }
-
-  const designers = await res.json();
   return { designers };
 }
 

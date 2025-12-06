@@ -9,45 +9,48 @@ import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ShareYourPath } from "@/components/global/ShareYourPath";
+import { fetchSafe } from "@/lib/fetchSafe";
 
 export default async function AppDetailPage(props: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await props.params;
-  const res = await fetch(`${process.env.WEB_SITE}/api/apps/${slug}`, {
-    next: { revalidate: 86400 },
-  });
 
-  if (!res.ok) {
+  const app = await fetchSafe(
+    `${process.env.WEB_SITE}/api/apps/${slug}`,
+    {
+      next: { revalidate: 86400 },
+    },
+    null,
+  );
+
+  if (!app) {
+    // If the app resource isn't available, show 404.
     notFound();
   }
 
-  const app = await res.json();
-
-  // Fetch all apps
-  const appsRes = await fetch(`${process.env.WEB_SITE}/api/apps`, {
-    next: { revalidate: 86400 },
-  });
-  if (!appsRes.ok) {
-    throw new Error("Failed to fetch apps data");
-  }
-  const allApps = await appsRes.json();
+  // Fetch all apps (fallback to empty array)
+  const allApps = await fetchSafe(
+    `${process.env.WEB_SITE}/api/apps`,
+    {
+      next: { revalidate: 86400 },
+    },
+    [],
+  );
 
   // Filter out the current app and pick a few random ones
-  const otherApps = allApps
+  const otherApps = (allApps || [])
     .filter((a: any) => a.slug !== slug)
     .sort(() => 0.5 - Math.random())
     .slice(0, 10);
 
-  const booksRes = await fetch(`${process.env.WEB_SITE}/api/books`, {
-    next: { revalidate: 86400 },
-  });
-
-  if (!booksRes.ok) {
-    throw new Error("Failed to fetch books data");
-  }
-
-  const booksData = await booksRes.json();
+  const booksData = await fetchSafe(
+    `${process.env.WEB_SITE}/api/books`,
+    {
+      next: { revalidate: 86400 },
+    },
+    [],
+  );
 
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">

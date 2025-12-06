@@ -10,12 +10,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ShareYourPath } from "@/components/global/ShareYourPath";
 
-export default async function AppDetailPage({
-  params,
-}: {
-  params: { slug: string };
+export default async function AppDetailPage(props: {
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = params;
+  const { slug } = await props.params;
   const res = await fetch(`${process.env.WEB_SITE}/api/apps/${slug}`, {
     next: { revalidate: 86400 },
   });

@@ -10,12 +10,11 @@ import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-export default async function BookDetailPage({
-  params,
-}: {
-  params: { slug: string };
+export default async function BookDetailPage(props: {
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = params;
+  const { slug } = await props.params;
+
   const res = await fetch(`${process.env.WEB_SITE}/api/books/${slug}`, {
     next: { revalidate: 86400 },
   });

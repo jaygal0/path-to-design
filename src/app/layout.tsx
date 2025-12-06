@@ -14,6 +14,7 @@ const openSans = Open_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://pathtodesign.com"),
   title: "Path to Design | A Directory of Designers, for Designers",
   description:
     "Explore how designers found their path into the tech industry and get inspired to find yours.",

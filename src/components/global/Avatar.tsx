@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { AvatarProps } from "@/types";
 
 export function Avatar({
@@ -11,13 +11,16 @@ export function Avatar({
     <div
       className={`relative ${size == "md" && "h-16 w-16"} ${size == "sm" && "h-6 w-6"} overflow-hidden rounded-full bg-slate-50`}
     >
-      <Image
-        src={profileImage!}
-        alt={`Profile image of ${firstName} ${lastName}`}
-        className="w-full object-cover"
-        layout="fill"
-        quality={70}
-      />
+      {profileImage ? (
+        <Image
+          src={profileImage}
+          alt={`Profile image of ${firstName} ${lastName}`}
+          className="w-full object-cover"
+          quality={70}
+          fill
+          style={{ objectFit: "cover", objectPosition: "center" }}
+        />
+      ) : null}
     </div>
   );
 }

@@ -1,20 +1,20 @@
-// app/browse/page.tsx
-import BrowseDesigners from "@/components/directory/BrowseDesigners";
+// app/best-design-apps/page.tsx
+import BrowseApps from "@/components/directory/BrowseApps";
 import { fetchSafe } from "@/lib/fetchSafe";
 
 async function getData() {
-  const designers = await fetchSafe(
-    `${process.env.WEB_SITE}/api/designers`,
+  const apps = await fetchSafe(
+    `${process.env.WEB_SITE}/api/apps`,
     {
       next: { revalidate: 86400 },
     },
     [],
   );
 
-  return { designers };
+  return { apps };
 }
 
-export default async function BrowsePageWrapper() {
-  const { designers } = await getData();
-  return <BrowseDesigners designers={designers} />;
+export default async function BrowseAppsWrapper() {
+  const { apps } = await getData();
+  return <BrowseApps apps={apps} />;
 }

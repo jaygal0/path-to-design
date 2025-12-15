@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import BrowseApp from "@/components/directory/BrowseApp";
 import AppItem from "@/components/global/AppItem";
 import { PopularBooksSidebar } from "@/components/global/PopularBooksSidebar";
@@ -10,6 +11,92 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ShareYourPath } from "@/components/global/ShareYourPath";
 import { fetchSafe } from "@/lib/fetchSafe";
+
+export async function generateMetadata(props: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await props.params;
+
+  try {
+    const res = await fetch(`${process.env.WEB_SITE}/api/apps/${slug}`, {
+      next: { revalidate: 86400 },
+    });
+
+    if (!res.ok) {
+      return {
+        title: "App not found | Path to Design",
+        description: "Explore the best design apps on Path to Design.",
+      };
+    }
+
+    const app = await res.json();
+
+    const title = `${app.app} | Path to Design`;
+
+    const description = `Discover ${app.app}, an app designers use that's featured on Path to Design.`;
+
+    const canonicalUrl = `https://www.pathtodesign.com/best-design-apps/${slug}`;
+    const ogImage = "/path-to-design-og-image.jpg";
+
+    return {
+      title,
+      description,
+      alternates: { canonical: canonicalUrl },
+      openGraph: {
+        title,
+        description,
+        url: canonicalUrl,
+        siteName: "Path to Design",
+        type: "website",
+        images: [
+          {
+            url: ogImage,
+            width: 1200,
+            height: 630,
+            alt: `${app.app} on Path to Design`,
+          },
+        ],
+        locale: "en",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title,
+        description,
+        images: [ogImage],
+      },
+    };
+  } catch (err) {
+    console.error("generateMetadata: failed to fetch app metadata:", err);
+    return {
+      title: "App not found | Path to Design",
+      description: "Explore the best design apps on Path to Design.",
+    };
+  }
+}
+
+export async function generateStaticParams() {
+  try {
+    const apps = await fetch(`${process.env.WEB_SITE}/api/apps`, {
+      next: { revalidate: 86400 },
+    }).then((res) => res.json());
+
+    return (apps || [])
+      .map((app: any) => {
+        const slug =
+          typeof app.slug === "string"
+            ? app.slug
+            : typeof app.slug?.slug === "string"
+              ? app.slug.slug
+              : null;
+
+        return slug ? { slug } : null;
+      })
+      .filter(Boolean) as { slug: string }[];
+  } catch (err) {
+    console.error("generateStaticParams: failed to fetch apps:", err);
+    return [];
+  }
+}
 
 export default async function AppDetailPage(props: {
   params: Promise<{ slug: string }>;

@@ -34,7 +34,7 @@ export async function generateMetadata({
     if (!res.ok) {
       return {
         title: "Designer not found | Path to Design",
-        description: "Explore designer journeys on Path to Design.",
+        description: "Explore designer careers on Path to Design.",
       };
     }
 
@@ -42,15 +42,15 @@ export async function generateMetadata({
     const { firstName, lastName, oneLiner, roles, companies, coverImage } =
       designer;
 
-    const title = `${firstName} ${lastName}${roles?.role ? ` – ${roles.role}` : ""}$
+    const title = `${firstName} ${lastName}${roles?.role ? ` – ${roles.role}` : ""}
 ${companies?.company ? ` at ${companies.company}` : ""} | Path to Design`;
 
     const description =
       oneLiner ||
       `Discover how ${firstName} ${lastName} built their path into design at Path to Design.`;
 
-    const canonicalUrl = `https://www.pathtodesign.com/browse/${slug}`;
-    const ogImage = coverImage || "/path-to-design-og-image.jpg";
+    const canonicalUrl = `https://www.pathtodesign.com/designers/${slug}`;
+    const ogImage = "/path-to-design-og-image.jpg";
 
     return {
       title,
@@ -80,11 +80,10 @@ ${companies?.company ? ` at ${companies.company}` : ""} | Path to Design`;
       },
     };
   } catch (err) {
-    // If the metadata fetch fails (eg. ECONNREFUSED) return a sensible fallback
     console.error("generateMetadata: failed to fetch designer metadata:", err);
     return {
       title: "Designer not found | Path to Design",
-      description: "Explore designer journeys on Path to Design.",
+      description: "Explore designer careers on Path to Design.",
     };
   }
 }

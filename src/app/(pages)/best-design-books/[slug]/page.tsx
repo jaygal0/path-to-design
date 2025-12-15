@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import BrowseApp from "@/components/directory/BrowseApp";
 import BrowseBook from "@/components/directory/BrowseBook";
 import BookItem from "@/components/global/BookItem";
@@ -10,6 +11,94 @@ import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { fetchSafe } from "@/lib/fetchSafe";
+
+export async function generateMetadata(props: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await props.params;
+
+  try {
+    const res = await fetch(`${process.env.WEB_SITE}/api/books/${slug}`, {
+      next: { revalidate: 86400 },
+    });
+
+    if (!res.ok) {
+      return {
+        title: "Book not found | Path to Design",
+        description: "Explore the best design books on Path to Design.",
+      };
+    }
+
+    const book = await res.json();
+
+    const title = `${book.book} | Path to Design`;
+
+    const description =
+      book.description ||
+      `Discover ${book.book}, a book that designers recommend that's featured on Path to Design.`;
+
+    const canonicalUrl = `https://www.pathtodesign.com/best-design-books/${slug}`;
+    const ogImage = "/path-to-design-og-image.jpg";
+
+    return {
+      title,
+      description,
+      alternates: { canonical: canonicalUrl },
+      openGraph: {
+        title,
+        description,
+        url: canonicalUrl,
+        siteName: "Path to Design",
+        type: "website",
+        images: [
+          {
+            url: ogImage,
+            width: 1200,
+            height: 630,
+            alt: `${book.book} on Path to Design`,
+          },
+        ],
+        locale: "en",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title,
+        description,
+        images: [ogImage],
+      },
+    };
+  } catch (err) {
+    console.error("generateMetadata: failed to fetch book metadata:", err);
+    return {
+      title: "Book not found | Path to Design",
+      description: "Explore the best design books on Path to Design.",
+    };
+  }
+}
+
+export async function generateStaticParams() {
+  try {
+    const books = await fetch(`${process.env.WEB_SITE}/api/books`, {
+      next: { revalidate: 86400 },
+    }).then((res) => res.json());
+
+    return (books || [])
+      .map((book: any) => {
+        const slug =
+          typeof book.slug === "string"
+            ? book.slug
+            : typeof book.slug?.slug === "string"
+              ? book.slug.slug
+              : null;
+
+        return slug ? { slug } : null;
+      })
+      .filter(Boolean) as { slug: string }[];
+  } catch (err) {
+    console.error("generateStaticParams: failed to fetch books:", err);
+    return [];
+  }
+}
 
 export default async function BookDetailPage(props: {
   params: Promise<{ slug: string }>;

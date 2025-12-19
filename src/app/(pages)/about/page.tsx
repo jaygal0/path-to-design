@@ -9,7 +9,7 @@ export default function Page() {
           my profile{" "}
           <a
             className="underline hover:cursor-pointer"
-            href={`${process.env.WEB_SITE}/browse/joshua-galinato`}
+            href={`${process.env.WEB_SITE}/designer/joshua-galinato`}
           >
             here
           </a>{" "}

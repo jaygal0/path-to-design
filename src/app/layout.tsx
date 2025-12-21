@@ -15,9 +15,9 @@ const openSans = Open_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://pathtodesign.com"),
-  title: "Path to Design | A Directory of Designers, for Designers",
+  title: "Path to Design | Real UI/UX, Product & Graphic Designer Stories",
   description:
-    "Explore how designers found their path into the tech industry and get inspired to find yours.",
+    "Explore real design careers and career paths from UI/UX, product, and graphic designers. Plus many other design roles. Learn how designers get started, what tools they use, and how their roles evolve without the guesswork.",
   openGraph: {
     url: "https://www.pathtodesign.com",
     siteName: "Path to Design",

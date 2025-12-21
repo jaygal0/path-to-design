@@ -8,42 +8,30 @@ import { Newsletter } from "@/components/global/Newsletter";
 import { FeaturedIn } from "@/components/home/FeaturedIn";
 
 async function getData() {
-  const [designersRes, appsRes, booksRes] = await Promise.all([
+  const [designersRes] = await Promise.all([
     fetch(`${process.env.WEB_SITE}/api/designers`, {
       next: { revalidate: 3600 },
     }),
-    fetch(`${process.env.WEB_SITE}/api/apps`, {
-      next: { revalidate: 3600 },
-    }),
-    fetch(`${process.env.WEB_SITE}/api/books`, {
-      next: { revalidate: 3600 },
-    }),
   ]);
 
-  if (!designersRes.ok || !appsRes.ok) {
+  if (!designersRes.ok) {
     throw new Error("Failed to fetch data");
   }
 
-  const [designers, apps, books] = await Promise.all([
-    designersRes.json(),
-    appsRes.json(),
-    booksRes.json(),
-  ]);
+  const [designers] = await Promise.all([designersRes.json()]);
 
-  return { designers, apps, books };
+  return { designers };
 }
 
 export default async function Home() {
-  const { designers, apps, books } = await getData();
+  const { designers } = await getData();
 
   return (
-    <div className="space-y-20">
+    <div className="space-y-32">
       <Hero />
       <FeaturedIn />
       <RealDesigners designers={designers} />
       <Newsletter designers={designers.length} />
-      <PopularApps apps={apps} />
-      <PopularBooks books={books} />
       <CTA />
     </div>
   );

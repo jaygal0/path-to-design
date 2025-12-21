@@ -1,10 +1,11 @@
 import { Hero } from "@/components/home/Hero";
 import { PopularApps } from "@/components/home/PopularApps";
 import { PopularBooks } from "@/components/home/PopularBooks";
-import { DesignersPopular } from "@/components/home/DesignersPopular";
+import { RealDesigners } from "@/components/home/DesignersPopular";
 import { CTA } from "@/components/home/CTA";
 import FaqSection from "@/components/home/FAQSection";
 import { NewsletterSidebar } from "@/components/global/NewsletterSidebar";
+import { FeaturedIn } from "@/components/home/FeaturedIn";
 
 async function getData() {
   const [designersRes, appsRes, booksRes] = await Promise.all([
@@ -36,18 +37,15 @@ export default async function Home() {
   const { designers, apps, books } = await getData();
 
   return (
-    <>
+    <div className="space-y-20">
       <Hero />
-      <div className="mb-8 grid grid-cols-1 gap-8 xl:grid-cols-3">
-        <DesignersPopular designers={designers} />
-        <div className="col-span-1 flex flex-col gap-8 xl:col-start-3 xl:row-start-1">
-          <NewsletterSidebar />
-          <PopularApps apps={apps} />
-        </div>
-      </div>
+      <FeaturedIn />
+      <RealDesigners designers={designers} />
+      <NewsletterSidebar />
+      <PopularApps apps={apps} />
       <PopularBooks books={books} />
       <FaqSection />
       <CTA />
-    </>
+    </div>
   );
 }

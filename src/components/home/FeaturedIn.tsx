@@ -4,9 +4,9 @@ import Image from "next/image";
 
 export function FeaturedIn() {
   return (
-    <div className="col-span-1 flex flex-col justify-end gap-4">
-      <h3 className="mt-16 text-sm text-muted-foreground">Featured in</h3>
-      <div className="flex gap-8">
+    <div className="flex flex-col gap-4">
+      <h3 className="text-center text-muted-foreground">Featured in</h3>
+      <div className="mx-auto flex gap-8">
         <a
           href="https://www.toools.design/"
           target="_blank"

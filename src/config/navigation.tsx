@@ -25,7 +25,7 @@ export const mainCTAs: menuItem[] = [
     href: "/",
   },
   {
-    title: "Explore the Directory",
+    title: "Explore design careers",
     href: "/designers",
   },
   {

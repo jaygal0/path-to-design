@@ -335,7 +335,7 @@ export default async function DesignerPage(props: {
         </div>
         <div className="col-span-2 lg:col-span-1">
           <div className="sticky top-20 flex flex-col gap-8">
-            <Newsletter />
+            <Newsletter designers={designersData.length} />
             <ShareYourPath />
             <PopularApps apps={appsData} />
           </div>

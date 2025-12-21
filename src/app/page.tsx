@@ -44,7 +44,6 @@ export default async function Home() {
       <Newsletter designers={designers.length} />
       <PopularApps apps={apps} />
       <PopularBooks books={books} />
-      <FaqSection />
       <CTA />
     </div>
   );

@@ -18,8 +18,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { QuickNav } from "./QuickNav";
-import { NewsletterSidebar } from "../global/Newsletter";
-// import { ShareYourPathAd } from "@/components/global/ShareYourPathAd";
+import { Newsletter } from "../global/Newsletter";
 
 type Props = {
   designers: any[];
@@ -203,7 +202,7 @@ export default function BrowseDesigners({ designers }: Props) {
           ];
 
           if (i === 2) {
-            items.push(<NewsletterSidebar key="newsletter" />);
+            items.push(<Newsletter key="newsletter" />);
           }
 
           return items;

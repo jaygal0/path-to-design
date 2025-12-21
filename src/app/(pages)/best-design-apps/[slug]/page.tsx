@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import BrowseApp from "@/components/directory/BrowseApp";
 import AppItem from "@/components/global/AppItem";
 import { PopularBooksSidebar } from "@/components/global/PopularBooksSidebar";
-import { NewsletterSidebar } from "@/components/global/NewsletterSidebar";
+import { NewsletterSidebar } from "@/components/global/Newsletter";
 import { PopularApps } from "@/components/home/PopularApps";
 import { Button } from "@/components/ui/button";
 import { mainCTAs } from "@/config/navigation";

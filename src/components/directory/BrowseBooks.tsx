@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/select";
 import { QuickNav } from "./QuickNav";
 import BookItem from "../global/BookItem";
-import { NewsletterSidebar } from "../global/NewsletterSidebar";
+import { NewsletterSidebar } from "../global/Newsletter";
 
 type Props = {
   books: any[];

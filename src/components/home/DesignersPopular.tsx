@@ -27,11 +27,11 @@ export function RealDesigners({ designers }: Props) {
   return (
     <div className="space-y-8">
       <div className="spacy-y-3 text-center">
-        <h2 className="text-5xl font-semibold text-foreground">
+        <h2 className="mb-2 text-5xl font-semibold text-foreground">
           Learn from real designers
         </h2>
         <p className="text-xl font-light text-muted-foreground">
-          Insights from 50+ designers and counting.
+          Insights from {designers.length} designers and counting.
         </p>
       </div>
       <div className="mx-auto flex w-1/2 flex-wrap justify-center gap-3">

@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/select";
 import { QuickNav } from "./QuickNav";
 import AppItem from "../global/AppItem";
-import { NewsletterSidebar } from "../global/NewsletterSidebar";
+import { NewsletterSidebar } from "../global/Newsletter";
 
 type Props = {
   apps: any[];

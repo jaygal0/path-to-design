@@ -4,7 +4,7 @@ import { PopularBooks } from "@/components/home/PopularBooks";
 import { RealDesigners } from "@/components/home/DesignersPopular";
 import { CTA } from "@/components/home/CTA";
 import FaqSection from "@/components/home/FAQSection";
-import { NewsletterSidebar } from "@/components/global/NewsletterSidebar";
+import { Newsletter } from "@/components/global/Newsletter";
 import { FeaturedIn } from "@/components/home/FeaturedIn";
 
 async function getData() {
@@ -41,7 +41,7 @@ export default async function Home() {
       <Hero />
       <FeaturedIn />
       <RealDesigners designers={designers} />
-      <NewsletterSidebar />
+      <Newsletter designers={designers.length} />
       <PopularApps apps={apps} />
       <PopularBooks books={books} />
       <FaqSection />

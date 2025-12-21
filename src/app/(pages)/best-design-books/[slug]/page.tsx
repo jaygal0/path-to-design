@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import BrowseBook from "@/components/directory/BrowseBook";
 import BookItem from "@/components/global/BookItem";
-import { NewsletterSidebar } from "@/components/global/NewsletterSidebar";
+import { Newsletter } from "@/components/global/Newsletter";
 import { ShareYourPath } from "@/components/global/ShareYourPath";
 import { PopularApps } from "@/components/home/PopularApps";
 import { Button } from "@/components/ui/button";
@@ -163,7 +163,7 @@ export default async function BookDetailPage(props: {
       <div className="col-span-1">
         <div className="sticky top-20 flex flex-col gap-8">
           <div className="hidden lg:flex lg:flex-col lg:gap-8">
-            <NewsletterSidebar />
+            <Newsletter />
             <ShareYourPath />
           </div>
           <PopularApps apps={appsData} />

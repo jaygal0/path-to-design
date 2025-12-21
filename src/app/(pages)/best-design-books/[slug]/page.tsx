@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import BrowseApp from "@/components/directory/BrowseApp";
 import BrowseBook from "@/components/directory/BrowseBook";
 import BookItem from "@/components/global/BookItem";
 import { NewsletterSidebar } from "@/components/global/NewsletterSidebar";

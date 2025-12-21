@@ -47,7 +47,7 @@ ${companies?.company ? ` at ${companies.company}` : ""} | Path to Design`;
 
     const description =
       oneLiner ||
-      `Discover how ${firstName} ${lastName} built their path into design at Path to Design.`;
+      `Discover how ${firstName} ${lastName} built their career path into design at Path to Design.`;
 
     const canonicalUrl = `https://www.pathtodesign.com/designers/${slug}`;
     const ogImage = "/path-to-design-og-image.jpg";

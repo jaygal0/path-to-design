@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/select";
 import { QuickNav } from "./QuickNav";
 import BookItem from "../global/BookItem";
-import { NewsletterSidebar } from "../global/Newsletter";
+import { Newsletter } from "../global/Newsletter";
 
 type Props = {
   books: any[];
@@ -162,7 +162,7 @@ export default function BrowseBooks({ books }: Props) {
         {filteredBooks.flatMap((book, index) => {
           const items = [<BookItem item={book} key={index} />];
           if (index === 2) {
-            items.push(<NewsletterSidebar key="newsletter" />);
+            items.push(<Newsletter key="newsletter" />);
           }
           return items;
         })}

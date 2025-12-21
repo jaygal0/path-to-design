@@ -1,11 +1,12 @@
 import { Hero } from "@/components/home/Hero";
 import { PopularApps } from "@/components/home/PopularApps";
 import { PopularBooks } from "@/components/home/PopularBooks";
-import { RealDesigners } from "@/components/home/DesignersPopular";
+import { RealDesigners } from "@/components/home/RealDesigners";
 import { CTA } from "@/components/home/CTA";
 import FaqSection from "@/components/home/FAQSection";
 import { Newsletter } from "@/components/global/Newsletter";
 import { FeaturedIn } from "@/components/home/FeaturedIn";
+import { RealRecommendations } from "@/components/home/RealRecommendations";
 
 async function getData() {
   const [designersRes] = await Promise.all([
@@ -32,6 +33,7 @@ export default async function Home() {
       <FeaturedIn />
       <RealDesigners designers={designers} />
       <Newsletter designers={designers.length} />
+      <RealRecommendations />
       <CTA />
     </div>
   );

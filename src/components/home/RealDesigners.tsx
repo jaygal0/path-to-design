@@ -39,7 +39,7 @@ export function RealDesigners({ designers }: Props) {
           return (
             <div
               key={index}
-              className="w-fit rounded-sm border px-4 py-2 text-sm font-light"
+              className="w-fit rounded-2xl border bg-muted px-4 py-2 text-sm font-light"
             >
               {lesson}
             </div>

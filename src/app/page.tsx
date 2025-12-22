@@ -1,9 +1,6 @@
 import { Hero } from "@/components/home/Hero";
-import { PopularApps } from "@/components/home/PopularApps";
-import { PopularBooks } from "@/components/home/PopularBooks";
 import { RealDesigners } from "@/components/home/RealDesigners";
 import { CTA } from "@/components/home/CTA";
-import FaqSection from "@/components/home/FAQSection";
 import { Newsletter } from "@/components/global/Newsletter";
 import { FeaturedIn } from "@/components/home/FeaturedIn";
 import { RealRecommendations } from "@/components/home/RealRecommendations";
@@ -29,7 +26,7 @@ export default async function Home() {
 
   return (
     <div className="space-y-32">
-      <Hero />
+      <Hero designers={designers} />
       <FeaturedIn />
       <RealDesigners designers={designers} />
       <Newsletter designers={designers.length} />

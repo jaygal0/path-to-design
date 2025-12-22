@@ -1,7 +1,6 @@
 "use client";
 
 import { CardDesigner } from "../global/CardDesigner";
-
 interface Props {
   designers: any;
 }

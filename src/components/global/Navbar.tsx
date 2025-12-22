@@ -2,7 +2,6 @@
 
 import { mainCTAs } from "@/config/navigation";
 import Link from "next/link";
-import * as React from "react";
 import { Logo } from "./Logo";
 import { Button } from "../ui/button";
 

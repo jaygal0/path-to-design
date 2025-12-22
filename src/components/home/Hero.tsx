@@ -1,8 +1,11 @@
 "use client";
 
 import { companyInfo } from "@/config/companyInfo";
-import { first } from "lodash";
 import Image from "next/image";
+
+interface Props {
+  designers: any;
+}
 
 const roleTextColors = [
   "text-pink-400",
@@ -30,23 +33,32 @@ function getRoleTextColor(role: string) {
   return roleTextColors[index];
 }
 
-interface Props {
-  designers: any;
-}
-
 export function Hero({ designers }: Props) {
   const filterNames = [
-    "Galinato",
-    "Strasche",
-    "Kumar",
-    "Paduraru",
-    "Oz",
-    "Fox",
-    "Arnestad",
     "Mørch",
     "Smailey",
+    "Paduraru",
+    "Kumar",
+    "Filou",
+    "Galinato",
+    "Strasche",
+    "Martin",
     "Bölter",
+    "Fox",
+    "Rogge",
+    "Hansen",
+    "Ortega",
+    "Molinari",
+    "Butler",
+    "Arnestad",
+    "Yung",
+    "Froehlich",
+    "Beyers",
+    "Oz",
+    "Gu",
   ];
+
+  const loopedNames = [...filterNames, ...filterNames];
 
   return (
     <div className="mb-8 flex flex-col items-center">
@@ -56,48 +68,59 @@ export function Hero({ designers }: Props) {
           {companyInfo.copy.subheading}
         </h2>
       </div>
-      <div className="mt-10 flex items-center justify-center gap-4">
-        {filterNames.map((name, index) => {
-          const designer = designers.find((d: any) => d.lastName === name);
-          if (!designer) return null;
+      <div className="relative mt-14 w-full overflow-hidden">
+        <div className="animate-marquee flex w-max items-stretch gap-4">
+          {loopedNames.map((name, index) => {
+            const designer = designers.find((d: any) => d.lastName === name);
+            if (!designer) return null;
 
-          const {
-            companies,
-            country,
-            coverImage,
-            firstName,
-            lastName,
-            oneLiner,
-            profileImage,
-            roles,
-            slug,
-          } = designer;
+            const {
+              companies,
+              country,
+              firstName,
+              lastName,
+              oneLiner,
+              profileImage,
+              roles,
+            } = designer;
 
-          const safeRole = roles?.role ?? "Unknown";
-          const roleColorClass = getRoleTextColor(safeRole);
+            const safeRole = roles?.role ?? "Unknown";
+            const roleColorClass = getRoleTextColor(safeRole);
 
-          return (
-            <div
-              key={index}
-              className="flex h-full w-40 flex-col items-center gap-3 rounded-2xl border px-4 py-8 text-center"
-            >
-              <Image
-                src={profileImage}
-                alt={`${firstName} ${lastName}`}
-                width={70}
-                height={70}
-                className="rounded-full"
-              />
-              <div className="text-sm text-muted-foreground">
-                <span className={roleColorClass}>{safeRole}</span>
-                {companies?.company && <> at {companies.company}</>}
+            return (
+              <div
+                key={index}
+                className="flex h-72 w-48 flex-col items-center justify-center gap-5 rounded-2xl border px-4 py-6 text-center"
+              >
+                <div className="relative">
+                  <Image
+                    src={profileImage}
+                    alt={`${firstName} ${lastName}`}
+                    width={70}
+                    height={70}
+                    className="relative rounded-full"
+                  />
+                  <Image
+                    src={`/flags/${country}.svg`}
+                    width={24}
+                    height={24}
+                    alt={`${country}`}
+                    className="absolute -bottom-2 -right-2 ml-2 inline rounded-full border bg-white"
+                    quality={70}
+                  />
+                </div>
+
+                <div className="text-xl">
+                  <span className={roleColorClass}>{safeRole}</span>
+                  {companies?.company && <> at {companies.company}</>}
+                </div>
+                <div className="text-sm text-muted-foreground">
+                  {firstName} {lastName}
+                </div>
               </div>
-              <div>
-                {firstName} {lastName}
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
   );

@@ -72,7 +72,7 @@ export default function BrowseBooks({ books }: Props) {
       <QuickNav />
 
       {/* Page Header */}
-      <h1 className="text-center text-4xl font-bold">Tools</h1>
+      <h1 className="text-center text-4xl font-bold">Books</h1>
 
       {/* Category Filters */}
       <div className="mb-6 flex flex-wrap gap-2">

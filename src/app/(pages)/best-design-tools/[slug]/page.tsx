@@ -8,6 +8,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { fetchSafe } from "@/lib/fetchSafe";
 import { NewsletterSidebar } from "@/components/global/NewsletterSidebar";
+import BrowseProduct from "@/components/directory/BrowseProduct";
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
@@ -15,24 +16,24 @@ export async function generateMetadata(props: {
   const { slug } = await props.params;
 
   try {
-    const res = await fetch(`${process.env.WEB_SITE}/api/books/${slug}`, {
+    const res = await fetch(`${process.env.WEB_SITE}/api/products/${slug}`, {
       next: { revalidate: 86400 },
     });
 
     if (!res.ok) {
       return {
-        title: "Book not found | Path to Design",
-        description: "Explore the best design books on Path to Design.",
+        title: "Tool not found | Path to Design",
+        description: "Explore the best design tool on Path to Design.",
       };
     }
 
-    const book = await res.json();
+    const product = await res.json();
 
-    const title = `${book.book} | Path to Design`;
+    const title = `${product.name} | Path to Design`;
 
     const description =
-      book.description ||
-      `Discover ${book.book}, a book that designers recommend that's featured on Path to Design.`;
+      product.description ||
+      `Discover ${product.name}, a tool that designers recommend that's featured on Path to Design.`;
 
     const canonicalUrl = `https://www.pathtodesign.com/best-design-books/${slug}`;
     const ogImage = "/path-to-design-og-image.jpg";
@@ -52,7 +53,7 @@ export async function generateMetadata(props: {
             url: ogImage,
             width: 1200,
             height: 630,
-            alt: `${book.book} on Path to Design`,
+            alt: `${product.name} on Path to Design`,
           },
         ],
         locale: "en",
@@ -75,17 +76,17 @@ export async function generateMetadata(props: {
 
 export async function generateStaticParams() {
   try {
-    const books = await fetch(`${process.env.WEB_SITE}/api/books`, {
+    const products = await fetch(`${process.env.WEB_SITE}/api/products`, {
       next: { revalidate: 86400 },
     }).then((res) => res.json());
 
-    return (books || [])
-      .map((book: any) => {
+    return (products || [])
+      .map((product: any) => {
         const slug =
-          typeof book.slug === "string"
-            ? book.slug
-            : typeof book.slug?.slug === "string"
-              ? book.slug.slug
+          typeof product.slug === "string"
+            ? product.slug
+            : typeof product.slug?.slug === "string"
+              ? product.slug.slug
               : null;
 
         return slug ? { slug } : null;
@@ -102,20 +103,20 @@ export default async function BookDetailPage(props: {
 }) {
   const { slug } = await props.params;
 
-  const book = await fetchSafe(
-    `${process.env.WEB_SITE}/api/books/${slug}`,
+  const product = await fetchSafe(
+    `${process.env.WEB_SITE}/api/products/${slug}`,
     {
       next: { revalidate: 86400 },
     },
     null,
   );
 
-  if (!book) {
+  if (!product) {
     notFound();
   }
 
-  const allBooks = await fetchSafe(
-    `${process.env.WEB_SITE}/api/books`,
+  const allProducts = await fetchSafe(
+    `${process.env.WEB_SITE}/api/products`,
     {
       next: { revalidate: 86400 },
     },
@@ -123,7 +124,7 @@ export default async function BookDetailPage(props: {
   );
 
   // Filter out the current book and randomize order, then slice to 3
-  const otherBooks = (allBooks || [])
+  const otherProducts = (allProducts || [])
     .filter((b: any) => b.slug !== slug)
     .sort(() => 0.5 - Math.random())
     .slice(0, 10);
@@ -139,11 +140,11 @@ export default async function BookDetailPage(props: {
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
       <div className="col-span-1 lg:col-span-2">
-        <BrowseBook book={book} />
+        <BrowseProduct product={product} />
         <div className="col-span-2 mt-20 h-fit">
           <div className="mb-6 flex gap-4">
             <div className="text-2xl text-muted-foreground">
-              Explore more books
+              Explore more tools
             </div>
             <Link href={mainCTAs[4].href}>
               <Button variant="ghost" className="flex items-center gap-1">
@@ -152,9 +153,9 @@ export default async function BookDetailPage(props: {
             </Link>
           </div>
           <div className="flex flex-col gap-6">
-            {otherBooks.map((book: any, index: any) => {
+            {/* {otherProducts.map((book: any, index: any) => {
               return <BookItem key={index} item={book} />;
-            })}
+            })} */}
           </div>
         </div>
       </div>

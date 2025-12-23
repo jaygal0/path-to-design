@@ -1,26 +1,26 @@
 // app/browse/page.tsx
-import BrowseBooks from "@/components/directory/BrowseBooks";
+import BrowseProducts from "@/components/directory/BrowseProducts";
 
 async function getData() {
   try {
-    const res = await fetch(`${process.env.WEB_SITE}/api/books`, {
+    const res = await fetch(`${process.env.WEB_SITE}/api/products`, {
       next: { revalidate: 86400 },
     });
 
     if (!res.ok) {
       console.warn("Failed to fetch books: non‑OK response");
-      return { books: [] };
+      return { products: [] };
     }
 
-    const books = await res.json();
-    return { books };
+    const products = await res.json();
+    return { products };
   } catch (error) {
-    console.warn("Failed to fetch books during build:", error);
-    return { books: [] };
+    console.warn("Failed to fetch tools during build:", error);
+    return { products: [] };
   }
 }
 
 export default async function BrowsePageWrapper() {
-  const { books } = await getData();
-  return <BrowseBooks books={books} />;
+  const { products } = await getData();
+  return <BrowseProducts products={products} />;
 }

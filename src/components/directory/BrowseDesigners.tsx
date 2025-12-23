@@ -67,8 +67,13 @@ export default function BrowseDesigners({ designers }: Props) {
     <div className="mx-auto w-full space-y-6">
       <QuickNav />
 
-      {/* Page Header with Sorting */}
-      <h1 className="mb-6 text-center text-4xl font-bold">Designers</h1>
+      <div className="space-y-3 pb-12">
+        <h1 className="text-center text-4xl font-bold">Designers</h1>
+        <p className="text-center text-xl text-muted-foreground">
+          From product to UI/UX and many other roles. Explore how designers
+          found their own path to design.
+        </p>
+      </div>
 
       {/* Role Filters */}
       <div className="mb-6 flex flex-wrap justify-center gap-3">

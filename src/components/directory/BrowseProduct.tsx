@@ -19,10 +19,10 @@ export default function BrowseProduct({ product }: Props) {
     <div>
       <div className="mb-8 flex flex-col items-start gap-8 md:flex-row md:items-center">
         <Image
-          src="/"
+          src={`/tools/${slug}.png`}
           alt={name}
-          width={100}
-          height={160}
+          width={200}
+          height={200}
           quality={70}
           className="rounded-lg object-cover"
           unoptimized

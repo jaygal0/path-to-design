@@ -25,7 +25,7 @@ export function QuickNav() {
               asChild
               variant={isActive ? "default" : "outline"}
               size="lg"
-              className={`p-6 text-xl ${isActive ? "font-bold" : "font-light"}`}
+              className="p-6 text-xl"
             >
               <span>{item.label}</span>
             </Button>

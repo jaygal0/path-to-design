@@ -66,8 +66,13 @@ export default function BrowseApps({ apps }: Props) {
     <div className="mx-auto w-full space-y-6">
       <QuickNav />
 
-      {/* Page Header with Sorting */}
-      <h1 className="mb-6 text-center text-4xl font-bold">Apps</h1>
+      <div className="space-y-3 pb-12">
+        <h1 className="text-center text-4xl font-bold">Apps</h1>
+        <p className="text-center text-xl text-muted-foreground">
+          From product to UI/UX and many other roles. Explore how designers
+          found their own path to design.
+        </p>
+      </div>
 
       {/* Category Filters */}
       <div className="mx-auto mb-6 flex w-3/4 flex-wrap justify-center gap-2">

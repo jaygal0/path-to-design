@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { Avatar } from "./Avatar";
+import { divide } from "lodash";
 
 export default function ProductItem({ item }: { item: any }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -27,19 +28,26 @@ export default function ProductItem({ item }: { item: any }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <article className="flex h-full w-full flex-col gap-3 rounded-2xl border p-6 hover:cursor-pointer hover:border-white">
-        <div className="flex w-full items-start gap-4">
+      <article className="flex w-full flex-col gap-3 rounded-2xl border p-3 hover:cursor-pointer hover:border-white">
+        <div className="flex w-full items-center gap-4">
           <Image
-            src="/"
+            src={`/tools/${slug}.png`}
             alt={name}
-            width={100}
-            height={160}
+            width={200}
+            height={200}
             quality={70}
             className="rounded-lg object-cover transition-all hover:scale-105"
           />
           <div className="flex w-full flex-col gap-4">
-            <div className="flex">
+            <div className="space-y-1">
               <h3 className="mb-0 flex-grow text-lg md:text-xl">{name}</h3>
+              {description ? (
+                <div className="text-sm text-muted-foreground lg:text-base">
+                  {description.length > 0
+                    ? `${description.slice(0, 50)}…`
+                    : description}
+                </div>
+              ) : null}
             </div>
             <div className="flex flex-col gap-3 md:flex-row">
               <div className="flex -space-x-1">

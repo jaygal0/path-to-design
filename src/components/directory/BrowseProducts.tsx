@@ -36,8 +36,13 @@ export default function BrowseProducts({ products }: Props) {
     <div className="mx-auto w-full space-y-6">
       <QuickNav />
 
-      {/* Page Header */}
-      <h1 className="text-center text-4xl font-bold">Tools</h1>
+      <div className="space-y-3 pb-12">
+        <h1 className="text-center text-4xl font-bold">Tools</h1>
+        <p className="text-center text-xl text-muted-foreground">
+          From product to UI/UX and many other roles. Explore how designers
+          found their own path to design.
+        </p>
+      </div>
 
       {/* Sorting and Clear Filters Row */}
       <div className="flex flex-wrap items-center justify-end gap-4">

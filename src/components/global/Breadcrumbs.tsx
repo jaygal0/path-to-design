@@ -30,7 +30,7 @@ export function Breadcrumbs() {
 
   return (
     <nav
-      className="mb-32 flex items-center text-sm text-muted-foreground"
+      className="mb-20 flex items-center text-sm text-muted-foreground"
       aria-label="Breadcrumb"
     >
       {breadcrumbs.map((crumb, i) => (

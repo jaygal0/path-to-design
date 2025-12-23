@@ -1,12 +1,6 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import {
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
-} from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -18,7 +12,6 @@ import {
 } from "@/components/ui/select";
 import { QuickNav } from "./QuickNav";
 import BookItem from "../global/BookItem";
-import { Newsletter } from "../global/Newsletter";
 
 type Props = {
   books: any[];
@@ -79,92 +72,46 @@ export default function BrowseBooks({ books }: Props) {
       <QuickNav />
 
       {/* Page Header */}
-      <h1 className="text-4xl font-bold">Books</h1>
+      <h1 className="text-center text-4xl font-bold">Books</h1>
 
-      {/* Filters */}
-      <Accordion type="multiple" className="mb-6 w-full">
-        <AccordionItem value="authors">
-          <AccordionTrigger>Authors</AccordionTrigger>
-          <AccordionContent className="flex flex-wrap gap-2">
-            {authors.map((author) => (
-              <Badge
-                key={author}
-                variant={
-                  selectedAuthors.includes(author) ? "default" : "outline"
-                }
-                className="cursor-pointer"
-                onClick={() =>
-                  toggleChip(author, selectedAuthors, setSelectedAuthors)
-                }
-              >
-                {author}
-              </Badge>
-            ))}
-          </AccordionContent>
-        </AccordionItem>
-
-        <AccordionItem value="categories">
-          <AccordionTrigger>Categories</AccordionTrigger>
-          <AccordionContent className="flex flex-wrap gap-2">
-            {categories.map((category) => (
-              <Badge
-                key={category}
-                variant={
-                  selectedCategories.includes(category) ? "default" : "outline"
-                }
-                className="cursor-pointer"
-                onClick={() =>
-                  toggleChip(
-                    category,
-                    selectedCategories,
-                    setSelectedCategories,
-                  )
-                }
-              >
-                {category}
-              </Badge>
-            ))}
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+      {/* Category Filters */}
+      <div className="mb-6 flex flex-wrap gap-2">
+        {categories.map((category) => (
+          <Badge
+            key={category}
+            variant={
+              selectedCategories.includes(category) ? "default" : "outline"
+            }
+            className="cursor-pointer"
+            onClick={() =>
+              toggleChip(category, selectedCategories, setSelectedCategories)
+            }
+          >
+            {category}
+          </Badge>
+        ))}
+      </div>
 
       {/* Sorting and Clear Filters Row */}
-      <div className="flex flex-wrap items-center justify-between gap-4">
-        <div className="flex items-center gap-4">
-          <Select
-            value={sortOption}
-            onValueChange={(val) => setSortOption(val as any)}
-          >
-            <SelectTrigger className="w-min">
-              <SelectValue placeholder="Sort by" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="popularity-desc">Popularity</SelectItem>
-              <SelectItem value="alpha-desc">Alphabetical</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-        <Button
-          variant="link"
-          size="sm"
-          className="px-0"
-          onClick={() => {
-            setSelectedAuthors([]);
-            setSelectedCategories([]);
-          }}
+      <div className="flex flex-wrap items-center justify-end gap-4">
+        <Select
+          value={sortOption}
+          onValueChange={(val) => setSortOption(val as any)}
         >
-          Clear Filters
-        </Button>
+          <SelectTrigger className="w-min">
+            <SelectValue placeholder="Sort by" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="popularity-desc">Popularity</SelectItem>
+            <SelectItem value="alpha-desc">Alphabetical</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
 
       {/* Books Grid */}
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
         {filteredBooks.flatMap((book, index) => {
-          const items = [<BookItem item={book} key={index} />];
-          if (index === 2) {
-            items.push(<Newsletter key="newsletter" />);
-          }
-          return items;
+          return <BookItem item={book} key={index} />;
         })}
       </div>
     </div>

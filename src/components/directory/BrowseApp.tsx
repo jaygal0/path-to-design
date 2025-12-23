@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 import { plausibleEvents } from "@/config/plausibleEvents";
 import { CardDesigner } from "../global/CardDesigner";
 import Image from "next/image";
-import { NewsletterSidebar } from "../global/Newsletter";
+import { NewsletterSidebar } from "../global/NewsletterSidebar";
 import { ShareYourPath } from "../global/ShareYourPath";
 
 type Props = {
@@ -58,7 +58,6 @@ export default function BrowseApp({ app }: Props) {
       </a>
       <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:hidden">
         <NewsletterSidebar />
-        <ShareYourPath />
       </div>
       <h2 className="mb-8 mt-14 text-lg text-foreground">
         Used by {designers.length}{" "}

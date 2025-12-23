@@ -18,6 +18,7 @@ import { mainCTAs } from "@/config/navigation";
 import { Newsletter } from "@/components/global/Newsletter";
 import { ShareYourPath } from "@/components/global/ShareYourPath";
 import { fetchSafe } from "@/lib/fetchSafe";
+import { NewsletterSidebar } from "@/components/global/NewsletterSidebar";
 
 export async function generateMetadata({
   params,
@@ -167,7 +168,7 @@ export default async function DesignerPage(props: {
   const filteredDesigners = designersData.filter(
     (designer: any) => designer.slug !== params.slug,
   );
-  const randomDesigners = shuffle(filteredDesigners).slice(0, 5);
+  const randomDesigners = shuffle(filteredDesigners).slice(0, 8);
 
   const {
     advice,
@@ -283,7 +284,7 @@ export default async function DesignerPage(props: {
               />
             )}
           </div>
-          <div className="col-span-2 h-fit rounded-2xl bg-neutral-900 p-3 md:p-6">
+          <div className="col-span-2 h-fit rounded-2xl">
             <div className="mb-6 flex justify-between">
               <div className="text-lg text-muted-foreground">
                 Continue reading
@@ -334,10 +335,8 @@ export default async function DesignerPage(props: {
           </div>
         </div>
         <div className="col-span-2 lg:col-span-1">
-          <div className="sticky top-20 flex flex-col gap-8">
-            <Newsletter designers={designersData.length} />
-            <ShareYourPath />
-            <PopularApps apps={appsData} />
+          <div className="sticky top-80 flex flex-col gap-8">
+            <NewsletterSidebar designers={designersData.length} />
           </div>
         </div>
       </div>

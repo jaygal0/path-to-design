@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 import { plausibleEvents } from "@/config/plausibleEvents";
 import { CardDesigner } from "../global/CardDesigner";
 import Image from "next/image";
-import { NewsletterSidebar } from "../global/Newsletter";
+import { NewsletterSidebar } from "../global/NewsletterSidebar";
 import { ShareYourPath } from "../global/ShareYourPath";
 
 type Props = {

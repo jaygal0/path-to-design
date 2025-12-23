@@ -9,11 +9,11 @@ export default function Page() {
           my profile{" "}
           <a
             className="underline hover:cursor-pointer"
-            href={`${process.env.WEB_SITE}/designer/joshua-galinato`}
+            href={`${process.env.WEB_SITE}/designers/joshua-galinato`}
           >
             here
           </a>{" "}
-          if you&apos;re interested in my journey to becoming a designer.
+          if you&apos;re interested.
         </p>
         <p>
           As a designer, I wanted to further my skills by learning to not only

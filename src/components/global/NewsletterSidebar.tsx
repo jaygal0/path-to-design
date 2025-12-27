@@ -27,8 +27,8 @@ export function NewsletterSidebar() {
         <div className="flex items-stretch gap-2">
           <Input
             type="email"
-            id="MERGE0"
-            name="MERGE0"
+            id="MERGE1"
+            name="MERGE1"
             placeholder="name@email.com"
             className="flex-1"
           />

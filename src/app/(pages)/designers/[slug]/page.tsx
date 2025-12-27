@@ -243,19 +243,19 @@ export default async function DesignerPage(props: {
             {products?.length > 0 && <ProductsUsed product={products} />}
             {getStarted && (
               <Answers
-                question="How did you get started in your role as a designer?"
+                question="How did you get started in your role?"
                 answer={getStarted}
               />
             )}
             {responsibilities && (
               <Answers
-                question="What are the responsibilities of your role as a designer?"
+                question="What are the responsibilities of your role?"
                 answer={responsibilities}
               />
             )}
             {difficulties && (
               <Answers
-                question="What difficulties do you encounter in your role as a designer? "
+                question="What difficulties do you encounter in your role?"
                 answer={difficulties}
               />
             )}

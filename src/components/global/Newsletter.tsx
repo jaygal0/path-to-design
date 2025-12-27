@@ -27,8 +27,8 @@ export function Newsletter({ designers }: Props) {
             Career clarity for designers in 5 minutes
           </h2>
           <p className="text-lg font-light text-muted-foreground">
-            Distilled lessons from {designers} experienced designers. Get the
-            key takeaways without reading every story.
+            See how designers actually get started and what makes the job hard,
+            distilled from {designers} experienced designers.
           </p>
         </div>
         <form

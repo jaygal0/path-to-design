@@ -1,15 +1,24 @@
 import Pattern from "@/components/clarity/Pattern";
+import Section from "@/components/clarity/Section";
 
 export default function Clarity() {
   return (
     <>
-      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-        <div className="col-span-1 col-start-1 flex flex-col gap-4 text-xl leading-relaxed">
-          <h2 className="sticky top-20 mb-8 text-6xl font-semibold">
-            How designers actually get started
-          </h2>
-        </div>
-
+      <div className="mx-auto mb-48 space-y-5 px-32 text-center">
+        <h1 className="text-7xl font-bold">Heading</h1>
+        <p className="text-2xl font-light text-muted-foreground">
+          This guide is based on recurring patterns from 50+ designers across
+          different roles. Not polished stories. Not advice from one person.
+          Just what kept showing up when designers reflected honestly on their
+          careers.
+        </p>
+      </div>
+      <Section
+        heading="How designers actually get started"
+        summary="Waiting to feel ready is one of the most common ways people delay a design career — and most designers wish they’d started earlier."
+        designerOne="Pascal Strasche — Indie Maker, Germany"
+        designerOneLink="designers"
+      >
         <Pattern
           patternNumber={1}
           heading="There is no single “starting point” — paths are non-linear"
@@ -72,29 +81,52 @@ export default function Clarity() {
             </li>
           </ul>
         </Pattern>
-      </div>
-      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-        <div className="col-span-1 col-start-1 flex h-dvh flex-col gap-4 text-xl leading-relaxed">
-          <h2 className="sticky top-20 mb-8 text-6xl font-bold">
-            The hardest parts of being a designer
-          </h2>
-        </div>
-
-        <div className="col-span-1 col-start-2">
-          <div>Hello world</div>
-        </div>
-      </div>
-      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-        <div className="col-span-1 col-start-1 flex h-dvh flex-col gap-4 text-xl leading-relaxed">
-          <h2 className="sticky top-20 mb-8 text-6xl font-bold">
-            Advice designers would give themselves
-          </h2>
-        </div>
-
-        <div className="col-span-1 col-start-2">
-          <div>Hello world</div>
-        </div>
-      </div>
+        <Pattern
+          patternNumber={3}
+          heading="Formal education exists — but it’s not dominant or decisive"
+          insight="Education shows up in many forms — but it’s not the common denominator."
+        >
+          <p>You have:</p>
+          <ul className="mb-6">
+            <li className="ml-4 list-disc">vocational colleges</li>
+            <li className="ml-4 list-disc">bachelor’s and master’s degrees</li>
+            <li className="ml-4 list-disc">bootcamps</li>
+            <li className="ml-4 list-disc">
+              people who studied after their first job
+            </li>
+            <li className="ml-4 list-disc">
+              people who never studied design formally
+            </li>
+          </ul>
+        </Pattern>
+      </Section>
+      <Section
+        heading="The hardest parts of being a designer"
+        summary="Most design challenges aren’t about tools or talent. They’re about communication, trade-offs, and navigating uncertainty."
+      >
+        <Pattern
+          patternNumber={1}
+          heading="Design is as much about people as it is about craft"
+          insight="Design difficulty often comes from people, not pixels."
+        >
+          <p>What repeatedly shows up</p>
+          <ul className="mb-6">
+            <li className="ml-4 list-disc">Too many stakeholders</li>
+            <li className="ml-4 list-disc">Conflicting opinions</li>
+            <li className="ml-4 list-disc">Subjective feedback</li>
+            <li className="ml-4 list-disc">
+              Explaining decisions to non-designers
+            </li>
+            <li className="ml-4 list-disc">
+              Translating abstract ideas into shared understanding
+            </li>
+          </ul>
+          <p>
+            Designers consistently describe difficulty not in making things, but
+            in aligning people around them.
+          </p>
+        </Pattern>
+      </Section>
     </>
   );
 }

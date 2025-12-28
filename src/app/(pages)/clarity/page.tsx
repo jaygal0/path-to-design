@@ -1,38 +1,39 @@
 export default function Clarity() {
   return (
-    <div className="md:px-96">
-      <div className="flex flex-col gap-4 text-xl leading-relaxed">
-        <h1 className="mb-8 text-2xl font-bold">About</h1>
-        <p>Hi 👋</p>
-        <p>
-          My name is Joshua Galinato, and I&apos;m a designer too. You can view
-          my profile{" "}
-          <a
-            className="underline hover:cursor-pointer"
-            href={`${process.env.WEB_SITE}/designers/joshua-galinato`}
-          >
-            here
-          </a>{" "}
-          if you&apos;re interested.
-        </p>
-        <p>
-          As a designer, I wanted to further my skills by learning to not only
-          design websites but also build them from scratch. I realised this
-          personal project could help me expand my network of designers, assist
-          aspiring designers, and offer insights into entering the industry.
-        </p>
-        <p>
-          I hope you find something valuable here that aids your path to
-          becoming a designer. If so, feel free to reach out at{" "}
-          <a
-            className="underline hover:cursor-pointer"
-            href="mailto:joshua@pathtodesign.com"
-          >
-            joshua@pathtodesign.com.
-          </a>
-        </p>
-        <p>I&apos;d love to hear from you!</p>
+    <>
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <div className="col-span-1 col-start-1 flex h-dvh flex-col gap-4 text-xl leading-relaxed">
+          <h2 className="sticky top-20 mb-8 text-6xl font-bold">
+            How designers actually get started
+          </h2>
+        </div>
+
+        <div className="col-span-1 col-start-2">
+          <div>Hello world</div>
+        </div>
       </div>
-    </div>
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <div className="col-span-1 col-start-1 flex h-dvh flex-col gap-4 text-xl leading-relaxed">
+          <h2 className="sticky top-20 mb-8 text-6xl font-bold">
+            The hardest parts of being a designer
+          </h2>
+        </div>
+
+        <div className="col-span-1 col-start-2">
+          <div>Hello world</div>
+        </div>
+      </div>
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <div className="col-span-1 col-start-1 flex h-dvh flex-col gap-4 text-xl leading-relaxed">
+          <h2 className="sticky top-20 mb-8 text-6xl font-bold">
+            Advice designers would give themselves
+          </h2>
+        </div>
+
+        <div className="col-span-1 col-start-2">
+          <div>Hello world</div>
+        </div>
+      </div>
+    </>
   );
 }

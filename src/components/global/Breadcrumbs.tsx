@@ -9,6 +9,9 @@ export function Breadcrumbs() {
   const pathname = usePathname();
   const segments = pathname.split("/").filter(Boolean);
 
+  // Don't render on specific routes
+  if (pathname === "/clarity" || pathname === "/share-your-path") return null;
+
   // Don't render on homepage
   if (segments.length === 0) return null;
 

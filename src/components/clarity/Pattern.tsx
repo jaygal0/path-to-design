@@ -14,8 +14,8 @@ export default function Pattern({
   return (
     <div className="">
       <h3 className="text-sm text-muted-foreground">Pattern {patternNumber}</h3>
-      <h4 className="mb-4 text-2xl font-bold">{heading}</h4>
-      {children}
+      <h4 className="mb-4 text-3xl">{heading}</h4>
+      <div className="text-xl font-extralight">{children}</div>
       <div className="mt-12 rounded-2xl bg-muted p-4">
         <h5 className="text-muted-foreground">Insights</h5>
         <h6 className="text-3xl font-extralight">{insight}</h6>

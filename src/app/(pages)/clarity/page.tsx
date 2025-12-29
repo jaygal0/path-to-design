@@ -16,71 +16,63 @@ export default function Clarity() {
       <Section
         heading="How designers actually get started"
         summary="Waiting to feel ready is one of the most common ways people delay a design career — and most designers wish they’d started earlier."
-        designerOne="Pascal Strasche — Indie Maker, Germany"
-        designerOneLink="designers"
+        designerOne="Victor Sköld moved from customer support into a trainee design role"
+        designerOneImage="https://gdr5kmlmoz47c9q7.public.blob.vercel-storage.com/profiles/profile-victor-sko%CC%88ld-1761827021996-kwUkTnQ1AurveBusBbP9YPd2Kp81WQ%20copy.jpg"
+        designerOneLink="victor-skld"
+        designerTwo="Anna Filou learned web design out of necessity while doing admin work"
+        designerTwoLink="anna-filou"
+        designerTwoImage="https://gdr5kmlmoz47c9q7.public.blob.vercel-storage.com/profiles/profile-anna-filou-1750271563189-gXFKwKoBchrEy8Clah23GPjC5bq2jS.jpg"
+        designerThree="Krunal Moliya shifted from accounting after recognising a creative pull"
+        designerThreeLink="krunal-moliya"
+        designerThreeImage="https://gdr5kmlmoz47c9q7.public.blob.vercel-storage.com/profiles/profile-krunal-moliya-WqlyKit3YJ5wNx7nVW0OvlRrj9ywse.jpg"
       >
         <Pattern
           patternNumber={1}
-          heading="There is no single “starting point” — paths are non-linear"
-          insight="Most designers didn't choose design once — they drifted
-                toward it through action."
+          heading="There is no single starting point"
+          insight="Design careers often emerge through exposure, not intention."
         >
-          <p>Very few designers describe:</p>
+          <p>
+            Most designers did not begin with a clear intention to become
+            designers. Their paths were shaped by circumstance, curiosity, or
+            proximity to creative work rather than a defined career decision.
+          </p>
+          <p className="my-5 text-muted-foreground">What this looked like:</p>
           <ul className="mb-6">
-            <li className="ml-4 list-disc">a clear plan</li>
-            <li className="ml-4 list-disc">a single decision moment</li>
             <li className="ml-4 list-disc">
-              a straight line from education → job
-            </li>
-          </ul>
-          <p>Very few designers describe:</p>
-          <ul>
-            <li className="ml-4 list-disc">
-              career switches (accounting, engineering, marketing, admin, IT)
+              Transitioning from support, admin, marketing, or engineering roles
             </li>
             <li className="ml-4 list-disc">
-              adjacent roles (support → trainee, video editor → designer, brand
-              → web → UX)
+              Discovering design while solving real problems at work
             </li>
             <li className="ml-4 list-disc">
-              side projects / freelancing before a title
-            </li>
-            <li className="ml-4 list-disc">
-              curiosity-led exploration, not commitment
+              Following creative interests without long term certainty
             </li>
           </ul>
         </Pattern>
         <Pattern
           patternNumber={2}
-          heading="There is no single “starting point” — paths are non-linear"
-          insight="Most designers didn't choose design once — they drifted
-                toward it through action."
+          heading="Action came before confidence"
+          insight="Design careers often emerge through exposure, not intention."
         >
-          <p>Very few designers describe:</p>
+          <p>
+            Designers rarely waited until they felt ready. They started with
+            small steps and learned through doing, letting confidence develop
+            over time rather than upfront.
+          </p>
+          <p className="my-5 text-muted-foreground">What this looked like:</p>
           <ul className="mb-6">
-            <li className="ml-4 list-disc">a clear plan</li>
-            <li className="ml-4 list-disc">a single decision moment</li>
             <li className="ml-4 list-disc">
-              a straight line from education → job
-            </li>
-          </ul>
-          <p>Very few designers describe:</p>
-          <ul>
-            <li className="ml-4 list-disc">
-              career switches (accounting, engineering, marketing, admin, IT)
+              Freelancing or taking unpaid work early
             </li>
             <li className="ml-4 list-disc">
-              adjacent roles (support → trainee, video editor → designer, brand
-              → web → UX)
+              Learning tools while already working
             </li>
             <li className="ml-4 list-disc">
-              side projects / freelancing before a title
-            </li>
-            <li className="ml-4 list-disc">
-              curiosity-led exploration, not commitment
+              Building portfolios through real projects
             </li>
           </ul>
         </Pattern>
+
         <Pattern
           patternNumber={3}
           heading="Formal education exists — but it’s not dominant or decisive"

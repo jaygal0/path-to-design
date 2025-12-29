@@ -9,6 +9,12 @@ interface Props {
   designerOneImage?: string;
   designerOne?: string;
   designerOneLink?: string;
+  designerTwoImage?: string;
+  designerTwo?: string;
+  designerTwoLink?: string;
+  designerThreeImage?: string;
+  designerThree?: string;
+  designerThreeLink?: string;
 }
 
 export default function Section({
@@ -18,6 +24,12 @@ export default function Section({
   designerOneImage,
   designerOne,
   designerOneLink,
+  designerTwoImage,
+  designerTwo,
+  designerTwoLink,
+  designerThreeImage,
+  designerThree,
+  designerThreeLink,
 }: Props) {
   return (
     <>
@@ -33,7 +45,7 @@ export default function Section({
               <div className="space-y-1">
                 <div className="flex items-start gap-3">
                   {designerOne && designerOneLink ? (
-                    <Link href={designerOneLink}>
+                    <Link href={`/designers/${designerOneLink}`}>
                       <Button variant="link" className="p-0">
                         <Avatar className="h-5 w-5">
                           <AvatarImage src={designerOneImage} />
@@ -49,37 +61,37 @@ export default function Section({
                   )}
                 </div>
                 <div className="flex items-start gap-3">
-                  {designerOne && designerOneLink ? (
-                    <Link href={designerOneLink}>
+                  {designerTwo && designerTwoLink ? (
+                    <Link href={`/designers/${designerTwoLink}`}>
                       <Button variant="link" className="p-0">
                         <Avatar className="h-5 w-5">
-                          <AvatarImage src={designerOneImage} />
+                          <AvatarImage src={designerTwoImage} />
                           <AvatarFallback className="text-xs">
-                            {designerOne?.slice(0, 1)}
+                            {designerTwo?.slice(0, 1)}
                           </AvatarFallback>
                         </Avatar>
-                        {designerOne}
+                        {designerTwo}
                       </Button>
                     </Link>
                   ) : (
-                    designerOne && <h3>{designerOne}</h3>
+                    designerTwo && <h3>{designerTwo}</h3>
                   )}
                 </div>
                 <div className="flex items-start gap-3">
-                  {designerOne && designerOneLink ? (
-                    <Link href={designerOneLink}>
+                  {designerThree && designerThreeLink ? (
+                    <Link href={designerThreeLink}>
                       <Button variant="link" className="p-0">
                         <Avatar className="h-5 w-5">
-                          <AvatarImage src={designerOneImage} />
+                          <AvatarImage src={designerThreeImage} />
                           <AvatarFallback className="text-xs">
-                            {designerOne?.slice(0, 1)}
+                            {designerThree?.slice(0, 1)}
                           </AvatarFallback>
                         </Avatar>
-                        {designerOne}
+                        {designerThree}
                       </Button>
                     </Link>
                   ) : (
-                    designerOne && <h3>{designerOne}</h3>
+                    designerThree && <h3>{designerThree}</h3>
                   )}
                 </div>
               </div>

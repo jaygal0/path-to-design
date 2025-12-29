@@ -17,8 +17,8 @@ export function NewsletterSidebar({ designers }: Props) {
             Career clarity for designers in 5 minutes
           </h2>
           <p className="font-light text-muted-foreground">
-            See how designers actually get started and what makes the job hard,
-            distilled from {designers} experienced designers.
+            See how real designers actually get started and the challenges they
+            face, distilled from {designers} experienced designers and counting.
           </p>
         </div>
         <form

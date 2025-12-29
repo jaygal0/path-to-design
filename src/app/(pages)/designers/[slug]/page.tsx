@@ -7,7 +7,6 @@ import { shuffle } from "lodash";
 import { CardDesigner } from "../../../../components/global/CardDesigner";
 import { Answers } from "../../../../components/designer/Answers";
 import Image from "next/image";
-import { PopularApps } from "@/components/home/PopularApps";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -15,8 +14,6 @@ import type { Metadata } from "next";
 import { ProductsUsed } from "@/components/designer/ProductsUsed";
 import { notFound } from "next/navigation";
 import { mainCTAs } from "@/config/navigation";
-import { Newsletter } from "@/components/global/Newsletter";
-import { ShareYourPath } from "@/components/global/ShareYourPath";
 import { fetchSafe } from "@/lib/fetchSafe";
 import { NewsletterSidebar } from "@/components/global/NewsletterSidebar";
 

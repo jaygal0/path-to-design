@@ -90,7 +90,7 @@ export function Hero({ designers }: Props) {
             return (
               <div
                 key={index}
-                className="flex h-72 w-48 flex-col items-center justify-center gap-5 rounded-2xl border px-4 py-6 text-center"
+                className="flex h-72 w-48 flex-col items-center justify-center gap-5 rounded-2xl border border-neutral-700 bg-neutral-900 px-4 py-6 text-center"
               >
                 <div className="relative">
                   <Image

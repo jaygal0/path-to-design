@@ -1,5 +1,6 @@
 "use client";
 
+import { mainCTAs, menu } from "@/config/navigation";
 import Link from "next/link";
 import { Button } from "../ui/button";
 
@@ -7,10 +8,11 @@ export function CTA() {
   return (
     <div className="mb-10 rounded-2xl bg-neutral-900 p-20 text-center">
       <h3 className="mb-2 font-bold md:text-4xl">
-        Still figuring out your design path?
+        It takes a few minutes. Your impact lasts much longer.
       </h3>
       <p className="mb-8 w-full font-light text-muted-foreground md:text-xl">
-        Explore real design careers and see what&apos;s possible.
+        You are helping someone who feels stuck today. Thank you for sharing
+        your path.
       </p>
       <Link href="share-your-path/form">
         <Button className="w-full md:w-min">Start sharing your path</Button>

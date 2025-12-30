@@ -90,17 +90,7 @@ export default function BrowseDesigners({ designers }: Props) {
       </div>
 
       {/* Sorting and Clear Filters Row */}
-      <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
-        <Button
-          variant="link"
-          size="sm"
-          className="px-0"
-          onClick={() => {
-            setSelectedRoles([]);
-          }}
-        >
-          Clear Filters
-        </Button>
+      <div className="mb-6 flex flex-wrap items-center justify-end gap-4">
         <Select
           value={sortOption}
           onValueChange={(val) => setSortOption(val as any)}

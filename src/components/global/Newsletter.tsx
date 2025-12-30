@@ -10,23 +10,23 @@ interface Props {
 
 export function Newsletter({ designers }: Props) {
   return (
-    <div className="mx-auto flex w-1/2 items-center gap-4 rounded-2xl border border-neutral-400 bg-neutral-900 p-3 md:p-6">
+    <div className="mx-auto flex flex-col items-center gap-4 rounded-2xl border border-neutral-400 bg-neutral-900 p-6 md:w-1/2 md:flex-row md:p-6">
       <Image
         src="/path-to-design-logo.png"
         alt="Path to Design Logo"
         width={32}
         height={32}
         quality={70}
-        className="h-32 w-32 object-cover"
+        className="hidden h-32 w-32 object-cover md:block"
         sizes="(max-width: 640px) 40px, 80px"
         unoptimized
       />
       <div className="space-y-3">
         <div>
-          <h2 className="mb-2 text-3xl">
+          <h2 className="mb-2 text-2xl md:text-3xl">
             Career clarity for designers in 5 minutes
           </h2>
-          <p className="text-lg font-light text-muted-foreground">
+          <p className="font-light text-muted-foreground md:text-xl">
             See how real designers actually get started and the challenges they
             face, distilled from {designers} experienced designers and counting.
           </p>

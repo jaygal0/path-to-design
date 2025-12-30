@@ -5,16 +5,16 @@ import { RecommendationCard } from "./Recommendation";
 export function RealRecommendations() {
   return (
     <div className="space-y-8">
-      <div className="spacy-y-3 mx-auto w-1/2 text-center">
-        <h2 className="mb-2 text-5xl font-semibold text-foreground">
+      <div className="spacy-y-3 mx-auto text-center md:w-1/2">
+        <h2 className="mb-2 text-3xl font-semibold text-foreground md:text-5xl">
           Recommendations from real designers
         </h2>
-        <p className="text-xl font-light text-muted-foreground">
+        <p className="text-lg font-light text-muted-foreground md:text-xl">
           Learn which tools designers actually use, the products they rely on,
           and the books they recommend.
         </p>
       </div>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
         <RecommendationCard
           heading="Explore the best design apps"
           image="/home/recommended-apps.png"

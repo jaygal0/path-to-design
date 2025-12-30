@@ -1,6 +1,6 @@
 export function WhyThisMatters() {
   return (
-    <section className="w-full px-8 py-16">
+    <section className="w-full md:px-8 md:py-16">
       <div className="mx-auto grid grid-cols-1 gap-12 md:grid-cols-2 md:items-center">
         {/* Visual */}
         <div className="flex items-center justify-center">
@@ -28,7 +28,7 @@ export function WhyThisMatters() {
             Why you matter
           </h2>
 
-          <p className="mb-6 text-lg leading-relaxed text-muted-foreground">
+          <p className="mb-6 text-lg leading-relaxed text-muted-foreground md:text-xl">
             Most aspiring designers only see polished portfolios and success
             stories. What they rarely see is how designers actually got started,
             what slowed them down, or what they wish they had known earlier.
@@ -37,7 +37,7 @@ export function WhyThisMatters() {
             Your experience fills that gap.
           </p>
 
-          <ul className="space-y-3 text-lg text-neutral-300">
+          <ul className="text-md space-y-3 text-neutral-300 md:text-xl">
             <li className="flex items-center gap-3">
               <span className="mt-1 text-green-500">
                 <svg

@@ -49,14 +49,14 @@ export function WhenYouShare({ designers }: Props) {
   );
 
   return (
-    <section className="w-full px-8 py-16">
+    <section className="w-full md:px-8 md:py-16">
       <div className="mx-auto">
         {/* Header */}
-        <div className="mb-10 flex justify-between gap-16">
-          <h2 className="mb-4 text-3xl font-bold md:text-7xl">
+        <div className="mb-10 flex flex-col justify-between gap-4 md:flex-wrap md:gap-16">
+          <h2 className="text-3xl font-bold md:mb-4 md:text-7xl">
             What you'll share
           </h2>
-          <p className="w-1/2 pt-3 text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground md:w-1/2 md:pt-3">
             You will be guided through four short sections that cover different
             parts of your design journey. You do not need to answer every
             question. Short, honest responses are more helpful than polished

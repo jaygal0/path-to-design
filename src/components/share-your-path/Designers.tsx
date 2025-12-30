@@ -61,11 +61,11 @@ export function Designers({ designers }: Props) {
 
   return (
     <div className="mb-8 flex flex-col items-center">
-      <div className="w-3/5 space-y-3 text-center">
-        <h2 className="text-5xl font-bold">
+      <div className="space-y-3 text-center md:w-3/5">
+        <h2 className="text-3xl font-bold md:text-5xl">
           Designers who have already shared their path
         </h2>
-        <p className="text-2xl font-extralight text-muted-foreground">
+        <p className="text-xl font-extralight text-muted-foreground md:text-2xl">
           {designers.length} designers and counting...
         </p>
       </div>

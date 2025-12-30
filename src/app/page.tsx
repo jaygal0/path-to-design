@@ -25,7 +25,7 @@ export default async function Home() {
   const { designers } = await getData();
 
   return (
-    <div className="space-y-52">
+    <div className="space-y-32 md:space-y-52">
       <Hero designers={designers} />
       <FeaturedIn />
       <RealDesigners designers={designers} />

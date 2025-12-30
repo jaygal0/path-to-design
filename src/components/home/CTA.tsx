@@ -6,11 +6,11 @@ import { mainCTAs } from "@/config/navigation";
 
 export function CTA() {
   return (
-    <div className="mb-10 rounded-2xl bg-neutral-900 p-20 text-center">
-      <h3 className="mb-2 font-bold md:text-4xl">
+    <div className="mb-10 rounded-2xl bg-neutral-900 p-8 text-center md:p-20">
+      <h3 className="mb-2 text-3xl font-bold md:text-4xl">
         Still figuring out your design path?
       </h3>
-      <p className="mb-8 w-full font-light text-muted-foreground md:text-xl">
+      <p className="mb-8 w-full text-lg font-light text-muted-foreground md:text-xl">
         Explore real design careers and see what&apos;s possible.
       </p>
       <Link href={mainCTAs[1].href}>

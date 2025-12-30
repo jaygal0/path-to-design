@@ -611,7 +611,7 @@ export default function Page() {
               </FormField>
 
               <FormField
-                label="What are the responsibilities of your role as a designer?"
+                label="What are the responsibilities of your role?"
                 htmlFor="responsibilities"
               >
                 <textarea
@@ -625,7 +625,7 @@ export default function Page() {
               </FormField>
 
               <FormField
-                label="What difficulties do you encounter in your role as a designer?"
+                label="What difficulties do you encounter in your role?"
                 htmlFor="difficulties"
               >
                 <textarea

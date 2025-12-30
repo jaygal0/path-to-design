@@ -49,10 +49,10 @@ export function WhenYouShare({ designers }: Props) {
   );
 
   return (
-    <section className="w-full md:px-8 md:py-16">
+    <section className="w-full md:py-16">
       <div className="mx-auto">
         {/* Header */}
-        <div className="mb-10 flex flex-col justify-between gap-4 md:flex-wrap md:gap-16">
+        <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:gap-16">
           <h2 className="text-3xl font-bold md:mb-4 md:text-7xl">
             What you'll share
           </h2>
@@ -67,7 +67,7 @@ export function WhenYouShare({ designers }: Props) {
         {/* Scrollable cards */}
         <div className="relative">
           {/* Desktop navigation */}
-          <div className="mb-8 flex gap-2">
+          <div className="mb-8 hidden gap-2 md:flex">
             <button
               onClick={() => scroll("left")}
               className="flex h-9 w-9 items-center justify-center rounded-full border border-neutral-700 text-neutral-300 transition hover:border-neutral-500 hover:text-white"
@@ -87,21 +87,23 @@ export function WhenYouShare({ designers }: Props) {
           {/* Cards */}
           <div
             ref={scrollRef}
-            className="no-scrollbar flex gap-6 overflow-x-auto scroll-smooth pb-4 pr-6"
+            className="no-scrollbar flex flex-col gap-6 md:flex-row md:overflow-x-auto md:scroll-smooth md:pb-4 md:pr-6"
           >
-            <div className="relative aspect-square min-w-[40vw] overflow-hidden rounded-xl bg-neutral-900 p-6 text-white">
+            <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-neutral-900 p-3 text-white md:w-[40vw] md:shrink-0 md:p-6">
               <span className="mb-3 block text-sm text-muted-foreground">
                 1/4
               </span>
 
-              <h3 className="mb-2 text-3xl font-semibold">Who you are</h3>
+              <h3 className="mb-2 text-lg font-semibold md:text-3xl">
+                Who you are
+              </h3>
 
-              <p className="mb-6 text-lg leading-relaxed text-muted-foreground">
+              <p className="mb-4 text-sm leading-relaxed text-muted-foreground md:mb-6 md:text-lg">
                 Share your role and where you work. This helps readers
                 understand the context behind your career decisions and path.
               </p>
 
-              <div className="space-y-3 overflow-y-auto pr-2">
+              <div className="space-y-2 overflow-y-auto pr-2 md:space-y-3">
                 {filteredDesigners
                   .slice(0, 8)
                   .map((designer: any, i: number) => (
@@ -144,16 +146,16 @@ export function WhenYouShare({ designers }: Props) {
                   ))}
               </div>
             </div>
-            <div className="relative aspect-square min-w-[40vw] overflow-hidden rounded-xl bg-neutral-900 p-6 text-white">
+            <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-neutral-900 p-3 text-white md:w-[40vw] md:shrink-0 md:p-6">
               <span className="mb-3 block text-sm text-muted-foreground">
                 2/4
               </span>
 
-              <h3 className="mb-2 text-3xl font-semibold">
+              <h3 className="mb-2 text-lg font-semibold md:text-3xl">
                 Where people can find you
               </h3>
 
-              <p className="mb-6 text-lg leading-relaxed text-muted-foreground">
+              <p className="mb-4 text-sm leading-relaxed text-muted-foreground md:mb-6 md:text-lg">
                 Optional links to your website or social profiles. Readers often
                 want to follow designers whose journeys resonate with them.
               </p>
@@ -224,22 +226,22 @@ export function WhenYouShare({ designers }: Props) {
               </div>
             </SectionCard>
 
-            <div className="relative aspect-square min-w-[40vw] overflow-hidden rounded-xl bg-neutral-900 p-6 text-white">
+            <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-neutral-900 p-3 text-white md:w-[40vw] md:shrink-0 md:p-6">
               <span className="mb-3 block text-sm text-muted-foreground">
                 4/4
               </span>
 
-              <h3 className="mb-2 text-3xl font-semibold">
+              <h3 className="mb-2 text-lg font-semibold md:text-3xl">
                 Your experience and reflections
               </h3>
 
-              <p className="mb-6 text-lg leading-relaxed text-muted-foreground">
+              <p className="mb-4 text-sm leading-relaxed text-muted-foreground md:mb-6 md:text-lg">
                 Answer a handful of short questions about your journey so far.
                 You do not need to answer everything. Honest answers matter more
                 than perfect ones.
               </p>
 
-              <div className="space-y-3 overflow-y-auto pr-2">
+              <div className="space-y-2 overflow-y-auto pr-2 md:space-y-3">
                 {[
                   "How did you get started in your role as a designer?",
                   "What are the responsibilities of your role?",
@@ -276,11 +278,13 @@ function SectionCard({
   children?: React.ReactNode;
 }) {
   return (
-    <div className="relative aspect-square min-w-[40vw] overflow-hidden rounded-xl bg-neutral-900 p-6 text-white">
-      <span className="mb-3 block text-sm text-muted-foreground">{index}</span>
-      <h3 className="mb-2 text-3xl font-semibold">{title}</h3>
+    <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-neutral-900 p-3 text-white md:w-[40vw] md:shrink-0 md:p-6">
+      <span className="md:text-md mb-3 block text-sm text-muted-foreground">
+        {index}
+      </span>
+      <h3 className="mb-2 text-lg font-semibold md:text-3xl">{title}</h3>
       <div className="overflow-y-auto pr-2">
-        <p className="text-lg leading-relaxed text-muted-foreground">
+        <p className="mb-2 text-sm leading-relaxed text-muted-foreground md:mb-0 md:text-lg">
           {description}
         </p>
         {children}

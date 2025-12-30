@@ -1,6 +1,6 @@
 export function WhyThisMatters() {
   return (
-    <section className="w-full md:px-8 md:py-16">
+    <section className="w-full md:py-16">
       <div className="mx-auto grid grid-cols-1 gap-12 md:grid-cols-2 md:items-center">
         {/* Visual */}
         <div className="flex items-center justify-center">

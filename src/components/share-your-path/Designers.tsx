@@ -1,6 +1,5 @@
 "use client";
 
-import { companyInfo } from "@/config/companyInfo";
 import Image from "next/image";
 
 interface Props {
@@ -81,7 +80,6 @@ export function Designers({ designers }: Props) {
               country,
               firstName,
               lastName,
-              oneLiner,
               profileImage,
               roles,
             } = designer;

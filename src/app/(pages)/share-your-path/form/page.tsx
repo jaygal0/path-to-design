@@ -278,7 +278,7 @@ export default function Page() {
       {step <= 1 && (
         <div className="mb-20">
           <h1 className="mb-4 text-center text-2xl font-bold lg:text-6xl">
-            Share Your Path Form
+            Start sharing your path
           </h1>
           <p className="text-center text-lg text-muted-foreground">
             Help aspiring designers find their own path by sharing yours.

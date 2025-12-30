@@ -14,14 +14,24 @@ const faqs = [
       "Path to Design is a curated directory of designers sharing their career journeys, experiences, and insights. Explore how designers got into tech and inspire others with your own story.",
   },
   {
+    question: "Why should I share my path?",
+    answer:
+      "By sharing your journey, you inspire others, help new designers navigate their careers, and contribute to a supportive design community.",
+  },
+  {
+    question: "How is my privacy handled?",
+    answer:
+      "We respect your privacy. You choose what personal information to share, and you can remain anonymous if you prefer.",
+  },
+  {
+    question: "Can I update my profile or story later?",
+    answer:
+      "Yes! Since the site is run by me personally, you can update your story or profile by contacting me at joshua@pathtodesign.com.",
+  },
+  {
     question: "Who can contribute to the directory?",
     answer:
       "Any designer, whether you’re a freelancer, or working in tech, can share your path. We welcome stories from all design disciplines: UX, UI, product, visual, motion, and more.",
-  },
-  {
-    question: "How do I share my design journey?",
-    answer:
-      "You can submit your story using our “Share Your Path” form. Simply fill in your details, your design role, and the story of how you started in tech. Your story will be reviewed and published.",
   },
   {
     question: "Is there a cost to be listed in the directory?",
@@ -32,30 +42,11 @@ const faqs = [
     answer:
       "Path to Design is in its early stages. For now, I'm experimenting with affiliate links. The revenue model may change in the future as the site grows.",
   },
-  {
-    question: "Can I update my profile or story later?",
-    answer:
-      "Yes! Since the site is run by me personally, you can update your story or profile by contacting me at joshua@pathtodesign.com.",
-  },
-  {
-    question: "How do I find designers in specific fields or locations?",
-    answer:
-      "Use the search and filter options on the directory page to explore designers by role, experience, location, or design discipline.",
-  },
+
   {
     question: "Can I connect with designers I find here?",
     answer:
       "Absolutely. Each profile includes links to social media, portfolios, and contact options (if the designer chooses to share them).",
-  },
-  {
-    question: "Why should I share my path?",
-    answer:
-      "By sharing your journey, you inspire others, help new designers navigate their careers, and contribute to a supportive design community.",
-  },
-  {
-    question: "How is my privacy handled?",
-    answer:
-      "We respect your privacy. You choose what personal information to share, and you can remain anonymous if you prefer.",
   },
   {
     question: "Who runs Path to Design?",

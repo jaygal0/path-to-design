@@ -31,7 +31,7 @@ export default async function Home() {
       <FeaturedIn />
       <Designers designers={designers} />
       <WhyThisMatters />
-      <WhenYouShare />
+      <WhenYouShare designers={designers} />
       <CTA />
       <FaqSection />
     </div>

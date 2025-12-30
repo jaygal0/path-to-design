@@ -15,7 +15,7 @@ export function CTA() {
         You are helping someone who feels stuck today.
       </p>
       <Link href="share-your-path/form">
-        <Button className="w-full md:w-min">Share your path</Button>
+        <Button className="w-full md:w-min">Start sharing your path</Button>
       </Link>
     </div>
   );

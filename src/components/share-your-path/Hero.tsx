@@ -17,7 +17,7 @@ export function Hero() {
           decisions, faster.
         </h2>
         <Link href="share-your-path/form">
-          <Button className="w-full md:w-min">Share your path</Button>
+          <Button className="w-full md:w-min">Start sharing your path</Button>
         </Link>
       </div>
     </div>

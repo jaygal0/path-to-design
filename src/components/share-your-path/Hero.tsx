@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 
 export function Hero() {
   return (
-    <div className="mb-8 flex flex-col items-center">
+    <div className="flex flex-col items-center">
       <div className="w-4/5 space-y-3 text-center">
         <h1 className="text-7xl font-bold">
           Share your design journey.{" "}

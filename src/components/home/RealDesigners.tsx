@@ -30,7 +30,7 @@ export function RealDesigners({ designers }: Props) {
           Learn from real designers
         </h2>
         <p className="text-xl font-light text-muted-foreground">
-          Insights from {designers.length} designers and counting.
+          Insights from {designers.length} designers and counting...
         </p>
       </div>
       <div className="mx-auto flex w-1/2 flex-wrap justify-center gap-3">

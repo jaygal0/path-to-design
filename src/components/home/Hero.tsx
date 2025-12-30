@@ -61,7 +61,7 @@ export function Hero({ designers }: Props) {
   const loopedNames = [...filterNames, ...filterNames];
 
   return (
-    <div className="mb-8 flex flex-col items-center">
+    <div className="flex flex-col items-center">
       <div className="w-3/5 space-y-3 text-center">
         <h1 className="text-7xl font-bold">{companyInfo.copy.heading}</h1>
         <h2 className="text-2xl font-extralight text-muted-foreground">

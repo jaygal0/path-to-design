@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "../ui/button";
+import { mainCTAs } from "@/config/navigation";
 
 export function CTA() {
   return (
@@ -12,8 +13,8 @@ export function CTA() {
       <p className="mb-8 w-full font-light text-muted-foreground md:text-xl">
         Explore real design careers and see what&apos;s possible.
       </p>
-      <Link href="share-your-path/form">
-        <Button className="w-full md:w-min">Start sharing your path</Button>
+      <Link href={mainCTAs[1].href}>
+        <Button>{mainCTAs[1].title}</Button>
       </Link>
     </div>
   );

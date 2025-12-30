@@ -6,8 +6,17 @@ export function WhenYouShare() {
 
   const scroll = (direction: "left" | "right") => {
     if (!scrollRef.current) return;
-    const amount = 320;
-    scrollRef.current.scrollBy({
+
+    const container = scrollRef.current;
+    const firstCard = container.firstElementChild as HTMLElement | null;
+
+    if (!firstCard) return;
+
+    const cardWidth = firstCard.offsetWidth;
+    const gap = 24; // matches gap-6
+    const amount = cardWidth + gap;
+
+    container.scrollBy({
       left: direction === "left" ? -amount : amount,
       behavior: "smooth",
     });
@@ -18,11 +27,11 @@ export function WhenYouShare() {
       <div className="mx-auto">
         {/* Header */}
         <div className="mb-10 flex justify-between gap-16">
-          <h2 className="mb-4 text-3xl font-semibold text-white md:text-7xl">
-            What happens when you share
+          <h2 className="mb-4 text-3xl font-bold md:text-7xl">
+            What you'll share
           </h2>
-          <p className="w-1/2 pt-3 text-muted-foreground">
-            You will be guided through five short sections that cover different
+          <p className="w-1/2 pt-3 text-lg text-muted-foreground">
+            You will be guided through four short sections that cover different
             parts of your design journey. You do not need to answer every
             question. Short, honest responses are more helpful than polished
             ones.
@@ -55,33 +64,26 @@ export function WhenYouShare() {
             className="no-scrollbar flex gap-6 overflow-x-auto scroll-smooth pb-4 pr-6"
           >
             <SectionCard
-              index="1/5"
-              title="How you got started"
-              description="Share how you found design and what your early steps looked like."
+              index="1/4"
+              title="Who you are"
+              description="Share your role and where you work. This helps readers understand the context behind your career decisions and path."
+            />
+            <SectionCard
+              index="2/4"
+              title="Where people can find you"
+              description="Optional links to your website or social profiles. Readers often want to follow designers whose journeys resonate with them."
             />
 
             <SectionCard
-              index="2/5"
-              title="What you work on today"
-              description="Describe your current role, focus, and responsibilities."
+              index="3/4"
+              title="The tools and resources you rely on"
+              description="Share the apps, books, and tools that support your work. This gives aspiring designers practical starting points they can explore themselves."
             />
 
             <SectionCard
-              index="3/5"
-              title="Challenges along the way"
-              description="What slowed you down, challenged you, or surprised you."
-            />
-
-            <SectionCard
-              index="4/5"
-              title="Advice you would give"
-              description="What you wish you had known earlier in your career."
-            />
-
-            <SectionCard
-              index="5/5"
-              title="Looking back"
-              description="Any reflections, lessons, or regrets worth sharing."
+              index="4/4"
+              title="Your experience and reflections"
+              description="Answer a handful of short questions about how you got started, what challenged you, and what you wish you had known earlier. These insights often matter most to readers finding their way."
             />
           </div>
         </div>
@@ -101,9 +103,9 @@ function SectionCard({
 }) {
   return (
     <div className="aspect-square min-w-[40vw] rounded-xl bg-neutral-100/10 p-6 text-white">
-      <span className="mb-3 block text-sm text-neutral-400">{index}</span>
-      <h3 className="mb-2 text-lg font-semibold">{title}</h3>
-      <p className="text-sm leading-relaxed text-neutral-300">{description}</p>
+      <span className="mb-3 block text-sm text-muted-foreground">{index}</span>
+      <h3 className="mb-2 text-3xl font-semibold">{title}</h3>
+      <p className="text-lg leading-relaxed text-neutral-300">{description}</p>
     </div>
   );
 }

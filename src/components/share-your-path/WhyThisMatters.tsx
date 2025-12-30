@@ -24,8 +24,8 @@ export function WhyThisMatters() {
 
         {/* Content */}
         <div className="max-w-xl">
-          <h2 className="mb-4 text-3xl font-semibold text-white md:text-5xl">
-            Why this matters
+          <h2 className="mb-4 text-3xl font-bold md:text-5xl">
+            Why you matter
           </h2>
 
           <p className="mb-6 text-lg leading-relaxed text-muted-foreground">
@@ -37,8 +37,8 @@ export function WhyThisMatters() {
             Your experience fills that gap.
           </p>
 
-          <ul className="space-y-3 text-neutral-300">
-            <li className="flex items-start gap-3">
+          <ul className="space-y-3 text-lg text-neutral-300">
+            <li className="flex items-center gap-3">
               <span className="mt-1 text-green-500">
                 <svg
                   width="16"
@@ -56,7 +56,7 @@ export function WhyThisMatters() {
               <span>Help new designers avoid common mistakes</span>
             </li>
 
-            <li className="flex items-start gap-3">
+            <li className="flex items-center gap-3">
               <span className="mt-1 text-green-500">
                 <svg
                   width="16"
@@ -74,7 +74,7 @@ export function WhyThisMatters() {
               <span>Share a realistic path, not a highlight reel</span>
             </li>
 
-            <li className="flex items-start gap-3">
+            <li className="flex items-center gap-3">
               <span className="mt-1 text-green-500">
                 <svg
                   width="16"

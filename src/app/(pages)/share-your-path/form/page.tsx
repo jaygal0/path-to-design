@@ -265,7 +265,7 @@ export default function Page() {
         coverImage: "",
       });
 
-      window.location.href = "/thank-you";
+      window.location.href = "/share-your-path/thank-you";
     } catch (err) {
       setError("Failed to save data.");
     }
@@ -274,26 +274,15 @@ export default function Page() {
   };
 
   return (
-    <div className="mx-auto min-h-screen w-full max-w-3xl px-4 pt-12 lg:px-0 lg:pb-24">
+    <div className="mx-auto min-h-screen w-full max-w-3xl px-4 pt-8 lg:px-0 lg:pb-24">
       {step <= 1 && (
-        <div className="mb-32 font-sans">
-          <h1 className="mb-4 text-2xl font-bold lg:text-3xl">
-            Share Your Path
+        <div className="mb-20">
+          <h1 className="mb-4 text-center text-2xl font-bold lg:text-6xl">
+            Share Your Path Form
           </h1>
-          <ul className="flex flex-col gap-8 py-4 text-lg">
-            <Benefits
-              heading="Expand Your Reach"
-              desc="Connect with fellow designers, inspire newcomers, and attract potential employers."
-            />
-            <Benefits
-              heading="Boost Your Personal Brand"
-              desc="Showcase your unique journey and let your voice be heard."
-            />
-            <Benefits
-              heading="100% Free"
-              desc="No cost, no catch. Just an opportunity to share your story and make an impact."
-            />
-          </ul>
+          <p className="text-center text-lg text-muted-foreground">
+            Help aspiring designers find their own path by sharing yours.
+          </p>
         </div>
       )}
 

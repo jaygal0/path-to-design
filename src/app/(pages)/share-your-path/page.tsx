@@ -32,8 +32,8 @@ export default async function Home() {
       <Designers designers={designers} />
       <WhyThisMatters />
       <WhenYouShare />
-      <FaqSection />
       <CTA />
+      <FaqSection />
     </div>
   );
 }

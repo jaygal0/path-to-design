@@ -11,7 +11,7 @@ export function Hero() {
           Share your design journey.{" "}
           <span className="block">Help someone find their way.</span>
         </h1>
-        <h2 className="pb-4 text-2xl font-extralight text-muted-foreground">
+        <h2 className="pb-8 text-2xl font-extralight text-muted-foreground">
           Path to Design collects honest career stories from experienced
           designers to help people breaking into the industry make better
           decisions, faster.

@@ -2,6 +2,9 @@ import { Hero } from "@/components/share-your-path/Hero";
 import { FeaturedIn } from "@/components/share-your-path/FeaturedIn";
 import { Designers } from "@/components/share-your-path/Designers";
 import { CTA } from "@/components/share-your-path/CTA";
+import FaqSection from "@/components/share-your-path/FAQSection";
+import { WhyThisMatters } from "@/components/share-your-path/WhyThisMatters";
+import { WhenYouShare } from "@/components/share-your-path/WhenYouShare";
 
 async function getData() {
   const [designersRes] = await Promise.all([
@@ -27,6 +30,9 @@ export default async function Home() {
       <Hero />
       <FeaturedIn />
       <Designers designers={designers} />
+      <WhyThisMatters />
+      <WhenYouShare />
+      <FaqSection />
       <CTA />
     </div>
   );

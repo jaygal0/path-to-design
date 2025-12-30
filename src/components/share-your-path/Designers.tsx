@@ -67,7 +67,7 @@ export function Designers({ designers }: Props) {
           Designers who have already shared their path
         </h2>
         <p className="text-2xl font-extralight text-muted-foreground">
-          {designers.length} designers so far
+          {designers.length} designers and counting...
         </p>
       </div>
       <div className="relative mt-14 w-full overflow-hidden">

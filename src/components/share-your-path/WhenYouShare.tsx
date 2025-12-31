@@ -226,6 +226,17 @@ export function WhenYouShare({ designers }: { designers: any }) {
           </div>
         </div>
       </div>
+      {/* Hide scrollbars for .no-scrollbar */}
+      <style jsx global>{`
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+
+        .no-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </section>
   );
 }

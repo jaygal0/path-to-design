@@ -1,8 +1,13 @@
 import { fetchSafe } from "@/lib/fetchSafe";
 import Pattern from "@/components/clarity/Pattern";
 import Section from "@/components/clarity/Section";
+import { notFound } from "next/navigation";
 
 export default async function Clarity() {
+  if (process.env.ENABLE_CLARITY_PAGE !== "true") {
+    notFound();
+  }
+
   const designers = await fetchSafe(
     `${process.env.WEB_SITE}/api/designers`,
     { next: { revalidate: 86400 } },

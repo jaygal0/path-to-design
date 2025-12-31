@@ -126,7 +126,7 @@ export function WhenYouShare({ designers }: { designers: any }) {
           {/* Cards */}
           <div
             ref={scrollRef}
-            className="no-scrollbar flex flex-col gap-6 md:flex-row md:overflow-x-auto md:scroll-smooth md:pb-4 md:pr-6"
+            className="no-scrollbar flex flex-col gap-10 md:flex-row md:overflow-x-auto md:scroll-smooth md:pb-4 md:pr-6"
           >
             <BaseCard
               index="1"

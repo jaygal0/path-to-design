@@ -16,7 +16,7 @@ export default function Page() {
       />
 
       <Link href={mainCTAs[1].href}>
-        <Button>Explore the Directory</Button>
+        <Button>Explore design careers</Button>
       </Link>
     </div>
   );

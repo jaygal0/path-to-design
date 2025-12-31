@@ -2,7 +2,7 @@ import { Hero } from "@/components/home/Hero";
 import { RealDesigners } from "@/components/home/RealDesigners";
 import { CTA } from "@/components/home/CTA";
 import { Newsletter } from "@/components/global/Newsletter";
-import { FeaturedIn } from "@/components/home/FeaturedIn";
+import { CompanyLogos } from "@/components/home/CompanyLogos";
 import { RealRecommendations } from "@/components/home/RealRecommendations";
 
 async function getData() {
@@ -27,7 +27,7 @@ export default async function Home() {
   return (
     <div className="space-y-32 md:space-y-52">
       <Hero designers={designers} />
-      <FeaturedIn />
+      <CompanyLogos />
       <RealDesigners designers={designers} />
       <Newsletter designers={designers.length} />
       <RealRecommendations />

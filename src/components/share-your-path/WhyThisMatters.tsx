@@ -38,7 +38,7 @@ export function WhyThisMatters() {
           </p>
 
           <ul className="text-md space-y-3 text-neutral-300 md:text-xl">
-            <li className="flex items-center gap-3">
+            <li className="flex items-start gap-3 md:items-center">
               <span className="mt-1 text-green-500">
                 <svg
                   width="16"
@@ -56,7 +56,7 @@ export function WhyThisMatters() {
               <span>Help new designers avoid common mistakes</span>
             </li>
 
-            <li className="flex items-center gap-3">
+            <li className="flex items-start gap-3 md:items-center">
               <span className="mt-1 text-green-500">
                 <svg
                   width="16"
@@ -74,7 +74,7 @@ export function WhyThisMatters() {
               <span>Share a realistic path, not a highlight reel</span>
             </li>
 
-            <li className="flex items-center gap-3">
+            <li className="flex items-start gap-3 md:items-center">
               <span className="mt-1 text-green-500">
                 <svg
                   width="16"

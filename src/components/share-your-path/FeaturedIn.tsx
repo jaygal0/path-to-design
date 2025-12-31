@@ -6,7 +6,7 @@ export function FeaturedIn() {
   return (
     <div className="flex flex-col gap-4">
       <h3 className="text-center text-xl text-muted-foreground">Featured in</h3>
-      <div className="mx-auto flex gap-12">
+      <div className="mx-auto flex gap-8 md:gap-12">
         {/* href="https://www.toools.design/" */}
         <Image
           src="/logos/toools.design.png"

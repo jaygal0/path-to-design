@@ -1,14 +1,55 @@
 "use client";
 import Image from "next/image";
-interface Props {
-  designers: any;
-}
-
 import { useRef } from "react";
 
 import { Twitter, Linkedin, Instagram, Dribbble, Globe } from "lucide-react";
 
-export function WhenYouShare({ designers }: Props) {
+const SOCIAL_LINKS = [
+  { icon: Globe, label: "Website" },
+  { icon: Linkedin, label: "LinkedIn" },
+  { icon: Instagram, label: "Instagram" },
+  { icon: Dribbble, label: "Dribbble" },
+  { icon: Twitter, label: "Twitter / X" },
+];
+
+const EXPERIENCE_QUESTIONS = [
+  "How did you get started in your role as a designer?",
+  "What are the responsibilities of your role?",
+  "What difficulties do you encounter in your role?",
+  "What advice would you give to your younger self?",
+  "Do you have any regrets in your journey in becoming a designer?",
+  "How do you stay inspired as a designer?",
+];
+
+function BaseCard({
+  index,
+  title,
+  description,
+  children,
+}: {
+  index: string;
+  title: string;
+  description: string;
+  children?: React.ReactNode;
+}) {
+  return (
+    <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-neutral-900 p-3 text-white md:w-[40vw] md:shrink-0 md:p-6">
+      <span className="block text-sm text-muted-foreground md:mb-3">
+        {index}
+      </span>
+
+      <h3 className="text-lg font-semibold md:mb-2 md:text-3xl">{title}</h3>
+
+      <p className="mb-2 text-sm leading-relaxed text-muted-foreground md:mb-6 md:text-lg">
+        {description}
+      </p>
+
+      <div className="overflow-y-auto pr-2">{children}</div>
+    </div>
+  );
+}
+
+export function WhenYouShare({ designers }: { designers: any }) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: "left" | "right") => {
@@ -89,95 +130,37 @@ export function WhenYouShare({ designers }: Props) {
             ref={scrollRef}
             className="no-scrollbar flex flex-col gap-6 md:flex-row md:overflow-x-auto md:scroll-smooth md:pb-4 md:pr-6"
           >
-            <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-neutral-900 p-3 text-white md:w-[40vw] md:shrink-0 md:p-6">
-              <span className="mb-3 block text-sm text-muted-foreground">
-                1/4
-              </span>
-
-              <h3 className="mb-2 text-lg font-semibold md:text-3xl">
-                Who you are
-              </h3>
-
-              <p className="mb-4 text-sm leading-relaxed text-muted-foreground md:mb-6 md:text-lg">
-                Share your role and where you work. This helps readers
-                understand the context behind your career decisions and path.
-              </p>
-
-              <div className="space-y-2 overflow-y-auto pr-2 md:space-y-3">
+            <BaseCard
+              index="1/4"
+              title="Who you are"
+              description="Share your role and where you work. This helps readers understand the context behind your career decisions and path."
+            >
+              <div className="space-y-2 md:space-y-3">
                 {filteredDesigners
                   .slice(0, 8)
                   .map((designer: any, i: number) => (
-                    <div
-                      key={i}
-                      className="flex items-center gap-4 rounded-xl border border-neutral-700/60 bg-neutral-900/40 px-4 py-3"
-                    >
-                      <div className="relative h-10 w-10 shrink-0">
-                        {designer.profileImage ? (
-                          <img
-                            src={designer.profileImage}
-                            alt={`${designer.firstName} ${designer.lastName}`}
-                            className="h-10 w-10 rounded-full object-cover"
-                          />
-                        ) : (
-                          <div className="h-10 w-10 rounded-full bg-neutral-600" />
-                        )}
-
-                        {designer.country && (
-                          <Image
-                            src={`/flags/${designer.country}.svg`}
-                            width={16}
-                            height={16}
-                            alt={designer.country}
-                            className="absolute -bottom-1 -right-1 rounded-full border bg-white"
-                            quality={70}
-                          />
-                        )}
-                      </div>
-
-                      <div className="leading-tight">
-                        <div className="text-sm font-medium text-white">
-                          {designer.firstName} {designer.lastName}
-                        </div>
-                        <div className="text-sm text-neutral-400">
-                          {designer.roles.role} at {designer.companies.company}
-                        </div>
-                      </div>
-                    </div>
+                    <DesignerRow key={i} designer={designer} />
                   ))}
               </div>
-            </div>
-            <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-neutral-900 p-3 text-white md:w-[40vw] md:shrink-0 md:p-6">
-              <span className="mb-3 block text-sm text-muted-foreground">
-                2/4
-              </span>
+            </BaseCard>
 
-              <h3 className="mb-2 text-lg font-semibold md:text-3xl">
-                Where people can find you
-              </h3>
-
-              <p className="mb-4 text-sm leading-relaxed text-muted-foreground md:mb-6 md:text-lg">
-                Optional links to your website or social profiles. Readers often
-                want to follow designers whose journeys resonate with them.
-              </p>
-
+            <BaseCard
+              index="2/4"
+              title="Where people can find you"
+              description="Optional links to your website or social profiles. Readers often want to follow designers whose journeys resonate with them."
+            >
               <div className="flex flex-col gap-3">
-                {[
-                  { icon: Globe, label: "Website" },
-                  { icon: Linkedin, label: "LinkedIn" },
-                  { icon: Instagram, label: "Instagram" },
-                  { icon: Dribbble, label: "Dribbble" },
-                  { icon: Twitter, label: "Twitter / X" },
-                ].map(({ icon: Icon, label }) => (
+                {SOCIAL_LINKS.map(({ icon: Icon, label }) => (
                   <div
                     key={label}
-                    className="flex flex-col items-center justify-center gap-2 rounded-xl border border-neutral-700/60 bg-neutral-900/40  py-4 text-neutral-300"
+                    className="flex flex-col items-center justify-center gap-1 rounded-xl border border-neutral-700/60 bg-neutral-900/40 py-2 text-neutral-300 md:gap-2 md:py-4"
                   >
                     <Icon className="h-6 w-6" />
                     <span className="text-sm">{label}</span>
                   </div>
                 ))}
               </div>
-            </div>
+            </BaseCard>
 
             <SectionCard
               index="3/4"
@@ -226,43 +209,64 @@ export function WhenYouShare({ designers }: Props) {
               </div>
             </SectionCard>
 
-            <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-neutral-900 p-3 text-white md:w-[40vw] md:shrink-0 md:p-6">
-              <span className="mb-3 block text-sm text-muted-foreground">
-                4/4
-              </span>
-
-              <h3 className="mb-2 text-lg font-semibold md:text-3xl">
-                Your experience and reflections
-              </h3>
-
-              <p className="mb-4 text-sm leading-relaxed text-muted-foreground md:mb-6 md:text-lg">
-                Answer a handful of short questions about your journey so far.
-                You do not need to answer everything. Honest answers matter more
-                than perfect ones.
-              </p>
-
-              <div className="space-y-2 overflow-y-auto pr-2 md:space-y-3">
-                {[
-                  "How did you get started in your role as a designer?",
-                  "What are the responsibilities of your role?",
-                  "What difficulties do you encounter in your role?",
-                  "What advice would you give to your younger self?",
-                  "Do you have any regrets in your journey in becoming a designer?",
-                  "How do you stay inspired as a designer?",
-                ].map((question, index) => (
+            <BaseCard
+              index="4/4"
+              title="Your experience and reflections"
+              description="Answer a handful of short questions about your journey so far. You do not need to answer everything. Honest answers matter more than perfect ones."
+            >
+              <div className="space-y-2 md:space-y-3">
+                {EXPERIENCE_QUESTIONS.map((q, i) => (
                   <div
-                    key={index}
-                    className="rounded-xl border border-neutral-700/60 bg-neutral-900/40 px-4 py-3 text-neutral-300"
+                    key={i}
+                    className="rounded-xl border border-neutral-700/60 bg-neutral-900/40 px-4 py-2 text-neutral-300 md:py-3"
                   >
-                    {question}
+                    {q}
                   </div>
                 ))}
               </div>
-            </div>
+            </BaseCard>
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function DesignerRow({ designer }: { designer: any }) {
+  return (
+    <div className="flex items-center gap-4 rounded-xl border border-neutral-700/60 bg-neutral-900/40 px-4 py-3">
+      <div className="relative h-10 w-10 shrink-0">
+        {designer.profileImage ? (
+          <img
+            src={designer.profileImage}
+            alt={`${designer.firstName} ${designer.lastName}`}
+            className="h-10 w-10 rounded-full object-cover"
+          />
+        ) : (
+          <div className="h-10 w-10 rounded-full bg-neutral-600" />
+        )}
+
+        {designer.country && (
+          <Image
+            src={`/flags/${designer.country}.svg`}
+            width={16}
+            height={16}
+            alt={designer.country}
+            className="absolute -bottom-1 -right-1 rounded-full border bg-white"
+            quality={70}
+          />
+        )}
+      </div>
+
+      <div className="leading-tight">
+        <div className="text-sm font-medium text-white">
+          {designer.firstName} {designer.lastName}
+        </div>
+        <div className="text-sm text-neutral-400">
+          {designer.roles.role} at {designer.companies.company}
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -279,12 +283,12 @@ function SectionCard({
 }) {
   return (
     <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-neutral-900 p-3 text-white md:w-[40vw] md:shrink-0 md:p-6">
-      <span className="md:text-md mb-3 block text-sm text-muted-foreground">
+      <span className="md:text-md block text-sm text-muted-foreground md:mb-3">
         {index}
       </span>
-      <h3 className="mb-2 text-lg font-semibold md:text-3xl">{title}</h3>
+      <h3 className="text-lg font-semibold md:mb-2 md:text-3xl">{title}</h3>
       <div className="overflow-y-auto pr-2">
-        <p className="mb-2 text-sm leading-relaxed text-muted-foreground md:mb-0 md:text-lg">
+        <p className="mb-2 text-sm leading-relaxed text-muted-foreground md:mb-6 md:text-lg">
           {description}
         </p>
         {children}

@@ -44,10 +44,13 @@ export default function BrowseBook({ book }: Props) {
           <LucideExternalLink />
         </Button>
       </a>
-      <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:items-stretch lg:hidden">
+
+      {/* TODO: Show when ready */}
+      {/* <div className="block md:hidden"> */}
+      <div className="hidden md:hidden">
         <NewsletterSidebar />
-        <ShareYourPath />
       </div>
+
       <h2 className="mb-8 mt-14 text-lg text-foreground">
         Recommended by {designers.length}{" "}
         {designers.length === 1 ? "designer" : "designers"}

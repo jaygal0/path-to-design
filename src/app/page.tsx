@@ -29,7 +29,8 @@ export default async function Home() {
       <Hero designers={designers} />
       <CompanyLogos />
       <RealDesigners designers={designers} />
-      <Newsletter designers={designers.length} />
+      {/* TODO: Show when ready */}
+      {/* <Newsletter designers={designers.length} /> */}
       <RealRecommendations />
       <CTA />
     </div>

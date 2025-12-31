@@ -14,7 +14,7 @@ export function RealRecommendations() {
           and the books they recommend.
         </p>
       </div>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <RecommendationCard
           heading="Explore the best design apps"
           image="/home/recommended-apps.png"
@@ -25,11 +25,12 @@ export function RealRecommendations() {
           image="/home/recommended-apps.png"
           href="/best-design-books"
         />
-        <RecommendationCard
+        {/* TODO: Show when ready */}
+        {/* <RecommendationCard
           heading="Explore the best design tools"
           image="/home/recommended-apps.png"
           href="/best-design-tools"
-        />
+        /> */}
       </div>
     </div>
   );

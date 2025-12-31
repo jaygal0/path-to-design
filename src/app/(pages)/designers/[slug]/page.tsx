@@ -238,7 +238,9 @@ export default async function DesignerPage(props: {
             {apps.length > 0 && <AppsUsed apps={apps} />}
             {books.length > 0 && <BooksUsed books={books} />}
             {products?.length > 0 && <ProductsUsed product={products} />}
-            <div className="block md:hidden">
+            {/* TODO: Show when ready */}
+            {/* <div className="block md:hidden"> */}
+            <div className="hidden md:hidden">
               <NewsletterSidebar designers={designersData.length} />
             </div>
             {getStarted && (
@@ -335,7 +337,10 @@ export default async function DesignerPage(props: {
           </div>
         </div>
         <div className="col-span-2 hidden md:block lg:col-span-1">
-          <div className="sticky top-80 flex flex-col gap-8">
+          {/* TODO: Show when ready */}
+          {/* <div className="sticky top-80 flex flex-col gap-8"> */}
+
+          <div className="sticky top-80 hidden flex-col gap-8">
             <NewsletterSidebar designers={designersData.length} />
           </div>
         </div>

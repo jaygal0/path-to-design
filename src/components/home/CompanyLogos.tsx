@@ -6,7 +6,7 @@ export function CompanyLogos() {
   return (
     <div className="flex flex-col gap-8">
       <h3 className="text-center text-lg text-muted-foreground md:text-xl">
-        Designers featured have worked at
+        Featured designers have worked at
       </h3>
       <Image
         src="/home/company-logos.png"

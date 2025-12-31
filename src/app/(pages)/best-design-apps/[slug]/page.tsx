@@ -167,7 +167,9 @@ export default async function AppDetailPage(props: {
         </div>
       </div>
       <div className="col-span-1">
-        <div className="sticky top-20 flex flex-col gap-8">
+        {/* TODO: Show when ready */}
+        {/* <div className="sticky top-20 flex flex-col gap-8"> */}
+        <div className="sticky top-20 hidden flex-col gap-8">
           <NewsletterSidebar designers={designers.length} />
         </div>
       </div>

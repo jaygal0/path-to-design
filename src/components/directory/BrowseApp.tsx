@@ -56,9 +56,10 @@ export default function BrowseApp({ app }: Props) {
           <LucideExternalLink />
         </Button>
       </a>
-      <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:hidden">
+      {/* TODO: Show when ready */}
+      {/* <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:hidden"> */}
+      <div className="mt-8 hidden grid-cols-1 gap-6 md:grid-cols-2 lg:hidden">
         <NewsletterSidebar />
-        <ShareYourPath />
       </div>
       <h2 className="mb-8 mt-14 text-lg text-foreground">
         Used by {designers.length}{" "}

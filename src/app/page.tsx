@@ -1,53 +1,38 @@
 import { Hero } from "@/components/home/Hero";
-import { PopularApps } from "@/components/home/PopularApps";
-import { PopularBooks } from "@/components/home/PopularBooks";
-import { DesignersPopular } from "@/components/home/DesignersPopular";
+import { RealDesigners } from "@/components/home/RealDesigners";
 import { CTA } from "@/components/home/CTA";
-import FaqSection from "@/components/home/FAQSection";
-import { NewsletterSidebar } from "@/components/global/NewsletterSidebar";
+import { Newsletter } from "@/components/global/Newsletter";
+import { CompanyLogos } from "@/components/home/CompanyLogos";
+import { RealRecommendations } from "@/components/home/RealRecommendations";
 
 async function getData() {
-  const [designersRes, appsRes, booksRes] = await Promise.all([
+  const [designersRes] = await Promise.all([
     fetch(`${process.env.WEB_SITE}/api/designers`, {
       next: { revalidate: 3600 },
     }),
-    fetch(`${process.env.WEB_SITE}/api/apps`, {
-      next: { revalidate: 3600 },
-    }),
-    fetch(`${process.env.WEB_SITE}/api/books`, {
-      next: { revalidate: 3600 },
-    }),
   ]);
 
-  if (!designersRes.ok || !appsRes.ok) {
+  if (!designersRes.ok) {
     throw new Error("Failed to fetch data");
   }
 
-  const [designers, apps, books] = await Promise.all([
-    designersRes.json(),
-    appsRes.json(),
-    booksRes.json(),
-  ]);
+  const [designers] = await Promise.all([designersRes.json()]);
 
-  return { designers, apps, books };
+  return { designers };
 }
 
 export default async function Home() {
-  const { designers, apps, books } = await getData();
+  const { designers } = await getData();
 
   return (
-    <>
-      <Hero />
-      <div className="mb-8 grid grid-cols-1 gap-8 xl:grid-cols-3">
-        <DesignersPopular designers={designers} />
-        <div className="col-span-1 flex flex-col gap-8 xl:col-start-3 xl:row-start-1">
-          <NewsletterSidebar />
-          <PopularApps apps={apps} />
-        </div>
-      </div>
-      <PopularBooks books={books} />
-      <FaqSection />
+    <div className="space-y-32 md:space-y-52">
+      <Hero designers={designers} />
+      <CompanyLogos />
+      <RealDesigners designers={designers} />
+      {/* TODO: Show when ready */}
+      {/* <Newsletter designers={designers.length} /> */}
+      <RealRecommendations />
       <CTA />
-    </>
+    </div>
   );
 }

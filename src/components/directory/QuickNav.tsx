@@ -11,10 +11,12 @@ export function QuickNav() {
     { href: "/designers", label: "Designers" },
     { href: "/best-design-apps", label: "Apps" },
     { href: "/best-design-books", label: "Books" },
+    // TODO: Uncomment when ready
+    // { href: "/best-design-tools", label: "Tools" },
   ];
 
   return (
-    <div className="flex flex-wrap gap-4 rounded-md py-4">
+    <div className="mb-12 flex flex-wrap justify-center gap-4 py-4">
       {navItems.map((item) => {
         const isActive = pathname === item.href;
 
@@ -23,7 +25,8 @@ export function QuickNav() {
             <Button
               asChild
               variant={isActive ? "default" : "outline"}
-              size="sm"
+              size="lg"
+              className="p-6 text-xl"
             >
               <span>{item.label}</span>
             </Button>

@@ -84,6 +84,7 @@ model Books {
 model Products {
   id          String      @id @default(cuid())
   name        String?
+  slug        String?     @unique
   description String?
   url         String?
   createdAt   DateTime    @default(now())

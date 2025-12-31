@@ -1,29 +1,21 @@
 "use client";
 
-import { mainCTAs, menu } from "@/config/navigation";
 import Link from "next/link";
 import { Button } from "../ui/button";
+import { mainCTAs } from "@/config/navigation";
 
 export function CTA() {
   return (
-    <div className="col-span-1 row-span-4 row-start-4 mb-10 h-fit rounded-2xl bg-neutral-900 p-3 text-center md:p-6 xl:col-span-3 xl:mb-40 xl:px-40">
-      <h3 className="mb-2 text-xl font-bold md:text-3xl">
-        Ready to take the next step?
+    <div className="mb-10 rounded-2xl bg-neutral-900 p-8 text-center md:p-20">
+      <h3 className="mb-2 text-3xl font-bold md:text-4xl">
+        Still figuring out your design path?
       </h3>
-      <h2 className="mb-8 w-full font-light text-muted-foreground md:text-xl">
-        Explore designers, tools, and stories. Or share your path to inspire the
-        next generation.
-      </h2>
-      <div className="flex flex-col justify-center gap-4 sm:flex-row">
-        <Link href={mainCTAs[1].href}>
-          <Button className="w-full md:w-min">{mainCTAs[1].title}</Button>
-        </Link>
-        <Link href={mainCTAs[2].href}>
-          <Button variant={"secondary"} className="w-full sm:w-min">
-            {mainCTAs[2].title}
-          </Button>
-        </Link>
-      </div>
+      <p className="mb-8 w-full text-lg font-light text-muted-foreground md:text-xl">
+        Explore real design careers and see what&apos;s possible.
+      </p>
+      <Link href={mainCTAs[1].href}>
+        <Button>{mainCTAs[1].title}</Button>
+      </Link>
     </div>
   );
 }

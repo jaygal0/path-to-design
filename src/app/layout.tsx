@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://pathtodesign.com"),
   title: "Path to Design | Real UI/UX, Product & Graphic Designer Stories",
   description:
-    "Explore real design careers and career paths from UI/UX, product, and graphic designers. Plus many other design roles. Learn how designers get started, what tools they use, and how their roles evolve without the guesswork.",
+    "Explore real design careers from UI/UX, product, and graphic designers, plus many other design roles. Learn how designers get started, what tools they use, and how their roles evolve without the guesswork.",
   openGraph: {
     url: "https://www.pathtodesign.com",
     siteName: "Path to Design",
@@ -51,7 +51,7 @@ export default function RootLayout({
           <ScrollToTop />
           <BreakpointIndicator />
           <Navbar />
-          <main className="min-h-screen py-48 md:py-32">
+          <main className="min-h-screen py-24 md:py-32">
             <div className="mx-auto max-w-[1600px] px-4 md:px-8">
               <Breadcrumbs />
               {children}

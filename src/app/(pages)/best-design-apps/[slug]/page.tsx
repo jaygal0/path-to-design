@@ -1,16 +1,13 @@
 import type { Metadata } from "next";
 import BrowseApp from "@/components/directory/BrowseApp";
 import AppItem from "@/components/global/AppItem";
-import { PopularBooksSidebar } from "@/components/global/PopularBooksSidebar";
-import { NewsletterSidebar } from "@/components/global/NewsletterSidebar";
-import { PopularApps } from "@/components/home/PopularApps";
 import { Button } from "@/components/ui/button";
 import { mainCTAs } from "@/config/navigation";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ShareYourPath } from "@/components/global/ShareYourPath";
 import { fetchSafe } from "@/lib/fetchSafe";
+import { NewsletterSidebar } from "@/components/global/NewsletterSidebar";
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
@@ -139,13 +136,21 @@ export default async function AppDetailPage(props: {
     [],
   );
 
+  const designers = await fetchSafe(
+    `${process.env.WEB_SITE}/api/designers`,
+    {
+      next: { revalidate: 86400 },
+    },
+    [],
+  );
+
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
       <div className="col-span-1 lg:col-span-2">
         <BrowseApp app={app} />
-        <div className="col-span-2 mt-8 h-fit rounded-2xl bg-neutral-900 p-3 md:p-6">
-          <div className="mb-6 flex justify-between">
-            <div className="text-lg text-muted-foreground">
+        <div className="col-span-2 mt-20 h-fit">
+          <div className="mb-6 flex gap-4">
+            <div className="text-2xl text-muted-foreground">
               Explore more apps
             </div>
             <Link href={mainCTAs[3].href}>
@@ -162,12 +167,10 @@ export default async function AppDetailPage(props: {
         </div>
       </div>
       <div className="col-span-1">
-        <div className="sticky top-20 flex flex-col gap-8">
-          <div className="hidden lg:flex lg:flex-col lg:gap-8">
-            <NewsletterSidebar />
-            <ShareYourPath />
-          </div>
-          <PopularBooksSidebar books={booksData} />
+        {/* TODO: Show when ready */}
+        {/* <div className="sticky top-20 flex flex-col gap-8"> */}
+        <div className="sticky top-20 hidden flex-col gap-8">
+          <NewsletterSidebar designers={designers.length} />
         </div>
       </div>
     </div>

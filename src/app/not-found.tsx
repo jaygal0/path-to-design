@@ -13,11 +13,6 @@ export default function NotFound() {
         <Link href={mainCTAs[1].href}>
           <Button className="w-full">{mainCTAs[1].title}</Button>
         </Link>
-        <Link href={mainCTAs[2].href}>
-          <Button className="w-full" variant={"secondary"}>
-            {mainCTAs[2].title}
-          </Button>
-        </Link>
       </div>
     </div>
   );

@@ -1,81 +1,127 @@
 "use client";
 
-import { mainCTAs } from "@/config/navigation";
 import { companyInfo } from "@/config/companyInfo";
-import { Button } from "../ui/button";
-import Link from "next/link";
 import Image from "next/image";
 
-export function Hero() {
+interface Props {
+  designers: any;
+}
+
+const roleTextColors = [
+  "text-pink-400",
+  "text-red-400",
+  "text-indigo-400",
+  "text-blue-400",
+  "text-yellow-400",
+  "text-purple-400",
+  "text-green-400",
+  "text-teal-400",
+  "text-cyan-400",
+  "text-emerald-400",
+  "text-orange-400",
+  "text-rose-400",
+  "text-lime-400",
+  "text-fuchsia-400",
+  "text-violet-400",
+];
+
+// Deterministic hashing function to assign color by role
+function getRoleTextColor(role: string) {
+  const index =
+    role.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0) %
+    roleTextColors.length;
+  return roleTextColors[index];
+}
+
+export function Hero({ designers }: Props) {
+  const filterNames = [
+    "Mørch",
+    "Smailey",
+    "Paduraru",
+    "Kumar",
+    "Filou",
+    "Galinato",
+    "Strasche",
+    "Martin",
+    "Bölter",
+    "Fox",
+    "Rogge",
+    "Hansen",
+    "Ortega",
+    "Molinari",
+    "Butler",
+    "Arnestad",
+    "Yung",
+    "Froehlich",
+    "Beyers",
+    "Oz",
+    "Gu",
+  ];
+
+  const loopedNames = [...filterNames, ...filterNames];
+
   return (
-    <div className="mb-16 grid grid-cols-1 gap-0 lg:mb-20 lg:grid-cols-3 lg:gap-8">
-      <div className="col-span-2">
-        <div className="flex flex-col gap-2">
-          <h1 className="text-3xl font-bold md:text-5xl">
-            A Directory of Designers,{" "}
-            <span className="block">for Designers.</span>
-          </h1>
-          <h2 className="mb-8 text-lg font-light text-muted-foreground md:w-1/2 md:text-2xl">
-            {companyInfo.copy.subheading}
-          </h2>
-          <div className="flex gap-4">
-            <Link href={mainCTAs[1].href}>
-              <Button>{mainCTAs[1].title}</Button>
-            </Link>
-            <Link href={mainCTAs[2].href}>
-              <Button variant={"secondary"}>{mainCTAs[2].title}</Button>
-            </Link>
-          </div>
-        </div>
+    <div className="flex flex-col items-center">
+      <div className="w-full space-y-3 text-center md:w-3/5">
+        <h1 className="text-4xl font-bold md:text-7xl">
+          {companyInfo.copy.heading}
+        </h1>
+        <h2 className="text-xl font-extralight text-muted-foreground md:text-2xl">
+          {companyInfo.copy.subheading}
+        </h2>
       </div>
-      <div className="col-span-1 flex flex-col justify-end gap-4">
-        <h3 className="mt-16 text-sm text-muted-foreground">Featured in</h3>
-        <div className="flex gap-8">
-          <a
-            href="https://www.toools.design/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              src="/logos/toools.design.png"
-              alt="Tools.Design Logo"
-              width={100}
-              height={50}
-              quality={70}
-              className="rounded-sm object-cover grayscale transition-all duration-500 ease-in-out hover:rounded-none hover:grayscale-0"
-              unoptimized
-            />
-          </a>
-          <a
-            href="https://tldr.tech/design/2025-10-30"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              src="/logos/tldr.png"
-              alt="TLDR Logo"
-              width={100}
-              height={50}
-              quality={70}
-              className="rounded-sm object-cover grayscale transition-all duration-500 ease-in-out hover:rounded-none hover:grayscale-0"
-              unoptimized
-            />
-          </a>
-          <a
-            href="https://uxdesignweekly.com/issue-561/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              src="/logos/ux-design-weekly.png"
-              alt="uxdesignweekly Logo"
-              width={50}
-              height={50}
-              quality={70}
-              className="rounded-sm object-cover grayscale transition-all duration-500 hover:rounded-none hover:grayscale-0"
-              unoptimized
-            />
-          </a>
+      <div className="relative mt-14 w-full overflow-hidden">
+        <div className="animate-marquee flex w-max items-stretch gap-4">
+          {loopedNames.map((name, index) => {
+            const designer = designers.find((d: any) => d.lastName === name);
+            if (!designer) return null;
+
+            const {
+              companies,
+              country,
+              firstName,
+              lastName,
+              oneLiner,
+              profileImage,
+              roles,
+            } = designer;
+
+            const safeRole = roles?.role ?? "Unknown";
+            const roleColorClass = getRoleTextColor(safeRole);
+
+            return (
+              <div
+                key={index}
+                className="flex h-72 w-48 flex-col items-center justify-center gap-5 rounded-2xl border border-neutral-700 bg-neutral-900 px-4 py-6 text-center"
+              >
+                <div className="relative">
+                  <Image
+                    src={profileImage}
+                    alt={`${firstName} ${lastName}`}
+                    width={70}
+                    height={70}
+                    className="relative rounded-full"
+                  />
+                  <Image
+                    src={`/flags/${country}.svg`}
+                    width={24}
+                    height={24}
+                    alt={`${country}`}
+                    className="absolute -bottom-2 -right-2 ml-2 inline rounded-full border bg-white"
+                    quality={70}
+                  />
+                </div>
+
+                <div className="text-xl">
+                  <span className={roleColorClass}>{safeRole}</span>
+                  {companies?.company && <> at {companies.company}</>}
+                </div>
+                <div className="text-sm text-muted-foreground">
+                  {firstName} {lastName}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

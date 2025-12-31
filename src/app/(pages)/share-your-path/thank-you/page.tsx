@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Heading } from "../../../components/global/Heading";
+import { Heading } from "../../../../components/global/Heading";
 import Link from "next/link";
 import { mainCTAs } from "@/config/navigation";
 
@@ -16,7 +16,7 @@ export default function Page() {
       />
 
       <Link href={mainCTAs[1].href}>
-        <Button>Explore the Directory</Button>
+        <Button>Explore design careers</Button>
       </Link>
     </div>
   );

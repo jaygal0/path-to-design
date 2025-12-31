@@ -1,47 +1,49 @@
 "use client";
 
-import Link from "next/link";
 import { CardDesigner } from "../global/CardDesigner";
-import { Button } from "../ui/button";
-import { ChevronRight } from "lucide-react";
-import { mainCTAs } from "@/config/navigation";
-
+import { Badge } from "../ui/badge";
 interface Props {
   designers: any;
-  slice?: number;
 }
 
-export function DesignersPopular({ designers, slice }: Props) {
+export function RealDesigners({ designers }: Props) {
   const filterNames = [
     "Galinato",
     "Strasche",
     "Kumar",
     "Paduraru",
-    "Hansen",
-    "Martin",
-    "Butler",
     "Oz",
     "Fox",
-    "Molinari",
+  ];
+
+  const lessons = [
+    "Getting started in design",
+    "Day-to-day responsibilities",
+    "Common career challenges",
+    "Lessons learned the hard way",
+    "Advice for new designers",
   ];
 
   return (
-    <div className="col-span-1 row-start-1 h-fit rounded-2xl bg-neutral-900 p-3 md:p-6 xl:col-span-2">
-      <div className="mb-6">
-        <div className="mb-1 flex items-center justify-between gap-1">
-          <h2 className="text-lg text-foreground">Popular Designers</h2>
-          <Link href={mainCTAs[1].href}>
-            <Button variant="ghost" className="flex items-center gap-1">
-              Explore all <ChevronRight className="h-4 w-4" />
-            </Button>
-          </Link>
-        </div>
-        <p className="text-sm text-muted-foreground md:w-3/4">
-          Explore the journeys of designers in tech and creative fields. Learn
-          from their paths, experiences, and insights.
+    <div className="space-y-8">
+      <div className="spacy-y-3 text-center">
+        <h2 className="mb-2 text-3xl font-semibold text-foreground md:text-5xl">
+          Learn from real designers
+        </h2>
+        <p className="text-lg font-light text-muted-foreground md:text-xl">
+          Insights from {designers.length} designers and counting...
         </p>
       </div>
-      <div className="flex flex-col gap-6">
+      <div className="mx-auto flex flex-wrap justify-center gap-3 md:w-1/2">
+        {lessons.map((lesson, index) => {
+          return (
+            <Badge key={index} variant="secondary">
+              {lesson}
+            </Badge>
+          );
+        })}
+      </div>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
         {filterNames.map((name, index) => {
           const designer = designers.find((d: any) => d.lastName === name);
           if (!designer) return null;

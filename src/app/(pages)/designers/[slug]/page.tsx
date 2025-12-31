@@ -7,7 +7,6 @@ import { shuffle } from "lodash";
 import { CardDesigner } from "../../../../components/global/CardDesigner";
 import { Answers } from "../../../../components/designer/Answers";
 import Image from "next/image";
-import { PopularApps } from "@/components/home/PopularApps";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -15,9 +14,8 @@ import type { Metadata } from "next";
 import { ProductsUsed } from "@/components/designer/ProductsUsed";
 import { notFound } from "next/navigation";
 import { mainCTAs } from "@/config/navigation";
-import { NewsletterSidebar } from "@/components/global/NewsletterSidebar";
-import { ShareYourPath } from "@/components/global/ShareYourPath";
 import { fetchSafe } from "@/lib/fetchSafe";
+import { NewsletterSidebar } from "@/components/global/NewsletterSidebar";
 
 export async function generateMetadata({
   params,
@@ -167,7 +165,7 @@ export default async function DesignerPage(props: {
   const filteredDesigners = designersData.filter(
     (designer: any) => designer.slug !== params.slug,
   );
-  const randomDesigners = shuffle(filteredDesigners).slice(0, 5);
+  const randomDesigners = shuffle(filteredDesigners).slice(0, 8);
 
   const {
     advice,
@@ -240,21 +238,26 @@ export default async function DesignerPage(props: {
             {apps.length > 0 && <AppsUsed apps={apps} />}
             {books.length > 0 && <BooksUsed books={books} />}
             {products?.length > 0 && <ProductsUsed product={products} />}
+            {/* TODO: Show when ready */}
+            {/* <div className="block md:hidden"> */}
+            <div className="hidden md:hidden">
+              <NewsletterSidebar designers={designersData.length} />
+            </div>
             {getStarted && (
               <Answers
-                question="How did you get started in your role as a designer?"
+                question="How did you get started in your role?"
                 answer={getStarted}
               />
             )}
             {responsibilities && (
               <Answers
-                question="What are the responsibilities of your role as a designer?"
+                question="What are the responsibilities of your role?"
                 answer={responsibilities}
               />
             )}
             {difficulties && (
               <Answers
-                question="What difficulties do you encounter in your role as a designer? "
+                question="What difficulties do you encounter in your role?"
                 answer={difficulties}
               />
             )}
@@ -283,7 +286,7 @@ export default async function DesignerPage(props: {
               />
             )}
           </div>
-          <div className="col-span-2 h-fit rounded-2xl bg-neutral-900 p-3 md:p-6">
+          <div className="col-span-2 h-fit rounded-2xl">
             <div className="mb-6 flex justify-between">
               <div className="text-lg text-muted-foreground">
                 Continue reading
@@ -333,11 +336,12 @@ export default async function DesignerPage(props: {
             </div>
           </div>
         </div>
-        <div className="col-span-2 lg:col-span-1">
-          <div className="sticky top-20 flex flex-col gap-8">
-            <NewsletterSidebar />
-            <ShareYourPath />
-            <PopularApps apps={appsData} />
+        <div className="col-span-2 hidden md:block lg:col-span-1">
+          {/* TODO: Show when ready */}
+          {/* <div className="sticky top-80 flex flex-col gap-8"> */}
+
+          <div className="sticky top-80 hidden flex-col gap-8">
+            <NewsletterSidebar designers={designersData.length} />
           </div>
         </div>
       </div>

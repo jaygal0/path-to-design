@@ -1,6 +1,7 @@
 "use client";
 
 import { CardDesigner } from "../global/CardDesigner";
+import { Badge } from "../ui/badge";
 interface Props {
   designers: any;
 }
@@ -36,12 +37,9 @@ export function RealDesigners({ designers }: Props) {
       <div className="mx-auto flex flex-wrap justify-center gap-3 md:w-1/2">
         {lessons.map((lesson, index) => {
           return (
-            <div
-              key={index}
-              className="w-fit rounded-2xl border bg-muted px-4 py-2 text-xs font-light md:text-sm"
-            >
+            <Badge key={index} variant="secondary">
               {lesson}
-            </div>
+            </Badge>
           );
         })}
       </div>

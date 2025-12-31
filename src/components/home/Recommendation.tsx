@@ -12,12 +12,12 @@ interface Props {
 export function RecommendationCard({ heading, image, href }: Props) {
   return (
     <Link href={href}>
-      <div className="relative space-y-4 rounded-2xl border p-6 transition-all hover:cursor-pointer hover:border-white">
+      <div className="flex min-h-64 flex-col items-center justify-center gap-3 rounded-2xl border p-6 transition-all hover:cursor-pointer hover:border-white">
         <Image
           src={image}
           alt={heading}
-          width={250}
-          height={0}
+          width={240}
+          height={100}
           quality={70}
           unoptimized
           className="mx-auto"

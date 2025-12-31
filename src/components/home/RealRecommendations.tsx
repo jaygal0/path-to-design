@@ -22,7 +22,7 @@ export function RealRecommendations() {
         />
         <RecommendationCard
           heading="Explore the best design books"
-          image="/home/recommended-apps.png"
+          image="/home/recommended-books.png"
           href="/best-design-books"
         />
         {/* TODO: Show when ready */}

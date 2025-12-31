@@ -1,25 +1,18 @@
+import Image from "next/image";
+
 export function WhyThisMatters() {
   return (
     <section className="w-full md:py-16">
       <div className="mx-auto grid grid-cols-1 gap-12 md:grid-cols-2 md:items-center">
         {/* Visual */}
-        <div className="flex items-center justify-center">
-          <div className="flex aspect-square w-full items-center justify-center rounded-xl bg-neutral-100/10">
-            <div className="text-neutral-400">
-              <svg
-                width="48"
-                height="48"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              >
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                <path d="M3 15l4-4a3 3 0 0 1 4 0l6 6" />
-                <path d="M14 14l1-1a3 3 0 0 1 4 0l2 2" />
-              </svg>
-            </div>
-          </div>
+        <div className="relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-xl">
+          <Image
+            src="/share-your-path/joshua-pathtodesign.png"
+            alt="Preview of Joshua Galinato's Path to Design"
+            fill
+            className="object-cover"
+            priority
+          />
         </div>
 
         {/* Content */}

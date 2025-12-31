@@ -34,11 +34,9 @@ function BaseCard({
 }) {
   return (
     <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-neutral-900 p-3 text-white md:w-[40vw] md:shrink-0 md:p-6">
-      <span className="block text-sm text-muted-foreground md:mb-3">
-        {index}
-      </span>
-
-      <h3 className="text-lg font-semibold md:mb-2 md:text-3xl">{title}</h3>
+      <h3 className="text-lg font-semibold md:mb-2 md:text-3xl">
+        {index}. {title}
+      </h3>
 
       <p className="mb-2 text-sm leading-relaxed text-muted-foreground md:mb-6 md:text-lg">
         {description}
@@ -131,7 +129,7 @@ export function WhenYouShare({ designers }: { designers: any }) {
             className="no-scrollbar flex flex-col gap-6 md:flex-row md:overflow-x-auto md:scroll-smooth md:pb-4 md:pr-6"
           >
             <BaseCard
-              index="1/4"
+              index="1"
               title="Who you are"
               description="Share your role and where you work. This helps readers understand the context behind your career decisions and path."
             >
@@ -145,7 +143,7 @@ export function WhenYouShare({ designers }: { designers: any }) {
             </BaseCard>
 
             <BaseCard
-              index="2/4"
+              index="2"
               title="Where people can find you"
               description="Optional links to your website or social profiles. Readers often want to follow designers whose journeys resonate with them."
             >
@@ -163,7 +161,7 @@ export function WhenYouShare({ designers }: { designers: any }) {
             </BaseCard>
 
             <SectionCard
-              index="3/4"
+              index="3"
               title="The tools and resources you rely on"
               description="Share the apps, books, and tools that support your work. This gives aspiring designers practical starting points they can explore themselves."
             >
@@ -210,7 +208,7 @@ export function WhenYouShare({ designers }: { designers: any }) {
             </SectionCard>
 
             <BaseCard
-              index="4/4"
+              index="4"
               title="Your experience and reflections"
               description="Answer a handful of short questions about your journey so far. You do not need to answer everything. Honest answers matter more than perfect ones."
             >
@@ -234,7 +232,7 @@ export function WhenYouShare({ designers }: { designers: any }) {
 
 function DesignerRow({ designer }: { designer: any }) {
   return (
-    <div className="flex items-center gap-4 rounded-xl border border-neutral-700/60 bg-neutral-900/40 px-4 py-3">
+    <div className="flex items-center gap-4 rounded-xl border border-neutral-700/60 bg-neutral-900/40 px-4 py-4">
       <div className="relative h-10 w-10 shrink-0">
         {designer.profileImage ? (
           <img
@@ -283,10 +281,9 @@ function SectionCard({
 }) {
   return (
     <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-neutral-900 p-3 text-white md:w-[40vw] md:shrink-0 md:p-6">
-      <span className="md:text-md block text-sm text-muted-foreground md:mb-3">
-        {index}
-      </span>
-      <h3 className="text-lg font-semibold md:mb-2 md:text-3xl">{title}</h3>
+      <h3 className="text-lg font-semibold md:mb-2 md:text-3xl">
+        {index}. {title}
+      </h3>
       <div className="overflow-y-auto pr-2">
         <p className="mb-2 text-sm leading-relaxed text-muted-foreground md:mb-6 md:text-lg">
           {description}

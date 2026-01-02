@@ -36,7 +36,7 @@ export default function ProductItem({ item }: { item: any }) {
             width={200}
             height={200}
             quality={70}
-            className="rounded-lg object-cover transition-all hover:scale-105"
+            className="w-20 rounded-lg object-cover transition-all hover:scale-105 md:w-40"
             unoptimized
           />
           <div className="flex w-full flex-col gap-4">

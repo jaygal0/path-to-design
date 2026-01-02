@@ -1,6 +1,7 @@
 export const plausibleEvents = {
   VIEW_APP: "view-app",
   VIEW_BOOK: "view-book",
+  VIEW_TOOL: "view-tool",
   CONTACT_EMAIL: "contact-email",
   VIEW_WEBSITE: "view-website",
   VIEW_COMPANY: "view-company",

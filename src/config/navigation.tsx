@@ -40,4 +40,8 @@ export const mainCTAs: menuItem[] = [
     title: "Best Design Books",
     href: "/best-design-books",
   },
+  {
+    title: "Best Design Tools",
+    href: "/best-design-tools",
+  },
 ];

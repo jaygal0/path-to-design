@@ -11,8 +11,7 @@ export function QuickNav() {
     { href: "/designers", label: "Designers" },
     { href: "/best-design-apps", label: "Apps" },
     { href: "/best-design-books", label: "Books" },
-    // TODO: Uncomment when ready
-    // { href: "/best-design-tools", label: "Tools" },
+    { href: "/best-design-tools", label: "Tools" },
   ];
 
   return (

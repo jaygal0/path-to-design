@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import BrowseBook from "@/components/directory/BrowseBook";
-import BookItem from "@/components/global/BookItem";
 import { Button } from "@/components/ui/button";
 import { mainCTAs } from "@/config/navigation";
 import { ChevronRight } from "lucide-react";
@@ -9,6 +7,7 @@ import { notFound } from "next/navigation";
 import { fetchSafe } from "@/lib/fetchSafe";
 import { NewsletterSidebar } from "@/components/global/NewsletterSidebar";
 import BrowseProduct from "@/components/directory/BrowseProduct";
+import ProductItem from "@/components/global/ProductItem";
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
@@ -35,7 +34,7 @@ export async function generateMetadata(props: {
       product.description ||
       `Discover ${product.name}, a tool that designers recommend that's featured on Path to Design.`;
 
-    const canonicalUrl = `https://www.pathtodesign.com/best-design-books/${slug}`;
+    const canonicalUrl = `https://www.pathtodesign.com/best-design-tools/${slug}`;
     const ogImage = "/path-to-design-og-image.jpg";
 
     return {
@@ -66,10 +65,10 @@ export async function generateMetadata(props: {
       },
     };
   } catch (err) {
-    console.error("generateMetadata: failed to fetch book metadata:", err);
+    console.error("generateMetadata: failed to fetch tool metadata:", err);
     return {
-      title: "Book not found | Path to Design",
-      description: "Explore the best design books on Path to Design.",
+      title: "Tool not found | Path to Design",
+      description: "Explore the best design tools on Path to Design.",
     };
   }
 }
@@ -93,12 +92,12 @@ export async function generateStaticParams() {
       })
       .filter(Boolean) as { slug: string }[];
   } catch (err) {
-    console.error("generateStaticParams: failed to fetch books:", err);
+    console.error("generateStaticParams: failed to fetch tools:", err);
     return [];
   }
 }
 
-export default async function BookDetailPage(props: {
+export default async function ProductDetailPage(props: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await props.params;
@@ -123,9 +122,17 @@ export default async function BookDetailPage(props: {
     [],
   );
 
-  // Filter out the current book and randomize order, then slice to 3
+  // Filter out the current product and randomize order, then slice to 10
   const otherProducts = (allProducts || [])
-    .filter((b: any) => b.slug !== slug)
+    .filter((p: any) => {
+      const productSlug =
+        typeof p.slug === "string"
+          ? p.slug
+          : typeof p.slug?.slug === "string"
+            ? p.slug.slug
+            : null;
+      return productSlug && productSlug !== slug;
+    })
     .sort(() => 0.5 - Math.random())
     .slice(0, 10);
 
@@ -142,27 +149,28 @@ export default async function BookDetailPage(props: {
       <div className="col-span-1 lg:col-span-2">
         <BrowseProduct product={product} />
         <div className="col-span-2 mt-20 h-fit">
-          <div className="mb-6 flex gap-4">
+          <div className="mb-6 flex items-center gap-4">
             <div className="text-2xl text-muted-foreground">
               Explore more tools
             </div>
-            <Link href={mainCTAs[4].href}>
+            <Link href={mainCTAs[5].href}>
               <Button variant="ghost" className="flex items-center gap-1">
                 See all <ChevronRight className="h-4 w-4" />
               </Button>
             </Link>
           </div>
           <div className="flex flex-col gap-6">
-            {/* {otherProducts.map((book: any, index: any) => {
-              return <BookItem key={index} item={book} />;
-            })} */}
+            {otherProducts.map((product: any, index: number) => {
+              return <ProductItem key={index} item={product} />;
+            })}
           </div>
         </div>
       </div>
       <div className="col-span-1">
-        <div className="sticky top-20 flex flex-col gap-8">
+        {/* TODO: Show when ready */}
+        {/* <div className="sticky top-20 flex flex-col gap-8">
           <NewsletterSidebar />
-        </div>
+        </div> */}
       </div>
     </div>
   );

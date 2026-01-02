@@ -32,22 +32,26 @@ export default function BrowseProduct({ product }: Props) {
           <p className="mt-4 text-lg text-muted-foreground">{description}</p>
         </div>
       </div>
-      <a
-        href={url}
-        target="_blank"
-        rel="sponsored noopener noreferrer"
-        className="plausible-event-name=view-book block"
-        data-event-name={plausibleEvents.VIEW_BOOK}
-      >
-        <Button variant="secondary">
-          View tool
-          <LucideExternalLink />
-        </Button>
-      </a>
-      <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:items-stretch lg:hidden">
+      {url ? (
+        <a
+          href={url}
+          target="_blank"
+          rel="sponsored noopener noreferrer"
+          className="plausible-event-name=view-book block"
+          data-event-name={plausibleEvents.VIEW_BOOK}
+        >
+          <Button variant="secondary">
+            Buy tool
+            <LucideExternalLink />
+          </Button>
+        </a>
+      ) : (
+        ""
+      )}
+      {/* TODO: Show when ready */}
+      {/* <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:items-stretch lg:hidden">
         <NewsletterSidebar />
-        <ShareYourPath />
-      </div>
+      </div> */}
       <h2 className="mb-8 mt-14 text-lg text-foreground">
         Recommended by {designers.length}{" "}
         {designers.length === 1 ? "designer" : "designers"}

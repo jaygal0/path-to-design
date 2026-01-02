@@ -74,8 +74,8 @@ export default function BrowseBooks({ books }: Props) {
       <div className="space-y-3 pb-12">
         <h1 className="text-center text-4xl font-bold">Books</h1>
         <p className="text-center text-xl text-muted-foreground">
-          From product to UI/UX and many other roles. Explore how designers
-          found their own path to design.
+          Top books that experienced designers have read to help them get to
+          where they are now.
         </p>
       </div>
 

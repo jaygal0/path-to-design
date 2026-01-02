@@ -6,7 +6,6 @@ import { plausibleEvents } from "@/config/plausibleEvents";
 import { CardDesigner } from "../global/CardDesigner";
 import Image from "next/image";
 import { NewsletterSidebar } from "../global/NewsletterSidebar";
-import { ShareYourPath } from "../global/ShareYourPath";
 
 type Props = {
   book: any;

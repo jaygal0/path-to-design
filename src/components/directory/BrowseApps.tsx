@@ -69,8 +69,8 @@ export default function BrowseApps({ apps }: Props) {
       <div className="space-y-3 pb-12">
         <h1 className="text-center text-4xl font-bold">Apps</h1>
         <p className="text-center text-xl text-muted-foreground">
-          From product to UI/UX and many other roles. Explore how designers
-          found their own path to design.
+          Find the best design apps that experienced designers use throughout
+          their design process.
         </p>
       </div>
 

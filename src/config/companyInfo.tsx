@@ -3,7 +3,7 @@ export const companyInfo = {
   description:
     "A directory of designers, for designers. Explore how designers found their path into tech or share your own journey and inspire others.",
   copy: {
-    heading: "Feeling unsure about your design career?",
+    heading: "Find your path to design",
     subheading:
       "See how real designers built theirs, across product, UI/UX, and many other design roles.",
   },

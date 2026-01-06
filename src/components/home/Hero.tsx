@@ -66,7 +66,7 @@ export function Hero({ designers }: Props) {
         <h1 className="text-4xl font-bold md:text-7xl">
           {companyInfo.copy.heading}
         </h1>
-        <h2 className="text-xl font-extralight text-muted-foreground md:text-2xl">
+        <h2 className="text-xl font-extralight text-muted-foreground md:text-3xl">
           {companyInfo.copy.subheading}
         </h2>
       </div>

@@ -1,4 +1,12 @@
 import type { MetadataRoute } from "next";
+import fs from "fs/promises";
+import path from "path";
+import matter from "gray-matter";
+
+type BlogPostMeta = {
+  slug: string;
+  updatedAt?: string;
+};
 
 async function getDesigners() {
   const res = await fetch("https://pathtodesign.com/api/designers");
@@ -24,14 +32,44 @@ async function getProducts() {
   return res.json();
 }
 
+async function getBlogPosts() {
+  const dir = path.join(process.cwd(), "content", "blog");
+  let files: string[] = [];
+
+  try {
+    files = await fs.readdir(dir);
+  } catch {
+    return [];
+  }
+
+  const posts: Array<BlogPostMeta | null> = await Promise.all(
+    files
+      .filter((file) => file.endsWith(".mdx"))
+      .map(async (file) => {
+        const raw = await fs.readFile(path.join(dir, file), "utf8");
+        const { data } = matter(raw);
+
+        if (data.draft) return null;
+
+        return {
+          slug: file.replace(".mdx", ""),
+          updatedAt: data.date,
+        };
+      }),
+  );
+
+  return posts.filter((post): post is BlogPostMeta => post !== null);
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://pathtodesign.com";
 
-  const [designers, apps, books, products] = await Promise.all([
+  const [designers, apps, books, products, blogPosts] = await Promise.all([
     getDesigners(),
     getApps(),
     getBooks(),
     getProducts(),
+    getBlogPosts(),
   ]);
 
   // Designer pages
@@ -72,6 +110,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     }),
   );
+
+  const blogIndexPage = {
+    url: `${baseUrl}/blog`,
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.9,
+  };
+
+  const blogPostPages = blogPosts.map((post: BlogPostMeta) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: post.updatedAt ? new Date(post.updatedAt) : new Date(),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
 
   // Static pages
   const staticPages: MetadataRoute.Sitemap = [
@@ -128,6 +180,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Combine everything
   return [
     ...staticPages,
+    blogIndexPage,
+    ...blogPostPages,
     ...designerPages,
     ...appPages,
     ...bookPages,

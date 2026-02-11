@@ -37,6 +37,20 @@ export async function generateMetadata({ params }: Props) {
   return {
     title: data.title,
     description: data.description,
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
+    openGraph: {
+      title: data.title,
+      description: data.description,
+      type: "article",
+      url: `/blog/${slug}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: data.title,
+      description: data.description,
+    },
   };
 }
 
@@ -63,41 +77,75 @@ export default async function BlogPost({ params }: Props) {
   const Content = await compileMDX(content);
 
   return (
-    <article className="prose prose-invert w-3/4 text-xl">
-      <h1 className="-mb-14">{frontmatter.title}</h1>
-      {frontmatter.description && (
-        <h2 className="font-light text-muted-foreground">
-          {frontmatter.description}
-        </h2>
-      )}
-      <div className="flex items-center gap-4 text-base text-muted-foreground">
-        <time dateTime={frontmatter.date}>
-          {dayjs(frontmatter.date).format("D MMMM YYYY")}
-        </time>
+    <article className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+      <div className="col-span-2 text-xl">
+        <header className="prose prose-invert">
+          <h1>{frontmatter.title}</h1>
 
-        <span>·</span>
+          {frontmatter.description && (
+            <p className="text-2xl text-muted-foreground">
+              {frontmatter.description}
+            </p>
+          )}
 
-        <Link
-          href={`/designers/${frontmatter.authorUrl}`}
-          className="flex items-center gap-3 text-foreground hover:underline"
-        >
-          <Image
-            src={frontmatter.profileImage || ""}
-            alt={frontmatter.author}
-            width={32}
-            height={32}
-            className="rounded-full"
-            unoptimized
-          />
-          <span>{frontmatter.author}</span>
-        </Link>
+          <div className="flex items-center gap-4 text-base text-muted-foreground">
+            <time dateTime={frontmatter.date} itemProp="datePublished">
+              {dayjs(frontmatter.date).format("D MMMM YYYY")}
+            </time>
+
+            <span>·</span>
+
+            <Link
+              href={`/designers/${frontmatter.authorUrl}`}
+              rel="author"
+              className="flex items-center gap-3 text-foreground hover:underline"
+            >
+              <Image
+                src={frontmatter.profileImage || ""}
+                alt={`${frontmatter.author} profile image`}
+                width={32}
+                height={32}
+                className="rounded-full"
+                unoptimized
+              />
+              <span itemProp="author">{frontmatter.author}</span>
+            </Link>
+          </div>
+        </header>
+
+        <section className="prose prose-invert mt-8 text-xl">
+          {Content.default({
+            components: {
+              App,
+              Callout,
+            },
+          })}
+        </section>
       </div>
-      {Content.default({
-        components: {
-          App,
-          Callout,
-        },
-      })}
+
+      <aside className="hidden lg:block">
+        <div className="sticky top-32 flex flex-col gap-8">
+          {/* Newsletter, CTAs, related content */}
+        </div>
+      </aside>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: frontmatter.title,
+            description: frontmatter.description,
+            datePublished: frontmatter.date,
+            author: {
+              "@type": "Person",
+              name: frontmatter.author,
+              url: `${process.env.NEXT_PUBLIC_SITE_URL}/designers/${frontmatter.authorUrl}`,
+            },
+          }),
+        }}
+      />
     </article>
   );
 }

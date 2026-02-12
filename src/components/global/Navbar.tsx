@@ -17,9 +17,15 @@ export function Navbar() {
         </Link>
       </div>
 
-      <Link href={mainCTAs[1].href}>
-        <Button>{mainCTAs[1].title}</Button>
-      </Link>
+      <div className="flex items-center gap-3">
+        <Link href={mainCTAs[1].href}>
+          <Button variant="ghost">{mainCTAs[1].title}</Button>
+        </Link>
+
+        <Link href={mainCTAs[2].href}>
+          <Button>{mainCTAs[2].title}</Button>
+        </Link>
+      </div>
     </nav>
   );
 }

@@ -40,6 +40,7 @@ export function Hero({ designers }: Props) {
     "Paduraru",
     "Kumar",
     "Filou",
+    "Hudock",
     "Galinato",
     "Strasche",
     "Martin",

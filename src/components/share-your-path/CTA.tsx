@@ -1,6 +1,5 @@
 "use client";
 
-import { mainCTAs, menu } from "@/config/navigation";
 import Link from "next/link";
 import { Button } from "../ui/button";
 
@@ -12,12 +11,10 @@ export function CTA() {
         <span className="block">Your impact lasts much longer.</span>
       </h3>
       <p className="mb-8 w-full text-lg font-light text-muted-foreground md:text-xl">
-        You are helping someone who feels stuck today.
+        Share your journey and inspire the next generation of designers.
       </p>
       <Link href="share-your-path/form">
-        <Button variant="secondary" className="w-full md:w-min">
-          Start sharing your path
-        </Button>
+        <Button className="w-full md:w-min">Share your path</Button>
       </Link>
     </div>
   );

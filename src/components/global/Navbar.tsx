@@ -2,6 +2,7 @@
 
 import { mainCTAs, menu } from "@/config/navigation";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Logo } from "./Logo";
 import { Button } from "../ui/button";
 import { Menu } from "lucide-react";
@@ -15,6 +16,12 @@ import {
 } from "../ui/sheet";
 
 export function Navbar() {
+  const pathname = usePathname();
+  const isShareYourPathPage = pathname.startsWith("/share-your-path");
+  const primaryCta = isShareYourPathPage
+    ? { title: "Share Your Path", href: "/share-your-path/form" }
+    : mainCTAs[2];
+
   return (
     <nav className="sticky left-0 top-0 z-40 mx-auto flex max-w-[1600px] items-center justify-between bg-stone-950/80 px-3 py-1 font-sans backdrop-blur-lg">
       <div className="px-2 py-2 md:px-4">
@@ -35,8 +42,8 @@ export function Navbar() {
           <Button variant="ghost">{mainCTAs[1].title}</Button>
         </Link>
 
-        <Link href={mainCTAs[2].href}>
-          <Button>{mainCTAs[2].title}</Button>
+        <Link href={primaryCta.href}>
+          <Button>{primaryCta.title}</Button>
         </Link>
       </div>
 
@@ -86,7 +93,7 @@ export function Navbar() {
 
             <SheetClose asChild>
               <Button asChild className="mt-2 w-full">
-                <Link href={mainCTAs[2].href}>{mainCTAs[2].title}</Link>
+                <Link href={primaryCta.href}>{primaryCta.title}</Link>
               </Button>
             </SheetClose>
           </div>

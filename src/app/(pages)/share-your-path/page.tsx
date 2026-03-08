@@ -30,8 +30,8 @@ export default async function Home() {
       <Hero />
       <FeaturedIn />
       <Designers designers={designers} />
-      <WhyThisMatters />
       <WhenYouShare designers={designers} />
+      <WhyThisMatters />
       <CTA />
       <FaqSection />
     </div>

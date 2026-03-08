@@ -8,17 +8,15 @@ export function Hero() {
     <div className="flex flex-col items-center">
       <div className="space-y-3 text-center md:w-4/5">
         <h1 className="text-4xl font-bold md:text-7xl">
-          Share your design journey.{" "}
-          <span className="block">Help someone find their way.</span>
+          Shape how the next generation enters design
         </h1>
-        <h2 className="pb-8 text-xl font-extralight text-muted-foreground md:text-2xl">
+        <h2 className="mx-auto pb-8 text-xl font-extralight text-muted-foreground md:w-3/4 md:text-2xl">
           Path to Design collects honest career stories from experienced
-          designers to help people breaking into the industry make better
-          decisions, faster.
+          designers to help people break into the industry.
         </h2>
         <Link href="share-your-path/form">
-          <Button variant="secondary" className="w-full md:w-min">
-            Start sharing your path
+          <Button className="w-full md:w-min">
+            Share your path
           </Button>
         </Link>
       </div>

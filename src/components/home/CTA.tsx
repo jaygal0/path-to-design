@@ -13,8 +13,8 @@ export function CTA() {
       <p className="mb-8 w-full text-lg font-light text-muted-foreground md:text-xl">
         Explore real design careers and see what&apos;s possible.
       </p>
-      <Link href={mainCTAs[1].href}>
-        <Button>{mainCTAs[1].title}</Button>
+      <Link href={mainCTAs[2].href}>
+        <Button>{mainCTAs[2].title}</Button>
       </Link>
     </div>
   );

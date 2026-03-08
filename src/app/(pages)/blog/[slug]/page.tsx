@@ -80,7 +80,7 @@ export default async function BlogPost({ params }: Props) {
     <article className="grid grid-cols-1 gap-8 lg:grid-cols-3">
       <div className="col-span-2 text-xl">
         <header className="prose prose-invert">
-          <h1>{frontmatter.title}</h1>
+          <h1 className="md:text-5xl">{frontmatter.title}</h1>
 
           {frontmatter.description && (
             <p className="text-2xl text-muted-foreground">

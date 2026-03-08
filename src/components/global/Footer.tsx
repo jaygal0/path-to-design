@@ -13,7 +13,9 @@ export default function Footer() {
           © {dayjs().year()} Path to Design. All Rights Reserved.
         </div>
         <ul className="order-1 flex w-min flex-col items-start gap-4 text-left text-sm md:order-2 md:flex-row md:gap-12 lg:items-center">
-          {menu.map((item) => (
+          {menu
+            .filter((item) => item.href !== "/about")
+            .map((item) => (
             <li key={item.href}>
               <Button asChild variant="ghost" className="h-auto p-0 text-sm">
                 <Link href={item.href}>{item.title}</Link>

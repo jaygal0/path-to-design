@@ -66,9 +66,9 @@ export default async function BlogIndex() {
               <div className="flex items-center gap-4 text-sm text-muted-foreground">
                 <time dateTime={post.date}>
                   {new Date(post.date).toLocaleDateString("en-GB", {
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric",
+                    day: "2-digit",
+                    month: "short",
+                    year: "2-digit",
                   })}
                 </time>
 

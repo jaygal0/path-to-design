@@ -1,15 +1,17 @@
+import Image from "next/image";
+
 export default function Page() {
   return (
-    <div className="md:px-96">
+    <main className="mx-auto max-w-3xl">
       <div className="flex flex-col gap-4 text-xl leading-relaxed">
-        <h1 className="mb-8 text-2xl font-bold">About</h1>
-        <p>Hi 👋</p>
+        <h1 className="mb-8 text-3xl font-bold">About</h1>
+        <p>Hey! Thank you for checking out my site.</p>
         <p>
-          My name is Joshua Galinato, and I&apos;m a designer too. You can view
+          My name is Joshua Galinato, and I&apos;m a designer too! You can view
           my profile{" "}
           <a
             className="underline hover:cursor-pointer"
-            href={`${process.env.WEB_SITE}/designers/joshua-galinato`}
+            href="/designers/joshua-galinato"
           >
             here
           </a>{" "}
@@ -22,6 +24,18 @@ export default function Page() {
           aspiring designers, and offer insights into entering the industry.
         </p>
         <p>
+          Below is a little snapshot of my design journey and how I ended up
+          creating Path to Design.
+        </p>
+        <Image
+          src="/share-your-path/joshua-pathtodesign.png"
+          alt="Joshua from Path to Design"
+          width={1200}
+          height={630}
+          className="mb-2 h-auto w-full rounded-lg border border-stone-800"
+          priority
+        />
+        <p>
           I hope you find something valuable here that aids your path to
           becoming a designer. If so, feel free to reach out at{" "}
           <a
@@ -33,6 +47,6 @@ export default function Page() {
         </p>
         <p>I&apos;d love to hear from you!</p>
       </div>
-    </div>
+    </main>
   );
 }

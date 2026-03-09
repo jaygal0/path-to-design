@@ -5,27 +5,32 @@ export default function Page() {
     <main className="mx-auto max-w-3xl">
       <div className="flex flex-col gap-4 text-xl leading-relaxed">
         <h1 className="mb-8 text-3xl font-bold">About</h1>
-        <p>Hey! Thank you for checking out my site.</p>
+        <p>Path to Design started as a personal project.</p>
         <p>
-          My name is Joshua Galinato, and I&apos;m a designer too! You can view
-          my profile{" "}
-          <a
-            className="underline hover:cursor-pointer"
-            href="/designers/joshua-galinato"
-          >
-            here
-          </a>{" "}
-          if you&apos;re interested.
+          As a designer, I wanted to go beyond designing websites and learn how
+          to build them from scratch. Along the way, I began reaching out to
+          designers to learn how they started their careers, what they had
+          learned, and what advice they would give to others trying to enter the
+          field.
         </p>
         <p>
-          As a designer, I wanted to further my skills by learning to not only
-          design websites but also build them from scratch. I realised this
-          personal project could help me expand my network of designers, assist
-          aspiring designers, and offer insights into entering the industry.
+          What began as a way to learn and expand my network quickly became
+          something more.
         </p>
         <p>
-          Below is a little snapshot of my design journey and how I ended up
-          creating Path to Design.
+          Today, Path to Design shares real stories from designers around the
+          world, helping aspiring designers understand the many different paths
+          into the industry. Each journey is different, but there is no single
+          way to become a designer.
+        </p>
+        <p>
+          This project has helped me grow my own skills, connect with incredible
+          designers, and share their insights with others who are just starting
+          out.
+        </p>
+        <p>
+          Below is a snapshot of my own design journey and how Path to Design
+          came to be.
         </p>
         <Image
           src="/share-your-path/joshua-pathtodesign.png"
@@ -36,16 +41,27 @@ export default function Page() {
           priority
         />
         <p>
-          I hope you find something valuable here that aids your path to
-          becoming a designer. If so, feel free to reach out at{" "}
+          If you find something here that helps you on your journey, feel free
+          to reach out at{" "}
           <a
             className="underline hover:cursor-pointer"
             href="mailto:joshua@pathtodesign.com"
           >
-            joshua@pathtodesign.com.
+            joshua@pathtodesign.com
           </a>
+          .
         </p>
-        <p>I&apos;d love to hear from you!</p>
+        <p>I’d love to hear from you.</p>
+        <p>
+          You can check out my journey{" "}
+          <a
+            className="underline hover:cursor-pointer"
+            href="/designers/joshua-galinato"
+          >
+            here
+          </a>{" "}
+          if you&apos;re interested.
+        </p>
       </div>
     </main>
   );

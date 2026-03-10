@@ -15,8 +15,8 @@ export default function Page() {
          In the meantime, feel free to explore the directory and connect with our amazing community of designers.`}
       />
 
-      <Link href={mainCTAs[1].href}>
-        <Button>Explore design careers</Button>
+      <Link href={mainCTAs[2].href}>
+        <Button>{mainCTAs[2].title}</Button>
       </Link>
     </div>
   );

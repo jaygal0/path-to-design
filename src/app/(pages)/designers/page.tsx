@@ -14,7 +14,13 @@ async function getData() {
   return { designers };
 }
 
-export default async function BrowsePageWrapper() {
+export default async function BrowsePageWrapper({
+  searchParams,
+}: {
+  searchParams: Promise<{ role?: string }>;
+}) {
   const { designers } = await getData();
-  return <BrowseDesigners designers={designers} />;
+  const { role } = await searchParams;
+
+  return <BrowseDesigners designers={designers} initialRoleKey={role} />;
 }

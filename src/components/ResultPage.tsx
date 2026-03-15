@@ -2,11 +2,24 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import {
+  ChevronRight,
+  Compass,
+  FileText,
+  GraduationCap,
+  Link2,
+  Linkedin,
+  Lightbulb,
+  Sparkles,
+  Target,
+  Twitter,
+} from "lucide-react";
 
 import { AppsUsed } from "@/components/designer/AppsUsed";
 import { BooksUsed } from "@/components/designer/BooksUsed";
 import { ProductsUsed } from "@/components/designer/ProductsUsed";
 import { CardDesigner } from "@/components/global/CardDesigner";
+import { CTA } from "@/components/home/CTA";
 import { Button } from "@/components/ui/button";
 import {
   analyticsEvents,
@@ -30,6 +43,15 @@ interface ResultPageProps {
   recommendedProducts: any[];
 }
 
+const adviceIcons = [
+  Target,
+  FileText,
+  GraduationCap,
+  Compass,
+  Lightbulb,
+  Sparkles,
+];
+
 export function ResultPage({
   role,
   recommendedDesigners,
@@ -39,6 +61,7 @@ export function ResultPage({
 }: ResultPageProps) {
   const [quizState, setQuizState] = useState<QuizState | null>(null);
   const [copied, setCopied] = useState(false);
+  const [linkedinCopied, setLinkedinCopied] = useState(false);
   const [shareUrl, setShareUrl] = useState("");
 
   useEffect(() => {
@@ -73,6 +96,19 @@ export function ResultPage({
     window.setTimeout(() => setCopied(false), 2000);
   }
 
+  async function handleLinkedInShare() {
+    if (!shareUrl) return;
+
+    const shareMessage = `I got ${roles[role].name} on Path to Design. See your result here: ${shareUrl}`;
+
+    // LinkedIn no longer supports prefilled personal post text via share URL,
+    // so we copy the suggested post first and then open the share dialog.
+    await navigator.clipboard.writeText(shareMessage);
+    setLinkedinCopied(true);
+    window.setTimeout(() => setLinkedinCopied(false), 2000);
+    window.open(linkedinShareUrl, "_blank", "noopener,noreferrer");
+  }
+
   const twitterShareUrl = shareUrl
     ? `https://twitter.com/intent/tweet?text=${encodeURIComponent(
         `I got ${roles[role].name} on Path to Design.`,
@@ -86,45 +122,101 @@ export function ResultPage({
     : "#";
 
   return (
-    <div className="mx-auto flex w-full max-w-4xl flex-col gap-6 rounded-3xl border border-stone-800 bg-stone-900/70 p-8 shadow-2xl shadow-stone-950/30 md:p-12">
+    <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 space-y-20 p-8 shadow-2xl md:p-12">
       <div className="space-y-4 text-center">
         <p className="text-sm uppercase tracking-[0.3em] text-stone-400">
           Your Design Path
         </p>
-        <h1 className="text-4xl font-semibold text-stone-50 md:text-5xl">
-          Your Design Path: {roles[role].name}
+        <h1 className="text-4xl font-semibold text-stone-50 md:text-7xl">
+          {roles[role].name}
         </h1>
-        <p className="mx-auto max-w-2xl text-lg text-stone-300">
+        <p className="mx-auto max-w-2xl text-xl text-muted-foreground">
           {getRoleExplanation(role)}
         </p>
-        <p className="mx-auto max-w-2xl text-stone-400">{explanation}</p>
       </div>
 
+      <section className="text-center">
+        <h2 className="text-lg text-muted-foreground">Share your result</h2>
+        <div className="mt-4 flex justify-center gap-3">
+          <Button
+            asChild
+            variant="outline"
+            size="icon"
+            aria-label="Share on Twitter"
+          >
+            <Link href={twitterShareUrl} target="_blank" rel="noreferrer">
+              <Twitter className="h-4 w-4" />
+            </Link>
+          </Button>
+          <Button
+            variant="outline"
+            size="icon"
+            aria-label="Share on LinkedIn"
+            title={
+              linkedinCopied
+                ? "Post text copied. Paste it into LinkedIn."
+                : "Copy post text and open LinkedIn"
+            }
+            onClick={handleLinkedInShare}
+          >
+            <Linkedin className="h-4 w-4" />
+          </Button>
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={handleCopyLink}
+            aria-label={copied ? "Link copied" : "Copy link"}
+            title={copied ? "Copied" : "Copy link"}
+          >
+            <Link2 className="h-4 w-4" />
+          </Button>
+        </div>
+      </section>
+
       {advice.length > 0 && (
-        <section className="rounded-3xl border border-stone-800 bg-stone-950 p-6">
-          <h2 className="text-2xl font-semibold text-stone-50">
-            Personalized next steps
-          </h2>
+        <section>
+          <h2 className="text-2xl font-semibold">Personalized next steps</h2>
           <p className="mt-2 text-stone-400">
             {quizState?.experience
-              ? `Because you said you're "${quizState.experience.toLowerCase()}", here are the best next moves.`
+              ? `Because you said you're ${quizState.experience.toLowerCase()}, you should focus on:`
               : "Here are a few useful next steps to keep momentum going."}
           </p>
-          <ul className="mt-4 space-y-3 text-stone-200">
-            {advice.map((item) => (
-              <li key={item} className="rounded-2xl border border-stone-800 px-4 py-3">
-                {item}
-              </li>
-            ))}
+          <ul className="mt-6 grid gap-3 md:grid-cols-2 xl:grid-cols-2">
+            {advice.map((item, index) => {
+              const Icon = adviceIcons[index % adviceIcons.length];
+
+              return (
+                <li
+                  key={item}
+                  className="flex min-h-36 flex-col items-start gap-5 rounded-2xl border border-stone-800 bg-stone-950/60 p-5"
+                >
+                  <Icon className="h-5 w-5" />
+                  <p className="text-xl text-foreground">{item}</p>
+                </li>
+              );
+            })}
           </ul>
         </section>
       )}
 
-      <section className="rounded-3xl border border-stone-800 bg-stone-950 p-6">
-        <h2 className="text-2xl font-semibold text-stone-50">
-          Learn from real designers
-        </h2>
-        <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <section>
+        <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+          <h2 className="text-2xl font-semibold text-stone-50">
+            Learn from real designers
+          </h2>
+          <Button
+            asChild
+            variant="link"
+            size="sm"
+            className="w-full justify-start px-0 md:w-auto"
+          >
+            <Link href={`/designers?role=${role}`}>
+              Explore Designers
+              <ChevronRight className="h-4 w-4" />
+            </Link>
+          </Button>
+        </div>
+        <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-2">
           {recommendedDesigners.map((designer) => (
             <CardDesigner
               key={designer.slug}
@@ -141,54 +233,79 @@ export function ResultPage({
         </div>
       </section>
 
-      {(recommendedApps.length > 0 ||
-        recommendedBooks.length > 0 ||
-        recommendedProducts.length > 0) && (
-        <section className="rounded-3xl border border-stone-800 bg-stone-950 p-6">
-          <h2 className="text-2xl font-semibold text-stone-50">
-            See what these designers use
-          </h2>
-          <p className="mt-2 text-stone-400">
-            Apps, books, and tools currently used by designers in this path.
-          </p>
-          <div className="mt-6 space-y-8">
-            {recommendedApps.length > 0 && <AppsUsed apps={recommendedApps} />}
-            {recommendedBooks.length > 0 && (
-              <BooksUsed books={recommendedBooks} />
-            )}
-            {recommendedProducts.length > 0 && (
-              <ProductsUsed product={recommendedProducts} />
-            )}
+      {recommendedApps.length > 0 && (
+        <section>
+          <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+            <h2 className="text-2xl font-semibold text-stone-50">
+              Apps currently used by designers in this role
+            </h2>
+            <Button
+              asChild
+              variant="link"
+              size="sm"
+              className="w-full justify-start px-0 md:w-auto"
+            >
+              <Link href="/best-design-apps">
+                Browse All Apps
+                <ChevronRight className="h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+          <div className="mt-6">
+            <AppsUsed apps={recommendedApps} title="" />
           </div>
         </section>
       )}
 
-      <section className="rounded-3xl border border-stone-800 bg-stone-950 p-6">
-        <h2 className="text-2xl font-semibold text-stone-50">Share your result</h2>
-        <div className="mt-4 flex flex-wrap gap-3">
-          <Button asChild variant="outline">
-            <Link href={twitterShareUrl} target="_blank" rel="noreferrer">
-              Twitter
-            </Link>
-          </Button>
-          <Button asChild variant="outline">
-            <Link href={linkedinShareUrl} target="_blank" rel="noreferrer">
-              LinkedIn
-            </Link>
-          </Button>
-          <Button variant="outline" onClick={handleCopyLink}>
-            {copied ? "Copied" : "Copy Link"}
-          </Button>
-        </div>
-      </section>
+      {recommendedBooks.length > 0 && (
+        <section>
+          <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+            <h2 className="text-2xl font-semibold text-stone-50">
+              Books recommended by designers in this role
+            </h2>
+            <Button
+              asChild
+              variant="link"
+              size="sm"
+              className="w-full justify-start px-0 md:w-auto"
+            >
+              <Link href="/best-design-books">
+                Browse All Books
+                <ChevronRight className="h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+          <div className="mt-6">
+            <BooksUsed books={recommendedBooks} title="" />
+          </div>
+        </section>
+      )}
 
-      <div className="flex justify-center">
-        <Button asChild className="w-full md:w-auto">
-          <Link href={`/designers?role=${role}`}>
-            Explore Designers in This Role
-          </Link>
-        </Button>
-      </div>
+      {recommendedProducts.length > 0 && (
+        <section>
+          <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+            <h2 className="text-2xl font-semibold text-stone-50">
+              Tools currently used by designers in this role
+            </h2>
+            <Button
+              asChild
+              variant="link"
+              size="sm"
+              className="w-full justify-start px-0 md:w-auto"
+            >
+              <Link href="/best-design-tools">
+                Browse All Tools
+                <ChevronRight className="h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+          <div className="mt-6">
+            <ProductsUsed product={recommendedProducts} title="" />
+          </div>
+        </section>
+      )}
+
+      <CTA />
     </div>
   );
 }

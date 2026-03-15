@@ -1,11 +1,15 @@
 import Image from "next/image";
 
-export function AppsUsed({ apps }: any) {
+export function AppsUsed({
+  apps,
+  title = "What apps do you use to help you design?",
+}: {
+  apps: any;
+  title?: string;
+}) {
   return (
     <div>
-      <h3 className="mb-4 text-xl text-muted-foreground">
-        What apps do you use to help you design?
-      </h3>
+      {title ? <h3 className="mb-4 text-xl text-muted-foreground">{title}</h3> : null}
       <div className="mb-8 flex flex-wrap gap-10 gap-y-4">
         {apps
           ?.slice() // Create a shallow copy to avoid mutating the original array

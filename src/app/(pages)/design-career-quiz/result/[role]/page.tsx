@@ -95,13 +95,13 @@ export default async function DesignCareerQuizResultPage({
 
   const recommendedApps = allApps
     .filter(matchesRecommendedDesigners)
-    .slice(0, 5);
+    .slice(0, 8);
   const recommendedBooks = allBooks
     .filter(matchesRecommendedDesigners)
-    .slice(0, 5);
+    .slice(0, 8);
   const recommendedProducts = allProducts
     .filter(matchesRecommendedDesigners)
-    .slice(0, 5);
+    .slice(0, 8);
 
   return (
     <section className="flex min-h-[42rem] items-center py-6">

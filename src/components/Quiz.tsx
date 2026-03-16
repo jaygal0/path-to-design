@@ -125,8 +125,8 @@ export function Quiz() {
 
   return (
     <section className="mx-auto flex min-h-[42rem] max-w-4xl flex-col justify-center">
-      <div className="space-y-8 rounded-3xl border border-stone-800 bg-stone-900/70 px-6 py-10 shadow-2xl shadow-stone-950/30 md:px-10 md:py-12">
-        <div className="space-y-4 text-center">
+      <div className="space-y-8">
+        <div className="mb-12 space-y-4 text-center">
           <p className="text-sm uppercase tracking-[0.3em] text-stone-400">
             Design Career Quiz
           </p>
@@ -134,7 +134,7 @@ export function Quiz() {
             Find Your Design Career Path
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-stone-300 md:text-xl">
-            Answer 4 quick questions and discover which design role fits your
+            Answer 6 quick questions and discover which design role fits your
             interests.
           </p>
         </div>
@@ -147,11 +147,8 @@ export function Quiz() {
           />
 
           {showExperienceStep ? (
-            <div className="space-y-6 rounded-3xl border border-stone-800 bg-stone-950 p-6 md:p-8">
+            <div className="space-y-6">
               <div className="space-y-2">
-                <p className="text-sm uppercase tracking-[0.2em] text-stone-400">
-                  Experience
-                </p>
                 <h2 className="text-2xl font-semibold text-stone-50 md:text-3xl">
                   What best describes your design experience?
                 </h2>
@@ -171,18 +168,12 @@ export function Quiz() {
               </div>
             </div>
           ) : showEmailStep ? (
-            <form
-              onSubmit={handleEmailSubmit}
-              className="space-y-6 rounded-3xl border border-stone-800 bg-stone-950 p-6 md:p-8"
-            >
+            <form onSubmit={handleEmailSubmit} className="space-y-6">
               <div className="space-y-2">
-                <p className="text-sm uppercase tracking-[0.2em] text-stone-400">
-                  One more step
-                </p>
                 <h2 className="text-2xl font-semibold text-stone-50 md:text-3xl">
                   Where should we send your result?
                 </h2>
-                <p className="text-stone-300">
+                <p className="text-muted-foreground">
                   We'll send your personalised design path and resources.
                 </p>
               </div>

@@ -7,11 +7,8 @@ interface QuestionProps {
 
 export function Question({ question, onAnswer }: QuestionProps) {
   return (
-    <div className="space-y-6 rounded-3xl border border-stone-800 bg-stone-900/70 p-6 md:p-8">
+    <div className="space-y-6">
       <div className="space-y-2">
-        <p className="text-sm uppercase tracking-[0.2em] text-stone-400">
-          Quick question
-        </p>
         <h2 className="text-2xl font-semibold text-stone-50 md:text-3xl">
           {question.prompt}
         </h2>

@@ -17,7 +17,7 @@ export function ProgressBar({
 
   return (
     <div className={cn("space-y-3", className)}>
-      <div className="flex items-center justify-between text-sm text-stone-300">
+      <div className="flex items-center justify-between text-sm text-muted-foreground">
         <span>
           {label} {currentQuestion} / {totalQuestions}
         </span>
@@ -25,7 +25,7 @@ export function ProgressBar({
       </div>
       <div className="h-2 overflow-hidden rounded-full bg-stone-800">
         <div
-          className="h-full rounded-full bg-stone-100 transition-all duration-300"
+          className="h-full rounded-full bg-primary transition-all duration-300"
           style={{ width: `${progress}%` }}
         />
       </div>

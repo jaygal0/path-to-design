@@ -1,10 +1,13 @@
 import type { QuizAnswer } from "@/lib/quizQuestions";
 import { roleOrder, type RoleKey } from "@/lib/roles";
 
-export type QuizScores = Record<RoleKey, number>;
+type QuizScoreAliases = Record<"ux" | "ui", number>;
+
+export type QuizScores = Record<RoleKey, number> & QuizScoreAliases;
 
 export const initialQuizScores: QuizScores = {
   product: 0,
+  "ui-ux": 0,
   ux: 0,
   ui: 0,
   research: 0,
@@ -16,15 +19,21 @@ export const initialQuizScores: QuizScores = {
 export function calculateQuizScores(answers: QuizAnswer[]): QuizScores {
   // Each answer contributes points to one or more roles, which keeps the
   // scoring logic easy to extend when we add more questions later.
-  return answers.reduce<QuizScores>((scores, answer) => {
+  const scores = answers.reduce<QuizScores>((scores, answer) => {
     const nextScores = { ...scores };
 
     Object.entries(answer.score).forEach(([role, value]) => {
-      nextScores[role as RoleKey] += value ?? 0;
+      nextScores[role as keyof QuizScores] += value ?? 0;
     });
 
     return nextScores;
   }, initialQuizScores);
+
+  // UI and UX answers still score independently in the quiz, but they roll up
+  // into a single result role so the outcome is presented as one combined path.
+  scores["ui-ux"] += scores.ux + scores.ui;
+
+  return scores;
 }
 
 export function getTopRole(scores: QuizScores): RoleKey {

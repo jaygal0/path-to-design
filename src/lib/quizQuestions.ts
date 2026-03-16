@@ -1,9 +1,9 @@
-import type { RoleKey } from "@/lib/roles";
+import type { QuizScoreRoleKey } from "@/lib/roles";
 
 export interface QuizAnswer {
   id: string;
   label: string;
-  score: Partial<Record<RoleKey, number>>;
+  score: Partial<Record<QuizScoreRoleKey, number>>;
   resultHint: string;
 }
 

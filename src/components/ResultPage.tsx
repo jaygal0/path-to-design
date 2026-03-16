@@ -124,10 +124,10 @@ export function ResultPage({
   return (
     <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 space-y-20 p-8 shadow-2xl md:p-12">
       <div className="space-y-4 text-center">
-        <p className="text-sm uppercase tracking-[0.3em] text-stone-400">
+        <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground">
           Your Design Path
         </p>
-        <h1 className="text-4xl font-semibold text-stone-50 md:text-7xl">
+        <h1 className="text-4xl font-semibold text-foreground md:text-7xl">
           {roles[role].name}
         </h1>
         <p className="mx-auto max-w-2xl text-xl text-muted-foreground">

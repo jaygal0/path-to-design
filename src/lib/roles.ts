@@ -1,7 +1,6 @@
 export const roleOrder = [
   "product",
-  "ux",
-  "ui",
+  "ui-ux",
   "research",
   "motion",
   "brand",
@@ -9,6 +8,7 @@ export const roleOrder = [
 ] as const;
 
 export type RoleKey = (typeof roleOrder)[number];
+export type QuizScoreRoleKey = RoleKey | "ux" | "ui";
 
 export interface RoleDefinition {
   key: RoleKey;
@@ -25,16 +25,11 @@ export const roles: Record<RoleKey, RoleDefinition> = {
       "You enjoy solving problems and shaping digital products from idea to launch.",
     directoryRole: "Product Designer",
   },
-  ux: {
-    key: "ux",
-    name: "UX Designer",
-    description: "You enjoy improving usability and making products intuitive.",
-    directoryRole: "UI/UX Designer",
-  },
-  ui: {
-    key: "ui",
-    name: "UI Designer",
-    description: "You enjoy crafting visually beautiful interfaces.",
+  "ui-ux": {
+    key: "ui-ux",
+    name: "UI/UX Designer",
+    description:
+      "You enjoy improving usability and crafting visually beautiful interfaces.",
     directoryRole: "UI/UX Designer",
   },
   research: {

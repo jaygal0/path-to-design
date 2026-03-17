@@ -11,14 +11,24 @@ export const analyticsEvents = {
 } as const;
 
 export const experienceOptions = [
-  "Completely new to design",
-  "Learning design",
-  "Building a portfolio",
-  "Working as a designer",
-  "Switching careers",
+  {
+    value: "Completely new to design",
+  },
+  {
+    value: "Learning design",
+  },
+  {
+    value: "Building a portfolio",
+  },
+  {
+    value: "Working as a designer",
+  },
+  {
+    value: "Switching careers",
+  },
 ] as const;
 
-export type ExperienceValue = (typeof experienceOptions)[number];
+export type ExperienceValue = (typeof experienceOptions)[number]["value"];
 
 export interface QuizState {
   answers: number[];
@@ -37,26 +47,31 @@ export const experienceAdvice: Record<ExperienceValue, string[]> = {
     "Learn design fundamentals",
     "Study UX principles",
     "Practice redesigning apps",
+    "Study real products and analyse why they work",
   ],
   "Learning design": [
     "Build small interface projects every week",
     "Study flows, feedback, and usability",
     "Collect inspiration and explain your decisions",
+    "Recreate existing apps to understand design patterns",
   ],
   "Building a portfolio": [
-    "Build 2-3 case studies",
+    "Build 2-3 strong case studies",
     "Practice product thinking",
     "Contribute to real projects",
+    "Document your design process and decisions",
   ],
   "Working as a designer": [
-    "Sharpen your specialization with real constraints",
+    "Sharpen your specialisation with real constraints",
     "Document outcomes, not just deliverables",
     "Learn from designers slightly ahead of you",
+    "Improve collaboration with engineers and product managers",
   ],
   "Switching careers": [
     "Translate existing skills",
     "Build portfolio projects",
     "Network with designers",
+    "Show how your previous career strengthens your design perspective",
   ],
 };
 

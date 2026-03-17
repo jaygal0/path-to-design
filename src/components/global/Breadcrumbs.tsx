@@ -8,6 +8,8 @@ import { cn } from "@/lib/utils";
 export function Breadcrumbs() {
   const pathname = usePathname();
   const segments = pathname.split("/").filter(Boolean);
+  const isQuizResultRoute =
+    segments[0] === "design-career-quiz" && segments[1] === "result";
 
   // Don't render on specific routes
   if (pathname === "/clarity" || pathname === "/share-your-path") return null;
@@ -41,15 +43,19 @@ export function Breadcrumbs() {
           {i > 0 && (
             <ChevronRight className="mx-1 h-4 w-4 text-muted-foreground" />
           )}
-          <Link
-            href={crumb.href}
-            className={cn(
-              "transition-colors hover:underline",
-              i === breadcrumbs.length - 1 && "font-medium text-primary",
-            )}
-          >
-            {crumb.name}
-          </Link>
+          {isQuizResultRoute && crumb.name === "Result" ? (
+            <span className="text-muted-foreground">{crumb.name}</span>
+          ) : (
+            <Link
+              href={crumb.href}
+              className={cn(
+                "transition-colors hover:underline",
+                i === breadcrumbs.length - 1 && "font-medium text-primary",
+              )}
+            >
+              {crumb.name}
+            </Link>
+          )}
         </div>
       ))}
     </nav>

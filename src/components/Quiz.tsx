@@ -157,12 +157,12 @@ export function Quiz() {
               <div className="grid gap-3">
                 {experienceOptions.map((experience) => (
                   <button
-                    key={experience}
+                    key={experience.value}
                     type="button"
-                    onClick={() => handleExperienceSelect(experience)}
+                    onClick={() => handleExperienceSelect(experience.value)}
                     className="rounded-2xl border border-stone-700 bg-stone-950 px-4 py-4 text-left text-stone-100 transition hover:border-stone-500 hover:bg-stone-900 focus:outline-none focus:ring-2 focus:ring-stone-300"
                   >
-                    {experience}
+                    {experience.value}
                   </button>
                 ))}
               </div>

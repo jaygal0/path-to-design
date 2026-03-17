@@ -1,13 +1,14 @@
 import type { RoleKey } from "@/lib/roles";
+import { plausibleEvents } from "@/config/plausibleEvents";
 
 export const quizSessionStorageKey = "path-to-design-quiz";
 
 export const analyticsEvents = {
-  QUIZ_STARTED: "quiz_started",
-  QUESTION_ANSWERED: "question_answered",
-  QUIZ_COMPLETED: "quiz_completed",
-  EMAIL_ENTERED: "email_entered",
-  RESULT_VIEWED: "result_viewed",
+  QUIZ_STARTED: plausibleEvents.QUIZ_STARTED,
+  QUESTION_ANSWERED: plausibleEvents.QUIZ_QUESTION_ANSWERED,
+  QUIZ_COMPLETED: plausibleEvents.QUIZ_COMPLETED,
+  EMAIL_ENTERED: plausibleEvents.QUIZ_EMAIL_ENTERED,
+  RESULT_VIEWED: plausibleEvents.QUIZ_RESULT_VIEWED,
 } as const;
 
 export const experienceOptions = [
@@ -127,6 +128,11 @@ export function logQuizEvent(
   event: (typeof analyticsEvents)[keyof typeof analyticsEvents],
   payload?: Record<string, unknown>,
 ) {
-  // Replace this with the real analytics client later.
-  console.log(event, payload ?? {});
+  if (typeof window === "undefined" || typeof window.plausible !== "function") {
+    return;
+  }
+
+  // Expand props here later if quiz analytics needs attribution, funnel stage,
+  // or richer segmentation beyond the current event payloads.
+  window.plausible(event, payload ? { props: payload } : undefined);
 }

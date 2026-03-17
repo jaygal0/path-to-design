@@ -88,3 +88,12 @@ export type AvatarProps = {
   state?: boolean;
   profileImage?: string;
 };
+
+declare global {
+  interface Window {
+    plausible?: (
+      eventName: string,
+      options?: { props?: Record<string, unknown> },
+    ) => void;
+  }
+}

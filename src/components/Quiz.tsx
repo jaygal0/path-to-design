@@ -7,6 +7,7 @@ import { ProgressBar } from "@/components/ProgressBar";
 import { Question } from "@/components/Question";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { plausibleEvents } from "@/config/plausibleEvents";
 import {
   analyticsEvents,
   experienceOptions,
@@ -50,6 +51,7 @@ export function Quiz() {
     : showExperienceStep
       ? quizQuestions.length + 1
       : currentQuestionIndex + 1;
+  const currentRole = quizState.role ?? calculateQuizResult(scoredAnswers);
 
   function handleAnswer(answerIndex: number) {
     const nextAnswers = [...quizState.answers, answerIndex];
@@ -61,13 +63,6 @@ export function Quiz() {
             }),
           )
         : quizState.role;
-
-    // This is where per-question analytics can be connected later.
-    logQuizEvent(analyticsEvents.QUESTION_ANSWERED, {
-      questionId: currentQuestion.id,
-      answerId: currentQuestion.answers[answerIndex].id,
-      step: currentQuestionIndex + 1,
-    });
 
     setQuizState((previous) => ({
       ...previous,
@@ -86,12 +81,6 @@ export function Quiz() {
   }
 
   function handleExperienceSelect(experience: ExperienceValue) {
-    logQuizEvent(analyticsEvents.QUESTION_ANSWERED, {
-      questionId: "experience",
-      answerId: experience,
-      step: quizQuestions.length + 1,
-    });
-
     setQuizState((previous) => ({
       ...previous,
       experience,
@@ -111,14 +100,6 @@ export function Quiz() {
 
     setIsSubmitting(true);
     setSubmissionError(null);
-
-    // Future analytics can expand here with request timing, delivery status,
-    // or downstream sequence enrollment without changing the UI flow.
-    logQuizEvent(analyticsEvents.EMAIL_ENTERED, {
-      email,
-      role,
-      experience: completedState.experience,
-    });
 
     try {
       const response = await fetch("/api/quiz/submit", {
@@ -200,7 +181,10 @@ export function Quiz() {
                     key={experience.value}
                     type="button"
                     onClick={() => handleExperienceSelect(experience.value)}
-                    className="rounded-2xl border border-stone-700 bg-stone-950 px-4 py-4 text-left text-stone-100 transition hover:border-stone-500 hover:bg-stone-900 focus:outline-none focus:ring-2 focus:ring-stone-300"
+                    className={`plausible-event-name=${plausibleEvents.QUIZ_QUESTION_ANSWERED} rounded-2xl border border-stone-700 bg-stone-950 px-4 py-4 text-left text-stone-100 transition hover:border-stone-500 hover:bg-stone-900 focus:outline-none focus:ring-2 focus:ring-stone-300`}
+                    data-event-step={quizQuestions.length + 1}
+                    data-event-question="experience"
+                    data-event-answer={experience.value}
                   >
                     {experience.value}
                   </button>
@@ -233,14 +217,20 @@ export function Quiz() {
 
               <Button
                 type="submit"
-                className="w-full md:w-auto"
+                className={`plausible-event-name=${plausibleEvents.QUIZ_EMAIL_ENTERED} w-full md:w-auto`}
+                data-event-role={currentRole}
+                data-event-experience={quizState.experience ?? ""}
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Sending your result..." : "Continue to your result"}
               </Button>
             </form>
           ) : (
-            <Question question={currentQuestion} onAnswer={handleAnswer} />
+            <Question
+              question={currentQuestion}
+              questionStep={currentQuestionIndex + 1}
+              onAnswer={handleAnswer}
+            />
           )}
         </div>
       </div>

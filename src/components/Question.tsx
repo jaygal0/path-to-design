@@ -1,11 +1,13 @@
+import { plausibleEvents } from "@/config/plausibleEvents";
 import type { QuizQuestion } from "@/lib/quizQuestions";
 
 interface QuestionProps {
   question: QuizQuestion;
+  questionStep: number;
   onAnswer: (answerIndex: number) => void;
 }
 
-export function Question({ question, onAnswer }: QuestionProps) {
+export function Question({ question, questionStep, onAnswer }: QuestionProps) {
   return (
     <div className="space-y-6">
       <div className="space-y-2">
@@ -20,7 +22,10 @@ export function Question({ question, onAnswer }: QuestionProps) {
             key={answer.id}
             type="button"
             onClick={() => onAnswer(index)}
-            className="rounded-2xl border border-stone-700 bg-stone-950 px-4 py-4 text-left text-stone-100 transition hover:border-stone-500 hover:bg-stone-900 focus:outline-none focus:ring-2 focus:ring-stone-300"
+            className={`plausible-event-name=${plausibleEvents.QUIZ_QUESTION_ANSWERED} rounded-2xl border border-stone-700 bg-stone-950 px-4 py-4 text-left text-stone-100 transition hover:border-stone-500 hover:bg-stone-900 focus:outline-none focus:ring-2 focus:ring-stone-300`}
+            data-event-step={questionStep}
+            data-event-question={question.id}
+            data-event-answer={answer.id}
           >
             {answer.label}
           </button>

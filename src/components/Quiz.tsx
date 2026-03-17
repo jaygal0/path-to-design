@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { Loader2 } from "lucide-react";
 
 import { ProgressBar } from "@/components/ProgressBar";
 import { Question } from "@/components/Question";
@@ -31,6 +32,9 @@ export function Quiz() {
   const [email, setEmail] = useState("");
   const [marketingConsent, setMarketingConsent] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "saving" | "sending" | "redirecting"
+  >("idle");
   const [submissionError, setSubmissionError] = useState<string | null>(null);
 
   const totalQuestions = quizQuestions.length + 2;
@@ -103,6 +107,7 @@ export function Quiz() {
     };
 
     setIsSubmitting(true);
+    setSubmitStatus("saving");
     setSubmissionError(null);
 
     try {
@@ -128,6 +133,8 @@ export function Quiz() {
         throw new Error(errorPayload?.error || "Failed to save quiz result");
       }
 
+      setSubmitStatus("sending");
+
       logQuizEvent(analyticsEvents.QUIZ_COMPLETED, {
         role,
         experience: completedState.experience,
@@ -137,9 +144,11 @@ export function Quiz() {
       });
 
       saveQuizState(completedState);
+      setSubmitStatus("redirecting");
       router.push(`/design-career-quiz/result/${role}`);
     } catch (error) {
       console.error(error);
+      setSubmitStatus("idle");
       setSubmissionError(
         error instanceof Error
           ? error.message
@@ -149,6 +158,15 @@ export function Quiz() {
       setIsSubmitting(false);
     }
   }
+
+  const submitButtonLabel =
+    submitStatus === "saving"
+      ? "Saving your answers..."
+      : submitStatus === "sending"
+        ? "Sending your result..."
+        : submitStatus === "redirecting"
+          ? "Opening your result..."
+          : "Continue to your result";
 
   return (
     <section className="mx-auto flex min-h-[42rem] max-w-4xl flex-col justify-center">
@@ -257,11 +275,23 @@ export function Quiz() {
                 data-event-role={currentRole}
                 data-event-experience={quizState.experience ?? ""}
                 disabled={isSubmitting}
+                aria-busy={isSubmitting}
               >
-                {isSubmitting
-                  ? "Sending your result..."
-                  : "Continue to your result"}
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    {submitButtonLabel}
+                  </>
+                ) : (
+                  submitButtonLabel
+                )}
               </Button>
+              {isSubmitting ? (
+                <p className="text-sm text-stone-400">
+                  This usually takes a few seconds while we save your result and
+                  prepare your page.
+                </p>
+              ) : null}
             </form>
           ) : (
             <Question

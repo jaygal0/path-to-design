@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { Prisma } from "@prisma/client";
 
 import prisma from "@/lib/db";
+import { sendQuizCompletionNotificationEmail } from "@/lib/email/sendQuizCompletionNotificationEmail";
 import { sendQuizResultEmail } from "@/lib/email/sendQuizResultEmail";
 import { isRoleKey } from "@/lib/roles";
 
@@ -62,6 +63,21 @@ export async function POST(request: Request) {
     });
 
     await sendQuizResultEmail(subscriber);
+    try {
+      await sendQuizCompletionNotificationEmail({
+        email,
+        role,
+        experience,
+        marketingConsent,
+      });
+    } catch (notificationError) {
+      // Internal notifications should never block the user from receiving
+      // their result, so we log and continue.
+      console.error(
+        "Quiz completion notification failed:",
+        notificationError,
+      );
+    }
 
     // Expand tracking here later if you want to connect delivery, open, or
     // click events from the email provider.

@@ -5,8 +5,6 @@ import { useEffect, useMemo, useState } from "react";
 import {
   Blocks,
   ChevronRight,
-  Compass,
-  FileSearch,
   FileText,
   GraduationCap,
   Link2,
@@ -51,95 +49,20 @@ interface ResultPageProps {
   recommendedProducts: any[];
 }
 
-function getAdviceIcon(advice: string) {
-  const normalizedAdvice = advice.toLowerCase();
-
-  if (
-    normalizedAdvice.includes("fundamentals") ||
-    normalizedAdvice.includes("principles")
-  ) {
-    return GraduationCap;
-  }
-
-  if (normalizedAdvice.includes("redesigning apps")) {
-    return Palette;
-  }
-
-  if (
-    normalizedAdvice.includes("study real products") ||
-    normalizedAdvice.includes("analyse")
-  ) {
-    return ScanSearch;
-  }
-
-  if (
-    normalizedAdvice.includes("interface projects") ||
-    normalizedAdvice.includes("case studies")
-  ) {
-    return Blocks;
-  }
-
-  if (normalizedAdvice.includes("flows") || normalizedAdvice.includes("patterns")) {
-    return Compass;
-  }
-
-  if (normalizedAdvice.includes("inspiration")) {
-    return Sparkles;
-  }
-
-  if (normalizedAdvice.includes("product thinking")) {
-    return Target;
-  }
-
-  if (
-    normalizedAdvice.includes("document") ||
-    normalizedAdvice.includes("decisions")
-  ) {
-    return FileText;
-  }
-
-  if (
-    normalizedAdvice.includes("contribute to real projects") ||
-    normalizedAdvice.includes("portfolio projects")
-  ) {
-    return PenSquare;
-  }
-
-  if (normalizedAdvice.includes("specialisation")) {
-    return Target;
-  }
-
-  if (
-    normalizedAdvice.includes("learn from designers") ||
-    normalizedAdvice.includes("slightly ahead of you")
-  ) {
-    return Users;
-  }
-
-  if (
-    normalizedAdvice.includes("collaboration") ||
-    normalizedAdvice.includes("engineers and product managers")
-  ) {
-    return MessageSquareMore;
-  }
-
-  if (normalizedAdvice.includes("translate existing skills")) {
-    return FileSearch;
-  }
-
-  if (
-    normalizedAdvice.includes("network with designers") ||
-    normalizedAdvice.includes("network")
-  ) {
-    return Network;
-  }
-
-  if (normalizedAdvice.includes("previous career")) {
-    return Lightbulb;
-  }
-
-  return Sparkles;
-}
+const adviceIcons = {
+  "graduation-cap": GraduationCap,
+  palette: Palette,
+  "scan-search": ScanSearch,
+  blocks: Blocks,
+  sparkles: Sparkles,
+  target: Target,
+  "file-text": FileText,
+  "pen-square": PenSquare,
+  users: Users,
+  "message-square-more": MessageSquareMore,
+  network: Network,
+  lightbulb: Lightbulb,
+} as const;
 
 export function ResultPage({
   role,
@@ -272,15 +195,15 @@ export function ResultPage({
           </p>
           <ul className="mt-6 grid gap-3 md:grid-cols-2 xl:grid-cols-2">
             {advice.map((item) => {
-              const Icon = getAdviceIcon(item);
+              const Icon = adviceIcons[item.icon];
 
               return (
                 <li
-                  key={item}
+                  key={item.text}
                   className="flex min-h-36 flex-col items-start gap-5 rounded-2xl border border-stone-800 bg-stone-950/60 p-5"
                 >
                   <Icon className="h-5 w-5" />
-                  <p className="text-xl text-foreground">{item}</p>
+                  <p className="text-xl text-foreground">{item.text}</p>
                 </li>
               );
             })}

@@ -1,5 +1,9 @@
 import { designersByRole } from "@/lib/designersByRole";
-import { experienceAdvice, type ExperienceValue } from "@/lib/quizFunnel";
+import {
+  experienceAdvice,
+  type AdviceItem,
+  type ExperienceValue,
+} from "@/lib/quizFunnel";
 import { quizQuestions } from "@/lib/quizQuestions";
 import { roles, type RoleKey } from "@/lib/roles";
 
@@ -32,7 +36,9 @@ export function generateResultExplanation(answerIndexes: number[]) {
   return `Based on your answers you enjoy ${uniqueHints[0]}, ${uniqueHints[1]}, and ${uniqueHints[2]}.`;
 }
 
-export function getExperienceAdvice(experience: ExperienceValue | null) {
+export function getExperienceAdvice(
+  experience: ExperienceValue | null,
+): AdviceItem[] {
   return experience ? experienceAdvice[experience] : [];
 }
 

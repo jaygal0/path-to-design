@@ -25,6 +25,8 @@ export function Quiz() {
   const [showExperienceStep, setShowExperienceStep] = useState(false);
   const [showEmailStep, setShowEmailStep] = useState(false);
   const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionError, setSubmissionError] = useState<string | null>(null);
 
   const totalQuestions = quizQuestions.length + 2;
   const currentQuestion = quizQuestions[currentQuestionIndex];
@@ -98,7 +100,7 @@ export function Quiz() {
     setShowEmailStep(true);
   }
 
-  function handleEmailSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleEmailSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const role = quizState.role ?? calculateQuizResult(scoredAnswers);
@@ -107,20 +109,58 @@ export function Quiz() {
       role,
     };
 
-    // Email provider integration belongs here. Once connected, persist the
-    // email and send any follow-up resources before redirecting.
+    setIsSubmitting(true);
+    setSubmissionError(null);
+
+    // Future analytics can expand here with request timing, delivery status,
+    // or downstream sequence enrollment without changing the UI flow.
     logQuizEvent(analyticsEvents.EMAIL_ENTERED, {
       email,
       role,
       experience: completedState.experience,
     });
-    logQuizEvent(analyticsEvents.QUIZ_COMPLETED, {
-      role,
-      experience: completedState.experience,
-    });
 
-    saveQuizState(completedState);
-    router.push(`/design-career-quiz/result/${role}`);
+    try {
+      const response = await fetch("/api/quiz/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          answers: completedState.answers,
+          role,
+          experience: completedState.experience,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorPayload = (await response.json().catch(() => null)) as
+          | { error?: string }
+          | null;
+
+        throw new Error(
+          errorPayload?.error || "Failed to save quiz result",
+        );
+      }
+
+      logQuizEvent(analyticsEvents.QUIZ_COMPLETED, {
+        role,
+        experience: completedState.experience,
+      });
+
+      saveQuizState(completedState);
+      router.push(`/design-career-quiz/result/${role}`);
+    } catch (error) {
+      console.error(error);
+      setSubmissionError(
+        error instanceof Error
+          ? error.message
+          : "We couldn't send your result right now. Please try again.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -187,8 +227,16 @@ export function Quiz() {
                 className="h-12 rounded-2xl border-stone-700 bg-stone-900 px-4 text-stone-100 placeholder:text-stone-500"
               />
 
-              <Button type="submit" className="w-full md:w-auto">
-                Continue to your result
+              {submissionError ? (
+                <p className="text-sm text-red-400">{submissionError}</p>
+              ) : null}
+
+              <Button
+                type="submit"
+                className="w-full md:w-auto"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Sending your result..." : "Continue to your result"}
               </Button>
             </form>
           ) : (

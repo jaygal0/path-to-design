@@ -19,6 +19,8 @@ export async function sendQuizResultEmail(subscriber: QuizEmailSubscriber) {
   const roleKey = subscriber.role as RoleKey;
   const recommendations = await getQuizRecommendations(roleKey);
 
+  // This quiz result email is transactional, so it is always sent after a
+  // successful submission even if marketing consent is not granted.
   await resend.emails.send({
     from: "Path to Design <no-reply@transactional.pathtodesign.com>",
     to: subscriber.email,

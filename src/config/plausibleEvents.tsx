@@ -5,6 +5,7 @@ export const plausibleEvents = {
   QUIZ_STARTED: "quiz-started",
   QUIZ_QUESTION_ANSWERED: "quiz-question-answered",
   QUIZ_EMAIL_ENTERED: "quiz-email-entered",
+  QUIZ_MARKETING_CONSENT_GIVEN: "quiz-marketing-consent-given",
   QUIZ_COMPLETED: "quiz-completed",
   QUIZ_RESULT_VIEWED: "quiz-result-viewed",
   CONTACT_EMAIL: "contact-email",

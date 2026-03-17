@@ -10,6 +10,7 @@ interface QuizSubmitBody {
   answers?: number[];
   role?: string;
   experience?: string;
+  marketingConsent?: boolean;
 }
 
 export async function POST(request: Request) {
@@ -19,6 +20,7 @@ export async function POST(request: Request) {
     const answers = body.answers;
     const role = body.role;
     const experience = body.experience?.trim();
+    const marketingConsent = body.marketingConsent === true;
 
     if (!email || !answers || !Array.isArray(answers) || !role || !experience) {
       return NextResponse.json(
@@ -38,7 +40,14 @@ export async function POST(request: Request) {
         experience,
         answers,
         source: "quiz",
-        status: "active",
+        // Keep unsubscribe state intact on existing records so quiz retakes do
+        // not silently re-subscribe someone to future marketing emails.
+        ...(marketingConsent
+          ? {
+              marketingConsent: true,
+              consentGivenAt: new Date(),
+            }
+          : {}),
       },
       create: {
         email,
@@ -47,6 +56,8 @@ export async function POST(request: Request) {
         answers,
         source: "quiz",
         status: "active",
+        marketingConsent,
+        consentGivenAt: marketingConsent ? new Date() : null,
       },
     });
 

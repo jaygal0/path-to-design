@@ -8,6 +8,7 @@ export const analyticsEvents = {
   QUESTION_ANSWERED: plausibleEvents.QUIZ_QUESTION_ANSWERED,
   QUIZ_COMPLETED: plausibleEvents.QUIZ_COMPLETED,
   EMAIL_ENTERED: plausibleEvents.QUIZ_EMAIL_ENTERED,
+  MARKETING_CONSENT_GIVEN: plausibleEvents.QUIZ_MARKETING_CONSENT_GIVEN,
   RESULT_VIEWED: plausibleEvents.QUIZ_RESULT_VIEWED,
 } as const;
 

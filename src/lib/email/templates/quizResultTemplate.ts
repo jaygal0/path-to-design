@@ -33,6 +33,7 @@ export function renderQuizResultEmail(
     [];
   const recommendedDesigners = designersByRole[roleKey] ?? [];
   const resultUrl = `${getBaseUrl()}/design-career-quiz/result/${subscriber.role}`;
+  const unsubscribeUrl = `${getBaseUrl()}/unsubscribe?email=${encodeURIComponent(subscriber.email)}`;
 
   // Add richer sections here later if the quiz evolves into a fuller email
   // sequence with multiple content blocks or branching templates.
@@ -111,6 +112,14 @@ export function renderQuizResultEmail(
         <a href="${resultUrl}" style="display: inline-block; background: #4ade80; color: #111827; padding: 12px 18px; border-radius: 8px; text-decoration: none; font-weight: 600;">
           View your result
         </a>
+      </p>
+
+      <hr style="margin: 32px 0; border: 0; border-top: 1px solid #e5e7eb;" />
+      <p style="font-size: 14px; color: #6b7280;">
+        You are receiving this because you completed the Path to Design quiz.
+      </p>
+      <p style="font-size: 14px; color: #6b7280;">
+        <a href="${unsubscribeUrl}" style="color: #16a34a; text-decoration: none;">Unsubscribe</a>
       </p>
     </div>
   `;

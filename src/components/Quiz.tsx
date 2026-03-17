@@ -2,11 +2,14 @@
 
 import { useRouter } from "next/navigation";
 import { FormEvent, useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 
 import { ProgressBar } from "@/components/ProgressBar";
 import { Question } from "@/components/Question";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { plausibleEvents } from "@/config/plausibleEvents";
 import {
   analyticsEvents,
@@ -26,6 +29,7 @@ export function Quiz() {
   const [showExperienceStep, setShowExperienceStep] = useState(false);
   const [showEmailStep, setShowEmailStep] = useState(false);
   const [email, setEmail] = useState("");
+  const [marketingConsent, setMarketingConsent] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submissionError, setSubmissionError] = useState<string | null>(null);
 
@@ -112,22 +116,24 @@ export function Quiz() {
           answers: completedState.answers,
           role,
           experience: completedState.experience,
+          marketingConsent,
         }),
       });
 
       if (!response.ok) {
-        const errorPayload = (await response.json().catch(() => null)) as
-          | { error?: string }
-          | null;
+        const errorPayload = (await response.json().catch(() => null)) as {
+          error?: string;
+        } | null;
 
-        throw new Error(
-          errorPayload?.error || "Failed to save quiz result",
-        );
+        throw new Error(errorPayload?.error || "Failed to save quiz result");
       }
 
       logQuizEvent(analyticsEvents.QUIZ_COMPLETED, {
         role,
         experience: completedState.experience,
+      });
+      logQuizEvent(analyticsEvents.MARKETING_CONSENT_GIVEN, {
+        consent: marketingConsent,
       });
 
       saveQuizState(completedState);
@@ -211,6 +217,36 @@ export function Quiz() {
                 className="h-12 rounded-2xl border-stone-700 bg-stone-900 px-4 text-stone-100 placeholder:text-stone-500"
               />
 
+              <div className="flex items-start gap-3">
+                <Checkbox
+                  id="marketing-consent"
+                  checked={marketingConsent}
+                  onCheckedChange={(checked) =>
+                    setMarketingConsent(checked === true)
+                  }
+                  className={`mt-1 plausible-event-name=${plausibleEvents.QUIZ_MARKETING_CONSENT_GIVEN}`}
+                  data-event-consent={marketingConsent ? "true" : "false"}
+                />
+                <div className="space-y-1">
+                  <Label
+                    htmlFor="marketing-consent"
+                    className="text-sm font-medium text-stone-100"
+                  >
+                    Send me personalised design tips and updates
+                  </Label>
+                  <p className="text-sm text-muted-foreground">
+                    By continuing, you agree to our{" "}
+                    <Link
+                      href="/privacy"
+                      className="underline hover:text-stone-100"
+                    >
+                      Privacy Policy
+                    </Link>
+                    .
+                  </p>
+                </div>
+              </div>
+
               {submissionError ? (
                 <p className="text-sm text-red-400">{submissionError}</p>
               ) : null}
@@ -222,7 +258,9 @@ export function Quiz() {
                 data-event-experience={quizState.experience ?? ""}
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Sending your result..." : "Continue to your result"}
+                {isSubmitting
+                  ? "Sending your result..."
+                  : "Continue to your result"}
               </Button>
             </form>
           ) : (

@@ -129,6 +129,8 @@ model Subscriber {
   answers         Json
   source          String       @default("quiz")
   status          String       @default("active")
+  marketingConsent Boolean     @default(false)
+  consentGivenAt   DateTime?
   lastEmailSentAt DateTime?
   emailEvents     EmailEvent[]
 }

@@ -7,14 +7,7 @@ interface Props {
 }
 
 export function RealDesigners({ designers }: Props) {
-  const filterNames = [
-    "Galinato",
-    "Strasche",
-    "Kumar",
-    "Paduraru",
-    "Oz",
-    "Fox",
-  ];
+  const filterNames = ["Galinato", "Strasche", "Lee", "Kumar", "Hudock", "Fox"];
 
   const lessons = [
     "Getting started in design",

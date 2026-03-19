@@ -1,5 +1,11 @@
 import { Resend } from "resend";
 
+import {
+  emailFrom,
+  emailReplyTo,
+  internalEmailTo,
+} from "@/lib/email/config";
+
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 interface QuizCompletionNotificationInput {
@@ -22,8 +28,9 @@ export async function sendQuizCompletionNotificationEmail({
   // Keep this intentionally minimal so internal notifications can grow
   // separately from the subscriber-facing transactional emails later.
   await resend.emails.send({
-    from: "Path to Design <no-reply@transactional.pathtodesign.com>",
-    to: "info@pathtodesign.com",
+    from: emailFrom,
+    to: internalEmailTo,
+    replyTo: emailReplyTo,
     subject: "Quiz completed",
     html: `
       <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #111827;">

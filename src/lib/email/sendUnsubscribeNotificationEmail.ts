@@ -1,5 +1,11 @@
 import { Resend } from "resend";
 
+import {
+  emailFrom,
+  emailReplyTo,
+  internalEmailTo,
+} from "@/lib/email/config";
+
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 interface UnsubscribeNotificationInput {
@@ -16,8 +22,9 @@ export async function sendUnsubscribeNotificationEmail({
   // Keep this lightweight for now. If you add more lifecycle emails later,
   // this helper is the right place to expand the internal notification format.
   await resend.emails.send({
-    from: "Path to Design <no-reply@transactional.pathtodesign.com>",
-    to: "info@pathtodesign.com",
+    from: emailFrom,
+    to: internalEmailTo,
+    replyTo: emailReplyTo,
     subject: "Quiz unsubscribe notification",
     html: `
       <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #111827;">

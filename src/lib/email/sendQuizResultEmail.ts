@@ -1,6 +1,7 @@
 import { Resend } from "resend";
 
 import prisma from "@/lib/db";
+import { emailFrom, emailReplyTo } from "@/lib/email/config";
 import { renderQuizResultEmail } from "@/lib/email/templates/quizResultTemplate";
 import { getQuizRecommendations } from "@/lib/quizRecommendations";
 import type { RoleKey } from "@/lib/roles";
@@ -22,8 +23,9 @@ export async function sendQuizResultEmail(subscriber: QuizEmailSubscriber) {
   // This quiz result email is transactional, so it is always sent after a
   // successful submission even if marketing consent is not granted.
   await resend.emails.send({
-    from: "Path to Design <no-reply@transactional.pathtodesign.com>",
+    from: emailFrom,
     to: subscriber.email,
+    replyTo: emailReplyTo,
     subject: "Your design path",
     html: renderQuizResultEmail(subscriber, {
       apps: recommendations.emailResources.apps,

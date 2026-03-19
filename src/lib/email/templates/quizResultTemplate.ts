@@ -114,6 +114,10 @@ export function renderQuizResultEmail(
         </a>
       </p>
 
+      <p style="margin-top: 20px;">
+        Just hit reply if you have questions, I read every email.
+      </p>
+
       <hr style="margin: 32px 0; border: 0; border-top: 1px solid #e5e7eb;" />
       <p style="font-size: 14px; color: #6b7280;">
         You are receiving this because you completed the Path to Design quiz.

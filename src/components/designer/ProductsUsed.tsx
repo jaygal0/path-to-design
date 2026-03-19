@@ -3,8 +3,10 @@ import Link from "next/link";
 
 export function ProductsUsed({
   product = [],
+  title = "What tools do you use to help you design?",
 }: {
   product?: { name: string; slug: string }[];
+  title?: string;
 }) {
   if (product.length === 0) return null;
 
@@ -14,9 +16,7 @@ export function ProductsUsed({
 
   return (
     <div>
-      <h3 className="mb-4 text-xl text-muted-foreground">
-        What tools do you use to help you design?
-      </h3>
+      {title ? <h3 className="mb-4 text-xl text-muted-foreground">{title}</h3> : null}
       <div className="mb-8 flex flex-wrap gap-8 gap-y-4">
         {sortedProducts.map((prod) => (
           <Link

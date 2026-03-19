@@ -2,7 +2,6 @@
 
 import { useState, useMemo } from "react";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { CardDesigner } from "@/components/global/CardDesigner";
 import {
   Select,
@@ -12,15 +11,23 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { QuickNav } from "./QuickNav";
-import { Newsletter } from "../global/Newsletter";
+import { getDirectoryRoleLabel, isRoleKey } from "@/lib/roles";
 
 type Props = {
   designers: any[];
+  initialRoleKey?: string;
 };
 
-export default function BrowseDesigners({ designers }: Props) {
+export default function BrowseDesigners({ designers, initialRoleKey }: Props) {
+  const initialDirectoryRole =
+    initialRoleKey && isRoleKey(initialRoleKey)
+      ? getDirectoryRoleLabel(initialRoleKey)
+      : null;
+
   // Designer filters
-  const [selectedRoles, setSelectedRoles] = useState<string[]>([]);
+  const [selectedRoles, setSelectedRoles] = useState<string[]>(
+    initialDirectoryRole ? [initialDirectoryRole] : [],
+  );
   const [sortOption, setSortOption] = useState<"date-desc" | "alpha-desc">(
     "date-desc",
   );
@@ -107,7 +114,7 @@ export default function BrowseDesigners({ designers }: Props) {
 
       {/* Designers Grid */}
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
-        {filteredDesigners.flatMap((d, i) => {
+        {filteredDesigners.flatMap((d) => {
           return (
             <CardDesigner
               key={d.id}

@@ -1,46 +1,29 @@
 "use client";
 
-import { Input } from "../ui/input";
+import Link from "next/link";
+
 import { Button } from "../ui/button";
-import Image from "next/image";
 
 interface Props {
   designers?: number;
 }
 
-export function NewsletterSidebar({ designers }: Props) {
+export function NewsletterSidebar(_: Props) {
   return (
     <div className="mx-auto flex items-center gap-4 rounded-2xl border border-neutral-400 bg-neutral-900 p-3 md:p-6">
       <div className="space-y-3">
         <div>
-          <h2 className="mb-2 text-xl">
-            Career clarity for designers in 5 minutes
+          <h2 className="mb-2 text-xl font-bold md:text-2xl">
+            Find Your Design Path in 60 Seconds
           </h2>
-          <p className="font-light text-muted-foreground">
-            See how real designers actually get started and the challenges they
-            face, distilled from {designers} experienced designers and counting.
+          <p className="font-light text-muted-foreground md:text-lg">
+            Answer 5 quick questions and discover which design role fits your
+            skills.
           </p>
         </div>
-        <form
-          className="flex flex-col"
-          action="https://pathtodesign.us17.list-manage.com/subscribe/post"
-          method="POST"
-        >
-          <input type="hidden" name="u" value="e41d9cf2ed34317e99e5891b9" />
-          <input type="hidden" name="id" value="9437e60fa0" />
-          <div className="flex items-stretch gap-2">
-            <Input
-              type="email"
-              id="MERGE1"
-              name="MERGE1"
-              placeholder="Enter your email..."
-              className="flex-1"
-            />
-            <Button type="submit" variant="secondary" className="px-4">
-              Get the guide
-            </Button>
-          </div>
-        </form>
+        <Button asChild variant="default" className="px-4">
+          <Link href="/design-career-quiz">Start the quiz</Link>
+        </Button>
       </div>
     </div>
   );

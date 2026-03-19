@@ -8,6 +8,7 @@ import { App } from "@/components/blog/App";
 import dayjs from "dayjs";
 import Link from "next/link";
 import Image from "next/image";
+import { NewsletterSidebar } from "@/components/global/NewsletterSidebar";
 
 type Frontmatter = {
   title: string;
@@ -125,7 +126,7 @@ export default async function BlogPost({ params }: Props) {
 
       <aside className="hidden lg:block">
         <div className="sticky top-32 flex flex-col gap-8">
-          {/* Newsletter, CTAs, related content */}
+          <NewsletterSidebar />
         </div>
       </aside>
 

@@ -148,6 +148,9 @@ export default async function BookDetailPage(props: {
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
       <div className="col-span-1 lg:col-span-2">
         <BrowseBook book={book} />
+        <div className="mt-10 block md:hidden">
+          <NewsletterSidebar designers={designers.length} />
+        </div>
         <div className="col-span-2 mt-20 h-fit">
           <div className="mb-6 flex gap-4">
             <div className="text-2xl text-muted-foreground">
@@ -166,10 +169,8 @@ export default async function BookDetailPage(props: {
           </div>
         </div>
       </div>
-      <div className="col-span-1">
-        {/* TODO: Show when ready */}
-        {/* <div className="sticky top-20 flex flex-col gap-8"> */}
-        <div className="sticky top-20 hidden flex-col gap-8">
+      <div className="col-span-1 hidden md:block">
+        <div className="sticky top-20 flex flex-col gap-8">
           <NewsletterSidebar designers={designers.length} />
         </div>
       </div>

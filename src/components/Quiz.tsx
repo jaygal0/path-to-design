@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Loader2 } from "lucide-react";
 
 import { ProgressBar } from "@/components/ProgressBar";
+import { QuizOptionContent } from "@/components/QuizOptionContent";
 import { Question } from "@/components/Question";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
@@ -179,7 +180,7 @@ export function Quiz() {
             Find Your Design Career Path
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-stone-300 md:text-xl">
-            Answer 6 quick questions and discover which design role fits your
+            Answer 5 quick questions and discover which design role fits your
             interests.
           </p>
         </div>
@@ -210,7 +211,10 @@ export function Quiz() {
                     data-event-question="experience"
                     data-event-answer={experience.value}
                   >
-                    {experience.value}
+                    <QuizOptionContent
+                      label={experience.value}
+                      visual={experience.visual}
+                    />
                   </button>
                 ))}
               </div>

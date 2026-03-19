@@ -1,4 +1,5 @@
 import { plausibleEvents } from "@/config/plausibleEvents";
+import { QuizOptionContent } from "@/components/QuizOptionContent";
 import type { QuizQuestion } from "@/lib/quizQuestions";
 
 interface QuestionProps {
@@ -27,7 +28,10 @@ export function Question({ question, questionStep, onAnswer }: QuestionProps) {
             data-event-question={question.id}
             data-event-answer={answer.id}
           >
-            {answer.label}
+            <QuizOptionContent
+              label={answer.label}
+              visual={answer.visual}
+            />
           </button>
         ))}
       </div>

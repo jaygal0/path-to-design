@@ -202,7 +202,9 @@ export function ResultPage({
                   key={item.text}
                   className="flex min-h-36 flex-col items-start gap-5 rounded-2xl border border-stone-800 bg-stone-950/60 p-5"
                 >
-                  <Icon className="h-5 w-5" />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-stone-900 text-stone-100">
+                    <Icon className="h-5 w-5" />
+                  </div>
                   <p className="text-xl text-foreground">{item.text}</p>
                 </li>
               );

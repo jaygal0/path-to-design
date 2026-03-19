@@ -13,7 +13,7 @@ export function Newsletter() {
             Find Your Design Path in 60 Seconds
           </h2>
           <p className="font-light text-muted-foreground md:text-xl">
-            Answer 6 quick questions and discover which design role fits your
+            Answer 5 quick questions and discover which design role fits your
             skills.
           </p>
         </div>

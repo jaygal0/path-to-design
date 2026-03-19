@@ -1,3 +1,4 @@
+import type { QuizOptionVisual } from "@/lib/quizQuestions";
 import type { RoleKey } from "@/lib/roles";
 import { plausibleEvents } from "@/config/plausibleEvents";
 
@@ -15,18 +16,23 @@ export const analyticsEvents = {
 export const experienceOptions = [
   {
     value: "Completely new to design",
+    visual: { type: "icon", name: "beginner" } satisfies QuizOptionVisual,
   },
   {
     value: "Learning design",
+    visual: { type: "icon", name: "learn" } satisfies QuizOptionVisual,
   },
   {
     value: "Building a portfolio",
+    visual: { type: "icon", name: "portfolio" } satisfies QuizOptionVisual,
   },
   {
     value: "Working as a designer",
+    visual: { type: "icon", name: "designer" } satisfies QuizOptionVisual,
   },
   {
     value: "Switching careers",
+    visual: { type: "icon", name: "switch" } satisfies QuizOptionVisual,
   },
 ] as const;
 

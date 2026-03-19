@@ -115,8 +115,11 @@ export function renderQuizResultEmail(
       </p>
 
       <p style="margin-top: 20px;">
-        Just hit reply if you have questions, I read every email.
+        If you have questions, hit reply and I will get back to you. I read every email.
       </p>
+      <p>Speak soon,</p>
+      <p>Joshua from Path to Design</p>
+      
 
       <hr style="margin: 32px 0; border: 0; border-top: 1px solid #e5e7eb;" />
       <p style="font-size: 14px; color: #6b7280;">

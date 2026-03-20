@@ -254,18 +254,9 @@ export function Quiz() {
                     htmlFor="marketing-consent"
                     className="text-sm font-medium text-stone-100"
                   >
-                    Send me personalised design tips and updates
+                    Get weekly design career insights from real designers (no
+                    spam)
                   </Label>
-                  <p className="text-sm text-muted-foreground">
-                    By continuing, you agree to our{" "}
-                    <Link
-                      href="/privacy"
-                      className="underline hover:text-stone-100"
-                    >
-                      Privacy Policy
-                    </Link>
-                    .
-                  </p>
                 </div>
               </div>
 

@@ -6,7 +6,7 @@ async function getData() {
   const designers = await fetchSafe(
     `${process.env.WEB_SITE}/api/designers`,
     {
-      next: { revalidate: 86400 },
+      next: { revalidate: 60 },
     },
     [],
   );

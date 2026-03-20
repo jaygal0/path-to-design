@@ -26,7 +26,7 @@ export async function generateMetadata({
 
   try {
     const res = await fetch(`${process.env.WEB_SITE}/api/designers/${slug}`, {
-      next: { revalidate: 604800 },
+      next: { revalidate: 60 },
     });
 
     if (!res.ok) {
@@ -90,7 +90,7 @@ async function getData() {
   const designersData = await fetchSafe(
     `${process.env.WEB_SITE}/api/designers`,
     {
-      next: { revalidate: 604800 },
+      next: { revalidate: 60 },
     },
     [],
   );
@@ -98,7 +98,7 @@ async function getData() {
   const appsData = await fetchSafe(
     `${process.env.WEB_SITE}/api/apps`,
     {
-      next: { revalidate: 604800 },
+      next: { revalidate: 60 },
     },
     [],
   );
@@ -110,7 +110,7 @@ async function fetchDesignerData(slug: string) {
   const designer = await fetchSafe(
     `${process.env.WEB_SITE}/api/designers/${slug}`,
     {
-      next: { revalidate: 604800 },
+      next: { revalidate: 60 },
     },
     null,
   );

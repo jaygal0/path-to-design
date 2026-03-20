@@ -11,7 +11,7 @@ export function Newsletter() {
       <div className="shrink-0">
         <Image
           src="/newsletter/quiz.png"
-          alt="Quiz preview"
+          alt="Quiz illlustration"
           width={144}
           height={144}
           className="h-56 w-56 object-cover md:h-72 md:w-72"

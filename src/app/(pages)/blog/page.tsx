@@ -1,50 +1,8 @@
-import path from "path";
-import fs from "fs/promises";
-import matter from "gray-matter";
 import Link from "next/link";
-
-type Post = {
-  slug: string;
-  title: string;
-  description?: string;
-  date: string;
-  author: string;
-  authorUrl: string;
-  profileImage?: string;
-};
+import { getPublishedBlogPosts } from "@/lib/blog";
 
 export default async function BlogIndex() {
-  const dir = path.join(process.cwd(), "content", "blog");
-  const files = await fs.readdir(dir);
-
-  const posts: (Post | null)[] = await Promise.all(
-    files.map(async (file) => {
-      const raw = await fs.readFile(path.join(dir, file), "utf8");
-      const { data } = matter(raw);
-
-      if (data.draft) return null;
-
-      return {
-        slug: file.replace(".mdx", ""),
-        title: data.title,
-        description: data.description,
-        date: data.date,
-        author: data.author,
-        authorUrl: data.authorUrl,
-        profileImage: data.profileImage,
-      };
-    }),
-  );
-
-  const filteredPosts: Post[] = posts.filter(
-    (post): post is Post => post !== null,
-  );
-
-  filteredPosts.sort((a, b) => {
-    const dateA = new Date(a.date).getTime();
-    const dateB = new Date(b.date).getTime();
-    return dateB - dateA; // newest first
-  });
+  const filteredPosts = await getPublishedBlogPosts();
 
   return (
     <main className="mx-auto max-w-3xl">

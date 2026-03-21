@@ -4,6 +4,7 @@ import { CTA } from "@/components/home/CTA";
 import { Newsletter } from "@/components/global/Newsletter";
 import { CompanyLogos } from "@/components/home/CompanyLogos";
 import { RealRecommendations } from "@/components/home/RealRecommendations";
+import { BlogRecommendations } from "@/components/home/BlogRecommendations";
 
 async function getData() {
   const [designersRes] = await Promise.all([
@@ -23,6 +24,7 @@ async function getData() {
 
 export default async function Home() {
   const { designers } = await getData();
+  const blogRecommendations = await BlogRecommendations();
 
   return (
     <div className="space-y-32 md:space-y-52">
@@ -31,6 +33,7 @@ export default async function Home() {
       <RealDesigners designers={designers} />
       <Newsletter />
       <RealRecommendations />
+      {blogRecommendations}
       <CTA />
     </div>
   );

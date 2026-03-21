@@ -24,7 +24,7 @@ type BlogPostMeta = {
   updatedAt?: string;
 };
 
-const BASE_URL = "https://pathtodesign.com";
+const BASE_URL = "https://www.pathtodesign.com";
 
 function resolveValidSlug(input: unknown): string | null {
   const raw =

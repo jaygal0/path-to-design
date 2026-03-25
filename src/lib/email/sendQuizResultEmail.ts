@@ -34,19 +34,11 @@ export async function sendQuizResultEmail(subscriber: QuizEmailSubscriber) {
     }),
   });
 
-  // Future email sequences can branch from this event log without changing the
-  // initial submission flow or duplicating subscriber state.
-  await prisma.$transaction([
-    prisma.emailEvent.create({
-      data: {
-        subscriberId: subscriber.id,
-        type: "sent",
-        emailType: "quiz_result",
-      },
-    }),
-    prisma.subscriber.update({
-      where: { id: subscriber.id },
-      data: { lastEmailSentAt: new Date() },
-    }),
-  ]);
+  // Keep the delivery tracking minimal for now. If you add richer email
+  // sequences later, this is the place to expand with provider webhooks or
+  // separate tracking tables.
+  await prisma.subscriber.update({
+    where: { id: subscriber.id },
+    data: { lastEmailSentAt: new Date() },
+  });
 }

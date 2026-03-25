@@ -132,16 +132,4 @@ model Subscriber {
   marketingConsent Boolean     @default(false)
   consentGivenAt   DateTime?
   lastEmailSentAt DateTime?
-  emailEvents     EmailEvent[]
-}
-
-model EmailEvent {
-  id           String     @id @default(cuid())
-  subscriberId String
-  type         String
-  emailType    String
-  createdAt    DateTime   @default(now())
-  subscriber   Subscriber @relation(fields: [subscriberId], references: [id], onDelete: Cascade)
-
-  @@index([subscriberId])
 }

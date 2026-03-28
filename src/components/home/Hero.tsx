@@ -61,7 +61,62 @@ export function Hero({ designers }: Props) {
     "Gu",
   ];
 
-  const loopedNames = [...filterNames, ...filterNames];
+  const firstRowNames = filterNames.slice(0, Math.ceil(filterNames.length / 2));
+  const secondRowNames = filterNames.slice(Math.ceil(filterNames.length / 2));
+
+  const renderDesignerRow = (names: string[], animationClass: string) => {
+    const loopedNames = [...names, ...names];
+
+    return (
+      <div className="relative w-full overflow-hidden">
+        <div className={`${animationClass} flex w-max items-stretch gap-3 md:gap-4`}>
+          {loopedNames.map((name, index) => {
+            const designer = designers.find((d: any) => d.lastName === name);
+            if (!designer) return null;
+
+            const { companies, country, firstName, lastName, profileImage, roles } =
+              designer;
+
+            const safeRole = roles?.role ?? "Unknown";
+            const roleColorClass = getRoleTextColor(safeRole);
+
+            return (
+              <div
+                key={`${name}-${index}`}
+                className="flex h-52 w-36 flex-col items-center justify-center gap-3.5 rounded-2xl border border-neutral-700 bg-neutral-900 px-3 py-4.5 text-center md:h-56 md:w-40"
+              >
+                <div className="relative">
+                  <Image
+                    src={profileImage}
+                    alt={`${firstName} ${lastName}`}
+                    width={54}
+                    height={54}
+                    className="relative rounded-full md:h-[3.75rem] md:w-[3.75rem]"
+                  />
+                  <Image
+                    src={`/flags/${country}.svg`}
+                    width={18}
+                    height={18}
+                    alt={`${country}`}
+                    className="absolute -bottom-1.5 -right-1.5 inline rounded-full border bg-white"
+                    quality={70}
+                  />
+                </div>
+
+                <div className="text-[15px] leading-snug md:text-base">
+                  <span className={roleColorClass}>{safeRole}</span>
+                  {companies?.company && <> at {companies.company}</>}
+                </div>
+                <div className="text-sm text-muted-foreground">
+                  {firstName} {lastName}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className="flex flex-col items-center">
@@ -73,59 +128,9 @@ export function Hero({ designers }: Props) {
           {companyInfo.copy.subheading}
         </h2>
       </div>
-      <div className="relative mt-14 w-full overflow-hidden">
-        <div className="animate-marquee flex w-max items-stretch gap-4">
-          {loopedNames.map((name, index) => {
-            const designer = designers.find((d: any) => d.lastName === name);
-            if (!designer) return null;
-
-            const {
-              companies,
-              country,
-              firstName,
-              lastName,
-              oneLiner,
-              profileImage,
-              roles,
-            } = designer;
-
-            const safeRole = roles?.role ?? "Unknown";
-            const roleColorClass = getRoleTextColor(safeRole);
-
-            return (
-              <div
-                key={index}
-                className="flex h-72 w-48 flex-col items-center justify-center gap-5 rounded-2xl border border-neutral-700 bg-neutral-900 px-4 py-6 text-center"
-              >
-                <div className="relative">
-                  <Image
-                    src={profileImage}
-                    alt={`${firstName} ${lastName}`}
-                    width={70}
-                    height={70}
-                    className="relative rounded-full"
-                  />
-                  <Image
-                    src={`/flags/${country}.svg`}
-                    width={24}
-                    height={24}
-                    alt={`${country}`}
-                    className="absolute -bottom-2 -right-2 ml-2 inline rounded-full border bg-white"
-                    quality={70}
-                  />
-                </div>
-
-                <div className="text-xl">
-                  <span className={roleColorClass}>{safeRole}</span>
-                  {companies?.company && <> at {companies.company}</>}
-                </div>
-                <div className="text-sm text-muted-foreground">
-                  {firstName} {lastName}
-                </div>
-              </div>
-            );
-          })}
-        </div>
+      <div className="mt-14 flex w-full flex-col gap-4">
+        {renderDesignerRow(firstRowNames, "animate-marquee")}
+        {renderDesignerRow(secondRowNames, "animate-marquee-reverse")}
       </div>
     </div>
   );

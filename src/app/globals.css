@@ -70,6 +70,10 @@ select::placeholder {
   animation: marquee 100s linear infinite;
 }
 
+.animate-marquee-reverse {
+  animation: marquee 100s linear infinite reverse;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

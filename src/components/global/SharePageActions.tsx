@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { Link2, Linkedin } from "lucide-react";
 import { SiX } from "@icons-pack/react-simple-icons";
 
+import { plausibleEvents } from "@/config/plausibleEvents";
+
 import { Button } from "../ui/button";
 
 interface SharePageActionsProps {
@@ -24,9 +26,14 @@ export function SharePageActions({
     setShareUrl(window.location.href);
   }, []);
 
+  function trackEvent(eventName: string) {
+    window.plausible?.(eventName);
+  }
+
   async function handleCopyLink() {
     if (!shareUrl) return;
 
+    trackEvent(plausibleEvents.SHARE_PAGE_COPY_LINK);
     await navigator.clipboard.writeText(shareUrl);
     setCopied(true);
     window.setTimeout(() => setCopied(false), 2000);
@@ -37,6 +44,7 @@ export function SharePageActions({
 
     const shareMessage = `I found this on Path to Design: ${shareUrl}`;
 
+    trackEvent(plausibleEvents.SHARE_PAGE_LINKEDIN);
     await navigator.clipboard.writeText(shareMessage);
     setLinkedinCopied(true);
     window.setTimeout(() => setLinkedinCopied(false), 2000);
@@ -60,7 +68,13 @@ export function SharePageActions({
       <p className="text-sm text-muted-foreground">{title}</p>
       <div className="mt-3 flex gap-3">
         <Button asChild variant="outline" size="icon" aria-label="Share on X">
-          <Link href={xShareUrl} target="_blank" rel="noreferrer">
+          <Link
+            href={xShareUrl}
+            target="_blank"
+            rel="noreferrer"
+            className={`plausible-event-name=${plausibleEvents.SHARE_PAGE_X}`}
+            onClick={() => trackEvent(plausibleEvents.SHARE_PAGE_X)}
+          >
             <SiX className="h-4 w-4" />
           </Link>
         </Button>

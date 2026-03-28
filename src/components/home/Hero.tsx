@@ -41,6 +41,7 @@ export function Hero({ designers }: Props) {
     "Kumar",
     "Fox",
     "Galinato",
+    "Roach",
     "Strasche",
     "Dannaway",
     "Hudock",

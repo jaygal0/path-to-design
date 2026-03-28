@@ -15,4 +15,7 @@ export const plausibleEvents = {
   VIEW_X: "view-x",
   VIEW_INSTAGRAM: "view-instagram",
   VIEW_dribbble: "view-dribbble",
+  SHARE_PAGE_X: "share-page-x",
+  SHARE_PAGE_LINKEDIN: "share-page-linkedin",
+  SHARE_PAGE_COPY_LINK: "share-page-copy-link",
 } as const;

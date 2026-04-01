@@ -21,6 +21,7 @@ export const featuredDesignerLastNames = [
   "Filou",
   "Hansen",
   "Ortega",
+  "Dan",
   "Molinari",
   "Bocchi",
   "Butler",

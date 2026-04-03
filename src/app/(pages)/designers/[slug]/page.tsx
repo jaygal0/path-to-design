@@ -235,8 +235,6 @@ export default async function DesignerPage(props: {
             </div>
           )}
           <div className="mb-12 flex flex-col gap-12">
-            {apps.length > 0 && <AppsUsed apps={apps} />}
-            {books.length > 0 && <BooksUsed books={books} />}
             {products?.length > 0 && <ProductsUsed product={products} />}
             <div className="block md:hidden">
               <NewsletterSidebar />
@@ -247,6 +245,14 @@ export default async function DesignerPage(props: {
                 answer={getStarted}
               />
             )}
+            {apps.length > 0 && <AppsUsed apps={apps} />}
+            {incorporateApps && (
+              <Answers
+                question="How do you incorporate the apps in your design process?"
+                answer={incorporateApps}
+              />
+            )}
+            {books.length > 0 && <BooksUsed books={books} />}
             {responsibilities && (
               <Answers
                 question="What are the responsibilities of your role?"
@@ -257,12 +263,6 @@ export default async function DesignerPage(props: {
               <Answers
                 question="What difficulties do you encounter in your role?"
                 answer={difficulties}
-              />
-            )}
-            {incorporateApps && (
-              <Answers
-                question="How do you incorporate the apps in your design process?"
-                answer={incorporateApps}
               />
             )}
             {advice && (

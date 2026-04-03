@@ -11,8 +11,10 @@ export function BooksUsed({
 }) {
   return (
     <div>
-      {title ? <h3 className="mb-4 text-xl text-muted-foreground">{title}</h3> : null}
-      <div className="mb-8 flex flex-wrap gap-8 gap-y-4">
+      {title ? (
+        <h3 className="mb-4 text-xl text-muted-foreground">{title}</h3>
+      ) : null}
+      <div className="flex flex-wrap gap-8 gap-y-4">
         {books
           ?.slice() // Create a shallow copy to avoid mutating the original array
           .sort((a: any, b: any) => a.book.localeCompare(b.book)) // Sort alphabetically

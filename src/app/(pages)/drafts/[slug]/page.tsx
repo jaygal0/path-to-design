@@ -15,6 +15,7 @@ import type { Metadata } from "next";
 import { ProductsUsed } from "@/components/designer/ProductsUsed";
 import { notFound } from "next/navigation";
 import { mainCTAs } from "@/config/navigation";
+import { NewsletterSidebar } from "@/components/global/NewsletterSidebar";
 
 export async function generateMetadata({
   params,
@@ -234,31 +235,34 @@ export default async function DesignerPage(props: {
             </div>
           )}
           <div className="mb-12 flex flex-col gap-12">
-            {apps.length > 0 && <AppsUsed apps={apps} />}
-            {books.length > 0 && <BooksUsed books={books} />}
             {products?.length > 0 && <ProductsUsed product={products} />}
+            <div className="block md:hidden">
+              <NewsletterSidebar />
+            </div>
             {getStarted && (
               <Answers
-                question="How did you get started in your role as a designer?"
+                question="How did you get started in your role?"
                 answer={getStarted}
               />
             )}
+            {apps.length > 0 && <AppsUsed apps={apps} />}
+            {incorporateApps && (
+              <Answers
+                question="How do you incorporate the apps in your design process?"
+                answer={incorporateApps}
+              />
+            )}
+            {books.length > 0 && <BooksUsed books={books} />}
             {responsibilities && (
               <Answers
-                question="What are the responsibilities of your role as a designer?"
+                question="What are the responsibilities of your role?"
                 answer={responsibilities}
               />
             )}
             {difficulties && (
               <Answers
-                question="What difficulties do you encounter in your role as a designer? "
+                question="What difficulties do you encounter in your role?"
                 answer={difficulties}
-              />
-            )}
-            {incorporateApps && (
-              <Answers
-                question="How do you incorporate the apps in your design process?"
-                answer={incorporateApps}
               />
             )}
             {advice && (
@@ -280,7 +284,7 @@ export default async function DesignerPage(props: {
               />
             )}
           </div>
-          <div className="col-span-2 h-fit rounded-2xl bg-neutral-900 p-3 md:p-6">
+          <div className="col-span-2 h-fit rounded-2xl">
             <div className="mb-6 flex justify-between">
               <div className="text-lg text-muted-foreground">
                 Continue reading
@@ -330,9 +334,9 @@ export default async function DesignerPage(props: {
             </div>
           </div>
         </div>
-        <div className="col-span-2 flex flex-col gap-8 lg:col-span-1">
-          <div className="sticky top-8">
-            <PopularApps apps={appsData} />
+        <div className="col-span-2 hidden md:block lg:col-span-1">
+          <div className="sticky top-20 flex flex-col gap-8">
+            <NewsletterSidebar />
           </div>
         </div>
       </div>

@@ -16,8 +16,10 @@ export function ProductsUsed({
 
   return (
     <div>
-      {title ? <h3 className="mb-4 text-xl text-muted-foreground">{title}</h3> : null}
-      <div className="mb-8 flex flex-wrap gap-8 gap-y-4">
+      {title ? (
+        <h3 className="mb-4 text-xl text-muted-foreground">{title}</h3>
+      ) : null}
+      <div className="flex flex-wrap gap-8 gap-y-4">
         {sortedProducts.map((prod) => (
           <Link
             key={prod.name}

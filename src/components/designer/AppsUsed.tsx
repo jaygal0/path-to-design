@@ -9,8 +9,10 @@ export function AppsUsed({
 }) {
   return (
     <div>
-      {title ? <h3 className="mb-4 text-xl text-muted-foreground">{title}</h3> : null}
-      <div className="mb-8 flex flex-wrap gap-10 gap-y-4">
+      {title ? (
+        <h3 className="mb-4 text-xl text-muted-foreground">{title}</h3>
+      ) : null}
+      <div className="flex flex-wrap gap-10 gap-y-4">
         {apps
           ?.slice() // Create a shallow copy to avoid mutating the original array
           .sort((a: any, b: any) => a.app.localeCompare(b.app)) // Sort alphabetically

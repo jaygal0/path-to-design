@@ -117,8 +117,43 @@ export function renderQuizResultEmail(
       <p style="margin-top: 20px;">
         If you have questions, hit reply and I will get back to you. I read every email.
       </p>
-      <p>Speak soon,</p>
-      <p>Joshua from Path to Design</p>
+      <p>Best,</p>
+      <table cellpadding="0" cellspacing="0" style="font-family: Arial, sans-serif; font-size: 14px; color: #555; padding-top: 20px;">
+      <tr>
+      <td style="line-height: 1.6;">
+      
+      <!-- Name -->
+      <strong style="color: #333;">Joshua from Path to Design</strong>
+      
+      <br>
+
+      <!-- Website -->
+      <a href="https://www.pathtodesign.com" style="color: #0066cc; text-decoration: none;">
+        pathtodesign.com
+      </a>
+
+      <br>
+
+      <!-- Social icons -->
+      <a href="https://www.linkedin.com/in/joshuagalinato/" style="text-decoration: none; margin-right: 10px;">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/linkedin.svg" width="16" height="16" alt="LinkedIn" style="vertical-align: middle; filter: brightness(0);">
+      </a>
+
+      <a href="https://x.com/pathtodesign" style="text-decoration: none; margin-right: 10px;">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/x.svg" width="16" height="16" alt="X" style="vertical-align: middle; filter: brightness(0);">
+      </a>
+
+      <a href="https://www.threads.net/@path.to.design1" style="text-decoration: none; margin-right: 10px;">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/threads.svg" width="16" height="16" alt="Threads" style="vertical-align: middle; filter: brightness(0);">
+      </a>
+
+      <a href="https://bsky.app/profile/pathtodesign.bsky.social" style="text-decoration: none;">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/bluesky.svg" width="16" height="16" alt="Bluesky" style="vertical-align: middle; filter: brightness(0);">
+      </a>
+
+    </td>
+    </tr>
+    </table>
       
 
       <hr style="margin: 32px 0; border: 0; border-top: 1px solid #e5e7eb;" />

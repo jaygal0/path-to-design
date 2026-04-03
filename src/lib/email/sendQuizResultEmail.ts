@@ -26,7 +26,7 @@ export async function sendQuizResultEmail(subscriber: QuizEmailSubscriber) {
     from: emailFrom,
     to: subscriber.email,
     replyTo: emailReplyTo,
-    subject: "Your design path",
+    subject: "Your Path to Design: Results",
     html: renderQuizResultEmail(subscriber, {
       apps: recommendations.emailResources.apps,
       books: recommendations.emailResources.books,
